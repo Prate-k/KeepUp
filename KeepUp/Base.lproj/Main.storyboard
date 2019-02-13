@@ -109,6 +109,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="expand" translatesAutoresizingMaskIntoConstraints="NO" id="tmZ-fx-9LJ">
                                                 <rect key="frame" x="286" y="0.0" width="41" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="p0a-dG-YCJ" appends="YES" id="vb1-Hb-KxO"/>
                                                 </connections>
@@ -117,7 +118,7 @@
                                         <color key="backgroundColor" red="0.5092005076142132" green="0.3519325020511021" blue="0.23497421349319503" alpha="0.4043503852739726" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="p0a-dG-YCJ" appends="YES" id="RcR-6e-EdH"/>
+                                            <outletCollection property="gestureRecognizers" destination="p0a-dG-YCJ" appends="YES" id="ToD-un-8gu"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -178,6 +179,7 @@
                     </view>
                     <connections>
                         <outlet property="addToFavButton" destination="JIY-si-c3D" id="hDX-WU-xAh"/>
+                        <outlet property="detailsDropDownLable" destination="0Bo-jn-0XY" id="tZW-sP-yT9"/>
                         <outlet property="detailsExpandCollapseImage" destination="tmZ-fx-9LJ" id="NQ2-Yf-gB6"/>
                         <outlet property="detailsView" destination="lif-GS-40l" id="zgP-dG-ksn"/>
                         <outlet property="removeFromFavButton" destination="uq4-4g-XpU" id="BNn-x1-zqV"/>
@@ -193,7 +195,8 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="p0a-dG-YCJ">
                     <connections>
-                        <action selector="detailsViewPressed" destination="BYZ-38-t0r" id="K7o-lQ-25K"/>
+                        <action selector="detailsViewPressed" destination="BYZ-38-t0r" id="YXj-1Q-glR"/>
+                        <outlet property="delegate" destination="lif-GS-40l" id="jP4-dB-emi"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var tempDisplayField: UITextView!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var detailsExpandCollapseImage: UIImageView!
+    @IBOutlet weak var detailsDropDownLable: UILabel!
+
     
     
     
@@ -84,8 +86,6 @@ class ViewController: UIViewController {
         } else {
             detailsExpandCollapseImage.image = UIImage(named: "expand")
         }
-    
-        
     }
 }
 
