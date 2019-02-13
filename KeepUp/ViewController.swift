@@ -18,12 +18,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultImage: UIImageView!
     @IBOutlet weak var resultArtistLabel: UILabel!
     @IBOutlet weak var resultGenreLabel: UILabel!
-    @IBOutlet weak var addToFavButton: UIButton!
-    @IBOutlet weak var removeFromFavButton: UIButton!
     @IBOutlet weak var tempDisplayField: UITextView!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var detailsExpandCollapseImage: UIImageView!
     @IBOutlet weak var detailsDropDownLable: UILabel!
+    @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
 
     
     
@@ -36,25 +35,59 @@ class ViewController: UIViewController {
         resultView.isHidden = true
     }
 
-    @IBAction func addToFavouritesList() {
+    
+    @IBAction func addRemoveFavourites() {
+        
+        let image = favouriteUnfavouriteButton.currentImage
+        
+        let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
+        
+        if index == -1 {
+            favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
+            addToFavouritesList()
+        } else {
+            favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+            removeFromFavouritesList()
+        }
+        
+    }
+    
+    private func isArtistInFavouriteList (name: String) -> Int {
+        var index = -1
+        for i in 0..<favouriteList.count {
+            if favouriteList[i].name.elementsEqual(resultArtistLabel.text!) {
+                index = i
+                break
+            }
+        }
+        return index
+    }
+    
+    private func addToFavouritesList() {
+        let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
+        if index != -1 {
+            return
+        }
+        
         let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, image: resultImage.image)
+        
         if let x = newArtist {
             favouriteList.append(x)
-            var str = ""
-            for i in 0..<favouriteList.count {
-                str.append(favouriteList[i].name + ", ")
-            }
-            tempDisplayField.text.append(str + "\n")
+            printToTempText()
         }
     }
     
-    @IBAction func removeFromFavouritesList() {
-            for i in 0..<favouriteList.count {
-                if favouriteList[i].name == resultArtistLabel.text {
-                    favouriteList.remove(at: i)
-                    break
-                }
-            }
+    private func removeFromFavouritesList() {
+        let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
+        if  index == -1 {
+            return
+        } else {
+            favouriteList.remove(at: index)
+        }
+        printToTempText()
+    }
+    
+    private func printToTempText() {
         var str = ""
         for i in 0..<favouriteList.count {
             str.append(favouriteList[i].name + ", ")
@@ -64,6 +97,7 @@ class ViewController: UIViewController {
     
     @IBAction func searchArtist() {
         let searchedText = searchText.text
+        
         if searchedText?.isEmpty ?? true {
             let alert = UIAlertController(title: "Empty Search", message: "Seach field is empty - Please enter an artist's name.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
@@ -74,6 +108,12 @@ class ViewController: UIViewController {
             resultArtistLabel.text = searchedText
             resultGenreLabel.text = "Random"
             resultImage.image = UIImage(named: "dummyArtist")
+            
+            if isArtistInFavouriteList(name: searchedText!) != -1 {
+                favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
+            } else {
+                favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+            }
         }
     }
     

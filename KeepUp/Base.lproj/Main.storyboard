@@ -63,28 +63,6 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JIY-si-c3D">
-                                        <rect key="frame" x="303" y="8" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="5Ym-n3-Rg2"/>
-                                            <constraint firstAttribute="width" constant="32" id="BpX-Yt-EmS"/>
-                                        </constraints>
-                                        <state key="normal" image="add"/>
-                                        <connections>
-                                            <action selector="addToFavouritesList" destination="BYZ-38-t0r" eventType="touchUpInside" id="c28-w3-Yg9"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uq4-4g-XpU">
-                                        <rect key="frame" x="303" y="48" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="TAg-cz-P9m"/>
-                                            <constraint firstAttribute="width" constant="32" id="c6d-tk-ylS"/>
-                                        </constraints>
-                                        <state key="normal" image="block"/>
-                                        <connections>
-                                            <action selector="removeFromFavouritesList" destination="BYZ-38-t0r" eventType="touchUpInside" id="cyL-fi-QsC"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NhA-CV-0d7">
                                         <rect key="frame" x="8" y="8" width="82" height="75"/>
                                         <constraints>
@@ -102,40 +80,39 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="p0a-dG-YCJ" appends="YES" id="bPQ-Ni-TC3"/>
-                                                </connections>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="expand" translatesAutoresizingMaskIntoConstraints="NO" id="tmZ-fx-9LJ">
                                                 <rect key="frame" x="286" y="0.0" width="41" height="31"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="p0a-dG-YCJ" appends="YES" id="vb1-Hb-KxO"/>
-                                                </connections>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.5092005076142132" green="0.3519325020511021" blue="0.23497421349319503" alpha="0.4043503852739726" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="p0a-dG-YCJ" appends="YES" id="ToD-un-8gu"/>
+                                            <outletCollection property="gestureRecognizers" destination="p0a-dG-YCJ" appends="YES" id="BNh-Aw-4HM"/>
                                         </connections>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ca-iP-Q0U">
+                                        <rect key="frame" x="292" y="29" width="36" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="fav"/>
+                                        <connections>
+                                            <action selector="addRemoveFavourites" destination="BYZ-38-t0r" eventType="touchUpInside" id="MxW-AU-vXh"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.47711770304568524" green="0.34195404947716207" blue="0.023803207787256111" alpha="0.29342358732876711" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="C7q-kg-Yfu"/>
                                     <constraint firstAttribute="width" constant="343" id="D60-oO-dSE"/>
-                                    <constraint firstItem="p7V-IM-iri" firstAttribute="top" secondItem="JIY-si-c3D" secondAttribute="top" id="GeT-W4-V8B"/>
                                     <constraint firstItem="XIM-ST-PLU" firstAttribute="top" secondItem="p7V-IM-iri" secondAttribute="bottom" constant="8" symbolic="YES" id="Kr0-ME-t1E"/>
                                     <constraint firstItem="p7V-IM-iri" firstAttribute="leading" secondItem="XIM-ST-PLU" secondAttribute="leading" id="WG2-bE-TcG"/>
                                     <constraint firstItem="NhA-CV-0d7" firstAttribute="top" secondItem="Ccf-X8-FXp" secondAttribute="topMargin" id="XIf-DX-ZGT"/>
                                     <constraint firstItem="NhA-CV-0d7" firstAttribute="top" secondItem="p7V-IM-iri" secondAttribute="top" id="adi-cY-u3i"/>
                                     <constraint firstItem="NhA-CV-0d7" firstAttribute="leading" secondItem="Ccf-X8-FXp" secondAttribute="leadingMargin" id="c0x-jl-QW1"/>
-                                    <constraint firstItem="JIY-si-c3D" firstAttribute="trailing" secondItem="Ccf-X8-FXp" secondAttribute="trailingMargin" id="dMn-xq-aFp"/>
                                     <constraint firstItem="p7V-IM-iri" firstAttribute="leading" secondItem="NhA-CV-0d7" secondAttribute="trailing" constant="18" id="hs3-Fo-zjX"/>
-                                    <constraint firstItem="XIM-ST-PLU" firstAttribute="top" secondItem="uq4-4g-XpU" secondAttribute="top" id="jyH-Qj-lAo"/>
-                                    <constraint firstItem="JIY-si-c3D" firstAttribute="leading" secondItem="uq4-4g-XpU" secondAttribute="leading" id="npv-Nc-hWd"/>
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MIO-mO-acG">
@@ -178,11 +155,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="addToFavButton" destination="JIY-si-c3D" id="hDX-WU-xAh"/>
                         <outlet property="detailsDropDownLable" destination="0Bo-jn-0XY" id="tZW-sP-yT9"/>
                         <outlet property="detailsExpandCollapseImage" destination="tmZ-fx-9LJ" id="NQ2-Yf-gB6"/>
                         <outlet property="detailsView" destination="lif-GS-40l" id="zgP-dG-ksn"/>
-                        <outlet property="removeFromFavButton" destination="uq4-4g-XpU" id="BNn-x1-zqV"/>
+                        <outlet property="favouriteUnfavouriteButton" destination="4Ca-iP-Q0U" id="v3d-q8-Z2K"/>
                         <outlet property="resultArtistLabel" destination="p7V-IM-iri" id="YpE-Yb-Is7"/>
                         <outlet property="resultGenreLabel" destination="XIM-ST-PLU" id="DZO-Pb-1iq"/>
                         <outlet property="resultImage" destination="NhA-CV-0d7" id="EPG-M6-StL"/>
@@ -195,8 +171,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="p0a-dG-YCJ">
                     <connections>
-                        <action selector="detailsViewPressed" destination="BYZ-38-t0r" id="YXj-1Q-glR"/>
-                        <outlet property="delegate" destination="lif-GS-40l" id="jP4-dB-emi"/>
+                        <action selector="detailsViewPressed" destination="BYZ-38-t0r" id="VcQ-rO-gQe"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -204,10 +179,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="44" height="44"/>
         <image name="background" width="998" height="1001"/>
-        <image name="block" width="54" height="54"/>
         <image name="expand" width="37.5" height="37.5"/>
+        <image name="fav" width="36" height="36"/>
         <image name="search" width="19" height="19"/>
     </resources>
 </document>
