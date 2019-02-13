@@ -125,6 +125,68 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oYc-Gm-pCH">
+                                <rect key="frame" x="16" y="356" width="343" height="143"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.477117703" green="0.34195404950000002" blue="0.023803207789999999" alpha="0.29342358730000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hHz-4V-NgJ">
+                                    <size key="itemSize" width="94" height="142"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavArtistCell" id="EiX-oL-mKR" customClass="FavouriteArtistCollectionViewCell" customModule="KeepUp" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="0.5" width="94" height="142"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="142"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dummyArtist" translatesAutoresizingMaskIntoConstraints="NO" id="q8h-5p-1n0">
+                                                    <rect key="frame" x="7" y="8" width="77" height="73"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSf-T1-FbP">
+                                                    <rect key="frame" x="7" y="88" width="77" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rw6-ik-3Hn">
+                                                    <rect key="frame" x="7" y="115" width="77" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.50920050760000002" green="0.35193250209999999" blue="0.2349742135" alpha="0.4043503853" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="artistName" destination="vSf-T1-FbP" id="JC0-ID-7U4"/>
+                                            <outlet property="genre" destination="Rw6-ik-3Hn" id="oa3-Dz-ovs"/>
+                                            <outlet property="imageView" destination="q8h-5p-1n0" id="bWT-Vm-TqI"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavHeader" id="ogd-yb-ARW">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="143"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fav" translatesAutoresizingMaskIntoConstraints="NO" id="DjE-hB-RTe">
+                                            <rect key="frame" x="0.0" y="48" width="50" height="47"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </imageView>
+                                    </subviews>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="a8L-wF-b46"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rLr-I4-cv0"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -155,6 +217,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="oYc-Gm-pCH" id="nPL-PW-5hp"/>
                         <outlet property="detailsDropDownLable" destination="0Bo-jn-0XY" id="tZW-sP-yT9"/>
                         <outlet property="detailsExpandCollapseImage" destination="tmZ-fx-9LJ" id="NQ2-Yf-gB6"/>
                         <outlet property="detailsView" destination="lif-GS-40l" id="zgP-dG-ksn"/>
@@ -180,6 +243,7 @@
     </scenes>
     <resources>
         <image name="background" width="998" height="1001"/>
+        <image name="dummyArtist" width="900" height="900"/>
         <image name="expand" width="37.5" height="37.5"/>
         <image name="fav" width="36" height="36"/>
         <image name="search" width="19" height="19"/>

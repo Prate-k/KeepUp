@@ -10,8 +10,10 @@ import UIKit
 
 var favouriteList = [Artist]()
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    let reusableId = "FavArtistCell"
+    
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var resultView: UIView!
@@ -23,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var detailsExpandCollapseImage: UIImageView!
     @IBOutlet weak var detailsDropDownLable: UILabel!
     @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
 
     
     
@@ -37,8 +40,6 @@ class ViewController: UIViewController {
 
     
     @IBAction func addRemoveFavourites() {
-        
-        let image = favouriteUnfavouriteButton.currentImage
         
         let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
         
@@ -74,6 +75,7 @@ class ViewController: UIViewController {
         if let x = newArtist {
             favouriteList.append(x)
             printToTempText()
+            collectionView.reloadData()
         }
     }
     
@@ -83,8 +85,10 @@ class ViewController: UIViewController {
             return
         } else {
             favouriteList.remove(at: index)
+            printToTempText()
+            collectionView.reloadData()
         }
-        printToTempText()
+        
     }
     
     private func printToTempText() {
@@ -127,5 +131,29 @@ class ViewController: UIViewController {
             detailsExpandCollapseImage.image = UIImage(named: "expand")
         }
     }
+    
+    // tell the collection view how many cells to make
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return favouriteList.count
+    }
+    
+//    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId, for: indexPath as IndexPath) as! FavouriteArtistCollectionViewCell
+        
+        // Use the outlet in our custom class to get a reference to the UILabel in the cell
+        let artist = favouriteList[indexPath.item]
+        cell.artistName.text = artist.name
+        cell.genre.text = artist.genre
+        cell.imageView.image = artist.image
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+        print("You selected cell #\(indexPath.item)!")
+    }
+    
+    
 }
 
