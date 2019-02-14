@@ -131,13 +131,13 @@
                                 <color key="backgroundColor" red="0.477117703" green="0.34195404950000002" blue="0.023803207789999999" alpha="0.29342358730000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hHz-4V-NgJ">
                                     <size key="itemSize" width="94" height="142"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavArtistCell" id="EiX-oL-mKR" customClass="FavouriteArtistCollectionViewCell" customModule="KeepUp" customModuleProvider="target">
-                                        <rect key="frame" x="50" y="0.5" width="94" height="142"/>
+                                        <rect key="frame" x="0.0" y="0.5" width="94" height="142"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="94" height="142"/>
@@ -171,17 +171,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FavHeader" id="ogd-yb-ARW">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="143"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fav" translatesAutoresizingMaskIntoConstraints="NO" id="DjE-hB-RTe">
-                                            <rect key="frame" x="0.0" y="48" width="50" height="47"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </imageView>
-                                    </subviews>
-                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="a8L-wF-b46"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rLr-I4-cv0"/>
