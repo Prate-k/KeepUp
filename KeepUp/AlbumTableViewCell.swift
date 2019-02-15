@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumDetailsTableViewCell: UITableViewCell {
+class AlbumTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var albumImageView: UIImageView!

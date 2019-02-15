@@ -31,9 +31,17 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         if let index = selectedArtistPosition {
             
             selectedArtist = FavouriteArtists.getArtist(at: index)
-            artistImageView.image = UIImage(named: "dummyAlbum")    //replace with artistImage.image = selectedArtist.image
+            artistImageView.image = UIImage(named: "dummyArtist")    //replace with artistImage.image = selectedArtist.image
             artistName.text = selectedArtist.name
             genre.text = selectedArtist.genre
+            
+            selectedArtist.albums.append(Album(albumName: "album 1", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
+            
+            selectedArtist.albums.append(Album(albumName: "album 2", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
+            
+            selectedArtist.albums.append(Album(albumName: "album 3", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
+            
+            
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
@@ -58,7 +66,7 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? AlbumDetailsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? AlbumTableViewCell else {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         

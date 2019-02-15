@@ -247,14 +247,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="77" id="3jt-Lo-Zte" customClass="AlbumDetailsTableViewCell" customModule="KeepUp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="albumCell" rowHeight="77" id="3jt-Lo-Zte" customClass="AlbumTableViewCell" customModule="KeepUp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3jt-Lo-Zte" id="JD1-B1-AzC">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="76.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7G-ua-6u0">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="dummyAlbum" translatesAutoresizingMaskIntoConstraints="NO" id="I7G-ua-6u0">
                                                     <rect key="frame" x="0.0" y="0.0" width="82" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="0cH-Z7-AeA"/>
@@ -369,6 +369,7 @@
     </scenes>
     <resources>
         <image name="background" width="998" height="1001"/>
+        <image name="dummyAlbum" width="800" height="600"/>
         <image name="dummyArtist" width="900" height="900"/>
         <image name="expand" width="37.5" height="37.5"/>
         <image name="fav" width="36" height="36"/>
