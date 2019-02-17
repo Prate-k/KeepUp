@@ -77,8 +77,8 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         let songs = selectedAlbum.songs
         if  songs.count > 0 {
             let song = songs[indexPath.row]
-            cell.songTitle.text = song.songTitle
-            cell.songLength.text = "3:45"
+            cell.songTitle.text = "song \(indexPath.row+1)"
+            cell.songLength.text = "3:4\(5+indexPath.row)"
         }
         
         return cell
