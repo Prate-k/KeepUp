@@ -69,6 +69,15 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    @IBAction func clearSearch() {
+        resultImageView.image = nil
+        resultArtistLabel.text = ""
+        resultGenreLabel.text = ""
+        favouriteUnfavouriteButton.imageView?.image = UIImage(named: "unfav")
+        resultView.isHidden = true
+        searchText.text = ""
+    }
+    
     private func isArtistInFavouriteList (name: String) -> Int {
         var index = -1
         for i in 0..<FavouriteArtists.size {
