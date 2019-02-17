@@ -33,4 +33,8 @@ class FavouriteArtists {
             favouriteList.remove(at: at)
         }
     }
+    
+    public static func getSize() -> Int {
+        return favouriteList.count
+    }
 }

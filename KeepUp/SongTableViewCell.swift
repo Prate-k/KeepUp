@@ -1,5 +1,5 @@
 //
-//  ArtistDetailsTableViewCell.swift
+//  SongTableViewCell.swift
 //  KeepUp
 //
 //  Created by Prateek Kambadkone on 2019/02/15.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class AlbumTableViewCell: UITableViewCell {
+class SongTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var albumImageView: UIImageView!
-    @IBOutlet weak var albumName: UILabel!
-    @IBOutlet weak var releasedDate: UILabel!
+    @IBOutlet weak var songLength: UILabel!
+    @IBOutlet weak var songTitle: UILabel!
+    @IBOutlet weak var songImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

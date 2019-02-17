@@ -22,7 +22,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var resultImageView: UIImageView!
     @IBOutlet weak var resultArtistLabel: UILabel!
     @IBOutlet weak var resultGenreLabel: UILabel!
-    @IBOutlet weak var tempDisplayField: UITextView!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var detailsExpandCollapseImage: UIImageView!
     @IBOutlet weak var detailsDropDownLable: UILabel!
@@ -113,7 +112,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         for i in 0..<FavouriteArtists.size {
             str.append(FavouriteArtists.getArtist(at: i)!.name + ", ")
         }
-        tempDisplayField.text.append(str + "\n")
     }
     
     @IBAction func searchArtist() {
@@ -151,7 +149,11 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return FavouriteArtists.size
+        return FavouriteArtists.getSize()
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
 //    // make a cell for each cell index path
@@ -166,11 +168,9 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        // handle tap events
-//            print(IndexPath.item)
-//    }
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // handle tap events
+            print(indexPath.item)
+    }
 }
 

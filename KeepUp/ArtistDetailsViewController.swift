@@ -13,17 +13,39 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     let resusableId = "albumCell"
     var selectedArtistPosition: Int?
     var selectedArtist: Artist!
+    var removeArtistBeforeReturning: Bool = false
     
-    @IBOutlet weak var artistImageView: UIImageView!
-    @IBOutlet weak var artistName: UILabel!
-    @IBOutlet weak var genre: UILabel!
-    @IBOutlet weak var albumsListTable: UITableView!
-    @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
+    @IBOutlet private weak var artistImageView: UIImageView!
+    @IBOutlet private weak var artistName: UILabel!
+    @IBOutlet private weak var genre: UILabel!
+    @IBOutlet private weak var albumsListTable: UITableView!
+    @IBOutlet private weak var favouriteUnfavouriteButton: UIButton!
+    @IBOutlet private weak var navItem: UINavigationItem!
     
     @IBAction func returnToPreviousScreen(_ sender: Any) {
+        
+        if removeArtistBeforeReturning {
+            let index = isArtistInFavouriteList(name: selectedArtist.name)
+            
+            if index == -1 {
+                favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
+                addToFavouritesList()
+            } else {
+                favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+                removeFromFavouritesList()
+            }
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let albumDetailsViewController = segue.destination as? AlbumDetailsViewController {
+            albumDetailsViewController.selectedAlbumPosition = albumsListTable.indexPathForSelectedRow?.item
+            albumDetailsViewController.selectedArtistPosition = selectedArtistPosition
+        } else {
+            return
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +63,7 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
             
             selectedArtist.albums.append(Album(albumName: "album 3", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
             
-            
+            navItem.title = "\(selectedArtist.name!) > "
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
@@ -82,15 +104,16 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     @IBAction func addRemoveFavourites() {
+        removeArtistBeforeReturning = true
         
         let index = isArtistInFavouriteList(name: selectedArtist.name)
         
         if index == -1 {
             favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
-            addToFavouritesList()
+            removeArtistBeforeReturning = false
         } else {
             favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-            removeFromFavouritesList()
+            removeArtistBeforeReturning = true
         }
     }
     
