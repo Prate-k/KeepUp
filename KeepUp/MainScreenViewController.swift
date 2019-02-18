@@ -8,27 +8,25 @@
 
 import UIKit
 
-var favouriteList = [Artist]()
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+
+class MainScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     let reusableId = "FavArtistCell"
+    
+    var selectedArtistPosition = -1
     
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var resultView: UIView!
-    @IBOutlet weak var resultImage: UIImageView!
+    @IBOutlet weak var resultImageView: UIImageView!
     @IBOutlet weak var resultArtistLabel: UILabel!
     @IBOutlet weak var resultGenreLabel: UILabel!
-    @IBOutlet weak var tempDisplayField: UITextView!
     @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var detailsExpandCollapseImage: UIImageView!
     @IBOutlet weak var detailsDropDownLable: UILabel!
     @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
-
-    
-    
     
     
     
@@ -37,7 +35,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+        resultImageView.image = nil
+        resultArtistLabel.text = ""
+        resultGenreLabel.text = ""
+        favouriteUnfavouriteButton.imageView?.image = UIImage(named: "unfav")
+        resultView.isHidden = true
+        searchText.text = ""
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navigationController = segue.destination as? UINavigationController ,
+         let artistDetailsViewController = navigationController.viewControllers.first as? ArtistDetailsViewController {
+            artistDetailsViewController.selectedArtistPosition = collectionView.indexPathsForSelectedItems?[0].item
+        } else {
+            return
+        }
+    }
     
     @IBAction func addRemoveFavourites() {
         
@@ -50,13 +67,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
             removeFromFavouritesList()
         }
-        
+    }
+    
+    @IBAction func clearSearch() {
+        resultImageView.image = nil
+        resultArtistLabel.text = ""
+        resultGenreLabel.text = ""
+        favouriteUnfavouriteButton.imageView?.image = UIImage(named: "unfav")
+        resultView.isHidden = true
+        searchText.text = ""
     }
     
     private func isArtistInFavouriteList (name: String) -> Int {
         var index = -1
-        for i in 0..<favouriteList.count {
-            if favouriteList[i].name.elementsEqual(resultArtistLabel.text!) {
+        for i in 0..<FavouriteArtists.size {
+            if FavouriteArtists.getArtist(at:i)!.name.elementsEqual(resultArtistLabel.text!) {
                 index = i
                 break
             }
@@ -70,10 +95,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return
         }
         
-        let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, image: resultImage.image)
+        let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, image: resultImageView.image)
         
         if let x = newArtist {
-            favouriteList.append(x)
+            FavouriteArtists.addArtist(artist: x)
             printToTempText()
             collectionView.reloadData()
         }
@@ -84,7 +109,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if  index == -1 {
             return
         } else {
-            favouriteList.remove(at: index)
+            FavouriteArtists.removeArtist(at: index)
             printToTempText()
             collectionView.reloadData()
         }
@@ -93,10 +118,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     private func printToTempText() {
         var str = ""
-        for i in 0..<favouriteList.count {
-            str.append(favouriteList[i].name + ", ")
+        for i in 0..<FavouriteArtists.size {
+            str.append(FavouriteArtists.getArtist(at: i)!.name + ", ")
         }
-        tempDisplayField.text.append(str + "\n")
     }
     
     @IBAction func searchArtist() {
@@ -111,7 +135,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             resultView.isHidden = false
             resultArtistLabel.text = searchedText
             resultGenreLabel.text = "Random"
-            resultImage.image = UIImage(named: "dummyArtist")
+            resultImageView.image = UIImage(named: "dummyArtist")
             
             if isArtistInFavouriteList(name: searchedText!) != -1 {
                 favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
@@ -134,7 +158,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return favouriteList.count
+        return FavouriteArtists.getSize()
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
     
 //    // make a cell for each cell index path
@@ -142,7 +170,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId, for: indexPath as IndexPath) as! FavouriteArtistCollectionViewCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
-        let artist = favouriteList[indexPath.item]
+        let artist = FavouriteArtists.getArtist(at: indexPath.item)!
         cell.artistName.text = artist.name
         cell.genre.text = artist.genre
         cell.imageView.image = artist.image
@@ -151,10 +179,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        print("You selected cell #\(indexPath.item)!")
-        
+            print(indexPath.item)
     }
-    
-    
 }
 

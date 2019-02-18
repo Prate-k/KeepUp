@@ -9,11 +9,34 @@
 import Foundation
 import UIKit
 
+struct Date {
+    var month: String
+    var year: Int
+}
+
+struct Album {
+    var albumName: String
+    var released: Date
+    var albumArt: UIImage
+    var songs: [Song]
+}
+
+struct Song {
+    var songTitle: String
+    var lyrics: String
+    var length: String
+}
+
 class Artist {
     
     var name: String!
     var genre: String!
     var image: UIImage!
+    
+    
+    
+    var albums: [Album] = []
+    
     
     required init!(name: String!, genre: String!, image: UIImage!)
     {
@@ -25,6 +48,10 @@ class Artist {
         self.image = image
     }
     
+    convenience init(name: String!, genre: String!, image: UIImage!, albums: [Album]) {
+        self.init(name: name, genre: genre, image: image)
+        self.albums = albums
+    }
     
     
 }
