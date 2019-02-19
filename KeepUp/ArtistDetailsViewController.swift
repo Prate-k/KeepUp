@@ -20,10 +20,8 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet private weak var genre: UILabel!
     @IBOutlet private weak var albumsListTable: UITableView!
     @IBOutlet private weak var favouriteUnfavouriteButton: UIButton!
-    @IBOutlet private weak var navItem: UINavigationItem!
     
-    @IBAction func returnToPreviousScreen(_ sender: Any) {
-        
+    override func viewWillDisappear(_ animated: Bool) {
         if removeArtistBeforeReturning {
             let index = isArtistInFavouriteList(name: selectedArtist.name)
             
@@ -35,22 +33,19 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
                 removeFromFavouritesList()
             }
         }
-        self.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let albumDetailsViewController = segue.destination as? AlbumDetailsViewController {
             albumDetailsViewController.selectedAlbumPosition = albumsListTable.indexPathForSelectedRow?.item
             albumDetailsViewController.selectedArtistPosition = selectedArtistPosition
-        } else {
-            return
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let index = selectedArtistPosition {
+        if let index = selectedArtistPosition, index != -1 {
             
             selectedArtist = FavouriteArtists.getArtist(at: index)
             artistImageView.image = UIImage(named: "dummyArtist")    //replace with artistImage.image = selectedArtist.image
@@ -62,8 +57,6 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
             selectedArtist.albums.append(Album(albumName: "album 2", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
             
             selectedArtist.albums.append(Album(albumName: "album 3", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
-            
-            navItem.title = "\(selectedArtist.name!) > "
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
@@ -71,7 +64,7 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
                 self.dismiss(animated: true, completion: nil)
             })
             alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
         
     }
@@ -101,6 +94,10 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "AlbumsToTracksSegue", sender: nil)
     }
     
     @IBAction func addRemoveFavourites() {

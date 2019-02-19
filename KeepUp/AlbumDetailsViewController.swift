@@ -19,11 +19,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var navItem: UINavigationItem!
     
-    @IBAction func returnToPreviousScreen(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +36,9 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             selectedAlbum.songs.append(Song(songTitle: "song 2", lyrics: "", length: "3:47"))
             
             selectedAlbum.songs.append(Song(songTitle: "song 3", lyrics: "", length: "3:48"))
+        
+            self.navigationController?.title = "kjndnkjdnjkdns"
             
-            navItem.title = "\(FavouriteArtists.getArtist(at: indexArtist)!.name!) > \(selectedAlbum.albumName) > "
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load songs for album", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
