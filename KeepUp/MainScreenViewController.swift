@@ -185,6 +185,9 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
+        
+        if collectionView == self.favCollectionView {
+            self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
+        }
     }
 }

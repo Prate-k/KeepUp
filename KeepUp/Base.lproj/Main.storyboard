@@ -504,7 +504,7 @@
                                                                 </constraints>
                                                                 <state key="normal" image="info"/>
                                                                 <connections>
-                                                                    <action selector="clearSearch" destination="BYZ-38-t0r" eventType="touchUpInside" id="dge-Ox-1by"/>
+                                                                    <segue destination="HNB-HM-Qp2" kind="presentation" identifier="AlbumsToInfoSegue" id="wL9-zg-Mx2"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nt5-d9-k3Z">
@@ -648,6 +648,31 @@
             </objects>
             <point key="canvasLocation" x="1860.8695652173915" y="110.05434782608697"/>
         </scene>
+        <!--Artist Info-->
+        <scene sceneID="PTL-Yx-dnT">
+            <objects>
+                <viewController title="Artist Info" id="HNB-HM-Qp2" customClass="ArtistInfoViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jm7-cY-3KG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTt-pK-uXV">
+                                <rect key="frame" x="165" y="187" width="79" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="closeArtistInfo" destination="HNB-HM-Qp2" eventType="touchUpInside" id="Zow-0T-pBg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xp1-mD-3HV"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXK-og-FuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860.8695652173915" y="816.84782608695662"/>
+        </scene>
         <!--Tracks-->
         <scene sceneID="gzG-Wb-Gfd">
             <objects>
@@ -763,7 +788,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="57.333333333333336"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68g-Y2-qqG">
-                                                                    <rect key="frame" x="150.66666666666669" y="0.0" width="112.66666666666669" height="57.333333333333336"/>
+                                                                    <rect key="frame" x="150.66666666666666" y="0.0" width="112.66666666666666" height="57.333333333333336"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>

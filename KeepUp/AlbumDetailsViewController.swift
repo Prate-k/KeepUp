@@ -26,7 +26,8 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         
         if let indexAlbum = selectedAlbumPosition, let indexArtist = selectedArtistPosition{
             
-            selectedAlbum = FavouriteArtists.getArtist(at: indexArtist)!.albums[indexAlbum]
+            let selectedArtist = FavouriteArtists.getArtist(at: indexArtist)
+            selectedAlbum = selectedArtist?.albums[indexAlbum]
             albumImageView.image = UIImage(named: "dummyAlbum")    //replace with artistImage.image = selectedArtist.image
             albumName.text = selectedAlbum.albumName
             releaseDate.text = "\(selectedAlbum.released.month) \(selectedAlbum.released.year)"
@@ -36,8 +37,6 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             selectedAlbum.songs.append(Song(songTitle: "song 2", lyrics: "", length: "3:47"))
             
             selectedAlbum.songs.append(Song(songTitle: "song 3", lyrics: "", length: "3:48"))
-        
-            self.navigationController?.title = "kjndnkjdnjkdns"
             
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load songs for album", preferredStyle: .alert)
