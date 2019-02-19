@@ -39,6 +39,13 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         if let albumDetailsViewController = segue.destination as? AlbumDetailsViewController {
             albumDetailsViewController.selectedAlbumPosition = albumsListTable.indexPathForSelectedRow?.item
             albumDetailsViewController.selectedArtistPosition = selectedArtistPosition
+            return
+        }
+        if let artistInfoDetailsViewController = segue.destination as? ArtistInfoViewController {
+            if let name = artistName.text  {
+                artistInfoDetailsViewController.artistName.append("\(name)")
+                return
+            }
         }
     }
     
@@ -57,6 +64,7 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
             selectedArtist.albums.append(Album(albumName: "album 2", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
             
             selectedArtist.albums.append(Album(albumName: "album 3", released: Date(month: "Oct", year: 2000), albumArt: UIImage(named: "dummyAlbum")!, songs: [Song(songTitle:"", lyrics: "", length: "")]))
+            
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
