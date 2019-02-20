@@ -1,3 +1,12 @@
+[![codebeat badge](https://codebeat.co/badges/76f19096-e991-44e1-a742-0ede8a74673e)](https://codebeat.co/projects/github-com-prate-k-keepup-develop)
+
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5c47ad387a414993bf85f58d0bbab7e6)](https://www.codacy.com/app/Prate-k/KeepUp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Prate-k/KeepUp&amp;utm_campaign=Badge_Grade)
+
+
+
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/Prate-k/KeepUp/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
