@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/12f07e4381a4430980fb2e9a07c613e7)](https://app.codacy.com/app/Prate-k/KeepUp?utm_source=github.com&utm_medium=referral&utm_content=Prate-k/KeepUp&utm_campaign=Badge_Grade_Dashboard)
 [![codebeat badge](https://codebeat.co/badges/76f19096-e991-44e1-a742-0ede8a74673e)](https://codebeat.co/projects/github-com-prate-k-keepup-develop)
 
 
