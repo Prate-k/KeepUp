@@ -10,8 +10,6 @@
 		70238BA4221C019F0024E6F5 /* ArtistInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */; };
 		70931592221D54580020CD2B /* KeepUp.app in Resources */ = {isa = PBXBuildFile; fileRef = 70B616FA2212E09200D95ED9 /* KeepUp.app */; };
 		7093159A221D54990020CD2B /* KeepUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70931599221D54990020CD2B /* KeepUpTests.swift */; };
-		709315A1221D549F0020CD2B /* KeepUpTests.xctest in Resources */ = {isa = PBXBuildFile; fileRef = 70931597221D54990020CD2B /* KeepUpTests.xctest */; };
-		709315A4221D54EC0020CD2B /* firstUnitTestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709315A3221D54EC0020CD2B /* firstUnitTestFile.swift */; };
 		70B5789B221699800050B547 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5789A221699800050B547 /* AlbumTableViewCell.swift */; };
 		70B5789D22169D890050B547 /* ArtistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */; };
 		70B578A12216DA230050B547 /* FavouriteArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B578A02216DA230050B547 /* FavouriteArtists.swift */; };
@@ -42,7 +40,6 @@
 		70931597221D54990020CD2B /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70931599221D54990020CD2B /* KeepUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpTests.swift; sourceTree = "<group>"; };
 		7093159B221D54990020CD2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		709315A3221D54EC0020CD2B /* firstUnitTestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firstUnitTestFile.swift; sourceTree = "<group>"; };
 		70B5789A221699800050B547 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailsViewController.swift; sourceTree = "<group>"; };
 		70B578A02216DA230050B547 /* FavouriteArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtists.swift; sourceTree = "<group>"; };
@@ -93,7 +90,6 @@
 				70B616FC2212E09200D95ED9 /* KeepUp */,
 				70931598221D54990020CD2B /* KeepUpTests */,
 				70B616FB2212E09200D95ED9 /* Products */,
-				709315A3221D54EC0020CD2B /* firstUnitTestFile.swift */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,7 +205,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				709315A1221D549F0020CD2B /* KeepUpTests.xctest in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,7 +226,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				709315A4221D54EC0020CD2B /* firstUnitTestFile.swift in Sources */,
 				7093159A221D54990020CD2B /* KeepUpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
