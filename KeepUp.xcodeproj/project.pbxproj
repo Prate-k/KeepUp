@@ -19,9 +19,20 @@
 		70B617052212E09400D95ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70B617042212E09400D95ED9 /* Assets.xcassets */; };
 		70B617082212E09400D95ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B617062212E09400D95ED9 /* LaunchScreen.storyboard */; };
 		70BF2AD2221AF9FC006BE113 /* TopTracksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */; };
+		70D506FB221D88FE00CD855D /* KeepUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D506FA221D88FE00CD855D /* KeepUpTests.swift */; };
 		70E1B1C4221406A700611BAD /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C3221406A700611BAD /* Artist.swift */; };
 		70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		70D506FD221D88FE00CD855D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 70B616F22212E09200D95ED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70B616F92212E09200D95ED9;
+			remoteInfo = KeepUp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewController.swift; sourceTree = "<group>"; };
@@ -38,12 +49,22 @@
 		70B617072212E09400D95ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70B617092212E09400D95ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksCollectionViewCell.swift; sourceTree = "<group>"; };
+		70D506F8221D88FE00CD855D /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		70D506FA221D88FE00CD855D /* KeepUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpTests.swift; sourceTree = "<group>"; };
+		70D506FC221D88FE00CD855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70E1B1C3221406A700611BAD /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		70B616F72212E09200D95ED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70D506F5221D88FE00CD855D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				70B616FC2212E09200D95ED9 /* KeepUp */,
+				70D506F9221D88FE00CD855D /* KeepUpTests */,
 				70B616FB2212E09200D95ED9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				70B616FA2212E09200D95ED9 /* KeepUp.app */,
+				70D506F8221D88FE00CD855D /* KeepUpTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,6 +114,15 @@
 			path = KeepUp;
 			sourceTree = "<group>";
 		};
+		70D506F9221D88FE00CD855D /* KeepUpTests */ = {
+			isa = PBXGroup;
+			children = (
+				70D506FA221D88FE00CD855D /* KeepUpTests.swift */,
+				70D506FC221D88FE00CD855D /* Info.plist */,
+			);
+			path = KeepUpTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,6 +143,24 @@
 			productReference = 70B616FA2212E09200D95ED9 /* KeepUp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		70D506F7221D88FE00CD855D /* KeepUpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70D50701221D88FE00CD855D /* Build configuration list for PBXNativeTarget "KeepUpTests" */;
+			buildPhases = (
+				70D506F4221D88FE00CD855D /* Sources */,
+				70D506F5221D88FE00CD855D /* Frameworks */,
+				70D506F6221D88FE00CD855D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70D506FE221D88FE00CD855D /* PBXTargetDependency */,
+			);
+			name = KeepUpTests;
+			productName = KeepUpTests;
+			productReference = 70D506F8221D88FE00CD855D /* KeepUpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -123,6 +173,10 @@
 				TargetAttributes = {
 					70B616F92212E09200D95ED9 = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					70D506F7221D88FE00CD855D = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 70B616F92212E09200D95ED9;
 					};
 				};
 			};
@@ -140,6 +194,7 @@
 			projectRoot = "";
 			targets = (
 				70B616F92212E09200D95ED9 /* KeepUp */,
+				70D506F7221D88FE00CD855D /* KeepUpTests */,
 			);
 		};
 /* End PBXProject section */
@@ -152,6 +207,13 @@
 				70B617082212E09400D95ED9 /* LaunchScreen.storyboard in Resources */,
 				70B617052212E09400D95ED9 /* Assets.xcassets in Resources */,
 				70B617032212E09200D95ED9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70D506F6221D88FE00CD855D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +238,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70D506F4221D88FE00CD855D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70D506FB221D88FE00CD855D /* KeepUpTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		70D506FE221D88FE00CD855D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70B616F92212E09200D95ED9 /* KeepUp */;
+			targetProxy = 70D506FD221D88FE00CD855D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		70B617012212E09200D95ED9 /* Main.storyboard */ = {
@@ -352,6 +430,46 @@
 			};
 			name = Release;
 		};
+		70D506FF221D88FE00CD855D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37HF986HK8;
+				INFOPLIST_FILE = KeepUpTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUpTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeepUp.app/KeepUp";
+			};
+			name = Debug;
+		};
+		70D50700221D88FE00CD855D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37HF986HK8;
+				INFOPLIST_FILE = KeepUpTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUpTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeepUp.app/KeepUp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -369,6 +487,15 @@
 			buildConfigurations = (
 				70B6170D2212E09400D95ED9 /* Debug */,
 				70B6170E2212E09400D95ED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70D50701221D88FE00CD855D /* Build configuration list for PBXNativeTarget "KeepUpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70D506FF221D88FE00CD855D /* Debug */,
+				70D50700221D88FE00CD855D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
