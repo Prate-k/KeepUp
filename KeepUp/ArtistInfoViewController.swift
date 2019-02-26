@@ -30,7 +30,6 @@ class ArtistInfoViewController: UIViewController {
         var members: String
     }
     
-    var details: artist?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +53,6 @@ class ArtistInfoViewController: UIViewController {
             guard let data = data else {
                 return
             }
-            var result = String(data: data, encoding: String.Encoding.utf8) ?? ""
-            
-            print(result)
             
             DispatchQueue.main.async {
                 do {
@@ -72,14 +68,12 @@ class ArtistInfoViewController: UIViewController {
                                                     
                                                     self.scrollView.isHidden = false
                                                     self.waitForDataIndicator.stopAnimating()
-//                                                    print("data: \(artistData)")
-                                                    let (origin, genres, members) = self.parseHTMLContent(content: self.removeHTMLTags(content: artistData))
-                                                    self.details = artist(origin: origin, genres: genres, members: members)
-                                                    print(self.details)
+//                                                    print(artistData)
+                                                    var p = self.parseHTMLContent(content: artistData)
                                                     self.artistNameLabel.text = self.artistName
-                                                    self.genreLabel.text = self.details?.genres
-                                                    self.originLabel.text = self.details?.origin
-                                                    self.membersLabel.text = self.details?.members
+                                                    self.genreLabel.text = p.genres
+                                                    self.originLabel.text = p.origin
+                                                    self.membersLabel.text = p.members
                                                 }
                                             }
                                         }
@@ -93,118 +87,93 @@ class ArtistInfoViewController: UIViewController {
                 }
             }
         })
-        
         task.resume()
         
     }
     
-    private func parseHTMLContent(content: String) -> (origin: String, genres: String, members: String) {
-        var str = content
-        var neededValues: [String] = []
-        var isBackgroundFound: Bool = false
-        var isGenreFound: Bool = false
-        var isOriginFound: Bool = false
-        var isMembersFound: Bool = false
+    private func getArtistDetails(content: [String]) -> (artist) {
+        var details = artist(origin: "",genres: "",members: "")
+        let type = content[0]
+        let origin = content[1]
+        let genre = content[2]
+        let members = content[3]
         
-        let lines = str.split(separator: "|")
-        for i in 0..<lines.count {
-            switch String(lines[i]) {
-            case let line where line.contains("background") && !isBackgroundFound :
-                neededValues.append(String(line))
-                isBackgroundFound = true
-            case let line where line.contains("origin") && !isOriginFound:
-                neededValues.append(String(line))
-                isOriginFound = true
-            case let line where line.contains("genre") && !isGenreFound:
-                neededValues.append(String(line))
-                isGenreFound = true
-            case let line where line.contains("current_members") && !isMembersFound:
-                isMembersFound = true
-                neededValues.append(String(line))
+        var isABand = false
+        if type.contains("group_or_band") {
+            isABand = true
+            print("is a band")
+        } else {
+            isABand = false
+            print("is not a band")
+        }
+        
+        if !isABand {
+            details.members = "N/A"
+        } else {
+            if members.contains("*") {
+                var values = members.split(separator: "*")
+                for i in 1..<values.count {
+                    details.members.append(removeHTMLTags(content: String(values[i])))
+                }
+            }
+        }
+    
+        var values = origin.split(separator: "=")
+        details.origin.append(removeHTMLTags(content: String(values[1])))
+
+        if genre.contains("*") {
+            var values = genre.split(separator: "*")
+            for i in 1..<values.count {
+                details.genres.append(removeHTMLTags(content: String(values[i])))
+            }
+        } else {
+            var values = genre.split(separator: "=")
+            print(values)
+            details.genres.append(removeHTMLTags(content: String(values[1])))
+        }
+        return details
+    }
+
+    private func removeHTMLTags (content: String) -> String {
+        var value = content.replacingOccurrences(of: "* ", with: "").replacingOccurrences(of: "[[", with: "")
+                    .replacingOccurrences(of: "]]", with: "").replacingOccurrences(of: "{{", with: "")
+                    .replacingOccurrences(of: "}}", with: "").replacingOccurrences(of: "nowrap|", with: "")
+                    .replacingOccurrences(of: "hlist|", with: "").replacingOccurrences(of: "flatlist|", with: "")
+                    .replacingOccurrences(of: "plainlist|", with: "")
+        return value
+    }
+    private func parseHTMLContent(content: String) -> (artist) {
+        var str = content.splitStr(content: "\n| ")
+        var cleanStr = ""
+        var genre = ""
+        var origin = ""
+        var type = ""
+        var members = ""
+        print(str)
+        for i in 0..<str.count {
+            switch str[i] {
+            case let x where str[i].contains("genre") :
+                genre = String(x)
+            case let x where str[i].contains("origin") :
+                origin = String(x)
+            case let x where str[i].contains("background") :
+                type = String(x)
+            case let x where str[i].contains("current_members") :
+                members = String(x)
             default:
                 continue
             }
         }
         
-        print(neededValues)
-        var origin = ""
-        var genres = ""
-        var members = ""
         
-        var isABand: Bool = false
-        for i in 0..<neededValues.count {
-            if neededValues[i].contains("background") {
-                let values: String = String(neededValues[i].split(separator: "=")[1])
-                if values.contains("solo_singer") {
-                    isABand = false
-                    print("\(artistName) is not a band")
-                } else if values.contains("group_or_band"){
-                    isABand = true
-                    print("\(artistName) is a band")
-                }
-            } else if neededValues[i].contains("origin") {
-                origin = String(neededValues[i].split(separator: "=")[1])
-            } else if neededValues[i].contains("genre") {
-                let values = String(neededValues[i].split(separator: "=")[1])
-                let data = values.split(separator: "\n")
-                if data.count > 0 {
-                    for j in 0..<data.count {
-                        genres.append(contentsOf: "\(data[j]) \n")
-                        genres = genres.replacingOccurrences(of: "* ", with: "")
-                    }
-                } else {
-                    genres = String(neededValues[i].split(separator: "=")[1])
-                }
-            } else if neededValues[i].contains("current_members") {
-                if isABand {
-                    let values = String(neededValues[i].split(separator: "=")[1])
-                    let data = values.split(separator: "\n")
-                    if data.count > 0 {
-                        for j in 0..<data.count {
-                            members.append(contentsOf: "\(data[j]) \n")
-                            members = members.replacingOccurrences(of: "* ", with: "")
-                        }
-                    }
-                } else {
-                    members = "N/A"
-                }
-            }
-        }
-        return (origin, genres, members)
-    }
-
-    private func removeHTMLTags(content: String) -> String {
-//        var str = content.replacingOccurrences(of: "[", with: "")
-//            .replacingOccurrences(of: "]", with: "")
-//            .replacingOccurrences(of: "{", with: "")
-//            .replacingOccurrences(of: "}", with: "")
-//            .replacingOccurrences(of: "nowrap|", with: "")
-//            .replacingOccurrences(of: "flatlist|", with: "")
-        var str = content
-        var cleanStr = ""
         
-        var i: Int = 0
-        while i < str.count {
-            if str[str.index(str.startIndex, offsetBy: i)] == "<" {
-                i += 1
-                while str[str.index(str.startIndex, offsetBy: i)] != ">" {
-                    i += 1
-                }
-                i += 1
-            }
-            if i < str.count {
-                cleanStr.append(contentsOf: "\(str[str.index(str.startIndex, offsetBy: i)])")
-            }
-            i += 1
-        }
-        var cleanerStr = ""
-        i = 0
-        while i < cleanStr.count {
-            if cleanStr[cleanStr.index(cleanStr.startIndex, offsetBy: i)] == "|" {
-                
-            }
-        }
-        return cleanStr
+        print("type: \(type)")
+        print("origin: \(origin)")
+        print("genre: \(genre)")
+        print("members: \(members)")
+        
+        
+       return self.getArtistDetails(content: [type, origin, genre, members])
     }
     
     
@@ -212,6 +181,25 @@ class ArtistInfoViewController: UIViewController {
     {
         dismiss(animated: true, completion: nil)
     }
-
 }
 
+extension String {
+    func splitStr(content: String) -> [String] {
+        var values = [String]()
+        var i = 0
+        var value = ""
+        while i+3 < self.count {
+            var char = self[self.index(self.startIndex, offsetBy: i)]
+            var char1 = self[self.index(self.startIndex, offsetBy: i+1)]
+            var char2 = self[self.index(self.startIndex, offsetBy: i+2)]
+            if char == "\n" && char1 == "|" && char2 == " " {
+                values.append(value)
+                value = ""
+            } else {
+                value.append(char)
+            }
+            i += 1
+        }
+        return values
+    }
+}
