@@ -52,6 +52,4 @@ class Artist {
         self.init(name: name, genre: genre, image: image)
         self.albums = albums
     }
-    
-    
 }
