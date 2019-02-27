@@ -42,8 +42,7 @@ class ArtistInfoViewController: UIViewController {
         let session = URLSession.shared
         let request = URLRequest(url: url)
         
-        let task = session.dataTask(with: request as URLRequest, completionHandler: {
-            (data, response, error) in
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
             guard error == nil else {
                 return
             }
@@ -64,7 +63,6 @@ class ArtistInfoViewController: UIViewController {
                                                 if let artistData = temp["*"] as? String {
                                                     self.scrollView.isHidden = false
                                                     self.waitForDataIndicator.stopAnimating()
-//                                                    print(artistData)
                                                     var details = self.parseHTMLContent(content: artistData)
                                                     self.artistNameLabel.text = self.artistName
                                                     self.genreLabel.text = details.genres
@@ -140,11 +138,6 @@ class ArtistInfoViewController: UIViewController {
     }
 
     private func removeHTMLTags (content: String) -> String {
-//        var value = content.replacingOccurrences(of: "* ", with: "").replacingOccurrences(of: "[[", with: "")
-//                    .replacingOccurrences(of: "]]", with: "").replacingOccurrences(of: "{{", with: "")
-//                    .replacingOccurrences(of: "}}", with: "").replacingOccurrences(of: "nowrap|", with: "")
-//                    .replacingOccurrences(of: "hlist|", with: "").replacingOccurrences(of: "flatlist|", with: "")
-//                    .replacingOccurrences(of: "plainlist|", with: "")
         var value = content
         value = value.replacingOccurrences(of: "]]", with: "").replacingOccurrences(of: "[[", with: "")
                     .replacingOccurrences(of: "}}", with: "").replacingOccurrences(of: "{{", with: "")
@@ -177,7 +170,6 @@ class ArtistInfoViewController: UIViewController {
         var origin = ""
         var type = ""
         var members = ""
-//        print(str)
         for counter in 0..<str.count {
             switch str[counter] {
             case let value where str[counter].contains("genre"):
@@ -192,10 +184,6 @@ class ArtistInfoViewController: UIViewController {
                 continue
             }
         }
-//        print("type: \(type)")
-//        print("origin: \(origin)")
-//        print("genre: \(genre)")
-//        print("members: \(members)")
        return self.getArtistDetails(content: [type, origin, genre, members])
     }
     @IBAction func closeArtistInfo() {
