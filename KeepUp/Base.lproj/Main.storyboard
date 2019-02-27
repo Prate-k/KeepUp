@@ -656,8 +656,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="TXz-1z-FYN">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXz-1z-FYN">
+                                <rect key="frame" x="0.0" y="8" width="414" height="650"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="cEG-eA-5Tn">
                                         <rect key="frame" x="0.0" y="8.0000000000000142" width="414" height="240.33333333333337"/>
@@ -755,13 +755,16 @@
                             <constraint firstItem="LTt-pK-uXV" firstAttribute="top" secondItem="OUi-B5-ow8" secondAttribute="bottom" constant="291.32999999999998" id="MKc-qG-NHa"/>
                             <constraint firstItem="OUi-B5-ow8" firstAttribute="centerX" secondItem="Jm7-cY-3KG" secondAttribute="centerX" id="QvO-wf-tjI"/>
                             <constraint firstItem="TXz-1z-FYN" firstAttribute="leading" secondItem="xp1-mD-3HV" secondAttribute="leading" id="RYd-td-ggr"/>
+                            <constraint firstItem="LTt-pK-uXV" firstAttribute="top" secondItem="TXz-1z-FYN" secondAttribute="bottom" constant="8" id="T4t-Fv-GNG"/>
+                            <constraint firstItem="TXz-1z-FYN" firstAttribute="leading" secondItem="xp1-mD-3HV" secondAttribute="leading" id="U2z-R9-se4"/>
+                            <constraint firstItem="TXz-1z-FYN" firstAttribute="top" secondItem="xp1-mD-3HV" secondAttribute="top" id="X3N-Bq-UkK"/>
                             <constraint firstItem="xp1-mD-3HV" firstAttribute="bottom" secondItem="LTt-pK-uXV" secondAttribute="bottom" id="XmZ-hh-OaU"/>
                             <constraint firstItem="TXz-1z-FYN" firstAttribute="trailing" secondItem="xp1-mD-3HV" secondAttribute="trailing" id="aGZ-Dd-Om2"/>
                             <constraint firstItem="xp1-mD-3HV" firstAttribute="trailing" secondItem="LTt-pK-uXV" secondAttribute="trailing" id="gm5-eg-VOC"/>
                             <constraint firstItem="TXz-1z-FYN" firstAttribute="top" secondItem="xp1-mD-3HV" secondAttribute="top" id="hsW-eP-tEK"/>
                             <constraint firstItem="LTt-pK-uXV" firstAttribute="leading" secondItem="xp1-mD-3HV" secondAttribute="leading" id="ibC-aZ-hEo"/>
+                            <constraint firstItem="TXz-1z-FYN" firstAttribute="trailing" secondItem="xp1-mD-3HV" secondAttribute="trailing" id="mbg-lb-F4N"/>
                             <constraint firstItem="OUi-B5-ow8" firstAttribute="centerY" secondItem="Jm7-cY-3KG" secondAttribute="centerY" id="yPA-dU-Ltv"/>
-                            <constraint firstItem="TXz-1z-FYN" firstAttribute="bottom" secondItem="xp1-mD-3HV" secondAttribute="bottom" id="ycM-IT-xye"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xp1-mD-3HV"/>
                     </view>

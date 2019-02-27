@@ -8,15 +8,11 @@
 
 import UIKit
 
-
-
 class MainScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
     let reusableId1 = "FavArtistCell"
     let reusableId2 = "TopTracksCell"
     
     var selectedArtistPosition = -1
-    
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var resultView: UIView!
@@ -30,7 +26,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var favCollectionView: UICollectionView!
     @IBOutlet weak var dropDownView: UIView!
     @IBOutlet weak var topTracksCollectionView: UICollectionView!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +53,8 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    
-    
     @IBAction func addRemoveFavourites() {
-        
         let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
-        
         if index == -1 {
             favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
             addToFavouritesList()
@@ -72,7 +63,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             removeFromFavouritesList()
         }
     }
-    
     @IBAction func clearSearch() {
         resultImageView.image = nil
         resultArtistLabel.text = ""
@@ -81,12 +71,11 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         resultView.isHidden = true
         searchText.text = ""
     }
-    
     private func isArtistInFavouriteList (name: String) -> Int {
         var index = -1
-        for i in 0..<FavouriteArtists.size {
-            if FavouriteArtists.getArtist(at:i)!.name.elementsEqual(resultArtistLabel.text!) {
-                index = i
+        for counter in 0..<FavouriteArtists.size {
+            if FavouriteArtists.getArtist(at:counter)!.name.elementsEqual(resultArtistLabel.text!) {
+                index = counter
                 break
             }
         }
@@ -98,11 +87,10 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         if index != -1 {
             return
         }
-        
         let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, image: resultImageView.image)
         
-        if let x = newArtist {
-            FavouriteArtists.addArtist(artist: x)
+        if let newArtist = newArtist {
+            FavouriteArtists.addArtist(artist: newArtist)
             favCollectionView.reloadData()
             topTracksCollectionView.reloadData()
         }
@@ -119,12 +107,11 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
     }
-    
     @IBAction func searchArtist() {
         let searchedText = searchText.text
-        
         if searchedText?.isEmpty ?? true {
-            let alert = UIAlertController(title: "Empty Search", message: "Seach field is empty - Please enter an artist's name.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Empty Search",
+                            message: "Seach field is empty - Please enter an artist's name.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
@@ -133,7 +120,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             resultArtistLabel.text = searchedText
             resultGenreLabel.text = "Random"
             resultImageView.image = UIImage(named: "dummyArtist")
-            
             if isArtistInFavouriteList(name: searchedText!) != -1 {
                 favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
             } else {
@@ -141,8 +127,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             }
         }
     }
-    
-    
     @IBAction func detailsViewPressed() {
         let image = detailsExpandCollapseImage.image
         
@@ -152,7 +136,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             detailsExpandCollapseImage.image = UIImage(named: "expand")
         }
     }
-    
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return FavouriteArtists.getSize()
@@ -161,25 +144,24 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     //    // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.favCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath) as! FavouriteArtistCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath) as? FavouriteArtistCollectionViewCell
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let artist = FavouriteArtists.getArtist(at: indexPath.item)!
-            cell.artistName.text = artist.name
-            cell.genre.text = artist.genre
-            cell.imageView.image = artist.image
-            return cell
+            cell?.artistName.text = artist.name
+            cell?.genre.text = artist.genre
+            cell?.imageView.image = artist.image
+            return cell!
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId2, for: indexPath as IndexPath) as! TopTracksCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId2, for: indexPath as IndexPath) as? TopTracksCollectionViewCell
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            cell.songArtImageView.image = UIImage(named: "dummySong")
-            cell.songTitleLabel.text = "song \(indexPath.item + 1)"
-            return cell
+            cell?.songArtImageView.image = UIImage(named: "dummySong")
+            cell?.songTitleLabel.text = "song \(indexPath.item + 1)"
+            return cell!
         }
     }
     
