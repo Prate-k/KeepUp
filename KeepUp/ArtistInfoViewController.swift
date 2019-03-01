@@ -19,6 +19,9 @@ class ArtistInfoViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var originHeaderLabel: UILabel!
+    @IBOutlet weak var membersHeaderLabel: UILabel!
+    @IBOutlet weak var membersStackView: UIStackView!
     
     let apiString = "en.wikipedia.org/w/api.php?"
     let apiReq = "action=query&prop=revisions&rvprop=content&format=jsonfm&rvsection=0"
@@ -88,35 +91,36 @@ class ArtistInfoViewController: UIViewController {
         var details = Artist(origin: "",genres: "",members: "")
         let type = content[0]
         let origin = content[1]
-        let genre = content[2]
-        let members = content[3]
+        let birthPlace = content[2]
+        let genre = content[3]
+        let members = content[4]
         
-        var isABand = false
         if type.contains("group_or_band") {
-            isABand = true
-//            print("is a band")
-        } else {
-            isABand = false
-//            print("is not a band")
-        }
-        
-        if !isABand {
-            details.members = "N/A"
-        } else {
             if members.contains("*") {
                 var values = members.split(separator: "*")
                 for counter in 1..<values.count {
                     details.members.append(removeHTMLTags(content: String(values[counter])))
                 }
             }
+            if !origin.isEmpty {
+                var values = origin.split(separator: "=")
+                details.origin.append(removeHTMLTags(content: String(values[1])))
+            } else {
+                details.origin = "N/A"
+            }
+        } else {
+            membersHeaderLabel.text = ""
+            details.members = ""
+            membersStackView.isHidden = true
+            originHeaderLabel.text = "Birth place"
+            if !birthPlace.isEmpty {
+                var values = birthPlace.split(separator: "=")
+                details.origin.append(removeHTMLTags(content: String(values[1])))
+            } else {
+                details.origin = "N/A"
+            }
         }
         
-        if !origin.isEmpty {
-            var values = origin.split(separator: "=")
-            details.origin.append(removeHTMLTags(content: String(values[1])))
-        } else {
-            details.origin = "N/A"
-        }
         
         if genre.contains("*") {
             var values = genre.split(separator: "*")
@@ -139,13 +143,8 @@ class ArtistInfoViewController: UIViewController {
 
     private func removeHTMLTags (content: String) -> String {
         var value = content
-        value = value.replacingOccurrences(of: "]]", with: "").replacingOccurrences(of: "[[", with: "")
-                    .replacingOccurrences(of: "}}", with: "").replacingOccurrences(of: "{{", with: "")
-        if value.contains("|") {
-            value = String(value.split(separator: "|")[1])
-        }
         var noTags = ""
-        if (value.contains("<") || value.contains("<!--        ")) && (value.contains("/>") || (value.contains("</")) || value.contains("-->")) {
+        if (value.contains("<") || value.contains("<!--")) && (value.contains("/>") || (value.contains("</")) || value.contains("-->")) {
             for i in 0..<value.count {
                 var char = value[value.index(value.startIndex, offsetBy: i)]
                 if char == "<" {
@@ -160,16 +159,22 @@ class ArtistInfoViewController: UIViewController {
         if value.contains("url=") {
             value = ""
         }
+        
+        value = value.replacingOccurrences(of: "]]", with: "").replacingOccurrences(of: "[[", with: "")
+                    .replacingOccurrences(of: "}}", with: "").replacingOccurrences(of: "{{", with: "")
+        if value.contains("|") {
+            value = String(value.split(separator: "|")[1])
+        }
         return value
     }
     
     private func parseHTMLContent(content: String) -> (Artist) {
         var str = content.splitStr(content: "| ")
-        var cleanStr = ""
         var genre = ""
         var origin = ""
         var type = ""
         var members = ""
+        var birthPlace = ""
         for counter in 0..<str.count {
             switch str[counter] {
             case let value where str[counter].contains("genre"):
@@ -180,11 +185,21 @@ class ArtistInfoViewController: UIViewController {
                 type = String(value)
             case let value where str[counter].contains("current_members") :
                 members = String(value)
+            case let value where str[counter].contains("birth_place") :
+                birthPlace = String(value)
             default:
                 continue
             }
         }
-       return self.getArtistDetails(content: [type, origin, genre, members])
+        
+        print("name:\(artistName)")
+        print("origin:\(origin)")
+        print("born:\(birthPlace)")
+        print("genre:\(genre)")
+        print("members:\(members)")
+        
+        
+       return self.getArtistDetails(content: [type, origin, birthPlace, genre, members])
     }
     @IBAction func closeArtistInfo() {
         dismiss(animated: true, completion: nil)

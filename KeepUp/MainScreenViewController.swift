@@ -24,7 +24,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var detailsDropDownLable: UILabel!
     @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
     @IBOutlet weak var favCollectionView: UICollectionView!
-    @IBOutlet weak var dropDownView: UIView!
+    @IBOutlet weak var dropDownView: UIView! 
     @IBOutlet weak var topTracksCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -32,17 +32,11 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
     }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         favCollectionView.reloadData()
         topTracksCollectionView.reloadData()
-        resultImageView.image = nil
-        resultArtistLabel.text = ""
-        resultGenreLabel.text = ""
-        favouriteUnfavouriteButton.imageView?.image = UIImage(named: "unfav")
-        resultView.isHidden = true
-        searchText.text = ""
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,16 +45,20 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
                 artistDetailsViewController.selectedArtistPosition = index
             }
         }
+        if let artistInfoDetailsViewController = segue.destination as? ArtistInfoViewController {
+            if let name = resultArtistLabel.text {
+                artistInfoDetailsViewController.artistName.append("\(name)")
+                return
+            }
+        }
     }
     
     @IBAction func addRemoveFavourites() {
-        let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
+        let index = FavouriteArtists.isArtistInFavouriteList(name: resultArtistLabel.text!)
         if index == -1 {
-            favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
             addToFavouritesList()
         } else {
-            favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-            removeFromFavouritesList()
+            removeFromFavouritesList(index: index)
         }
     }
     @IBAction func clearSearch() {
@@ -71,24 +69,13 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         resultView.isHidden = true
         searchText.text = ""
     }
-    private func isArtistInFavouriteList (name: String) -> Int {
-        var index = -1
-        for counter in 0..<FavouriteArtists.size {
-            if FavouriteArtists.getArtist(at:counter)!.name.elementsEqual(resultArtistLabel.text!) {
-                index = counter
-                break
-            }
-        }
-        return index
-    }
+
     
     private func addToFavouritesList() {
-        let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
-        if index != -1 {
-            return
+        if favouriteUnfavouriteButton.imageView?.image == UIImage(named: "unfav") {
+            favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
         }
         let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, image: resultImageView.image)
-        
         if let newArtist = newArtist {
             FavouriteArtists.addArtist(artist: newArtist)
             favCollectionView.reloadData()
@@ -96,16 +83,13 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    private func removeFromFavouritesList() {
-        let index = isArtistInFavouriteList(name: resultArtistLabel.text!)
-        if  index == -1 {
-            return
-        } else {
-            FavouriteArtists.removeArtist(at: index)
-            favCollectionView.reloadData()
-            topTracksCollectionView.reloadData()
+    private func removeFromFavouritesList(index: Int) {
+        if favouriteUnfavouriteButton.imageView?.image == UIImage(named: "fav") {
+            favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
         }
-        
+        FavouriteArtists.removeArtist(at: index)
+        favCollectionView.reloadData()
+        topTracksCollectionView.reloadData()
     }
     @IBAction func searchArtist() {
         let searchedText = searchText.text
@@ -120,7 +104,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             resultArtistLabel.text = searchedText
             resultGenreLabel.text = "Random"
             resultImageView.image = UIImage(named: "dummyArtist")
-            if isArtistInFavouriteList(name: searchedText!) != -1 {
+            if FavouriteArtists.isArtistInFavouriteList(name: searchedText!) != -1 {
                 favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
             } else {
                 favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
@@ -132,13 +116,21 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         
         if (image?.isEqual(UIImage(named: "expand")))! {
             detailsExpandCollapseImage.image = UIImage(named: "collapse")
+            dropDownView.isHidden = false
         } else {
             detailsExpandCollapseImage.image = UIImage(named: "expand")
+            dropDownView.isHidden = true
         }
     }
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return FavouriteArtists.getSize()
+        if collectionView == self.favCollectionView {
+            return FavouriteArtists.getSize()
+        }
+        if collectionView == self.topTracksCollectionView {
+            return FavouriteArtists.getSize()
+        }
+        return 0
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

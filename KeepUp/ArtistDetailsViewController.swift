@@ -12,25 +12,13 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     let resusableId = "albumCell"
     var selectedArtistPosition: Int?
     var selectedArtist: Artist!
-    var removeArtistBeforeReturning: Bool = false
-    
     @IBOutlet private weak var artistImageView: UIImageView!
     @IBOutlet private weak var artistName: UILabel!
     @IBOutlet private weak var genre: UILabel!
     @IBOutlet private weak var albumsListTable: UITableView!
     @IBOutlet private weak var favouriteUnfavouriteButton: UIButton!
-    override func viewWillDisappear(_ animated: Bool) {
-        if removeArtistBeforeReturning {
-            let index = isArtistInFavouriteList(name: selectedArtist.name)
-            if index == -1 {
-                favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
-                addToFavouritesList()
-            } else {
-                favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-                removeFromFavouritesList()
-            }
-        }
-    }
+    
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let albumDetailsViewController = segue.destination as? AlbumDetailsViewController {
@@ -98,28 +86,17 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         self.performSegue(withIdentifier: "AlbumsToTracksSegue", sender: nil)
     }
     @IBAction func addRemoveFavourites() {
-        removeArtistBeforeReturning = true
-        let index = isArtistInFavouriteList(name: selectedArtist.name)
+        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.name)
         if index == -1 {
             favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
-            removeArtistBeforeReturning = false
+            addToFavouritesList()
         } else {
             favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-            removeArtistBeforeReturning = true
+            removeFromFavouritesList()
         }
-    }
-    private func isArtistInFavouriteList (name: String) -> Int {
-        var index = -1
-        for i in 0..<FavouriteArtists.size {
-            if FavouriteArtists.getArtist(at: i)!.name.elementsEqual(selectedArtist.name) {
-                index = i
-                break
-            }
-        }
-        return index
     }
     private func addToFavouritesList() {
-        let index = isArtistInFavouriteList(name: selectedArtist.name)
+        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.name)
         if index != -1 {
             return
         }
@@ -129,7 +106,7 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     private func removeFromFavouritesList() {
-        let index = isArtistInFavouriteList(name: selectedArtist.name)
+        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.name)
         if  index == -1 {
             return
         } else {
