@@ -24,7 +24,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var detailsDropDownLable: UILabel!
     @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
     @IBOutlet weak var favCollectionView: UICollectionView!
-    @IBOutlet weak var dropDownView: UIView!
+    @IBOutlet weak var dropDownView: UIView! 
     @IBOutlet weak var topTracksCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -32,7 +32,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
     }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         favCollectionView.reloadData()
