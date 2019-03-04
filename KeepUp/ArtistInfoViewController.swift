@@ -40,33 +40,34 @@ class ArtistInfoViewController: UIViewController {
         waitForDataIndicator.startAnimating()
         
         let searchArtistName = artistName.replacingOccurrences(of: " ", with: "_")
-        let urlString = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&rvsection=0&titles=\(searchArtistName)"
-        let url = URL(string: urlString)!
-        let session = URLSession.shared
-        let request = URLRequest(url: url)
         
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
-            guard error == nil else {
-                return
-            }
-            guard let data = data else {
-                return
-            }
-            DispatchQueue.main.async {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        print("index of queury \(json.keys)")
-                        if let query = json["query"] as? [String: Any] {
-                            if let pages = query["pages"] as? [String: Any] {
-                                let a = pages.first!
-                                if let page = pages[a.key] as? [String: Any] {
-                                    if let revisions = page["revisions"] as? [[String: Any]] {
-                                        for counter in 0..<revisions.count {
-                                            if let temp = revisions[counter] as? [String: Any] {
-                                                if let artistData = temp["*"] as? String {
+        let site = "https://en.wikipedia.org/w/api.php?"
+        let query = "action=query&prop=revisions&rvprop=content&format=json&rvsection=0&titles=\(searchArtistName)"
+        let networker: Networker = Networker(site: site, query: query, requestType: .GET)
+        let networkQueue = DispatchQueue(label: "networkQueue")
+        networkQueue.async {
+            networker.send()
+            repeat {
+                
+            } while !networker.isDataReady()
+        }
+        
+        networkQueue.async {
+            do {
+                if let json = try JSONSerialization.jsonObject(with: networker.responseData!, options: []) as? [String: Any] {
+                    print("index of queury \(json.keys)")
+                    if let query = json["query"] as? [String: Any] {
+                        if let pages = query["pages"] as? [String: Any] {
+                            let a = pages.first!
+                            if let page = pages[a.key] as? [String: Any] {
+                                if let revisions = page["revisions"] as? [[String: Any]] {
+                                    for counter in 0..<revisions.count {
+                                        if let temp = revisions[counter] as? [String: Any] {
+                                            if let artistData = temp["*"] as? String {
+                                                let details = self.parseHTMLContent(content: artistData)
+                                                DispatchQueue.main.async {
                                                     self.scrollView.isHidden = false
                                                     self.waitForDataIndicator.stopAnimating()
-                                                    var details = self.parseHTMLContent(content: artistData)
                                                     self.artistNameLabel.text = self.artistName
                                                     self.genreLabel.text = details.genres
                                                     self.originLabel.text = details.origin
@@ -79,13 +80,105 @@ class ArtistInfoViewController: UIViewController {
                             }
                         }
                     }
-                } catch let error {
-                    print(error.localizedDescription)
                 }
+            } catch let error {
+                print(error.localizedDescription)
             }
-        })
-        task.resume()
+        }
     }
+        
+        
+        
+        
+        
+        
+        
+        
+//        var data: Data? = nil
+//        let myQueue = DispatchQueue(label: "MyQueue")
+//        myQueue.async {
+//            data = networker.send()
+//        }
+//        myQueue.async {
+//            if let data = data {
+//                do {
+//                    print(data)
+//                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                        print("index of queury \(json.keys)")
+//                        if let query = json["query"] as? [String: Any] {
+//                            if let pages = query["pages"] as? [String: Any] {
+//                                let a = pages.first!
+//                                if let page = pages[a.key] as? [String: Any] {
+//                                    if let revisions = page["revisions"] as? [[String: Any]] {
+//                                        for counter in 0..<revisions.count {
+//                                            if let temp = revisions[counter] as? [String: Any] {
+//                                                if let artistData = temp["*"] as? String {
+//                                                    let details = self.parseHTMLContent(content: artistData)
+//                                                    print(details)
+//                                                    self.scrollView.isHidden = false
+//                                                    self.waitForDataIndicator.stopAnimating()
+//                                                    self.artistNameLabel.text = self.artistName
+//                                                    self.genreLabel.text = details.genres
+//                                                    self.originLabel.text = details.origin
+//                                                    self.membersLabel.text = details.members
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                } catch let error {
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        }
+        
+//        let url = URL(string: urlString)!
+//        let session = URLSession.shared
+//        let request = URLRequest(url: url)
+//
+//        let task = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) in
+//            guard error == nil else {
+//                return
+//            }
+//            guard let data = data else {
+//                return
+//            }
+//            DispatchQueue.main.async {
+//                do {
+//                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                        print("index of queury \(json.keys)")
+//                        if let query = json["query"] as? [String: Any] {
+//                            if let pages = query["pages"] as? [String: Any] {
+//                                let a = pages.first!
+//                                if let page = pages[a.key] as? [String: Any] {
+//                                    if let revisions = page["revisions"] as? [[String: Any]] {
+//                                        for counter in 0..<revisions.count {
+//                                            if let temp = revisions[counter] as? [String: Any] {
+//                                                if let artistData = temp["*"] as? String {
+//                                                    self.scrollView.isHidden = false
+//                                                    self.waitForDataIndicator.stopAnimating()
+//                                                    var details = self.parseHTMLContent(content: artistData)
+//                                                    self.artistNameLabel.text = self.artistName
+//                                                    self.genreLabel.text = details.genres
+//                                                    self.originLabel.text = details.origin
+//                                                    self.membersLabel.text = details.members
+//                                                }
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                } catch let error {
+//                    print(error.localizedDescription)
+//                }
+//            }
+//        })
+//        task.resume()
     
     private func getArtistDetails(content: [String]) -> (Artist) {
         var details = Artist(origin: "",genres: "",members: "")

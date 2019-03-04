@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		70238BA4221C019F0024E6F5 /* ArtistInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */; };
+		70380FA3222C718E00606416 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70380FA2222C718E00606416 /* Networker.swift */; };
 		70B5789B221699800050B547 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5789A221699800050B547 /* AlbumTableViewCell.swift */; };
 		70B5789D22169D890050B547 /* ArtistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */; };
 		70B578A12216DA230050B547 /* FavouriteArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B578A02216DA230050B547 /* FavouriteArtists.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewController.swift; sourceTree = "<group>"; };
+		70380FA2222C718E00606416 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		70B5789A221699800050B547 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailsViewController.swift; sourceTree = "<group>"; };
 		70B578A02216DA230050B547 /* FavouriteArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtists.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				70B617092212E09400D95ED9 /* Info.plist */,
 				70E1B1C3221406A700611BAD /* Artist.swift */,
 				70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */,
+				70380FA2222C718E00606416 /* Networker.swift */,
 			);
 			path = KeepUp;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				70B578AB2216FA980050B547 /* SongTableViewCell.swift in Sources */,
 				70B616FE2212E09200D95ED9 /* AppDelegate.swift in Sources */,
 				70B5789B221699800050B547 /* AlbumTableViewCell.swift in Sources */,
+				70380FA3222C718E00606416 /* Networker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
