@@ -21,37 +21,33 @@ class Networker {
     var responseData: Data? = nil
     var responseReady: Bool = false
     
-    
-    lazy var handler: (Data?, URLResponse?, Error?) -> Void = {
-        (data, response, error)  in
-        
-        guard error == nil else {
-            return
-        }
-        
-        guard let data = data else {
-            return
-        }
-        
-        self.responseData = data
-        self.responseReady = true
-    }
-    
     required init(site: String, query: String, requestType: RequestType) {
         self.site = site
         self.query = query
         self.requestType = requestType
     }
     
-    func send() {
+    func send(completion: @escaping (Data?) -> Void) {
         
         let urlString = "\(site)\(query)"
-        let url = URL(string: urlString) ?? nil
+        let url = URL(string: urlString)
         let session = URLSession.shared
         
         if let url = url {
             let request = URLRequest(url: url)
-            let task = session.dataTask(with: request as URLRequest, completionHandler: handler)
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {
+                (data, response, error)  in
+                
+                guard error == nil else {
+                    return
+                }
+                
+                guard let data = data else {
+                    return
+                }
+                
+                completion(data)
+            })
             task.resume()
         }
     }

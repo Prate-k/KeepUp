@@ -44,17 +44,10 @@ class ArtistInfoViewController: UIViewController {
         let site = "https://en.wikipedia.org/w/api.php?"
         let query = "action=query&prop=revisions&rvprop=content&format=json&rvsection=0&titles=\(searchArtistName)"
         let networker: Networker = Networker(site: site, query: query, requestType: .GET)
-        let networkQueue = DispatchQueue(label: "networkQueue")
-        networkQueue.async {
-            networker.send()
-            repeat {
-                
-            } while !networker.isDataReady()
-        }
-        
-        networkQueue.async {
+    
+        networker.send(completion: { (data) in
             do {
-                if let json = try JSONSerialization.jsonObject(with: networker.responseData!, options: []) as? [String: Any] {
+                if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
                     print("index of queury \(json.keys)")
                     if let query = json["query"] as? [String: Any] {
                         if let pages = query["pages"] as? [String: Any] {
@@ -84,7 +77,7 @@ class ArtistInfoViewController: UIViewController {
             } catch let error {
                 print(error.localizedDescription)
             }
-        }
+        })
     }
         
         
