@@ -4,7 +4,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5c47ad387a414993bf85f58d0bbab7e6)](https://www.codacy.com/app/Prate-k/KeepUp?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Prate-k/KeepUp&amp;utm_campaign=Badge_Grade)
 
 
-
+[![codecov](https://codecov.io/gh/Prate-k/KeepUp/branch/master/graph/badge.svg)](https://codecov.io/gh/Prate-k/KeepUp)
 
 
 ## Welcome to GitHub Pages
