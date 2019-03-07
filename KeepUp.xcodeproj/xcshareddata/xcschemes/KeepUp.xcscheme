@@ -20,6 +20,20 @@
                ReferencedContainer = "container:KeepUp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "70D506F7221D88FE00CD855D"
+               BuildableName = "KeepUpTests.xctest"
+               BlueprintName = "KeepUpTests"
+               ReferencedContainer = "container:KeepUp.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

@@ -9,8 +9,11 @@
 import UIKit
 
 class MainScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    
     let reusableId1 = "FavArtistCell"
     let reusableId2 = "TopTracksCell"
+    let reusableHeaderId = "ViewAllFavHeader"
+    var favCollectionViewCellSize: CGSize!
     
     var selectedArtistPosition = -1
     @IBOutlet weak var searchText: UITextField!
@@ -26,13 +29,16 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var favCollectionView: UICollectionView!
     @IBOutlet weak var dropDownView: UIView! 
     @IBOutlet weak var topTracksCollectionView: UICollectionView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
+        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
     }
-   
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         favCollectionView.reloadData()
@@ -75,7 +81,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         if favouriteUnfavouriteButton.imageView?.image == UIImage(named: "unfav") {
             favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
         }
-        let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, image: resultImageView.image)
+        let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, imageUrl: "dummyArtist")
         if let newArtist = newArtist {
             FavouriteArtists.addArtist(artist: newArtist)
             favCollectionView.reloadData()
@@ -143,9 +149,10 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let artist = FavouriteArtists.getArtist(at: indexPath.item)!
-            cell?.artistName.text = artist.name
-            cell?.genre.text = artist.genre
-            cell?.imageView.image = artist.image
+            cell?.artistName.text = artist.artistName
+            cell?.genre.text = artist.artistGenre
+            cell?.imageView.image = UIImage(named: "dummyArtist")
+            favCollectionViewCellSize = cell?.frame.size
             return cell!
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId2, for: indexPath as IndexPath) as? TopTracksCollectionViewCell
@@ -159,9 +166,33 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
-        
         if collectionView == self.favCollectionView {
             self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reusableHeaderId, for: indexPath)
+        
+        if collectionView == favCollectionView {
+            if (favCollectionView.cellForItem(at: indexPath) != nil)
+            {
+                let headerView = header as? FavouriteArtistsCollectionViewHeader
+                if let headerView = headerView {
+                    headerView.showAllFavButton.isHidden = false
+                    headerView.showAllFavButton.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi/2)
+                    headerView.frame.size.height = favCollectionViewCellSize.height
+                    return headerView
+                }
+            } else {
+                let headerView = header as? FavouriteArtistsCollectionViewHeader
+                if let headerView = headerView {
+                    headerView.showAllFavButton.isHidden = true
+                    return headerView
+                }
+            }
+        }
+        
+        return header
     }
 }
