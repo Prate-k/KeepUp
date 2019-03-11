@@ -12,10 +12,8 @@ import UIKit
 
 class FavouriteArtistsCollectionViewHeader: UICollectionReusableView {
     
-    @IBOutlet weak var showAllFavButton: UIButton!
+
+    @IBOutlet weak var viewAllLabel: UILabel!
+    @IBOutlet weak var viewAllView: UIView!
     
-    @IBAction func showAllFavourites(_ sender: UIButton) {
-        print("KOKOKOKOKKOKOKOKOKOKOKKOKOKO")
-        //load feature
-    }
 }

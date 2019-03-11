@@ -54,7 +54,7 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
                 action in
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             })
             alert.addAction(action)
             self.present(alert, animated: true, completion: nil)

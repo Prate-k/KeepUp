@@ -14,8 +14,9 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     let reusableId2 = "TopTracksCell"
     let reusableHeaderId = "ViewAllFavHeader"
     var favCollectionViewCellSize: CGSize!
-    
     var selectedArtistPosition = -1
+    var isLoadingAllFavourites = false
+    
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var resultView: UIView!
@@ -35,21 +36,35 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
-//        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
-//        layout?.sectionHeadersPinToVisibleBounds = true
+        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+        layout?.sectionHeadersPinToVisibleBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        favCollectionView.reloadData()
-        topTracksCollectionView.reloadData()
+        
+        if isLoadingAllFavourites {
+            if selectedArtistPosition != -1 {
+                clearSearch()
+                print("Selected artist is: \(selectedArtistPosition)")
+                self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
+            }
+        } else {
+            favCollectionView.reloadData()
+            topTracksCollectionView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let artistDetailsViewController = segue.destination as? ArtistDetailsViewController {
-            if let index = favCollectionView.indexPathsForSelectedItems?[0].item {
-                artistDetailsViewController.selectedArtistPosition = index
+            if isLoadingAllFavourites {
+                artistDetailsViewController.selectedArtistPosition = selectedArtistPosition
+            } else {
+                if let index = favCollectionView.indexPathsForSelectedItems?[0].item {
+                    artistDetailsViewController.selectedArtistPosition = index
+                }
             }
+            isLoadingAllFavourites = false
         }
         if let artistInfoDetailsViewController = segue.destination as? ArtistInfoViewController {
             if let name = resultArtistLabel.text {
@@ -129,6 +144,12 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    @IBAction func loadAllFavouriteArtists() {
+        self.performSegue(withIdentifier: "HomeToFavArtistsSegue", sender: nil)
+    }
+    
+    
+    
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {
@@ -180,15 +201,17 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             {
                 let headerView = header as? FavouriteArtistsCollectionViewHeader
                 if let headerView = headerView {
-                    headerView.showAllFavButton.isHidden = false
-                    headerView.showAllFavButton.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi/2)
+                    headerView.viewAllView.isHidden = false
+                    headerView.viewAllView.transform = CGAffineTransform.init(rotationAngle: -CGFloat.pi/2)
                     headerView.frame.size.height = favCollectionViewCellSize.height
+                    headerView.viewAllView.frame.size.width = favCollectionViewCellSize.height
+                    headerView.viewAllLabel.frame.size.width = favCollectionViewCellSize.height
                     return headerView
                 }
             } else {
                 let headerView = header as? FavouriteArtistsCollectionViewHeader
                 if let headerView = headerView {
-                    headerView.showAllFavButton.isHidden = true
+                    headerView.viewAllView.isHidden = true
                     return headerView
                 }
             }
@@ -196,4 +219,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         
         return header
     }
+    
+    
 }
+
