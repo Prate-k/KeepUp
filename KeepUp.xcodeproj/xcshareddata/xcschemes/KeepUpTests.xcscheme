@@ -9,20 +9,6 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70B616F92212E09200D95ED9"
-               BuildableName = "KeepUp.app"
-               BlueprintName = "KeepUp"
-               ReferencedContainer = "container:KeepUp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
@@ -54,15 +40,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "70B616F92212E09200D95ED9"
-            BuildableName = "KeepUp.app"
-            BlueprintName = "KeepUp"
-            ReferencedContainer = "container:KeepUp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -76,16 +53,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "70B616F92212E09200D95ED9"
-            BuildableName = "KeepUp.app"
-            BlueprintName = "KeepUp"
+            BlueprintIdentifier = "70D506F7221D88FE00CD855D"
+            BuildableName = "KeepUpTests.xctest"
+            BlueprintName = "KeepUpTests"
             ReferencedContainer = "container:KeepUp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -95,16 +71,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "70B616F92212E09200D95ED9"
-            BuildableName = "KeepUp.app"
-            BlueprintName = "KeepUp"
+            BlueprintIdentifier = "70D506F7221D88FE00CD855D"
+            BuildableName = "KeepUpTests.xctest"
+            BlueprintName = "KeepUpTests"
             ReferencedContainer = "container:KeepUp.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

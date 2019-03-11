@@ -27,16 +27,16 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         if let indexAlbum = selectedAlbumPosition, let indexArtist = selectedArtistPosition{
             
             let selectedArtist = FavouriteArtists.getArtist(at: indexArtist)
-            selectedAlbum = selectedArtist?.albums[indexAlbum]
+            selectedAlbum = selectedArtist?.artistAlbums[indexAlbum]
             albumImageView.image = UIImage(named: "dummyAlbum")    //replace with artistImage.image = selectedArtist.image
             albumName.text = selectedAlbum.albumName
-            releaseDate.text = "\(selectedAlbum.released.month) \(selectedAlbum.released.year)"
+            releaseDate.text = "\(selectedAlbum.albumReleaseDate.releasedMonth) \(selectedAlbum.albumReleaseDate.releasedYear)"
             
-            selectedAlbum.songs.append(Song(songTitle: "song 1", lyrics: "", length: "3:45"))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 1", songLyrics: "", songLength: "3:45"))
             
-            selectedAlbum.songs.append(Song(songTitle: "song 2", lyrics: "", length: "3:47"))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 2", songLyrics: "", songLength: "3:47"))
             
-            selectedAlbum.songs.append(Song(songTitle: "song 3", lyrics: "", length: "3:48"))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 3", songLyrics: "", songLength: "3:48"))
             
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load songs for album", preferredStyle: .alert)
@@ -62,7 +62,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         guard selectedAlbumPosition != nil else {
             return 0
         }
-        return selectedAlbum.songs.count
+        return selectedAlbum.albumTracks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,7 +70,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
         
-        let songs = selectedAlbum.songs
+        let songs = selectedAlbum.albumTracks
         if  songs.isEmpty {
             let song = songs[indexPath.row]
             cell.songTitle.text = "song \(indexPath.row+1)"

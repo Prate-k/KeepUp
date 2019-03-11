@@ -11,10 +11,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>KeepUpTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>70B616F92212E09200D95ED9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>70D506F7221D88FE00CD855D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

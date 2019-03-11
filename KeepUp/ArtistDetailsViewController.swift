@@ -39,17 +39,17 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
             
             selectedArtist = FavouriteArtists.getArtist(at: index)
             artistImageView.image = UIImage(named: "dummyArtist")    //replace with artistImage.image = selectedArtist.image
-            artistName.text = selectedArtist.name
-            genre.text = selectedArtist.genre
-            selectedArtist.albums.append(Album(albumName: "album 1", released: Date(month: "Oct", year: 2000),
-                                               albumArt: UIImage(named: "dummyAlbum")!,
-                                               songs: [Song(songTitle:"", lyrics: "", length: "")]))
-            selectedArtist.albums.append(Album(albumName: "album 2", released: Date(month: "Oct", year: 2000),
-                                               albumArt: UIImage(named: "dummyAlbum")!,
-                                               songs: [Song(songTitle:"", lyrics: "", length: "")]))
-            selectedArtist.albums.append(Album(albumName: "album 3", released: Date(month: "Oct", year: 2000),
-                                               albumArt: UIImage(named: "dummyAlbum")!,
-                                               songs: [Song(songTitle:"", lyrics: "", length: "")]))
+            artistName.text = selectedArtist.artistName
+            genre.text = selectedArtist.artistGenre
+            selectedArtist.artistAlbums.append(Album(albumName: "album 1", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
+                                                     albumArtUrl: "dummyAlbum",
+                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
+            selectedArtist.artistAlbums.append(Album(albumName: "album 2", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
+                                                     albumArtUrl: "dummyAlbum",
+                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
+            selectedArtist.artistAlbums.append(Album(albumName: "album 3", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
+                                                     albumArtUrl: "dummyAlbum",
+                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
@@ -67,18 +67,18 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         guard selectedArtistPosition != nil else {
             return 0
         }
-        return selectedArtist.albums.count
+        return selectedArtist.artistAlbums.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? AlbumTableViewCell else {
             fatalError("The dequeued cell is not an instance of MealTableViewCell.")
         }
-        let albums = selectedArtist.albums
+        let albums = selectedArtist.artistAlbums
         if  albums.isEmpty {
             let album = albums[indexPath.row]
-            cell.albumImageView.image = album.albumArt
+            cell.albumImageView.image = UIImage(named: "dummyAlbum")
             cell.albumName.text = album.albumName
-            cell.releasedDate.text = "\(album.released.month) \(album.released.year)"
+            cell.releasedDate.text = "\(album.albumReleaseDate.releasedMonth) \(album.albumReleaseDate.releasedYear)"
         }
         return cell
     }
@@ -86,7 +86,7 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         self.performSegue(withIdentifier: "AlbumsToTracksSegue", sender: nil)
     }
     @IBAction func addRemoveFavourites() {
-        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.name)
+        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.artistName)
         if index == -1 {
             favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
             addToFavouritesList()
@@ -96,17 +96,17 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         }
     }
     private func addToFavouritesList() {
-        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.name)
+        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.artistName)
         if index != -1 {
             return
         }
-        let newArtist = Artist(name: selectedArtist.name, genre: selectedArtist.genre, image: selectedArtist.image)
+        let newArtist = Artist(name: selectedArtist.artistName, genre: selectedArtist.artistGenre, imageUrl: selectedArtist.artistImageUrl)
         if let x = newArtist {
             FavouriteArtists.addArtist(artist: x)
         }
     }
     private func removeFromFavouritesList() {
-        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.name)
+        let index = FavouriteArtists.isArtistInFavouriteList(name: selectedArtist.artistName)
         if  index == -1 {
             return
         } else {

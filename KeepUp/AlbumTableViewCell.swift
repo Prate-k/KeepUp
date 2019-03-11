@@ -8,9 +8,7 @@
 
 import UIKit
 
-class AlbumTableViewCell: UITableViewCell {
-
-    
+class AlbumTableViewCell: UITableViewCell {    
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var releasedDate: UILabel!
