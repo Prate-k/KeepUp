@@ -35,8 +35,8 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
-        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.sectionHeadersPinToVisibleBounds = true
+//        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+//        layout?.sectionHeadersPinToVisibleBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -529,6 +529,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="teQ-aU-cA9"/>
                 <tapGestureRecognizer id="p0a-dG-YCJ">
                     <connections>
                         <action selector="detailsViewPressed" destination="BYZ-38-t0r" id="VcQ-rO-gQe"/>
