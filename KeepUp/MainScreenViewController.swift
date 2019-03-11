@@ -128,6 +128,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             dropDownView.isHidden = true
         }
     }
+    
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {

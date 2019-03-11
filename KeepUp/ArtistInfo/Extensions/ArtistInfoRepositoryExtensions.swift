@@ -36,10 +36,10 @@ extension ArtistInfoRepository: ArtistInfoRepositoryFunctionable {
                                                 let details = self.refineArtistInfo(values: contents)
                                                 completing(details)
                                             //                                                self.artistInfoViewController?.artistInfoShow(info: details)
-                                            }
                                         }
                                     }
                                 }
+                            }
                         }
                     }
                 }

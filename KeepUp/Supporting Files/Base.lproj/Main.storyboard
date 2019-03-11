@@ -11,6 +11,102 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--FavouriteArtists-->
+        <scene sceneID="am5-Ix-Ywy">
+            <objects>
+                <viewController title="FavouriteArtists" id="xP3-ff-QaU" customClass="FavouriteArtistsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Zl-Cw-rSc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="G2H-Xx-vDQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DMZ-9l-mEY">
+                                <rect key="frame" x="20" y="20" width="374" height="660"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bfg-Fy-jO4">
+                                    <size key="itemSize" width="101" height="121"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FavArtistCell" id="jaj-DX-u49" customClass="FavouriteArtistCollectionViewCell" customModule="KeepUp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="101" height="121"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oop-ca-Xjy">
+                                                    <rect key="frame" x="20" y="13" width="61" height="96"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="zCw-Hf-ql8">
+                                                            <rect key="frame" x="0.0" y="0.0" width="61" height="96"/>
+                                                            <subviews>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyArtist" translatesAutoresizingMaskIntoConstraints="NO" id="mIi-Hk-jPx">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="61" height="60"/>
+                                                                </imageView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czo-dN-SJ7">
+                                                                    <rect key="frame" x="0.0" y="60.000000000000007" width="61" height="20.333333333333336"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OQC-FC-34R">
+                                                                    <rect key="frame" x="0.0" y="80.333333333333329" width="61" height="15.666666666666671"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="zCw-Hf-ql8" secondAttribute="bottom" id="AzD-qK-742"/>
+                                                        <constraint firstItem="zCw-Hf-ql8" firstAttribute="top" secondItem="oop-ca-Xjy" secondAttribute="top" id="mi6-IP-dR6"/>
+                                                        <constraint firstItem="zCw-Hf-ql8" firstAttribute="leading" secondItem="oop-ca-Xjy" secondAttribute="leading" id="pjb-BL-ot0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zCw-Hf-ql8" secondAttribute="trailing" id="tur-ku-t2W"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.74215319430000004" green="0.86893242390000003" blue="0.69480779309999996" alpha="0.57646618149999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="oop-ca-Xjy" secondAttribute="trailing" constant="20" id="8wu-Oc-2ZI"/>
+                                            <constraint firstItem="oop-ca-Xjy" firstAttribute="top" secondItem="jaj-DX-u49" secondAttribute="top" constant="13" id="GIc-xD-x14"/>
+                                            <constraint firstItem="oop-ca-Xjy" firstAttribute="leading" secondItem="jaj-DX-u49" secondAttribute="leading" constant="20" id="fqU-4P-fQZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="oop-ca-Xjy" secondAttribute="bottom" constant="12" id="uNt-Fb-VhG"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="artistName" destination="Czo-dN-SJ7" id="rXi-Sn-4u4"/>
+                                            <outlet property="genre" destination="OQC-FC-34R" id="7Kn-7i-e49"/>
+                                            <outlet property="imageView" destination="mIi-Hk-jPx" id="nud-d9-XJq"/>
+                                            <segue destination="uUb-SG-TVf" kind="presentation" identifier="FavArtistToAlbumsSegue" id="GNN-lx-0XX"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="xP3-ff-QaU" id="APU-3m-jIi"/>
+                                    <outlet property="delegate" destination="xP3-ff-QaU" id="skf-oo-UhZ"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ux8-il-sMU"/>
+                    </view>
+                    <connections>
+                        <outlet property="favCollectionView" destination="DMZ-9l-mEY" id="QeG-u2-Qlo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mfb-KN-9jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="200.00000000000003" y="109.23913043478262"/>
+        </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -376,7 +472,8 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="showAllFavourites:" destination="AiL-E9-tl5" eventType="touchUpInside" id="ybe-Ye-42w"/>
+                                                        <action selector="showAllFavourites:" destination="AiL-E9-tl5" eventType="touchUpInside" id="5Gj-4K-tl4"/>
+                                                        <segue destination="xP3-ff-QaU" kind="presentation" identifier="HomeToFavArtistsSegue" id="OoA-Le-BCz"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1040,5 +1137,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="8B3-Mb-aTn"/>
+        <segue reference="bkm-Tq-aZ0"/>
     </inferredMetricsTieBreakers>
 </document>

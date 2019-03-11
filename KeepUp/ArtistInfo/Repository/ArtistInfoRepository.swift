@@ -9,7 +9,6 @@
 import Foundation
 
 class ArtistInfoRepository {
-    
     func refineArtistInfo(values: [String]) -> ArtistInfo {
         var details = ArtistInfo (origin: "",genres: "",members: "", isSolo: false)
         let type = values[0]
@@ -33,7 +32,6 @@ class ArtistInfoRepository {
                 details.origin = "N/A"
             }
         } else {
-            
             details.members = ""
             
             details.isSolo = true
@@ -44,8 +42,6 @@ class ArtistInfoRepository {
                 details.origin = "N/A"
             }
         }
-        
-        
         if genre.contains("*") {
             var values = genre.split(separator: "*")
             for counter in 1..<values.count {
@@ -64,12 +60,6 @@ class ArtistInfoRepository {
         }
         return details
     }
-    
-    
-    
-    
-    
-    
 }
 
 
