@@ -9,7 +9,6 @@
 import UIKit
 
 class MainScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
     let reusableId1 = "FavArtistCell"
     let reusableId2 = "TopTracksCell"
     let reusableHeaderId = "ViewAllFavHeader"
@@ -31,7 +30,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var dropDownView: UIView! 
     @IBOutlet weak var topTracksCollectionView: UICollectionView!
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -147,9 +145,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBAction func loadAllFavouriteArtists() {
         self.performSegue(withIdentifier: "HomeToFavArtistsSegue", sender: nil)
     }
-    
-    
-    
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {
@@ -216,10 +211,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
                 }
             }
         }
-        
         return header
     }
-    
-    
 }
 
