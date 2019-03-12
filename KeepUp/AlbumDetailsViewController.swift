@@ -42,7 +42,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load songs for album", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
                 action in
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             })
             alert.addAction(action)
             present(alert, animated: true, completion: nil)

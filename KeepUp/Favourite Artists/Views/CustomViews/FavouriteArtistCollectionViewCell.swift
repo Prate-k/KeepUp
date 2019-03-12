@@ -14,5 +14,5 @@ class FavouriteArtistCollectionViewCell: UICollectionViewCell
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var genre: UILabel!
-    
+    @IBOutlet weak var deleteCheckBoxView: DeleteCheckBoxView!
 }
