@@ -42,11 +42,9 @@ class FavouriteArtists {
         }
         return index
     }
-    
     public static func insertTestArtists () {
         for i in 0..<10 {
             favouriteList.append(Artist(name: "Artist \(i)", genre: "Rock", imageUrl: "dummyArtist"))
         }
     }
 }
-
