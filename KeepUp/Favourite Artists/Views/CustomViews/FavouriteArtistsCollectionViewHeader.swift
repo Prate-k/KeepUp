@@ -11,9 +11,6 @@
 import UIKit
 
 class FavouriteArtistsCollectionViewHeader: UICollectionReusableView {
-    
-
     @IBOutlet weak var viewAllLabel: UILabel!
     @IBOutlet weak var viewAllView: UIView!
-    
 }
