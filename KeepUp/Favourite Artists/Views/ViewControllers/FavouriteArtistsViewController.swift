@@ -40,7 +40,6 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
         let favCell = cell as? FavouriteArtistCollectionViewCell
@@ -98,8 +97,7 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         favCollectionView.reloadData()
     }
     
-    
-    private func confirmDelete(_ positions: [Int]){
+    private func confirmDelete(_ positions: [Int]) {
         var deleteAlert = UIAlertController(title: "Delete?", message: "All selected artists will be removed", preferredStyle: UIAlertController.Style.alert)
         
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -130,7 +128,6 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         editNavButton.title = "Done"
         favCollectionView.reloadData()
     }
-    
     private func exitEditMode() {
         inEditMode = false //change to view mode
         editNavButton.title = "Edit"
