@@ -16,7 +16,6 @@ class DeleteCheckBoxView: UIView {
     @IBAction func toggleSelection(_ sender: Any) {
         toggleCheck()
     }
-    
     func toggleCheck() {
         if isChecked {
             toggleButton.setImage(UIImage(named: "UnselectedDelete50px"), for: .normal)
