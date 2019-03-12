@@ -448,13 +448,13 @@
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kWL-kJ-xhy">
                                             <size key="itemSize" width="107" height="133"/>
-                                            <size key="headerReferenceSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="67" height="50"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="FavArtistCell" id="D7x-Rp-loV" customClass="FavouriteArtistCollectionViewCell" customModule="KeepUp" customModuleProvider="target">
-                                                <rect key="frame" x="50" y="3.6666666666666665" width="107" height="133"/>
+                                                <rect key="frame" x="67" y="3.6666666666666665" width="107" height="133"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                     <rect key="frame" x="0.0" y="0.0" width="107" height="133"/>
@@ -508,18 +508,18 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
-                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ViewAllFavHeader" id="AiL-E9-tl5" customClass="FavouriteArtistsCollectionViewHeader" customModule="KeepUp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="140"/>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ViewAllFavHeader" id="AiL-E9-tl5" customClass="FavouriteArtistsCollectionViewHeader" customModule="KeepUp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="67" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJA-QR-j5j">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="140"/>
+                                                <view contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJA-QR-j5j">
+                                                    <rect key="frame" x="0.0" y="0.0" width="67" height="140"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View All" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aj3-4b-AyS">
-                                                            <rect key="frame" x="8" y="36" width="42" height="45"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="View All \ Edit" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aj3-4b-AyS">
+                                                            <rect key="frame" x="0.0" y="49" width="67" height="42"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -595,7 +595,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1016" y="-690"/>
+            <point key="canvasLocation" x="1015.9420289855074" y="-690.48913043478262"/>
         </scene>
         <!--Albums-->
         <scene sceneID="glA-xJ-nvg">
@@ -1186,7 +1186,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="UnselectedDelete50px" width="37.5" height="37.5"/>
+        <image name="UnselectedDelete50px" width="156.52174377441406" height="156.52174377441406"/>
         <image name="background" width="998" height="1001"/>
         <image name="close" width="37.5" height="37.5"/>
         <image name="dummyAlbum" width="800" height="600"/>
@@ -1198,6 +1198,6 @@
         <image name="search" width="19" height="19"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wL9-zg-Mx2"/>
+        <segue reference="8B3-Mb-aTn"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     @IBOutlet weak var editNavButton: UIBarButtonItem!
     let reusableId1 = "FavArtistCell"
     var inEditMode = false
+    var numberMarkedForDelete = 0
     
     @IBOutlet weak var favCollectionView: UICollectionView!
     
@@ -49,12 +50,14 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         favCell?.imageView.image = UIImage(named: "dummyArtist")
         if inEditMode {
             favCell?.deleteCheckBoxView.isHidden = false
-            favCell?.deleteCheckBoxView.toggleButton.setImage(UIImage(named: "UnselectedDelete50px"), for: .normal)
+//            if favCell?.deleteCheckBoxView.isChecked? {
+//                favCell?.deleteCheckBoxView.toggleCheck()
+//            }
         } else {
-            
             favCell?.deleteCheckBoxView.isHidden = true
         }
         favCell?.deleteCheckBoxView.isChecked = false
+        favCell?.deleteCheckBoxView.toggleButton.setImage(UIImage(named: "UnselectedDelete50px"), for: .normal)
         return favCell!
     }
 
@@ -69,55 +72,59 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
                 }
             } else {
                 if let cell = favCollectionView.cellForItem(at: indexPath) as? FavouriteArtistCollectionViewCell {
-                    cell.deleteCheckBoxView.toggleSelection(cell.deleteCheckBoxView.toggleButton)
+                    cell.deleteCheckBoxView.toggleCheck()
                 }
             }
         }
     }
     
     @IBAction func editFavouriteList(_ sender: UIButton) {
-        let numSelected  =  DeleteCheckBoxView.getNumberMarkedForDelete() //get number of checkboxes selected
         if inEditMode { //if done clicked (exiting edit mode)
-            confirmDelete(numberSelected: numSelected)//confirm for delete
+            let positions = getMarkedForDelete()
+            if positions.count > 0 {
+                confirmDelete(positions)
+            }
+            exitEditMode()
         } else { //if edit clicked (entering edit mode)
             enterEditMode()
         }
-        DeleteCheckBoxView.resetMarkedCounter()
+        favCollectionView.reloadData()
     }
     
-    private func removeSelectedArtists(numberSelected: Int) {
-        if numberSelected >= 0 {
-            for i in 0..<favCollectionView.numberOfItems(inSection: 0) {
-                let cell = favCollectionView.cellForItem(at: IndexPath.init(item: i, section: 0)) as? FavouriteArtistCollectionViewCell
-                if let cell = cell {
-                    if cell.deleteCheckBoxView.isChecked {
-                        print("deleting: \(cell.artistName.text!)")
-                        FavouriteArtists.removeArtist(at: i)
-                    }
-                }
-            }
+    private func removeMarkedArtists (_ positions: [Int]) {
+        for i in 0..<positions.count {
+            FavouriteArtists.removeArtist(at: positions[i])
         }
         favCollectionView.reloadData()
-        exitEditMode()
     }
     
-    private func confirmDelete(numberSelected: Int) {
-        if numberSelected == 0 { //if none to delete... return
-            return
-        }
+    
+    private func confirmDelete(_ positions: [Int]){
         var deleteAlert = UIAlertController(title: "Delete?", message: "All selected artists will be removed", preferredStyle: UIAlertController.Style.alert)
         
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            self.exitEditMode()
+           return
         }))
         
         deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action: UIAlertAction!) in
-            self.removeSelectedArtists(numberSelected: numberSelected)
+            self.removeMarkedArtists(positions)
         }))
         
         present(deleteAlert, animated: true, completion: nil)
     }
     
+    private func getMarkedForDelete() -> [Int] {
+        var positions = [Int]()
+        for i in 0..<favCollectionView.numberOfItems(inSection: 0) {
+            if let cell = favCollectionView.cellForItem(at: IndexPath.init(item: i, section: 0)) as? FavouriteArtistCollectionViewCell {
+                if cell.deleteCheckBoxView.isChecked {
+                    positions.append(i)
+                }
+            }
+        }
+        print(positions)
+        return positions
+    }
     private func enterEditMode() {
         inEditMode = true //change to edit mode
         editNavButton.title = "Done"

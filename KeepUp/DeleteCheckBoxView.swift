@@ -9,29 +9,23 @@
 import UIKit
 
 class DeleteCheckBoxView: UIView {
-
-    static var numberOfCheckedBoxes = 0
-    var isChecked = false
     
+    var isChecked = false
     @IBOutlet weak var toggleButton: UIButton!
     
-    @IBAction func toggleSelection(_ sender: UIButton) {
+    @IBAction func toggleSelection(_ sender: Any) {
+        toggleCheck()
+    }
+    
+    func toggleCheck() {
         if isChecked {
             toggleButton.setImage(UIImage(named: "UnselectedDelete50px"), for: .normal)
             isChecked = false
-            DeleteCheckBoxView.numberOfCheckedBoxes -= 1
         } else {
-            toggleButton.setImage(UIImage(named: "SelectedDelete50px"), for: .normal)
-            isChecked = true
-            DeleteCheckBoxView.numberOfCheckedBoxes += 1
+            if !isChecked {
+                toggleButton.setImage(UIImage(named: "SelectedDelete50px"), for: .normal)
+                isChecked = true
+            }
         }
-    }
-    
-    static func getNumberMarkedForDelete() -> Int {
-        return DeleteCheckBoxView.numberOfCheckedBoxes
-    }
-    
-    static func resetMarkedCounter() {
-        DeleteCheckBoxView.numberOfCheckedBoxes = 0
     }
 }
