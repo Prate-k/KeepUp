@@ -15,6 +15,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
     var selectedArtistPosition: Int?
     var selectedAlbum: Album!
     
+
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
@@ -23,7 +24,6 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let indexAlbum = selectedAlbumPosition, let indexArtist = selectedArtistPosition{
             
             let selectedArtist = FavouriteArtists.getArtist(at: indexArtist)
@@ -32,11 +32,11 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             albumName.text = selectedAlbum.albumName
             releaseDate.text = "\(selectedAlbum.albumReleaseDate.releasedMonth) \(selectedAlbum.albumReleaseDate.releasedYear)"
             
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 1", songLyrics: "", songLength: "3:45"))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 1", songLyrics: "", songLength: "3:45", isHidden: false))
             
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 2", songLyrics: "", songLength: "3:47"))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 2", songLyrics: "", songLength: "3:47", isHidden: false))
             
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 3", songLyrics: "", songLength: "3:48"))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 3", songLyrics: "", songLength: "3:48", isHidden: false))
             
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load songs for album", preferredStyle: .alert)
@@ -67,19 +67,17 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? SongTableViewCell else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of SongTableViewCell.")
         }
-        
         let songs = selectedAlbum.albumTracks
         if  songs.isEmpty {
             let song = songs[indexPath.row]
             cell.songTitle.text = "song \(indexPath.row+1)"
             cell.songLength.text = "3:4\(5+indexPath.row)"
         }
-        
+        cell.trackOptionsView.isHidden = true
+        cell.displayOptionsButton.setImage(UIImage(named: "shiftLeft"), for: .normal)
         return cell
     }
     
-
-
 }

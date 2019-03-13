@@ -43,13 +43,13 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
             genre.text = selectedArtist.artistGenre
             selectedArtist.artistAlbums.append(Album(albumName: "album 1", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
                                                      albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
+                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "", isHidden: false)]))
             selectedArtist.artistAlbums.append(Album(albumName: "album 2", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
                                                      albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
+                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "", isHidden: false)]))
             selectedArtist.artistAlbums.append(Album(albumName: "album 3", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
                                                      albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
+                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "", isHidden: false)]))
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default, handler: {
