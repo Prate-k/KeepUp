@@ -35,9 +35,11 @@ class FavouriteArtists {
     static func isArtistInFavouriteList (name: String) -> Int {
         var index = -1
         for counter in 0..<FavouriteArtists.getSize() {
-            if FavouriteArtists.getArtist(at: counter)!.artistName.elementsEqual(name) {
-                index = counter
-                break
+            if let artist = FavouriteArtists.getArtist(at: counter) {
+                if artist.artistName.elementsEqual(name) {
+                    index = counter
+                    break
+                }
             }
         }
         return index

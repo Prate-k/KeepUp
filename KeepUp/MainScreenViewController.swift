@@ -195,7 +195,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reusableHeaderId, for: indexPath)
         
         if collectionView == favCollectionView {
-            if (favCollectionView.cellForItem(at: indexPath) != nil) {
+            if favCollectionView.cellForItem(at: indexPath) != nil {
                 let headerView = header as? FavouriteArtistsCollectionViewHeader
                 if let headerView = headerView {
                     headerView.viewAllView.isHidden = false
