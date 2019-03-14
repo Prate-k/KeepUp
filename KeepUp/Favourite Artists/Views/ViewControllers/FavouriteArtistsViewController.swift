@@ -9,8 +9,6 @@
 import UIKit
 
 class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
-
     @IBOutlet weak var editNavButton: UIBarButtonItem!
     let reusableId1 = "FavArtistCell"
     var inEditMode = false
@@ -40,7 +38,9 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
         let favCell = cell as? FavouriteArtistCollectionViewCell
         let artist = FavouriteArtists.getArtist(at: indexPath.item)!
@@ -80,7 +80,7 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     @IBAction func editFavouriteList(_ sender: UIButton) {
         if inEditMode { //if done clicked (exiting edit mode)
             let positions = getMarkedForDelete()
-            if positions.count > 0 {
+            if !positions.isEmpty {
                 confirmDelete(positions)
             }
             exitEditMode()
@@ -98,13 +98,13 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     }
     
     private func confirmDelete(_ positions: [Int]) {
-        var deleteAlert = UIAlertController(title: "Delete?", message: "All selected artists will be removed", preferredStyle: UIAlertController.Style.alert)
+        let deleteAlert = UIAlertController(title: "Delete?",
+                                    message: "All selected artists will be removed",
+                                    preferredStyle: UIAlertController.Style.alert)
         
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-           return
-        }))
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in return}))
         
-        deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action: UIAlertAction!) in
+        deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (_: UIAlertAction!) in
             self.removeMarkedArtists(positions)
         }))
         
@@ -114,7 +114,8 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     private func getMarkedForDelete() -> [Int] {
         var positions = [Int]()
         for i in 0..<favCollectionView.numberOfItems(inSection: 0) {
-            if let cell = favCollectionView.cellForItem(at: IndexPath.init(item: i, section: 0)) as? FavouriteArtistCollectionViewCell {
+            if let cell = favCollectionView.cellForItem(at: IndexPath.init(item: i, section: 0))
+                        as? FavouriteArtistCollectionViewCell {
                 if cell.deleteCheckBoxView.isChecked {
                     positions.append(i)
                 }
@@ -134,4 +135,3 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         favCollectionView.reloadData()
     }
 }
-

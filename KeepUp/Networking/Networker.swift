@@ -33,9 +33,7 @@ class Networker {
         
         if let url = url {
             let request = URLRequest(url: url)
-            let task = session.dataTask(with: request as URLRequest, completionHandler: {
-                (data, response, error)  in
-                
+            let task = session.dataTask(with: request as URLRequest, completionHandler: {(data, _, error)  in
                 guard error == nil else {
                     return
                 }

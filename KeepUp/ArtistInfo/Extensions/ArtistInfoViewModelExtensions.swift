@@ -16,9 +16,8 @@ extension ArtistInfoViewModel: ArtistInfoViewModelFunctionable {
 
     func getArtistInfo(artistName: String) {
         let artistInfoRepository: ArtistInfoRepositoryFunctionable = ArtistInfoRepository()
-        let artistInfo = artistInfoRepository.getArtistDataFromSource(artistName: artistName, completing: { (artistInfo) in
+        _ = artistInfoRepository.getArtistDataFromSource(artistName: artistName, completing: { (artistInfo) in
             self.artistInfoViewController?.artistInfoShow(info: artistInfo)
         })
     }
 }
-

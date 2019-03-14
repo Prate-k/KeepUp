@@ -18,8 +18,6 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet private weak var albumsListTable: UITableView!
     @IBOutlet private weak var favouriteUnfavouriteButton: UIButton!
     
-
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let albumDetailsViewController = segue.destination as? AlbumDetailsViewController {
             albumDetailsViewController.selectedAlbumPosition = albumsListTable.indexPathForSelectedRow?.item
@@ -36,28 +34,20 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         if let index = selectedArtistPosition, index != -1 {
-            
             selectedArtist = FavouriteArtists.getArtist(at: index)
-            artistImageView.image = UIImage(named: "dummyArtist")    //replace with artistImage.image = selectedArtist.image
+            artistImageView.image = UIImage(named: "dummyArtist")
+             //replace with artistImage.image = selectedArtist.image
             artistName.text = selectedArtist.artistName
             genre.text = selectedArtist.artistGenre
-            selectedArtist.artistAlbums.append(Album(albumName: "album 1", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
-                                                     albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
-            selectedArtist.artistAlbums.append(Album(albumName: "album 2", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
-                                                     albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
-            selectedArtist.artistAlbums.append(Album(albumName: "album 3", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
-                                                     albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "")]))
+            for i in 0..<3 {
+                selectedArtist.artistAlbums.append(Album(albumName: "album \(i+1)",
+                                         albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
+                                         albumArtUrl: "dummyAlbum",
+                                         albumTracks: [Song(songTitle: "",
+                                                            songLyrics: "", songLength: "", isHidden: false)]))
+            }
         } else {
-            let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .default, handler: {
-                action in
-                self.navigationController?.popViewController(animated: true)
-            })
-            alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            showEmptySearchAlertDialog(viewController: self)
         }
     }
     func numberOfSections(in collectionView: UITableView) -> Int {
@@ -100,7 +90,9 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
         if index != -1 {
             return
         }
-        let newArtist = Artist(name: selectedArtist.artistName, genre: selectedArtist.artistGenre, imageUrl: selectedArtist.artistImageUrl)
+        let newArtist = Artist(name: selectedArtist.artistName,
+                               genre: selectedArtist.artistGenre,
+                               imageUrl: selectedArtist.artistImageUrl)
         if let x = newArtist {
             FavouriteArtists.addArtist(artist: x)
         }
@@ -113,4 +105,5 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
             FavouriteArtists.removeArtist(at: index)
         }
     }
+    
 }

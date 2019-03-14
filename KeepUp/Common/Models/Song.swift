@@ -12,4 +12,5 @@ struct Song {
     var songTitle: String
     var songLyrics: String
     var songLength: String
+    var isHidden: Bool = false
 }

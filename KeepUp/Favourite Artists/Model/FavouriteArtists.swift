@@ -10,39 +10,41 @@ import Foundation
 
 class FavouriteArtists {
     private static var favouriteList = [Artist]()
-    public static var size = 0
-    public static func getArtist(at: Int) -> Artist?{
+    static var size = 0
+    static func getArtist(at: Int) -> Artist? {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {
             return favouriteList[at]
         }
         return nil
     }
-    public static func addArtist(artist: Artist?) -> (){
+    static func addArtist(artist: Artist?) {
         if let artist = artist {
             size += 1
-            return favouriteList.append(artist)
+            favouriteList.append(artist)
         }
     }
-    public static func removeArtist(at: Int) -> (){
+    static func removeArtist(at: Int) {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {
             size -= 1
             favouriteList.remove(at: at)
         }
     }
-    public static func getSize() -> Int {
+    static func getSize() -> Int {
         return favouriteList.count
     }
-    public static func isArtistInFavouriteList (name: String) -> Int {
+    static func isArtistInFavouriteList (name: String) -> Int {
         var index = -1
         for counter in 0..<FavouriteArtists.getSize() {
-            if FavouriteArtists.getArtist(at:counter)!.artistName.elementsEqual(name) {
-                index = counter
-                break
+            if let artist = FavouriteArtists.getArtist(at: counter) {
+                if artist.artistName.elementsEqual(name) {
+                    index = counter
+                    break
+                }
             }
         }
         return index
     }
-    public static func insertTestArtists () {
+    static func insertTestArtists () {
         for i in 0..<10 {
             favouriteList.append(Artist(name: "Artist \(i)", genre: "Rock", imageUrl: "dummyArtist"))
         }

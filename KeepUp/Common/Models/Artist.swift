@@ -14,8 +14,7 @@ class Artist {
     var artistImageUrl: String!
     var artistAlbums: [Album] = []
     
-    required init!(name: String!, genre: String!, imageUrl: String)
-    {
+    required init!(name: String!, genre: String!, imageUrl: String) {
         guard name != nil || genre != nil else {
             return nil
         }

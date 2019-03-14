@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ArtistInfoFetching: class {
-    func artistInfoShow(info: ArtistInfo) -> Void
+    func artistInfoShow(info: ArtistInfo)
 }
 
 extension ArtistInfoViewController: ArtistInfoFetching {
