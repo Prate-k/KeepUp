@@ -15,6 +15,4 @@ class ArtistInfoViewModel {
     init(view: ArtistInfoFetching) {
         self.artistInfoViewController = view
     }
-    
-    
 }

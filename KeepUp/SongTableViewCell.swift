@@ -9,8 +9,6 @@
 import UIKit
 
 class SongTableViewCell: UITableViewCell {
-
-    
     @IBOutlet weak var songLength: UILabel!
     @IBOutlet weak var songTitle: UILabel!
     @IBOutlet weak var songImageView: UIImageView!
@@ -29,14 +27,15 @@ class SongTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
     @IBAction func displayOptions(_ sender: UIButton) {
         trackOptionsView.isHidden = !trackOptionsView.isHidden
         
         if trackOptionsView.isHidden {
             displayOptionsButton.setImage(UIImage(named: "shiftLeft"), for: .normal)
+            isSelected = false
         } else {
             displayOptionsButton.setImage(UIImage(named: "shiftRight"), for: .normal)
+            isSelected = true
         }
     }
     

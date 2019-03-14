@@ -18,8 +18,6 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     @IBOutlet private weak var albumsListTable: UITableView!
     @IBOutlet private weak var favouriteUnfavouriteButton: UIButton!
     
-
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let albumDetailsViewController = segue.destination as? AlbumDetailsViewController {
             albumDetailsViewController.selectedAlbumPosition = albumsListTable.indexPathForSelectedRow?.item
@@ -36,24 +34,22 @@ class ArtistDetailsViewController: UIViewController, UITableViewDataSource, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         if let index = selectedArtistPosition, index != -1 {
-            
             selectedArtist = FavouriteArtists.getArtist(at: index)
             artistImageView.image = UIImage(named: "dummyArtist")    //replace with artistImage.image = selectedArtist.image
             artistName.text = selectedArtist.artistName
             genre.text = selectedArtist.artistGenre
             selectedArtist.artistAlbums.append(Album(albumName: "album 1", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
                                                      albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "", isHidden: false)]))
+                                                     albumTracks: [Song(songTitle: "", songLyrics: "", songLength: "", isHidden: false)]))
             selectedArtist.artistAlbums.append(Album(albumName: "album 2", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
                                                      albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "", isHidden: false)]))
+                                                     albumTracks: [Song(songTitle: "", songLyrics: "", songLength: "", isHidden: false)]))
             selectedArtist.artistAlbums.append(Album(albumName: "album 3", albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
                                                      albumArtUrl: "dummyAlbum",
-                                                     albumTracks: [Song(songTitle:"", songLyrics: "", songLength: "", isHidden: false)]))
+                                                     albumTracks: [Song(songTitle: "", songLyrics: "", songLength: "", isHidden: false)]))
         } else {
             let alert = UIAlertController(title: "Load Failed!", message: "Could not load albums for artist", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .default, handler: {
-                action in
+            let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
                 self.navigationController?.popViewController(animated: true)
             })
             alert.addAction(action)

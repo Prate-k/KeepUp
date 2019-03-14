@@ -44,5 +44,3 @@ class ArtistInfoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-
-

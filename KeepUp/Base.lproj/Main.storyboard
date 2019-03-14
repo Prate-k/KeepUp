@@ -1073,7 +1073,7 @@
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="songCell" rowHeight="86" id="ZFq-AX-Kir" customClass="SongTableViewCell" customModule="KeepUp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="86"/>
                                                 <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZFq-AX-Kir" id="vhq-ew-Gzv">
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZFq-AX-Kir" id="vhq-ew-Gzv">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="85.666666666666671"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
@@ -1173,7 +1173,7 @@
                                                                                     </subviews>
                                                                                 </stackView>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZwJ-4C-EZL">
-                                                                                    <rect key="frame" x="57.000000000000028" y="0.0" width="57" height="84"/>
+                                                                                    <rect key="frame" x="57" y="0.0" width="57" height="84"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvs-rR-EFT">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="57" height="10"/>
@@ -1185,11 +1185,12 @@
                                                                                         </view>
                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KL-hV-ryi">
                                                                                             <rect key="frame" x="0.0" y="18" width="57" height="42"/>
-                                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="57" id="0Bt-aV-Q2a"/>
                                                                                                 <constraint firstAttribute="height" constant="42" id="ZYL-L5-t9X"/>
                                                                                             </constraints>
+                                                                                            <color key="tintColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                             <state key="normal" image="PlayTrack50px"/>
                                                                                             <connections>
                                                                                                 <action selector="playTrackAction:" destination="ZFq-AX-Kir" eventType="touchUpInside" id="cXd-wZ-dV8"/>
@@ -1197,6 +1198,7 @@
                                                                                         </button>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Tl-Bb-Pih">
                                                                                             <rect key="frame" x="0.0" y="68" width="57" height="16"/>
+                                                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="16" id="eKQ-1d-Lq8"/>
                                                                                                 <constraint firstAttribute="width" constant="57" id="pHn-4K-m8o"/>
@@ -1206,9 +1208,11 @@
                                                                                             <nil key="highlightedColor"/>
                                                                                         </label>
                                                                                     </subviews>
+                                                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 </stackView>
                                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qOC-hq-Nyo">
-                                                                                    <rect key="frame" x="114.00000000000003" y="0.0" width="57" height="84"/>
+                                                                                    <rect key="frame" x="114" y="0.0" width="57" height="84"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIH-BU-sda">
                                                                                             <rect key="frame" x="0.0" y="0.0" width="57" height="10"/>
@@ -1221,6 +1225,7 @@
                                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="icf-v2-Yo2">
                                                                                             <rect key="frame" x="0.0" y="18" width="57" height="42"/>
                                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            <accessibility key="accessibilityConfiguration" hint="Help" identifier="Label" label="Label"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="42" id="JqX-Rg-pli"/>
                                                                                                 <constraint firstAttribute="width" constant="57" id="xWJ-Hf-dBb"/>
@@ -1228,6 +1233,7 @@
                                                                                             <state key="normal" image="ShowLyrics"/>
                                                                                             <connections>
                                                                                                 <action selector="showLyricsAction:" destination="ZFq-AX-Kir" eventType="touchUpInside" id="VcH-lT-p9P"/>
+                                                                                                <segue destination="PrM-wV-iiO" kind="show" identifier="TrackToLyricsSegue" id="6c2-Pf-t0u"/>
                                                                                             </connections>
                                                                                         </button>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyrics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJe-79-UeD">
@@ -1243,6 +1249,7 @@
                                                                                     </subviews>
                                                                                 </stackView>
                                                                             </subviews>
+                                                                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="171" id="0jU-rD-5n8"/>
                                                                                 <constraint firstAttribute="height" constant="84" id="e8g-0p-Qmx"/>
@@ -1331,6 +1338,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qD-Il-sA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1924.6376811594205" y="136.95652173913044"/>
+        </scene>
+        <!--Lyrics-->
+        <scene sceneID="ZRJ-J5-c4P">
+            <objects>
+                <viewController title="Lyrics" id="PrM-wV-iiO" customClass="SongLyricsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n3u-fa-bLq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvk-q9-Yam">
+                                <rect key="frame" x="20" y="86" width="374" height="565"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLA-4b-tX6">
+                                <rect key="frame" x="20" y="693" width="374" height="41"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="66" translatesAutoresizingMaskIntoConstraints="NO" id="qMg-Ym-SFs">
+                                        <rect key="frame" x="8" y="5" width="357" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvG-EJ-vuT">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
+                                                <state key="normal" title="Print/Save">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xte-Rq-8na">
+                                                <rect key="frame" x="136" y="0.0" width="63" height="30"/>
+                                                <state key="normal" title="whatever">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKm-aQ-NCh">
+                                                <rect key="frame" x="265" y="0.0" width="92" height="30"/>
+                                                <state key="normal" title="View On Web">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.58934603567981181" green="0.83511512532750842" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="qMg-Ym-SFs" firstAttribute="top" secondItem="XLA-4b-tX6" secondAttribute="top" constant="5" id="e97-dw-Vy5"/>
+                                    <constraint firstAttribute="trailing" secondItem="qMg-Ym-SFs" secondAttribute="trailing" constant="9" id="hPE-Nx-bBz"/>
+                                    <constraint firstItem="qMg-Ym-SFs" firstAttribute="leading" secondItem="XLA-4b-tX6" secondAttribute="leading" constant="8" id="sNQ-sE-k7L"/>
+                                    <constraint firstAttribute="bottom" secondItem="qMg-Ym-SFs" secondAttribute="bottom" constant="6" id="tDB-kn-Y8e"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.75669258324762101" green="0.96933811467604458" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XLA-4b-tX6" firstAttribute="top" secondItem="yvk-q9-Yam" secondAttribute="bottom" constant="42" id="54p-ta-soZ"/>
+                            <constraint firstItem="J4z-Ee-hat" firstAttribute="bottom" secondItem="XLA-4b-tX6" secondAttribute="bottom" constant="2" id="9Gp-gk-hO6"/>
+                            <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="yvk-q9-Yam" secondAttribute="trailing" constant="20" id="Noc-jd-Kh4"/>
+                            <constraint firstItem="XLA-4b-tX6" firstAttribute="top" secondItem="yvk-q9-Yam" secondAttribute="bottom" constant="42" id="VRs-Gq-G87"/>
+                            <constraint firstItem="yvk-q9-Yam" firstAttribute="top" secondItem="J4z-Ee-hat" secondAttribute="top" constant="22" id="Y4g-Xv-7mO"/>
+                            <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="XLA-4b-tX6" secondAttribute="trailing" constant="20" id="eDr-ex-5se"/>
+                            <constraint firstItem="XLA-4b-tX6" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="foB-j8-dUa"/>
+                            <constraint firstItem="yvk-q9-Yam" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="sed-MN-Fi0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J4z-Ee-hat"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xuc-7Y-qyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2715.9420289855075" y="138.58695652173915"/>
         </scene>
         <!--NavigationController-->
         <scene sceneID="OJ9-lr-COS">

@@ -8,9 +8,7 @@
 
 import UIKit
 
-class FavouriteArtistCollectionViewCell: UICollectionViewCell
-{
-    
+class FavouriteArtistCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var genre: UILabel!

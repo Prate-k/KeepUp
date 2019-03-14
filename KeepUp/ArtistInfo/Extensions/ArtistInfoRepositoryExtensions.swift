@@ -16,7 +16,6 @@ extension ArtistInfoRepository: ArtistInfoRepositoryFunctionable {
     
     func getArtistDataFromSource(artistName: String, completing: @escaping (ArtistInfo) -> Void) {
         let searchArtistName = artistName.replacingOccurrences(of: " ", with: "_")
-        
         let site = "https://en.wikipedia.org/w/api.php?"
         let query = "action=query&prop=revisions&rvprop=content&format=json&rvsection=0&titles=\(searchArtistName)"
         let networker: Networker = Networker(site: site, query: query, requestType: .GET)
@@ -35,7 +34,7 @@ extension ArtistInfoRepository: ArtistInfoRepositoryFunctionable {
                                                 let contents = HTMLParser.parseHTMLContent(content: artistData)
                                                 let details = self.refineArtistInfo(values: contents)
                                                 completing(details)
-                                            //                                                self.artistInfoViewController?.artistInfoShow(info: details)
+//                                                self.artistInfoViewController?.artistInfoShow(info: details)
                                         }
                                     }
                                 }
@@ -45,7 +44,7 @@ extension ArtistInfoRepository: ArtistInfoRepositoryFunctionable {
                 }
             }
         } catch let error {
-        print(error.localizedDescription)
+            print(error.localizedDescription)
         }
         })
     }

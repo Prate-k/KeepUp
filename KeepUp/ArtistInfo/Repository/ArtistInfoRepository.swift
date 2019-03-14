@@ -10,7 +10,7 @@ import Foundation
 
 class ArtistInfoRepository {
     func refineArtistInfo(values: [String]) -> ArtistInfo {
-        var details = ArtistInfo (origin: "",genres: "",members: "", isSolo: false)
+        var details = ArtistInfo (origin: "", genres: "", members: "", isSolo: false)
         let type = values[0]
         let origin = values[1]
         let birthPlace = values[2]
@@ -61,5 +61,3 @@ class ArtistInfoRepository {
         return details
     }
 }
-
-

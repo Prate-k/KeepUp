@@ -9,14 +9,12 @@
 import Foundation
 
 class HTMLParser {
-    
-    
     static func removeHTMLTags (content: String) -> String {
         var value = content
         var noTags = ""
         if (value.contains("<") || value.contains("<!--")) && (value.contains("/>") || (value.contains("</")) || value.contains("-->")) {
             for i in 0..<value.count {
-                var char = value[value.index(value.startIndex, offsetBy: i)]
+                let char = value[value.index(value.startIndex, offsetBy: i)]
                 if char == "<" {
                     noTags.append("\n")
                     break
