@@ -34,23 +34,20 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
                                 \(selectedAlbum.albumReleaseDate.releasedYear)
                                 """
             
-            selectedAlbum.albumTracks.append(
-                Song(songTitle: "song 1",
-                     songLyrics: "",
-                     songLength: "3:45",
-                     isHidden: false))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 1",
+                                                  songLyrics: "",
+                                                  songLength: "3:45",
+                                                  isHidden: false))
             
-            selectedAlbum.albumTracks.append(
-                Song(songTitle: "song 2",
-                     songLyrics: "",
-                     songLength: "3:47",
-                     isHidden: false))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 2",
+                                                  songLyrics: "",
+                                                  songLength: "3:47",
+                                                  isHidden: false))
             
-            selectedAlbum.albumTracks.append(
-                Song(songTitle: "song 3", 
-                     songLyrics: "",
-                     songLength: "3:48",
-                     isHidden: false))
+            selectedAlbum.albumTracks.append(Song(songTitle: "song 3",
+                                                  songLyrics: "",
+                                                  songLength: "3:48",
+                                                  isHidden: false))
             
         } else {
             showEmptySearchAlertDialog(viewController: self)
