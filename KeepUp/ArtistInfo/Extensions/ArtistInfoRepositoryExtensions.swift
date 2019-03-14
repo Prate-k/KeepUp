@@ -29,14 +29,13 @@ extension ArtistInfoRepository: ArtistInfoRepositoryFunctionable {
                         if let page = pages[a.key] as? [String: Any] {
                             if let revisions = page["revisions"] as? [[String: Any]] {
                                 for counter in 0..<revisions.count {
-                                    if let temp = revisions[counter] as? [String: Any] {
-                                        if let artistData = temp["*"] as? String {
-                                                let contents = HTMLParser.parseHTMLContent(content: artistData)
-                                                let details = self.refineArtistInfo(values: contents)
-                                                completing(details)
+                                    if let artistData = revisions[counter]["*"] as? String {
+                                            let contents = HTMLParser.parseHTMLContent(content: artistData)
+                                            let details = self.refineArtistInfo(values: contents)
+                                            completing(details)
 //                                                self.artistInfoViewController?.artistInfoShow(info: details)
-                                        }
                                     }
+                                    
                                 }
                             }
                         }

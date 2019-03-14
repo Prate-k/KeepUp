@@ -27,6 +27,7 @@
 		70B617082212E09400D95ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B617062212E09400D95ED9 /* LaunchScreen.storyboard */; };
 		70BF2AD2221AF9FC006BE113 /* TopTracksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */; };
 		70C39A98223A745B0065BF9F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C39A97223A745B0065BF9F /* Functions.swift */; };
+		70E083F0223AFB40007A6580 /* MainScreenViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */; };
 		70E1B1C4221406A700611BAD /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C3221406A700611BAD /* Artist.swift */; };
 		70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */; };
 		70E7215F22312368006B7AF3 /* KeepUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D506FA221D88FE00CD855D /* KeepUpTests.swift */; };
@@ -79,6 +80,7 @@
 		70D506F8221D88FE00CD855D /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D506FA221D88FE00CD855D /* KeepUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpTests.swift; sourceTree = "<group>"; };
 		70D506FC221D88FE00CD855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewControllerExtensions.swift; sourceTree = "<group>"; };
 		70E1B1C3221406A700611BAD /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistCollectionViewCell.swift; sourceTree = "<group>"; };
 		70ECD5BC222E9A5E005045D8 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				70ECD5B1222E95AD005045D8 /* Resources */,
 				70ECD5B0222E9590005045D8 /* Supporting Files */,
 				70B616FF2212E09200D95ED9 /* MainScreenViewController.swift */,
+				70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */,
 				70B617012212E09200D95ED9 /* Main.storyboard */,
 				70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */,
 				70B5789A221699800050B547 /* AlbumTableViewCell.swift */,
@@ -566,6 +569,7 @@
 				70ECD5C6222EA003005045D8 /* ArtistInfoViewModel.swift in Sources */,
 				7091DA712235150900562150 /* FavouriteArtistsViewController.swift in Sources */,
 				7060335122365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift in Sources */,
+				70E083F0223AFB40007A6580 /* MainScreenViewControllerExtensions.swift in Sources */,
 				70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */,
 				70B578A92216F54F0050B547 /* AlbumDetailsViewController.swift in Sources */,
 				70ECD5BF222E9B07005045D8 /* Album.swift in Sources */,

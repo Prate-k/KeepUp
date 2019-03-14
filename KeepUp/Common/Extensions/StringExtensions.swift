@@ -14,9 +14,9 @@ extension String {
         var counter = 0
         var value = ""
         while counter+3 < self.count {
-            var char = self[self.index(self.startIndex, offsetBy: counter)]
-            var char1 = self[self.index(self.startIndex, offsetBy: counter+1)]
-            var char2 = self[self.index(self.startIndex, offsetBy: counter+2)]
+            let char = self[self.index(self.startIndex, offsetBy: counter)]
+            let char1 = self[self.index(self.startIndex, offsetBy: counter+1)]
+            let char2 = self[self.index(self.startIndex, offsetBy: counter+2)]
             if char == "\n" && char1 == "|" && char2 == " " {
                 value.append("\n")
                 values.append(value)
