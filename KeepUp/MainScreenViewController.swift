@@ -112,11 +112,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBAction func searchArtist() {
         if let searchedText = searchText.text {
             if searchedText.isEmpty {
-                let alert = UIAlertController(title: "Empty Search",
-                                              message: "Seach field is empty - Please enter an artist's name.", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alert.addAction(action)
-                present(alert, animated: true, completion: nil)
+                showEmptySearchAlertDialog(viewController: self)
             } else {
                 resultView.isHidden = false
                 resultArtistLabel.text = searchedText
@@ -160,7 +156,8 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         return 1
     }
     //    // make a cell for each cell index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.favCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
@@ -191,8 +188,12 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reusableHeaderId, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                 withReuseIdentifier: reusableHeaderId,
+                                                 for: indexPath)
         
         if collectionView == favCollectionView {
             if favCollectionView.cellForItem(at: indexPath) != nil {

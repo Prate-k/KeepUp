@@ -26,23 +26,34 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             
             let selectedArtist = FavouriteArtists.getArtist(at: indexArtist)
             selectedAlbum = selectedArtist?.artistAlbums[indexAlbum]
-            albumImageView.image = UIImage(named: "dummyAlbum")    //replace with artistImage.image = selectedArtist.image
+            albumImageView.image = UIImage(named: "dummyAlbum")
+            //replace with artistImage.image = selectedArtist.image
             albumName.text = selectedAlbum.albumName
-            releaseDate.text = "\(selectedAlbum.albumReleaseDate.releasedMonth) \(selectedAlbum.albumReleaseDate.releasedYear)"
+            releaseDate.text =  """
+                                \(selectedAlbum.albumReleaseDate.releasedMonth)
+                                \(selectedAlbum.albumReleaseDate.releasedYear)
+                                """
             
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 1", songLyrics: "", songLength: "3:45", isHidden: false))
+            selectedAlbum.albumTracks.append(
+                Song(songTitle: "song 1",
+                     songLyrics: "",
+                     songLength: "3:45",
+                     isHidden: false))
             
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 2", songLyrics: "", songLength: "3:47", isHidden: false))
+            selectedAlbum.albumTracks.append(
+                Song(songTitle: "song 2",
+                     songLyrics: "",
+                     songLength: "3:47",
+                     isHidden: false))
             
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 3", songLyrics: "", songLength: "3:48", isHidden: false))
+            selectedAlbum.albumTracks.append(
+                Song(songTitle: "song 3", 
+                     songLyrics: "",
+                     songLength: "3:48",
+                     isHidden: false))
             
         } else {
-            let alert = UIAlertController(title: "Load Failed!", message: "Could not load songs for album", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                self.navigationController?.popViewController(animated: true)
-            })
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            showEmptySearchAlertDialog(viewController: self)
         }
         // Do any additional setup after loading the view.
     }

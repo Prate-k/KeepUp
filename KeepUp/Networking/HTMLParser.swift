@@ -12,7 +12,8 @@ class HTMLParser {
     static func removeHTMLTags (content: String) -> String {
         var value = content
         var noTags = ""
-        if (value.contains("<") || value.contains("<!--")) && (value.contains("/>") || (value.contains("</")) || value.contains("-->")) {
+        if (value.contains("<") || value.contains("<!--")) &&
+                (value.contains("/>") || (value.contains("</")) || value.contains("-->")) {
             for i in 0..<value.count {
                 let char = value[value.index(value.startIndex, offsetBy: i)]
                 if char == "<" {

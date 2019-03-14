@@ -26,6 +26,7 @@
 		70B617052212E09400D95ED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70B617042212E09400D95ED9 /* Assets.xcassets */; };
 		70B617082212E09400D95ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B617062212E09400D95ED9 /* LaunchScreen.storyboard */; };
 		70BF2AD2221AF9FC006BE113 /* TopTracksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */; };
+		70C39A98223A745B0065BF9F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C39A97223A745B0065BF9F /* Functions.swift */; };
 		70E1B1C4221406A700611BAD /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C3221406A700611BAD /* Artist.swift */; };
 		70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */; };
 		70E7215F22312368006B7AF3 /* KeepUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D506FA221D88FE00CD855D /* KeepUpTests.swift */; };
@@ -74,6 +75,7 @@
 		70B617072212E09400D95ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70B617092212E09400D95ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksCollectionViewCell.swift; sourceTree = "<group>"; };
+		70C39A97223A745B0065BF9F /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		70D506F8221D88FE00CD855D /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D506FA221D88FE00CD855D /* KeepUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpTests.swift; sourceTree = "<group>"; };
 		70D506FC221D88FE00CD855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				700AB7D22236863B00F4CB6C /* Views */,
 				70ECD5CC222EAA65005045D8 /* Models */,
 				70ECD5CB222EAA54005045D8 /* Extensions */,
+				70C39A97223A745B0065BF9F /* Functions.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				70B578A12216DA230050B547 /* FavouriteArtists.swift in Sources */,
 				7060334F22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift in Sources */,
 				70ECD5DA222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift in Sources */,
+				70C39A98223A745B0065BF9F /* Functions.swift in Sources */,
 				70B617002212E09200D95ED9 /* MainScreenViewController.swift in Sources */,
 				70B578AB2216FA980050B547 /* SongTableViewCell.swift in Sources */,
 				70B616FE2212E09200D95ED9 /* AppDelegate.swift in Sources */,

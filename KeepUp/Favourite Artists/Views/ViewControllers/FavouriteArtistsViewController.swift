@@ -39,7 +39,8 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
         let favCell = cell as? FavouriteArtistCollectionViewCell
         let artist = FavouriteArtists.getArtist(at: indexPath.item)!
@@ -97,7 +98,9 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     }
     
     private func confirmDelete(_ positions: [Int]) {
-        let deleteAlert = UIAlertController(title: "Delete?", message: "All selected artists will be removed", preferredStyle: UIAlertController.Style.alert)
+        let deleteAlert = UIAlertController(title: "Delete?",
+                                    message: "All selected artists will be removed",
+                                    preferredStyle: UIAlertController.Style.alert)
         
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in return}))
         
@@ -111,7 +114,8 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     private func getMarkedForDelete() -> [Int] {
         var positions = [Int]()
         for i in 0..<favCollectionView.numberOfItems(inSection: 0) {
-            if let cell = favCollectionView.cellForItem(at: IndexPath.init(item: i, section: 0)) as? FavouriteArtistCollectionViewCell {
+            if let cell = favCollectionView.cellForItem(at: IndexPath.init(item: i, section: 0))
+                        as? FavouriteArtistCollectionViewCell {
                 if cell.deleteCheckBoxView.isChecked {
                     positions.append(i)
                 }
