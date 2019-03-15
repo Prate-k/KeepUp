@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		700AB7D5223698C400F4CB6C /* DeleteCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */; };
 		70238BA4221C019F0024E6F5 /* ArtistInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */; };
+		702FE1C1223B814100A540EB /* StartUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702FE1C0223B814100A540EB /* StartUp.storyboard */; };
+		702FE1C3223B862700A540EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702FE1C2223B862700A540EB /* LoginViewController.swift */; };
 		70380FA3222C718E00606416 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70380FA2222C718E00606416 /* Networker.swift */; };
 		7060334F22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060334E22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift */; };
 		7060335122365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060335022365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift */; };
@@ -57,6 +59,8 @@
 /* Begin PBXFileReference section */
 		700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCheckBoxView.swift; sourceTree = "<group>"; };
 		70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewController.swift; sourceTree = "<group>"; };
+		702FE1C0223B814100A540EB /* StartUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartUp.storyboard; sourceTree = "<group>"; };
+		702FE1C2223B862700A540EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		70380FA2222C718E00606416 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
 		7060334E22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistsCollectionViewHeader.swift; sourceTree = "<group>"; };
 		7060335022365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistsViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */,
+				700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */,
 				7060334E22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift */,
 			);
 			path = CustomViews;
@@ -146,13 +151,338 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		702FE1C4223B943A00A540EB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1C9223B949800A540EB /* Views */,
+				702FE1C8223B949100A540EB /* Extensions */,
+				702FE1C7223B948A00A540EB /* Repository */,
+				702FE1C6223B948400A540EB /* ViewModels */,
+				702FE1C5223B944600A540EB /* Models */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		702FE1C5223B944600A540EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		702FE1C6223B948400A540EB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		702FE1C7223B948A00A540EB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		702FE1C8223B949100A540EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		702FE1C9223B949800A540EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1C0223B814100A540EB /* StartUp.storyboard */,
+				702FE1CB223B94AE00A540EB /* ViewControllers */,
+				702FE1CA223B94A700A540EB /* CustomViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		702FE1CA223B94A700A540EB /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		702FE1CB223B94AE00A540EB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1C2223B862700A540EB /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		702FE1CC223B94E600A540EB /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1D1223B950C00A540EB /* Extensions */,
+				702FE1D0223B950300A540EB /* Repository */,
+				702FE1CF223B94FC00A540EB /* ViewModels */,
+				702FE1CE223B94F600A540EB /* Models */,
+				702FE1CD223B94F100A540EB /* Views */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
+		702FE1CD223B94F100A540EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				70B617012212E09200D95ED9 /* Main.storyboard */,
+				702FE1D3223B951F00A540EB /* CustomViews */,
+				702FE1D2223B951500A540EB /* ViewControllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		702FE1CE223B94F600A540EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		702FE1CF223B94FC00A540EB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		702FE1D0223B950300A540EB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		702FE1D1223B950C00A540EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		702FE1D2223B951500A540EB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				70B616FF2212E09200D95ED9 /* MainScreenViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		702FE1D3223B951F00A540EB /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		702FE1D4223B955A00A540EB /* Albums */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1D9223B958600A540EB /* Repository */,
+				702FE1D8223B957F00A540EB /* Extensions */,
+				702FE1D7223B957900A540EB /* ViewModels */,
+				702FE1D6223B957500A540EB /* Models */,
+				702FE1D5223B957000A540EB /* Views */,
+			);
+			path = Albums;
+			sourceTree = "<group>";
+		};
+		702FE1D5223B957000A540EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1DB223B959800A540EB /* CustomViews */,
+				702FE1DA223B959200A540EB /* ViewControllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		702FE1D6223B957500A540EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		702FE1D7223B957900A540EB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		702FE1D8223B957F00A540EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		702FE1D9223B958600A540EB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		702FE1DA223B959200A540EB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		702FE1DB223B959800A540EB /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				70B5789A221699800050B547 /* AlbumTableViewCell.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		702FE1DC223B95D300A540EB /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1E3223B960500A540EB /* ViewModels */,
+				702FE1E2223B95F900A540EB /* Extensions */,
+				702FE1E1223B95EF00A540EB /* Repository */,
+				702FE1DE223B95DF00A540EB /* Views */,
+				702FE1DD223B95DB00A540EB /* Models */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
+		702FE1DD223B95DB00A540EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		702FE1DE223B95DF00A540EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1E0223B95E800A540EB /* CustomViews */,
+				702FE1DF223B95E200A540EB /* ViewControllers */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		702FE1DF223B95E200A540EB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				70B578A82216F54F0050B547 /* AlbumDetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		702FE1E0223B95E800A540EB /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				70B578AA2216FA980050B547 /* SongTableViewCell.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		702FE1E1223B95EF00A540EB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		702FE1E2223B95F900A540EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		702FE1E3223B960500A540EB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		702FE1E4223B96C400A540EB /* Top Tracks */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1E9223B96F800A540EB /* Repository */,
+				702FE1E8223B96F100A540EB /* Models */,
+				702FE1E7223B96EA00A540EB /* Extensions */,
+				702FE1E6223B96E500A540EB /* ViewModels */,
+				702FE1E5223B96E100A540EB /* Views */,
+			);
+			path = "Top Tracks";
+			sourceTree = "<group>";
+		};
+		702FE1E5223B96E100A540EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				702FE1EB223B974A00A540EB /* ViewControllers */,
+				702FE1EA223B970700A540EB /* CustomViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		702FE1E6223B96E500A540EB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		702FE1E7223B96EA00A540EB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		702FE1E8223B96F100A540EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		702FE1E9223B96F800A540EB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		702FE1EA223B970700A540EB /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		702FE1EB223B974A00A540EB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		708056A1222FDFB7003D98AE /* Favourite Artists */ = {
 			isa = PBXGroup;
 			children = (
-				708056A6222FE07C003D98AE /* Model */,
+				708056A6222FE07C003D98AE /* Models */,
 				708056A5222FE072003D98AE /* Views */,
 				708056A4222FE066003D98AE /* Repository */,
-				708056A3222FE05C003D98AE /* ViewModel */,
+				708056A3222FE05C003D98AE /* ViewModels */,
 				708056A2222FDFFD003D98AE /* Extensions */,
 			);
 			path = "Favourite Artists";
@@ -166,11 +496,11 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		708056A3222FE05C003D98AE /* ViewModel */ = {
+		708056A3222FE05C003D98AE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		708056A4222FE066003D98AE /* Repository */ = {
@@ -189,31 +519,31 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		708056A6222FE07C003D98AE /* Model */ = {
+		708056A6222FE07C003D98AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				70B578A02216DA230050B547 /* FavouriteArtists.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		70B2DEF02237EBAF0087DF4B /* Song Lyrics */ = {
 			isa = PBXGroup;
 			children = (
 				70B2DEF52237EBDF0087DF4B /* Extensions */,
-				70B2DEF42237EBD80087DF4B /* ViewModel */,
+				70B2DEF42237EBD80087DF4B /* ViewModels */,
 				70B2DEF32237EBCF0087DF4B /* Repository */,
 				70B2DEF22237EBC70087DF4B /* Views */,
-				70B2DEF12237EBC10087DF4B /* Model */,
+				70B2DEF12237EBC10087DF4B /* Models */,
 			);
 			path = "Song Lyrics";
 			sourceTree = "<group>";
 		};
-		70B2DEF12237EBC10087DF4B /* Model */ = {
+		70B2DEF12237EBC10087DF4B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		70B2DEF22237EBC70087DF4B /* Views */ = {
@@ -232,11 +562,11 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		70B2DEF42237EBD80087DF4B /* ViewModel */ = {
+		70B2DEF42237EBD80087DF4B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		70B2DEF52237EBDF0087DF4B /* Extensions */ = {
@@ -282,23 +612,19 @@
 		70B616FC2212E09200D95ED9 /* KeepUp */ = {
 			isa = PBXGroup;
 			children = (
+				702FE1E4223B96C400A540EB /* Top Tracks */,
+				702FE1DC223B95D300A540EB /* Songs */,
+				702FE1D4223B955A00A540EB /* Albums */,
+				702FE1CC223B94E600A540EB /* Main Screen */,
+				702FE1C4223B943A00A540EB /* Login */,
 				70B2DEF02237EBAF0087DF4B /* Song Lyrics */,
 				708056A1222FDFB7003D98AE /* Favourite Artists */,
+				70ECD5B2222E95B9005045D8 /* ArtistInfo */,
 				70ECD5B9222E99F1005045D8 /* Networking */,
 				70ECD5B8222E99E8005045D8 /* Common */,
-				70ECD5B2222E95B9005045D8 /* ArtistInfo */,
 				70ECD5B1222E95AD005045D8 /* Resources */,
 				70ECD5B0222E9590005045D8 /* Supporting Files */,
-				70B616FF2212E09200D95ED9 /* MainScreenViewController.swift */,
-				70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */,
-				70B617012212E09200D95ED9 /* Main.storyboard */,
-				70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */,
-				70B5789A221699800050B547 /* AlbumTableViewCell.swift */,
-				70B578AA2216FA980050B547 /* SongTableViewCell.swift */,
-				70B578A82216F54F0050B547 /* AlbumDetailsViewController.swift */,
-				70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */,
 				70B617092212E09400D95ED9 /* Info.plist */,
-				700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */,
 			);
 			path = KeepUp;
 			sourceTree = "<group>";
@@ -333,9 +659,9 @@
 			isa = PBXGroup;
 			children = (
 				70ECD5D2222EAEC5005045D8 /* Extensions */,
-				70ECD5B7222E99D2005045D8 /* ViewModel */,
+				70ECD5B7222E99D2005045D8 /* ViewModels */,
 				70ECD5B6222E99C9005045D8 /* Repository */,
-				70ECD5B5222E99C5005045D8 /* Model */,
+				70ECD5B5222E99C5005045D8 /* Models */,
 				70ECD5B3222E99B1005045D8 /* Views */,
 			);
 			path = ArtistInfo;
@@ -358,12 +684,12 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		70ECD5B5222E99C5005045D8 /* Model */ = {
+		70ECD5B5222E99C5005045D8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				70ECD5C7222EA39A005045D8 /* ArtistInfo.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		70ECD5B6222E99C9005045D8 /* Repository */ = {
@@ -374,12 +700,12 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		70ECD5B7222E99D2005045D8 /* ViewModel */ = {
+		70ECD5B7222E99D2005045D8 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				70ECD5C5222EA003005045D8 /* ArtistInfoViewModel.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		70ECD5B8222E99E8005045D8 /* Common */ = {
@@ -522,6 +848,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70B617082212E09400D95ED9 /* LaunchScreen.storyboard in Resources */,
+				702FE1C1223B814100A540EB /* StartUp.storyboard in Resources */,
 				70B617052212E09400D95ED9 /* Assets.xcassets in Resources */,
 				70B617032212E09200D95ED9 /* Main.storyboard in Resources */,
 			);
@@ -573,6 +900,7 @@
 				70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */,
 				70B578A92216F54F0050B547 /* AlbumDetailsViewController.swift in Sources */,
 				70ECD5BF222E9B07005045D8 /* Album.swift in Sources */,
+				702FE1C3223B862700A540EB /* LoginViewController.swift in Sources */,
 				70B2DEF92237F8230087DF4B /* SongLyricsViewController.swift in Sources */,
 				70ECD5D1222EAAAA005045D8 /* UIImageExtensions.swift in Sources */,
 				707705B4222FA20800EBBC6A /* ArtistInfoRepositoryExtensions.swift in Sources */,
