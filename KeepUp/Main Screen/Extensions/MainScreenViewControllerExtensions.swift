@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension MainScreenViewController {
-    func loadArtistDetailsScreen(artistDetailsViewController: ArtistDetailsViewController) {
+    func loadDiscographyScreen(artistDetailsViewController: AlbumsViewController) {
         if isLoadingAllFavourites {
             artistDetailsViewController.selectedArtistPosition = selectedArtistPosition
         } else {

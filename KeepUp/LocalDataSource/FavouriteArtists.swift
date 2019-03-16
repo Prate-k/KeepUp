@@ -10,6 +10,7 @@ import Foundation
 
 class FavouriteArtists {
     private static var favouriteList = [Artist]()
+
     static var size = 0
     static func getArtist(at: Int) -> Artist? {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TrackListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let resusableId = "songCell"
     var selectedAlbumPosition: Int?

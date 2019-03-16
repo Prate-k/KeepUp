@@ -15,6 +15,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     var favCollectionViewCellSize: CGSize!
     var selectedArtistPosition = -1
     var isLoadingAllFavourites = false
+    @IBOutlet weak var showInfoButton: UIButton!
     
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -53,8 +54,8 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? ArtistDetailsViewController {
-            loadArtistDetailsScreen(artistDetailsViewController: viewController)
+        if let viewController = segue.destination as? AlbumsViewController {
+            loadDiscographyScreen(artistDetailsViewController: viewController)
         }
         if let viewController = segue.destination as? ArtistInfoViewController {
             loadArtistInfoScreen(artistInfoViewController: viewController)

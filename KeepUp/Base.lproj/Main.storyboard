@@ -578,6 +578,7 @@
                         <outlet property="resultView" destination="Ccf-X8-FXp" id="OHa-DK-aiv"/>
                         <outlet property="searchButton" destination="MND-d6-lC2" id="FmE-yt-mZ3"/>
                         <outlet property="searchText" destination="e9s-UI-F6J" id="Ixx-Im-USR"/>
+                        <outlet property="showInfoButton" destination="RAs-Rn-NCU" id="Aeh-k4-Jyf"/>
                         <outlet property="topTracksCollectionView" destination="ogZ-vN-dnf" id="DBY-0U-dkc"/>
                         <segue destination="uUb-SG-TVf" kind="show" identifier="HomeToAlbumsSegue" animates="NO" id="bkm-Tq-aZ0"/>
                     </connections>
@@ -1183,7 +1184,7 @@
                                                                                                 <constraint firstAttribute="height" constant="10" id="Zmk-jk-7kw"/>
                                                                                             </constraints>
                                                                                         </view>
-                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KL-hV-ryi">
+                                                                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KL-hV-ryi">
                                                                                             <rect key="frame" x="0.0" y="18" width="57" height="42"/>
                                                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>

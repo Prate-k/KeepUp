@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		700AB7D5223698C400F4CB6C /* DeleteCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */; };
+		70158AB2223BCF4200617FD4 /* KeepUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70158AB1223BCF4200617FD4 /* KeepUpUITests.swift */; };
+		70158ABA223BE24F00617FD4 /* SongLyricsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70158AB9223BE24F00617FD4 /* SongLyricsViewModel.swift */; };
 		70238BA4221C019F0024E6F5 /* ArtistInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */; };
 		702FE1C1223B814100A540EB /* StartUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 702FE1C0223B814100A540EB /* StartUp.storyboard */; };
 		702FE1C3223B862700A540EB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702FE1C2223B862700A540EB /* LoginViewController.swift */; };
@@ -18,9 +20,8 @@
 		7091DA712235150900562150 /* FavouriteArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091DA702235150900562150 /* FavouriteArtistsViewController.swift */; };
 		70B2DEF92237F8230087DF4B /* SongLyricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B2DEF82237F8230087DF4B /* SongLyricsViewController.swift */; };
 		70B5789B221699800050B547 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5789A221699800050B547 /* AlbumTableViewCell.swift */; };
-		70B5789D22169D890050B547 /* ArtistDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */; };
-		70B578A12216DA230050B547 /* FavouriteArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B578A02216DA230050B547 /* FavouriteArtists.swift */; };
-		70B578A92216F54F0050B547 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B578A82216F54F0050B547 /* AlbumDetailsViewController.swift */; };
+		70B5789D22169D890050B547 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B5789C22169D890050B547 /* AlbumsViewController.swift */; };
+		70B578A92216F54F0050B547 /* TrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B578A82216F54F0050B547 /* TrackListViewController.swift */; };
 		70B578AB2216FA980050B547 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B578AA2216FA980050B547 /* SongTableViewCell.swift */; };
 		70B616FE2212E09200D95ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B616FD2212E09200D95ED9 /* AppDelegate.swift */; };
 		70B617002212E09200D95ED9 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B616FF2212E09200D95ED9 /* MainScreenViewController.swift */; };
@@ -29,6 +30,8 @@
 		70B617082212E09400D95ED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B617062212E09400D95ED9 /* LaunchScreen.storyboard */; };
 		70BF2AD2221AF9FC006BE113 /* TopTracksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */; };
 		70C39A98223A745B0065BF9F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C39A97223A745B0065BF9F /* Functions.swift */; };
+		70D6041C223D005F0089BCAE /* AlbumsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D6041B223D005F0089BCAE /* AlbumsViewModel.swift */; };
+		70D6041E223D08100089BCAE /* AlbumsViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D6041D223D08100089BCAE /* AlbumsViewControllerExtensions.swift */; };
 		70E083F0223AFB40007A6580 /* MainScreenViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */; };
 		70E1B1C4221406A700611BAD /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C3221406A700611BAD /* Artist.swift */; };
 		70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */; };
@@ -44,9 +47,18 @@
 		70ECD5D1222EAAAA005045D8 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5D0222EAAAA005045D8 /* UIImageExtensions.swift */; };
 		70ECD5D5222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5D4222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift */; };
 		70ECD5DA222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5D9222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift */; };
+		EF23CC3DFD7D483A4D3A5FAD /* AlbumViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF23C941DC7A73246AB39947 /* AlbumViewModelExtensions.swift */; };
+		EF23CC3E59120F9E0337A84E /* FavouriteArtists.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF23C94EB2ED57B508249FF7 /* FavouriteArtists.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		70158AB4223BCF4200617FD4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 70B616F22212E09200D95ED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70B616F92212E09200D95ED9;
+			remoteInfo = KeepUp;
+		};
 		70D506FD221D88FE00CD855D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 70B616F22212E09200D95ED9 /* Project object */;
@@ -58,6 +70,10 @@
 
 /* Begin PBXFileReference section */
 		700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCheckBoxView.swift; sourceTree = "<group>"; };
+		70158AAF223BCF4200617FD4 /* KeepUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		70158AB1223BCF4200617FD4 /* KeepUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpUITests.swift; sourceTree = "<group>"; };
+		70158AB3223BCF4200617FD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70158AB9223BE24F00617FD4 /* SongLyricsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLyricsViewModel.swift; sourceTree = "<group>"; };
 		70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewController.swift; sourceTree = "<group>"; };
 		702FE1C0223B814100A540EB /* StartUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartUp.storyboard; sourceTree = "<group>"; };
 		702FE1C2223B862700A540EB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -68,9 +84,8 @@
 		7091DA702235150900562150 /* FavouriteArtistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistsViewController.swift; sourceTree = "<group>"; };
 		70B2DEF82237F8230087DF4B /* SongLyricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLyricsViewController.swift; sourceTree = "<group>"; };
 		70B5789A221699800050B547 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
-		70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailsViewController.swift; sourceTree = "<group>"; };
-		70B578A02216DA230050B547 /* FavouriteArtists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtists.swift; sourceTree = "<group>"; };
-		70B578A82216F54F0050B547 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
+		70B5789C22169D890050B547 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		70B578A82216F54F0050B547 /* TrackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewController.swift; sourceTree = "<group>"; };
 		70B578AA2216FA980050B547 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		70B616FA2212E09200D95ED9 /* KeepUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeepUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		70B616FD2212E09200D95ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +99,8 @@
 		70D506F8221D88FE00CD855D /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D506FA221D88FE00CD855D /* KeepUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpTests.swift; sourceTree = "<group>"; };
 		70D506FC221D88FE00CD855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70D6041B223D005F0089BCAE /* AlbumsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewModel.swift; sourceTree = "<group>"; };
+		70D6041D223D08100089BCAE /* AlbumsViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewControllerExtensions.swift; sourceTree = "<group>"; };
 		70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewControllerExtensions.swift; sourceTree = "<group>"; };
 		70E1B1C3221406A700611BAD /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -98,9 +115,18 @@
 		70ECD5D0222EAAAA005045D8 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		70ECD5D4222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewControllerExtensions.swift; sourceTree = "<group>"; };
 		70ECD5D9222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewModelExtensions.swift; sourceTree = "<group>"; };
+		EF23C941DC7A73246AB39947 /* AlbumViewModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumViewModelExtensions.swift; sourceTree = "<group>"; };
+		EF23C94EB2ED57B508249FF7 /* FavouriteArtists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteArtists.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		70158AAC223BCF4200617FD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70B616F72212E09200D95ED9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +175,15 @@
 			children = (
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		70158AB0223BCF4200617FD4 /* KeepUpUITests */ = {
+			isa = PBXGroup;
+			children = (
+				70158AB1223BCF4200617FD4 /* KeepUpUITests.swift */,
+				70158AB3223BCF4200617FD4 /* Info.plist */,
+			);
+			path = KeepUpUITests;
 			sourceTree = "<group>";
 		};
 		702FE1C4223B943A00A540EB /* Login */ = {
@@ -231,7 +266,6 @@
 		702FE1CD223B94F100A540EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				70B617012212E09200D95ED9 /* Main.storyboard */,
 				702FE1D3223B951F00A540EB /* CustomViews */,
 				702FE1D2223B951500A540EB /* ViewControllers */,
 			);
@@ -313,6 +347,7 @@
 		702FE1D7223B957900A540EB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				70D6041B223D005F0089BCAE /* AlbumsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -320,6 +355,8 @@
 		702FE1D8223B957F00A540EB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				70D6041D223D08100089BCAE /* AlbumsViewControllerExtensions.swift */,
+				EF23C941DC7A73246AB39947 /* AlbumViewModelExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,7 +371,7 @@
 		702FE1DA223B959200A540EB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				70B5789C22169D890050B547 /* ArtistDetailsViewController.swift */,
+				70B5789C22169D890050B547 /* AlbumsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -378,7 +415,7 @@
 		702FE1DF223B95E200A540EB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				70B578A82216F54F0050B547 /* AlbumDetailsViewController.swift */,
+				70B578A82216F54F0050B547 /* TrackListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -522,7 +559,6 @@
 		708056A6222FE07C003D98AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				70B578A02216DA230050B547 /* FavouriteArtists.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -565,6 +601,7 @@
 		70B2DEF42237EBD80087DF4B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				70158AB9223BE24F00617FD4 /* SongLyricsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -596,6 +633,7 @@
 			children = (
 				70B616FC2212E09200D95ED9 /* KeepUp */,
 				70D506F9221D88FE00CD855D /* KeepUpTests */,
+				70158AB0223BCF4200617FD4 /* KeepUpUITests */,
 				70B616FB2212E09200D95ED9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -605,6 +643,7 @@
 			children = (
 				70B616FA2212E09200D95ED9 /* KeepUp.app */,
 				70D506F8221D88FE00CD855D /* KeepUpTests.xctest */,
+				70158AAF223BCF4200617FD4 /* KeepUpUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -612,6 +651,7 @@
 		70B616FC2212E09200D95ED9 /* KeepUp */ = {
 			isa = PBXGroup;
 			children = (
+				70B617012212E09200D95ED9 /* Main.storyboard */,
 				702FE1E4223B96C400A540EB /* Top Tracks */,
 				702FE1DC223B95D300A540EB /* Songs */,
 				702FE1D4223B955A00A540EB /* Albums */,
@@ -625,6 +665,7 @@
 				70ECD5B1222E95AD005045D8 /* Resources */,
 				70ECD5B0222E9590005045D8 /* Supporting Files */,
 				70B617092212E09400D95ED9 /* Info.plist */,
+				EF23CADC9F6DF67935137A50 /* LocalDataSource */,
 			);
 			path = KeepUp;
 			sourceTree = "<group>";
@@ -765,9 +806,35 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		EF23CADC9F6DF67935137A50 /* LocalDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				EF23C94EB2ED57B508249FF7 /* FavouriteArtists.swift */,
+			);
+			path = LocalDataSource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		70158AAE223BCF4200617FD4 /* KeepUpUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70158AB8223BCF4200617FD4 /* Build configuration list for PBXNativeTarget "KeepUpUITests" */;
+			buildPhases = (
+				70158AAB223BCF4200617FD4 /* Sources */,
+				70158AAC223BCF4200617FD4 /* Frameworks */,
+				70158AAD223BCF4200617FD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70158AB5223BCF4200617FD4 /* PBXTargetDependency */,
+			);
+			name = KeepUpUITests;
+			productName = KeepUpUITests;
+			productReference = 70158AAF223BCF4200617FD4 /* KeepUpUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		70B616F92212E09200D95ED9 /* KeepUp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70B6170C2212E09400D95ED9 /* Build configuration list for PBXNativeTarget "KeepUp" */;
@@ -814,6 +881,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Prateek Kambadkone";
 				TargetAttributes = {
+					70158AAE223BCF4200617FD4 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 70B616F92212E09200D95ED9;
+					};
 					70B616F92212E09200D95ED9 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -838,11 +909,19 @@
 			targets = (
 				70B616F92212E09200D95ED9 /* KeepUp */,
 				70D506F7221D88FE00CD855D /* KeepUpTests */,
+				70158AAE223BCF4200617FD4 /* KeepUpUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		70158AAD223BCF4200617FD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70B616F82212E09200D95ED9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -884,11 +963,20 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		70158AAB223BCF4200617FD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70158AB2223BCF4200617FD4 /* KeepUpUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70B616F62212E09200D95ED9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				70BF2AD2221AF9FC006BE113 /* TopTracksCollectionViewCell.swift in Sources */,
+				70D6041E223D08100089BCAE /* AlbumsViewControllerExtensions.swift in Sources */,
 				70ECD5C1222E9B3A005045D8 /* Date.swift in Sources */,
 				70E1B1C4221406A700611BAD /* Artist.swift in Sources */,
 				70238BA4221C019F0024E6F5 /* ArtistInfoViewController.swift in Sources */,
@@ -898,21 +986,22 @@
 				7060335122365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift in Sources */,
 				70E083F0223AFB40007A6580 /* MainScreenViewControllerExtensions.swift in Sources */,
 				70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */,
-				70B578A92216F54F0050B547 /* AlbumDetailsViewController.swift in Sources */,
+				70B578A92216F54F0050B547 /* TrackListViewController.swift in Sources */,
 				70ECD5BF222E9B07005045D8 /* Album.swift in Sources */,
 				702FE1C3223B862700A540EB /* LoginViewController.swift in Sources */,
 				70B2DEF92237F8230087DF4B /* SongLyricsViewController.swift in Sources */,
 				70ECD5D1222EAAAA005045D8 /* UIImageExtensions.swift in Sources */,
 				707705B4222FA20800EBBC6A /* ArtistInfoRepositoryExtensions.swift in Sources */,
-				70B5789D22169D890050B547 /* ArtistDetailsViewController.swift in Sources */,
+				70B5789D22169D890050B547 /* AlbumsViewController.swift in Sources */,
 				70ECD5CA222EAA3F005045D8 /* HTMLParser.swift in Sources */,
+				70158ABA223BE24F00617FD4 /* SongLyricsViewModel.swift in Sources */,
 				70ECD5C3222E9FE8005045D8 /* ArtistInfoRepository.swift in Sources */,
 				700AB7D5223698C400F4CB6C /* DeleteCheckBoxView.swift in Sources */,
 				70ECD5D5222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift in Sources */,
 				70ECD5CF222EAA9A005045D8 /* StringExtensions.swift in Sources */,
-				70B578A12216DA230050B547 /* FavouriteArtists.swift in Sources */,
 				7060334F22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift in Sources */,
 				70ECD5DA222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift in Sources */,
+				70D6041C223D005F0089BCAE /* AlbumsViewModel.swift in Sources */,
 				70C39A98223A745B0065BF9F /* Functions.swift in Sources */,
 				70B617002212E09200D95ED9 /* MainScreenViewController.swift in Sources */,
 				70B578AB2216FA980050B547 /* SongTableViewCell.swift in Sources */,
@@ -920,6 +1009,8 @@
 				70B5789B221699800050B547 /* AlbumTableViewCell.swift in Sources */,
 				70ECD5BD222E9A5E005045D8 /* Song.swift in Sources */,
 				70380FA3222C718E00606416 /* Networker.swift in Sources */,
+				EF23CC3E59120F9E0337A84E /* FavouriteArtists.swift in Sources */,
+				EF23CC3DFD7D483A4D3A5FAD /* AlbumViewModelExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -934,6 +1025,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		70158AB5223BCF4200617FD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70B616F92212E09200D95ED9 /* KeepUp */;
+			targetProxy = 70158AB4223BCF4200617FD4 /* PBXContainerItemProxy */;
+		};
 		70D506FE221D88FE00CD855D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 70B616F92212E09200D95ED9 /* KeepUp */;
@@ -961,6 +1057,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		70158AB6223BCF4200617FD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37HF986HK8;
+				INFOPLIST_FILE = KeepUpUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUpUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KeepUp;
+			};
+			name = Debug;
+		};
+		70158AB7223BCF4200617FD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37HF986HK8;
+				INFOPLIST_FILE = KeepUpUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUpUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KeepUp;
+			};
+			name = Release;
+		};
 		70B6170A2212E09400D95ED9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1158,6 +1292,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		70158AB8223BCF4200617FD4 /* Build configuration list for PBXNativeTarget "KeepUpUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70158AB6223BCF4200617FD4 /* Debug */,
+				70158AB7223BCF4200617FD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		70B616F52212E09200D95ED9 /* Build configuration list for PBXProject "KeepUp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
