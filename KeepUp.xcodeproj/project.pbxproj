@@ -346,6 +346,7 @@
 		702FE1D3223B951F00A540EB /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -488,70 +489,6 @@
 				70D74D33223ECEFA009909DA /* SongsViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		702FE1E4223B96C400A540EB /* Top Tracks */ = {
-			isa = PBXGroup;
-			children = (
-				702FE1E9223B96F800A540EB /* Repository */,
-				702FE1E8223B96F100A540EB /* Models */,
-				702FE1E7223B96EA00A540EB /* Extensions */,
-				702FE1E6223B96E500A540EB /* ViewModels */,
-				702FE1E5223B96E100A540EB /* Views */,
-			);
-			path = "Top Tracks";
-			sourceTree = "<group>";
-		};
-		702FE1E5223B96E100A540EB /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				702FE1EB223B974A00A540EB /* ViewControllers */,
-				702FE1EA223B970700A540EB /* CustomViews */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		702FE1E6223B96E500A540EB /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		702FE1E7223B96EA00A540EB /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		702FE1E8223B96F100A540EB /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		702FE1E9223B96F800A540EB /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repository;
-			sourceTree = "<group>";
-		};
-		702FE1EA223B970700A540EB /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */,
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		702FE1EB223B974A00A540EB /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		708056A1222FDFB7003D98AE /* Favourite Artists */ = {
@@ -701,7 +638,6 @@
 				702FE1D4223B955A00A540EB /* Albums */,
 				70B2DEF02237EBAF0087DF4B /* Lyrics */,
 				702FE1DC223B95D300A540EB /* Songs */,
-				702FE1E4223B96C400A540EB /* Top Tracks */,
 				702FE1CC223B94E600A540EB /* Main Screen */,
 				702FE1C4223B943A00A540EB /* Login */,
 				708056A1222FDFB7003D98AE /* Favourite Artists */,

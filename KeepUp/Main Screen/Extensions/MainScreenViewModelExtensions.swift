@@ -13,6 +13,7 @@ protocol MainScreenViewModelFunctionable: class {
     func getArtistIndex(name: String) -> Int
     func removeArtist(at index: Int)
     func addArtist(_ newArtist: Artist)
+    func getTopTracks(artistName: String) -> [Song]
 }
 
 extension MainScreenViewModel: MainScreenViewModelFunctionable {
@@ -41,6 +42,15 @@ extension MainScreenViewModel: MainScreenViewModelFunctionable {
             favArtists = artists
         })
         return favArtists
+    }
+    
+    func getTopTracks(artistName: String) -> [Song] {
+        let mainScreenRepository: MainScreenRepositoryFunctionable = MainScreenRepository()
+        var  topSongs: [Song] = []
+        mainScreenRepository.topTracksList(artistName: artistName, completing: {(songs) in
+            topSongs = songs
+        })
+        return topSongs
     }
     
 }

@@ -14,12 +14,22 @@ protocol MainScreenRepositoryFunctionable {
     func getSelectedArtistIndex(name: String, completing: @escaping (Int) -> Void)
     func removeSelectedArtist(at index: Int)
     func addArtist(_ newArtist: Artist)
+    func topTracksList(artistName: String, completing: @escaping ([Song]) -> Void)
 }
 
 extension MainScreenRepository: MainScreenRepositoryFunctionable {
     func favouriteArtistList(completing: @escaping ([Artist]) -> Void) {
         if !FavouriteArtists.isEmpty() {
             completing(FavouriteArtists.getList())
+        }
+    }
+    
+    func topTracksList(artistName: String, completing: @escaping ([Song]) -> Void) {
+        if !FavouriteArtists.isEmpty() {
+            if let artist = FavouriteArtists.getArtist(by: artistName) {
+                let index = Int.random(in: 0..<artist.artistAlbums.count)
+                completing(artist.artistAlbums[index].albumTracks)
+            }
         }
     }
     

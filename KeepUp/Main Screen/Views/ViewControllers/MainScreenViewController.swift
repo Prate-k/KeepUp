@@ -19,6 +19,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var showInfoButton: UIButton!
     
     var favouriteArtistList: [Artist] = []
+    var topTracksForSearchedArtist: [Song] = []
     lazy var mainScreenViewModel: MainScreenViewModel? = nil
     
     @IBOutlet weak var searchText: UITextField!
@@ -60,8 +61,6 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
                         self.favouriteArtistList = artists
                     }
                     self.favCollectionView.reloadData()
-                    
-                    self.topTracksCollectionView.reloadData()
                 }
             }
         }
@@ -104,6 +103,10 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         dropDownView.isHidden = !dropDownView.isHidden
         if dropDownView.isHidden {
             detailsExpandCollapseImage.image = UIImage(named: "expand")
+            if let songs = mainScreenViewModel?.getTopTracks(artistName: searchedArtistName) {
+                topTracksForSearchedArtist = songs
+                topTracksCollectionView.reloadData()
+            }
         } else {
             detailsExpandCollapseImage.image = UIImage(named: "collapse")
         }
@@ -118,7 +121,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             return favouriteArtistList.count
         }
         if collectionView == self.topTracksCollectionView {
-            return favouriteArtistList.count
+            return topTracksForSearchedArtist.count
         }
         return 0
     }
@@ -142,7 +145,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             if let topTracksCell = cell as? TopTracksCollectionViewCell {
                 // Use the outlet in our custom class to get a reference to the UILabel in the cell
                 topTracksCell.songArtImageView.image = UIImage(named: "dummySong")
-                topTracksCell.songTitleLabel.text = "song \(indexPath.item + 1)"
+                topTracksCell.songTitleLabel.text = topTracksForSearchedArtist[indexPath.item].songTitle
             }
             return cell
         }

@@ -77,13 +77,15 @@ class FavouriteArtists {
         for i in 0..<10 {
             favouriteList.append(Artist(name: "Artist \(i)", genre: "Rock", imageUrl: "dummyArtist"))
             for artist in favouriteList where artist.artistAlbums.isEmpty {
+                var num = 1
                 for i in 0..<3 {
                     var songs: [Song] = []
                     for j in 0..<3 {
-                        songs.append(Song(songTitle: "song \(j+1)",
+                        songs.append(Song(songTitle: "song \(num)",
                             songLyrics: "",
                             songLength: "3:4\(j+1)",
                             isHidden: false))
+                        num += 1
                     }
                     artist.artistAlbums.append(Album(albumName: "album \(i+1)",
                         albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
