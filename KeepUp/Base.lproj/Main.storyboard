@@ -1234,7 +1234,7 @@
                                                                                             <state key="normal" image="ShowLyrics"/>
                                                                                             <connections>
                                                                                                 <action selector="showLyricsAction:" destination="ZFq-AX-Kir" eventType="touchUpInside" id="VcH-lT-p9P"/>
-                                                                                                <segue destination="PrM-wV-iiO" kind="show" identifier="TrackToLyricsSegue" id="6c2-Pf-t0u"/>
+                                                                                                <segue destination="PrM-wV-iiO" kind="show" identifier="TracksToLyricsSegue" id="6c2-Pf-t0u"/>
                                                                                             </connections>
                                                                                         </button>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyrics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJe-79-UeD">
@@ -1343,13 +1343,13 @@
         <!--Lyrics-->
         <scene sceneID="ZRJ-J5-c4P">
             <objects>
-                <viewController title="Lyrics" id="PrM-wV-iiO" customClass="SongLyricsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Lyrics" id="PrM-wV-iiO" customClass="LyricsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n3u-fa-bLq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvk-q9-Yam">
-                                <rect key="frame" x="20" y="86" width="374" height="565"/>
+                                <rect key="frame" x="20" y="154" width="374" height="497"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1390,20 +1390,53 @@
                                     <constraint firstAttribute="bottom" secondItem="qMg-Ym-SFs" secondAttribute="bottom" constant="6" id="tDB-kn-Y8e"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrd-V6-O48">
+                                <rect key="frame" x="20" y="76" width="374" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="6Ej-YZ-jdr"/>
+                                    <constraint firstAttribute="width" constant="374" id="zZd-MJ-zSK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISK-mT-g0j">
+                                <rect key="frame" x="20" y="119" width="374" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="hlZ-5d-EHr"/>
+                                    <constraint firstAttribute="width" constant="374" id="vgS-pZ-EVw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.75669258324762101" green="0.96933811467604458" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Rrd-V6-O48" firstAttribute="top" secondItem="J4z-Ee-hat" secondAttribute="top" constant="12" id="0cc-Fe-WIy"/>
                             <constraint firstItem="XLA-4b-tX6" firstAttribute="top" secondItem="yvk-q9-Yam" secondAttribute="bottom" constant="42" id="54p-ta-soZ"/>
                             <constraint firstItem="J4z-Ee-hat" firstAttribute="bottom" secondItem="XLA-4b-tX6" secondAttribute="bottom" constant="2" id="9Gp-gk-hO6"/>
                             <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="yvk-q9-Yam" secondAttribute="trailing" constant="20" id="Noc-jd-Kh4"/>
+                            <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="Rrd-V6-O48" secondAttribute="trailing" constant="20" id="Nz4-dc-4ir"/>
+                            <constraint firstItem="Rrd-V6-O48" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="Pno-p2-NAp"/>
+                            <constraint firstItem="ISK-mT-g0j" firstAttribute="top" secondItem="Rrd-V6-O48" secondAttribute="bottom" constant="8" id="RNa-Vg-8sf"/>
+                            <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="ISK-mT-g0j" secondAttribute="trailing" constant="20" id="VPU-JS-jXs"/>
                             <constraint firstItem="XLA-4b-tX6" firstAttribute="top" secondItem="yvk-q9-Yam" secondAttribute="bottom" constant="42" id="VRs-Gq-G87"/>
-                            <constraint firstItem="yvk-q9-Yam" firstAttribute="top" secondItem="J4z-Ee-hat" secondAttribute="top" constant="22" id="Y4g-Xv-7mO"/>
+                            <constraint firstItem="yvk-q9-Yam" firstAttribute="top" secondItem="J4z-Ee-hat" secondAttribute="top" constant="90" id="Y4g-Xv-7mO"/>
+                            <constraint firstItem="ISK-mT-g0j" firstAttribute="top" secondItem="Rrd-V6-O48" secondAttribute="bottom" constant="8" id="dka-Bc-hhh"/>
                             <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="XLA-4b-tX6" secondAttribute="trailing" constant="20" id="eDr-ex-5se"/>
                             <constraint firstItem="XLA-4b-tX6" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="foB-j8-dUa"/>
+                            <constraint firstItem="yvk-q9-Yam" firstAttribute="top" secondItem="ISK-mT-g0j" secondAttribute="bottom" constant="8" id="jMG-eE-1o6"/>
                             <constraint firstItem="yvk-q9-Yam" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="sed-MN-Fi0"/>
+                            <constraint firstItem="ISK-mT-g0j" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="xMo-3g-hop"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J4z-Ee-hat"/>
                     </view>
+                    <connections>
+                        <outlet property="artistNameLabel" destination="ISK-mT-g0j" id="DJU-ZN-ugr"/>
+                        <outlet property="lyricsTextView" destination="yvk-q9-Yam" id="Qh2-GO-EQo"/>
+                        <outlet property="songTitleLabel" destination="Rrd-V6-O48" id="jmN-np-ooJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xuc-7Y-qyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

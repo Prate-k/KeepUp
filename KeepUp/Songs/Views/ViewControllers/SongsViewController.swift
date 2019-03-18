@@ -13,9 +13,11 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     let resusableId = "songCell"
     var selectedAlbumPosition: Int?
     var selectedArtistPosition: Int?
+    var selectedArtist: Artist?
     var selectedAlbum: Album!
     var songsList: [Song] = []
     var lastSelectedTrack: IndexPath = IndexPath.init(row: -1, section: -1)
+    var selectedSongTitle = ""
     
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
@@ -24,12 +26,19 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     lazy var songsViewModel: SongsViewModel? = nil
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? LyricsViewController {
+            loadLyricsScreen(lyricsViewController: viewController)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let indexAlbum = selectedAlbumPosition, let indexArtist = selectedArtistPosition {
             songsViewModel = SongsViewModel(view: self)
             DispatchQueue.global().async { [weak self] in
                 if let self = self {
+                    self.songsViewModel?.getArtist(at: indexArtist)
                     self.songsViewModel?.getAlbum(of: indexArtist, in: indexAlbum)
                 }
             }
@@ -74,6 +83,9 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
             newCell.displayOptions(newCell.displayOptionsButton)
             newCell.isSelected = true
             lastSelectedTrack = indexPath
+            if let songTitle = newCell.songTitle.text {
+                selectedSongTitle = songTitle
+            }
         } else {
             if lastSelectedTrack != indexPath {
                 guard let oldCell = tableView.cellForRow(at: lastSelectedTrack) as? SongTableViewCell else {
@@ -86,11 +98,17 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
                 }
                 newCell.displayOptions(newCell.displayOptionsButton)
                 lastSelectedTrack = indexPath
+                if let songTitle = newCell.songTitle.text {
+                    selectedSongTitle = songTitle
+                }
             } else {
                 guard let oldCell = tableView.cellForRow(at: lastSelectedTrack) as? SongTableViewCell else {
                     fatalError("The dequeued cell is not an instance of SongTableViewCell.")
                 }
                 oldCell.displayOptions(oldCell.displayOptionsButton)
+                if let songTitle = oldCell.songTitle.text {
+                    selectedSongTitle = songTitle
+                }
             }
         }
     }

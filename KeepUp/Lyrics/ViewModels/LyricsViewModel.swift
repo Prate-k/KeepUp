@@ -8,6 +8,11 @@
 
 import Foundation
 
-class SongLyricsViewModel {
+class LyricsViewModel {
     
+    weak var lyricsViewController: SongLyricsFetching?
+    
+    init(view: SongLyricsFetching) {
+        self.lyricsViewController = view
+    }
 }
