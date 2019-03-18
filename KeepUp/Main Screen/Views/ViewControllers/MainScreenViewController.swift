@@ -15,7 +15,11 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     var favCollectionViewCellSize: CGSize!
     var selectedArtistPosition = -1
     var isLoadingAllFavourites = false
+    var searchedArtistName = ""
     @IBOutlet weak var showInfoButton: UIButton!
+    
+    var favouriteArtistList: [Artist] = []
+    lazy var mainScreenViewModel: MainScreenViewModel? = nil
     
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -35,8 +39,9 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
-        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.sectionHeadersPinToVisibleBounds = true
+        dropDownView.isHidden = true
+//        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+//        layout?.sectionHeadersPinToVisibleBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +53,17 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
                 self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
             }
         } else {
-            favCollectionView.reloadData()
-            topTracksCollectionView.reloadData()
+            DispatchQueue.main.async { [weak self] in
+                if let self = self {
+                    self.mainScreenViewModel = MainScreenViewModel(view: self)
+                    if let artists = self.mainScreenViewModel?.getFavouriteList() {
+                        self.favouriteArtistList = artists
+                    }
+                    self.favCollectionView.reloadData()
+                    
+                    self.topTracksCollectionView.reloadData()
+                }
+            }
         }
     }
     
@@ -63,12 +77,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func addRemoveFavourites() {
-        let index = FavouriteArtists.isArtistInFavouriteList(name: resultArtistLabel.text!)
-        if index == -1 {
-            addToFavouritesList()
-        } else {
-            removeFromFavouritesList(index: index)
-        }
+        toggleArtistSearched(searchedArtistName: searchedArtistName)
     }
     
     @IBAction func clearSearch() {
@@ -78,6 +87,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         favouriteUnfavouriteButton.imageView?.image = UIImage(named: "unfav")
         resultView.isHidden = true
         searchText.text = ""
+        searchedArtistName = ""
     }
 
     @IBAction func searchArtist() {
@@ -91,14 +101,11 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func detailsViewPressed() {
-        let image = detailsExpandCollapseImage.image
-        
-        if (image?.isEqual(UIImage(named: "expand")))! {
-            detailsExpandCollapseImage.image = UIImage(named: "collapse")
-            dropDownView.isHidden = false
-        } else {
+        dropDownView.isHidden = !dropDownView.isHidden
+        if dropDownView.isHidden {
             detailsExpandCollapseImage.image = UIImage(named: "expand")
-            dropDownView.isHidden = true
+        } else {
+            detailsExpandCollapseImage.image = UIImage(named: "collapse")
         }
     }
     
@@ -108,10 +115,10 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {
-            return FavouriteArtists.getSize()
+            return favouriteArtistList.count
         }
         if collectionView == self.topTracksCollectionView {
-            return FavouriteArtists.getSize()
+            return favouriteArtistList.count
         }
         return 0
     }
@@ -125,7 +132,8 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         if collectionView == self.favCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            if let artist = FavouriteArtists.getArtist(at: indexPath.item) {
+            if !favouriteArtistList.isEmpty {
+                let artist = favouriteArtistList[indexPath.item]
                 return setFavouriteArtistCellProperties(cell: cell, artist: artist)
             }
             return cell

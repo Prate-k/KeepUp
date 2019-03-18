@@ -9,6 +9,55 @@
 import Foundation
 import UIKit
 
+protocol MainScreenPopulating: class {
+    func toggleArtistSearched(searchedArtistName: String)
+    func addToFavouritesList(searchedArtistName: String)
+    func removeFromFavouritesList(searchedArtistName: String)
+}
+
+extension MainScreenViewController: MainScreenPopulating {
+    func toggleArtistSearched(searchedArtistName: String) {
+        let index = mainScreenViewModel?.getArtistIndex(name: searchedArtistName)
+        DispatchQueue.main.async {
+            if index == -1 {
+                self.favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
+                self.addToFavouritesList(searchedArtistName: searchedArtistName)
+            } else {
+                self.favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+                self.removeFromFavouritesList(searchedArtistName: searchedArtistName)
+            }
+            if let artists = self.mainScreenViewModel?.getFavouriteList() {
+                self.favouriteArtistList = artists
+                self.favCollectionView.reloadData()
+            }
+        }
+    }
+    
+    func addToFavouritesList(searchedArtistName: String) {
+        let index = mainScreenViewModel?.getArtistIndex(name: searchedArtistName)
+        if index != -1 {
+            return
+        }
+        let newArtist = Artist(name: searchedArtistName,
+                               genre: "Random",
+                               imageUrl: "dummyArtist")
+        if let x = newArtist {
+            mainScreenViewModel?.addArtist(x)
+        }
+    }
+    
+    func removeFromFavouritesList(searchedArtistName: String) {
+        let index = mainScreenViewModel?.getArtistIndex(name: searchedArtistName)
+        if  index == -1 {
+            return
+        } else {
+            if let index = index {
+                mainScreenViewModel?.removeArtist(at: index)
+            }
+        }
+    }
+}
+
 extension MainScreenViewController {
     func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
         if isLoadingAllFavourites {
@@ -28,33 +77,13 @@ extension MainScreenViewController {
         }
     }
     
-    func addToFavouritesList() {
-        if favouriteUnfavouriteButton.imageView?.image == UIImage(named: "unfav") {
-            favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
-        }
-        let newArtist = Artist(name: resultArtistLabel.text, genre: resultGenreLabel.text, imageUrl: "dummyArtist")
-        if let newArtist = newArtist {
-            FavouriteArtists.addArtist(artist: newArtist)
-            favCollectionView.reloadData()
-            topTracksCollectionView.reloadData()
-        }
-    }
-    
-    func removeFromFavouritesList(index: Int) {
-        if favouriteUnfavouriteButton.imageView?.image == UIImage(named: "fav") {
-            favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-        }
-        FavouriteArtists.removeArtist(at: index)
-        favCollectionView.reloadData()
-        topTracksCollectionView.reloadData()
-    }
-    
     func showResultView(searchedText: String) {
+        searchedArtistName = searchedText
         resultView.isHidden = false
         resultArtistLabel.text = searchedText
         resultGenreLabel.text = "Random"
         resultImageView.image = UIImage(named: "dummyArtist")
-        if FavouriteArtists.isArtistInFavouriteList(name: searchedText) != -1 {
+        if mainScreenViewModel?.getArtistIndex(name: searchedText) != -1 {
             favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
         } else {
             favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)

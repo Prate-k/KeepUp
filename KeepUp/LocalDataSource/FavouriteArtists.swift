@@ -11,6 +11,11 @@ import Foundation
 class FavouriteArtists {
     private static var favouriteList = [Artist]()
 
+    static func getList() -> [Artist] {
+        return favouriteList
+    }
+    
+    
     static var size = 0
     static func getArtist(at: Int) -> Artist? {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {
@@ -58,6 +63,14 @@ class FavouriteArtists {
             }
         }
         return index
+    }
+    
+    static func isEmpty() -> Bool {
+        if getSize() == 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     static func insertTestArtists () {
