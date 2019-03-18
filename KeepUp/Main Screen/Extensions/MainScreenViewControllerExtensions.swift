@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 
 extension MainScreenViewController {
-    func loadDiscographyScreen(artistDetailsViewController: AlbumsViewController) {
+    func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
         if isLoadingAllFavourites {
-            artistDetailsViewController.selectedArtistPosition = selectedArtistPosition
+            albumsViewController.selectedArtistPosition = selectedArtistPosition
         } else {
             if let index = favCollectionView.indexPathsForSelectedItems?[0].item {
-                artistDetailsViewController.selectedArtistPosition = index
+                albumsViewController.selectedArtistPosition = index
             }
         }
         isLoadingAllFavourites = false

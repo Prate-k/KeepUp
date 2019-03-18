@@ -580,7 +580,7 @@
                         <outlet property="searchText" destination="e9s-UI-F6J" id="Ixx-Im-USR"/>
                         <outlet property="showInfoButton" destination="RAs-Rn-NCU" id="Aeh-k4-Jyf"/>
                         <outlet property="topTracksCollectionView" destination="ogZ-vN-dnf" id="DBY-0U-dkc"/>
-                        <segue destination="uUb-SG-TVf" kind="show" identifier="HomeToAlbumsSegue" animates="NO" id="bkm-Tq-aZ0"/>
+                        <segue destination="uUb-SG-TVf" kind="show" identifier="HomeToDiscographySegue" animates="NO" id="bkm-Tq-aZ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -601,7 +601,7 @@
         <!--Albums-->
         <scene sceneID="glA-xJ-nvg">
             <objects>
-                <viewController title="Albums" id="uUb-SG-TVf" customClass="ArtistDetailsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Albums" id="uUb-SG-TVf" customClass="DiscographyViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qs7-af-VUo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -789,8 +789,8 @@
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
-                                            <outlet property="dataSource" destination="uUb-SG-TVf" id="wAb-Yv-xes"/>
-                                            <outlet property="delegate" destination="uUb-SG-TVf" id="Afo-60-Phj"/>
+                                            <outlet property="dataSource" destination="uUb-SG-TVf" id="RAv-fm-feE"/>
+                                            <outlet property="delegate" destination="uUb-SG-TVf" id="5LV-bV-OkG"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
@@ -820,7 +820,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wqT-im-2hK"/>
                     <connections>
-                        <outlet property="albumsListTable" destination="uQC-y1-tZD" id="g6n-av-NZg"/>
+                        <outlet property="albumsListTable" destination="uQC-y1-tZD" id="1KW-0Q-bFZ"/>
                         <outlet property="artistImageView" destination="rBI-S0-OiQ" id="9B1-eR-CKB"/>
                         <outlet property="artistName" destination="9iU-Ya-pVe" id="1GZ-Ax-W0E"/>
                         <outlet property="favouriteUnfavouriteButton" destination="nt5-d9-k3Z" id="vhB-xg-DyF"/>
@@ -973,7 +973,7 @@
         <!--Tracks-->
         <scene sceneID="gzG-Wb-Gfd">
             <objects>
-                <viewController title="Tracks" id="kxy-QL-uXn" customClass="AlbumDetailsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Tracks" id="kxy-QL-uXn" customClass="SongsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCX-fb-PhE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1333,7 +1333,7 @@
                         <outlet property="albumImageView" destination="t1Y-pb-EsC" id="I5Y-eB-Zgw"/>
                         <outlet property="albumName" destination="GK7-nh-J1C" id="rQF-bi-WcZ"/>
                         <outlet property="releaseDate" destination="pdV-0z-xOX" id="H5x-Xl-8UT"/>
-                        <outlet property="tableView" destination="7BG-N9-DKv" id="1tP-TY-psP"/>
+                        <outlet property="songsListTableView" destination="7BG-N9-DKv" id="yQg-gm-Aim"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qD-Il-sA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1445,6 +1445,6 @@
         <image name="shiftRight" width="22.5" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8B3-Mb-aTn"/>
+        <segue reference="wL9-zg-Mx2"/>
     </inferredMetricsTieBreakers>
 </document>

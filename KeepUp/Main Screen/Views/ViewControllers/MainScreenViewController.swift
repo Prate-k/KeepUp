@@ -45,7 +45,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             if selectedArtistPosition != -1 {
                 clearSearch()
                 print("Selected artist is: \(selectedArtistPosition)")
-                self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
+                self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
             }
         } else {
             favCollectionView.reloadData()
@@ -54,8 +54,8 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? AlbumsViewController {
-            loadDiscographyScreen(artistDetailsViewController: viewController)
+        if let viewController = segue.destination as? DiscographyViewController {
+            loadAlbumsScreen(albumsViewController: viewController)
         }
         if let viewController = segue.destination as? ArtistInfoViewController {
             loadArtistInfoScreen(artistInfoViewController: viewController)
@@ -143,7 +143,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         if collectionView == self.favCollectionView {
-            self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
+            self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
         }
     }
     
