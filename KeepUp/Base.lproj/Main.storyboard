@@ -151,6 +151,7 @@
                     <connections>
                         <outlet property="editNavButton" destination="gJo-iw-S0Y" id="k05-7d-lyz"/>
                         <outlet property="favCollectionView" destination="DMZ-9l-mEY" id="QeG-u2-Qlo"/>
+                        <outlet property="navBar" destination="kpy-Pp-eVJ" id="pFO-rJ-04C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfb-KN-9jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -578,8 +579,9 @@
                         <outlet property="resultView" destination="Ccf-X8-FXp" id="OHa-DK-aiv"/>
                         <outlet property="searchButton" destination="MND-d6-lC2" id="FmE-yt-mZ3"/>
                         <outlet property="searchText" destination="e9s-UI-F6J" id="Ixx-Im-USR"/>
+                        <outlet property="showInfoButton" destination="RAs-Rn-NCU" id="Aeh-k4-Jyf"/>
                         <outlet property="topTracksCollectionView" destination="ogZ-vN-dnf" id="DBY-0U-dkc"/>
-                        <segue destination="uUb-SG-TVf" kind="show" identifier="HomeToAlbumsSegue" animates="NO" id="bkm-Tq-aZ0"/>
+                        <segue destination="uUb-SG-TVf" kind="show" identifier="HomeToDiscographySegue" animates="NO" id="bkm-Tq-aZ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -600,7 +602,7 @@
         <!--Albums-->
         <scene sceneID="glA-xJ-nvg">
             <objects>
-                <viewController title="Albums" id="uUb-SG-TVf" customClass="ArtistDetailsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Albums" id="uUb-SG-TVf" customClass="DiscographyViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qs7-af-VUo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -788,8 +790,8 @@
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
-                                            <outlet property="dataSource" destination="uUb-SG-TVf" id="wAb-Yv-xes"/>
-                                            <outlet property="delegate" destination="uUb-SG-TVf" id="Afo-60-Phj"/>
+                                            <outlet property="dataSource" destination="uUb-SG-TVf" id="RAv-fm-feE"/>
+                                            <outlet property="delegate" destination="uUb-SG-TVf" id="5LV-bV-OkG"/>
                                         </connections>
                                     </tableView>
                                 </subviews>
@@ -819,7 +821,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wqT-im-2hK"/>
                     <connections>
-                        <outlet property="albumsListTable" destination="uQC-y1-tZD" id="g6n-av-NZg"/>
+                        <outlet property="albumsListTable" destination="uQC-y1-tZD" id="1KW-0Q-bFZ"/>
                         <outlet property="artistImageView" destination="rBI-S0-OiQ" id="9B1-eR-CKB"/>
                         <outlet property="artistName" destination="9iU-Ya-pVe" id="1GZ-Ax-W0E"/>
                         <outlet property="favouriteUnfavouriteButton" destination="nt5-d9-k3Z" id="vhB-xg-DyF"/>
@@ -972,7 +974,7 @@
         <!--Tracks-->
         <scene sceneID="gzG-Wb-Gfd">
             <objects>
-                <viewController title="Tracks" id="kxy-QL-uXn" customClass="AlbumDetailsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Tracks" id="kxy-QL-uXn" customClass="SongsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pCX-fb-PhE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1183,7 +1185,7 @@
                                                                                                 <constraint firstAttribute="height" constant="10" id="Zmk-jk-7kw"/>
                                                                                             </constraints>
                                                                                         </view>
-                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KL-hV-ryi">
+                                                                                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4KL-hV-ryi">
                                                                                             <rect key="frame" x="0.0" y="18" width="57" height="42"/>
                                                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>
@@ -1233,7 +1235,7 @@
                                                                                             <state key="normal" image="ShowLyrics"/>
                                                                                             <connections>
                                                                                                 <action selector="showLyricsAction:" destination="ZFq-AX-Kir" eventType="touchUpInside" id="VcH-lT-p9P"/>
-                                                                                                <segue destination="PrM-wV-iiO" kind="show" identifier="TrackToLyricsSegue" id="6c2-Pf-t0u"/>
+                                                                                                <segue destination="PrM-wV-iiO" kind="show" identifier="TracksToLyricsSegue" id="6c2-Pf-t0u"/>
                                                                                             </connections>
                                                                                         </button>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lyrics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJe-79-UeD">
@@ -1332,7 +1334,7 @@
                         <outlet property="albumImageView" destination="t1Y-pb-EsC" id="I5Y-eB-Zgw"/>
                         <outlet property="albumName" destination="GK7-nh-J1C" id="rQF-bi-WcZ"/>
                         <outlet property="releaseDate" destination="pdV-0z-xOX" id="H5x-Xl-8UT"/>
-                        <outlet property="tableView" destination="7BG-N9-DKv" id="1tP-TY-psP"/>
+                        <outlet property="songsListTableView" destination="7BG-N9-DKv" id="yQg-gm-Aim"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qD-Il-sA7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1342,13 +1344,13 @@
         <!--Lyrics-->
         <scene sceneID="ZRJ-J5-c4P">
             <objects>
-                <viewController title="Lyrics" id="PrM-wV-iiO" customClass="SongLyricsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Lyrics" id="PrM-wV-iiO" customClass="LyricsViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n3u-fa-bLq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvk-q9-Yam">
-                                <rect key="frame" x="20" y="86" width="374" height="565"/>
+                                <rect key="frame" x="20" y="154" width="374" height="497"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1389,20 +1391,53 @@
                                     <constraint firstAttribute="bottom" secondItem="qMg-Ym-SFs" secondAttribute="bottom" constant="6" id="tDB-kn-Y8e"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrd-V6-O48">
+                                <rect key="frame" x="20" y="76" width="374" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="6Ej-YZ-jdr"/>
+                                    <constraint firstAttribute="width" constant="374" id="zZd-MJ-zSK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISK-mT-g0j">
+                                <rect key="frame" x="20" y="119" width="374" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="hlZ-5d-EHr"/>
+                                    <constraint firstAttribute="width" constant="374" id="vgS-pZ-EVw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.75669258324762101" green="0.96933811467604458" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Rrd-V6-O48" firstAttribute="top" secondItem="J4z-Ee-hat" secondAttribute="top" constant="12" id="0cc-Fe-WIy"/>
                             <constraint firstItem="XLA-4b-tX6" firstAttribute="top" secondItem="yvk-q9-Yam" secondAttribute="bottom" constant="42" id="54p-ta-soZ"/>
                             <constraint firstItem="J4z-Ee-hat" firstAttribute="bottom" secondItem="XLA-4b-tX6" secondAttribute="bottom" constant="2" id="9Gp-gk-hO6"/>
                             <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="yvk-q9-Yam" secondAttribute="trailing" constant="20" id="Noc-jd-Kh4"/>
+                            <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="Rrd-V6-O48" secondAttribute="trailing" constant="20" id="Nz4-dc-4ir"/>
+                            <constraint firstItem="Rrd-V6-O48" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="Pno-p2-NAp"/>
+                            <constraint firstItem="ISK-mT-g0j" firstAttribute="top" secondItem="Rrd-V6-O48" secondAttribute="bottom" constant="8" id="RNa-Vg-8sf"/>
+                            <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="ISK-mT-g0j" secondAttribute="trailing" constant="20" id="VPU-JS-jXs"/>
                             <constraint firstItem="XLA-4b-tX6" firstAttribute="top" secondItem="yvk-q9-Yam" secondAttribute="bottom" constant="42" id="VRs-Gq-G87"/>
-                            <constraint firstItem="yvk-q9-Yam" firstAttribute="top" secondItem="J4z-Ee-hat" secondAttribute="top" constant="22" id="Y4g-Xv-7mO"/>
+                            <constraint firstItem="yvk-q9-Yam" firstAttribute="top" secondItem="J4z-Ee-hat" secondAttribute="top" constant="90" id="Y4g-Xv-7mO"/>
+                            <constraint firstItem="ISK-mT-g0j" firstAttribute="top" secondItem="Rrd-V6-O48" secondAttribute="bottom" constant="8" id="dka-Bc-hhh"/>
                             <constraint firstItem="J4z-Ee-hat" firstAttribute="trailing" secondItem="XLA-4b-tX6" secondAttribute="trailing" constant="20" id="eDr-ex-5se"/>
                             <constraint firstItem="XLA-4b-tX6" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="foB-j8-dUa"/>
+                            <constraint firstItem="yvk-q9-Yam" firstAttribute="top" secondItem="ISK-mT-g0j" secondAttribute="bottom" constant="8" id="jMG-eE-1o6"/>
                             <constraint firstItem="yvk-q9-Yam" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="sed-MN-Fi0"/>
+                            <constraint firstItem="ISK-mT-g0j" firstAttribute="leading" secondItem="J4z-Ee-hat" secondAttribute="leading" constant="20" id="xMo-3g-hop"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J4z-Ee-hat"/>
                     </view>
+                    <connections>
+                        <outlet property="artistNameLabel" destination="ISK-mT-g0j" id="DJU-ZN-ugr"/>
+                        <outlet property="lyricsTextView" destination="yvk-q9-Yam" id="Qh2-GO-EQo"/>
+                        <outlet property="songTitleLabel" destination="Rrd-V6-O48" id="jmN-np-ooJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xuc-7Y-qyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

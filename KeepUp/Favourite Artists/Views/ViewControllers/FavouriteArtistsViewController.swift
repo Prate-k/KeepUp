@@ -9,28 +9,39 @@
 import UIKit
 
 class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+   
     @IBOutlet weak var editNavButton: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     let reusableId1 = "FavArtistCell"
     var inEditMode = false
     var numberMarkedForDelete = 0
+    
+    var favouriteArtistList: [Artist] = []
+    lazy var favouriteArtistsViewModel: FavouriteArtistsViewModel? = nil
     
     @IBOutlet weak var favCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        favCollectionView.reloadData()
-        
+        navBar.setHidesBackButton(false, animated: true)
+//        favCollectionView.reloadData()
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.favouriteArtistsViewModel = FavouriteArtistsViewModel(view: self)
+        if let artists = self.favouriteArtistsViewModel?.getFavouriteList() {
+            self.favouriteArtistList = artists
+        }
         favCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {
-            return FavouriteArtists.getSize()
+            return favouriteArtistList.count
         }
         return 0
     }
@@ -43,7 +54,7 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
         let favCell = cell as? FavouriteArtistCollectionViewCell
-        let artist = FavouriteArtists.getArtist(at: indexPath.item)!
+        let artist = favouriteArtistList[indexPath.item]
         favCell?.artistName.text = artist.artistName
         favCell?.genre.text = artist.artistGenre
         favCell?.imageView.image = UIImage(named: "dummyArtist")
@@ -87,51 +98,6 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         } else { //if edit clicked (entering edit mode)
             enterEditMode()
         }
-        favCollectionView.reloadData()
-    }
-    
-    private func removeMarkedArtists (_ positions: [Int]) {
-        for i in 0..<positions.count {
-            FavouriteArtists.removeArtist(at: positions[i])
-        }
-        favCollectionView.reloadData()
-    }
-    
-    private func confirmDelete(_ positions: [Int]) {
-        let deleteAlert = UIAlertController(title: "Delete?",
-                                    message: "All selected artists will be removed",
-                                    preferredStyle: UIAlertController.Style.alert)
-        
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in return}))
-        
-        deleteAlert.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (_: UIAlertAction!) in
-            self.removeMarkedArtists(positions)
-        }))
-        
-        present(deleteAlert, animated: true, completion: nil)
-    }
-    
-    private func getMarkedForDelete() -> [Int] {
-        var positions = [Int]()
-        for i in 0..<favCollectionView.numberOfItems(inSection: 0) {
-            if let cell = favCollectionView.cellForItem(at: IndexPath.init(item: i, section: 0))
-                        as? FavouriteArtistCollectionViewCell {
-                if cell.deleteCheckBoxView.isChecked {
-                    positions.append(i)
-                }
-            }
-        }
-        print(positions)
-        return positions
-    }
-    private func enterEditMode() {
-        inEditMode = true //change to edit mode
-        editNavButton.title = "Done"
-        favCollectionView.reloadData()
-    }
-    private func exitEditMode() {
-        inEditMode = false //change to view mode
-        editNavButton.title = "Edit"
         favCollectionView.reloadData()
     }
 }

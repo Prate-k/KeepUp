@@ -18,8 +18,8 @@ coverage:
     -KeepUp/*ViewController.*
     -KeepUp/AppDelegate.swift
     -KeepUp/*.storyboard
-    
-    
+
+
 parsers:
   gcov:
     branch_detection:
@@ -32,4 +32,3 @@ comment:
   layout: "header, diff"
   behavior: default
   require_changes: no
-

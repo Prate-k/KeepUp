@@ -15,6 +15,12 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     var favCollectionViewCellSize: CGSize!
     var selectedArtistPosition = -1
     var isLoadingAllFavourites = false
+    var searchedArtistName = ""
+    @IBOutlet weak var showInfoButton: UIButton!
+    
+    var favouriteArtistList: [Artist] = []
+    var topTracksForSearchedArtist: [Song] = []
+    lazy var mainScreenViewModel: MainScreenViewModel? = nil
     
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -34,8 +40,9 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resultView.isHidden = true
-        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.sectionHeadersPinToVisibleBounds = true
+        dropDownView.isHidden = true
+//        let layout = favCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
+//        layout?.sectionHeadersPinToVisibleBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,17 +51,20 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             if selectedArtistPosition != -1 {
                 clearSearch()
                 print("Selected artist is: \(selectedArtistPosition)")
-                self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
+                self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
             }
         } else {
-            favCollectionView.reloadData()
-            topTracksCollectionView.reloadData()
+            self.mainScreenViewModel = MainScreenViewModel(view: self)
+            if let artists = self.mainScreenViewModel?.getFavouriteList() {
+                self.favouriteArtistList = artists
+            }
+            self.favCollectionView.reloadData()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? ArtistDetailsViewController {
-            loadArtistDetailsScreen(artistDetailsViewController: viewController)
+        if let viewController = segue.destination as? DiscographyViewController {
+            loadAlbumsScreen(albumsViewController: viewController)
         }
         if let viewController = segue.destination as? ArtistInfoViewController {
             loadArtistInfoScreen(artistInfoViewController: viewController)
@@ -62,12 +72,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func addRemoveFavourites() {
-        let index = FavouriteArtists.isArtistInFavouriteList(name: resultArtistLabel.text!)
-        if index == -1 {
-            addToFavouritesList()
-        } else {
-            removeFromFavouritesList(index: index)
-        }
+        toggleArtistSearched(searchedArtistName: searchedArtistName)
     }
     
     @IBAction func clearSearch() {
@@ -77,6 +82,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         favouriteUnfavouriteButton.imageView?.image = UIImage(named: "unfav")
         resultView.isHidden = true
         searchText.text = ""
+        searchedArtistName = ""
     }
 
     @IBAction func searchArtist() {
@@ -90,14 +96,15 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     @IBAction func detailsViewPressed() {
-        let image = detailsExpandCollapseImage.image
-        
-        if (image?.isEqual(UIImage(named: "expand")))! {
-            detailsExpandCollapseImage.image = UIImage(named: "collapse")
-            dropDownView.isHidden = false
-        } else {
+        dropDownView.isHidden = !dropDownView.isHidden
+        if dropDownView.isHidden {
             detailsExpandCollapseImage.image = UIImage(named: "expand")
-            dropDownView.isHidden = true
+            if let songs = mainScreenViewModel?.getTopTracks(artistName: searchedArtistName) {
+                topTracksForSearchedArtist = songs
+                topTracksCollectionView.reloadData()
+            }
+        } else {
+            detailsExpandCollapseImage.image = UIImage(named: "collapse")
         }
     }
     
@@ -107,10 +114,10 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     // tell the collection view how many cells to make
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {
-            return FavouriteArtists.getSize()
+            return favouriteArtistList.count
         }
         if collectionView == self.topTracksCollectionView {
-            return FavouriteArtists.getSize()
+            return topTracksForSearchedArtist.count
         }
         return 0
     }
@@ -124,7 +131,8 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
         if collectionView == self.favCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            if let artist = FavouriteArtists.getArtist(at: indexPath.item) {
+            if !favouriteArtistList.isEmpty {
+                let artist = favouriteArtistList[indexPath.item]
                 return setFavouriteArtistCellProperties(cell: cell, artist: artist)
             }
             return cell
@@ -133,7 +141,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             if let topTracksCell = cell as? TopTracksCollectionViewCell {
                 // Use the outlet in our custom class to get a reference to the UILabel in the cell
                 topTracksCell.songArtImageView.image = UIImage(named: "dummySong")
-                topTracksCell.songTitleLabel.text = "song \(indexPath.item + 1)"
+                topTracksCell.songTitleLabel.text = topTracksForSearchedArtist[indexPath.item].songTitle
             }
             return cell
         }
@@ -142,7 +150,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
         if collectionView == self.favCollectionView {
-            self.performSegue(withIdentifier: "HomeToAlbumsSegue", sender: nil)
+            self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
         }
     }
     

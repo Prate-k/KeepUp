@@ -8,47 +8,40 @@
 
 import UIKit
 
-class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SongsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let resusableId = "songCell"
     var selectedAlbumPosition: Int?
     var selectedArtistPosition: Int?
+    var selectedArtist: Artist?
     var selectedAlbum: Album!
+    var songsList: [Song] = []
+    var lastSelectedTrack: IndexPath = IndexPath.init(row: -1, section: -1)
+    var selectedSongTitle = ""
     
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var songsListTableView: UITableView!
+    
+    lazy var songsViewModel: SongsViewModel? = nil
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? LyricsViewController {
+            loadLyricsScreen(lyricsViewController: viewController)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if let indexAlbum = selectedAlbumPosition, let indexArtist = selectedArtistPosition {
-            
-            let selectedArtist = FavouriteArtists.getArtist(at: indexArtist)
-            selectedAlbum = selectedArtist?.artistAlbums[indexAlbum]
-            albumImageView.image = UIImage(named: "dummyAlbum")
-            //replace with artistImage.image = selectedArtist.image
-            albumName.text = selectedAlbum.albumName
-            releaseDate.text =  """
-                                \(selectedAlbum.albumReleaseDate.releasedMonth)
-                                \(selectedAlbum.albumReleaseDate.releasedYear)
-                                """
-            
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 1",
-                                                  songLyrics: "",
-                                                  songLength: "3:45",
-                                                  isHidden: false))
-            
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 2",
-                                                  songLyrics: "",
-                                                  songLength: "3:47",
-                                                  isHidden: false))
-            
-            selectedAlbum.albumTracks.append(Song(songTitle: "song 3",
-                                                  songLyrics: "",
-                                                  songLength: "3:48",
-                                                  isHidden: false))
-            
+            songsViewModel = SongsViewModel(view: self)
+            DispatchQueue.global().async { [weak self] in
+                if let self = self {
+                    self.songsViewModel?.getArtist(at: indexArtist)
+                    self.songsViewModel?.getAlbum(of: indexArtist, in: indexAlbum)
+                }
+            }
         } else {
             showEmptySearchAlertDialog(viewController: self)
         }
@@ -70,18 +63,16 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
         guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? SongTableViewCell else {
             fatalError("The dequeued cell is not an instance of SongTableViewCell.")
         }
-        let songs = selectedAlbum.albumTracks
-        if  songs.isEmpty {
-            _ = songs[indexPath.row]
-            cell.songTitle.text = "song \(indexPath.row+1)"
-            cell.songLength.text = "3:4\(5+indexPath.row)"
+        if  !songsList.isEmpty {
+            let song = songsList[indexPath.row]
+            cell.songTitle.text = song.songTitle
+            cell.songLength.text = song.songLength
         }
         cell.trackOptionsView.isHidden = true
         cell.displayOptionsButton.setImage(UIImage(named: "shiftLeft"), for: .normal)
         return cell
     }
     
-    var lastSelectedTrack: IndexPath = IndexPath.init(row: -1, section: -1)
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("Prev: \(lastSelectedTrack), curr: \(indexPath)")
         if lastSelectedTrack.row == -1 && lastSelectedTrack.section == -1 {
@@ -92,6 +83,9 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
             newCell.displayOptions(newCell.displayOptionsButton)
             newCell.isSelected = true
             lastSelectedTrack = indexPath
+            if let songTitle = newCell.songTitle.text {
+                selectedSongTitle = songTitle
+            }
         } else {
             if lastSelectedTrack != indexPath {
                 guard let oldCell = tableView.cellForRow(at: lastSelectedTrack) as? SongTableViewCell else {
@@ -104,11 +98,17 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource, UITab
                 }
                 newCell.displayOptions(newCell.displayOptionsButton)
                 lastSelectedTrack = indexPath
+                if let songTitle = newCell.songTitle.text {
+                    selectedSongTitle = songTitle
+                }
             } else {
                 guard let oldCell = tableView.cellForRow(at: lastSelectedTrack) as? SongTableViewCell else {
                     fatalError("The dequeued cell is not an instance of SongTableViewCell.")
                 }
                 oldCell.displayOptions(oldCell.displayOptionsButton)
+                if let songTitle = oldCell.songTitle.text {
+                    selectedSongTitle = songTitle
+                }
             }
         }
     }

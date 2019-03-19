@@ -142,27 +142,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Qb-9g-bdx">
-                                                <rect key="frame" x="104" y="4" width="46" height="30"/>
-                                            </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmK-wi-SDn">
-                                                <rect key="frame" x="297" y="8" width="46" height="30"/>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmK-wi-SDn">
+                                                <rect key="frame" x="104" y="16" width="22" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="RMD-Uo-XkD"/>
-                                                    <constraint firstAttribute="width" constant="46" id="XCq-tz-18d"/>
+                                                    <constraint firstAttribute="width" constant="22" id="AZu-8r-PcP"/>
+                                                    <constraint firstAttribute="height" constant="20" id="hrH-ry-35V"/>
                                                 </constraints>
-                                                <state key="normal" title="Button"/>
+                                                <state key="normal" image="googleSignIn"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="2Qb-9g-bdx" firstAttribute="leading" secondItem="Mdr-Qn-sqj" secondAttribute="trailing" constant="8" id="FlW-lM-8Ob"/>
-                                            <constraint firstItem="BmK-wi-SDn" firstAttribute="leading" secondItem="2Qb-9g-bdx" secondAttribute="trailing" constant="147" id="Vgg-Yp-v0F"/>
-                                            <constraint firstAttribute="bottom" secondItem="BmK-wi-SDn" secondAttribute="bottom" constant="12" id="gsk-re-6w1"/>
+                                            <constraint firstItem="BmK-wi-SDn" firstAttribute="top" secondItem="Aga-qx-j7I" secondAttribute="top" constant="16" id="Dte-GM-fyQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="BmK-wi-SDn" secondAttribute="trailing" constant="217" id="SNb-I4-iSw"/>
+                                            <constraint firstItem="BmK-wi-SDn" firstAttribute="leading" secondItem="Mdr-Qn-sqj" secondAttribute="trailing" constant="8" id="Wwn-iM-mhG"/>
+                                            <constraint firstAttribute="bottom" secondItem="BmK-wi-SDn" secondAttribute="bottom" constant="14" id="bxs-K4-GOS"/>
                                             <constraint firstItem="Mdr-Qn-sqj" firstAttribute="leading" secondItem="Aga-qx-j7I" secondAttribute="leading" constant="8" id="oR9-sQ-Evh"/>
-                                            <constraint firstAttribute="trailing" secondItem="BmK-wi-SDn" secondAttribute="trailing" id="qgK-gU-yOJ"/>
                                             <constraint firstItem="Mdr-Qn-sqj" firstAttribute="top" secondItem="Aga-qx-j7I" secondAttribute="top" constant="15" id="wi6-3X-4Qw"/>
-                                            <constraint firstItem="BmK-wi-SDn" firstAttribute="top" secondItem="Aga-qx-j7I" secondAttribute="top" constant="8" id="zCY-IE-Rjo"/>
                                             <constraint firstAttribute="bottom" secondItem="Mdr-Qn-sqj" secondAttribute="bottom" constant="14" id="zNS-je-Nci"/>
                                         </constraints>
                                     </view>
@@ -178,10 +174,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5hO-ta-KmQ"/>
                     </view>
+                    <connections>
+                        <outlet property="loginButton" destination="Zwo-7V-Tgk" id="VjH-pP-BOP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cB-CG-uJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-173.59999999999999" y="-16.641679160419791"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="googleSignIn" width="36" height="36"/>
+    </resources>
 </document>
