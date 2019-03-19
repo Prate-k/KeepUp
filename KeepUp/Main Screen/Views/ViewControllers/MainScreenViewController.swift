@@ -54,15 +54,11 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
                 self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
             }
         } else {
-            DispatchQueue.main.async { [weak self] in
-                if let self = self {
-                    self.mainScreenViewModel = MainScreenViewModel(view: self)
-                    if let artists = self.mainScreenViewModel?.getFavouriteList() {
-                        self.favouriteArtistList = artists
-                    }
-                    self.favCollectionView.reloadData()
-                }
+            self.mainScreenViewModel = MainScreenViewModel(view: self)
+            if let artists = self.mainScreenViewModel?.getFavouriteList() {
+                self.favouriteArtistList = artists
             }
+            self.favCollectionView.reloadData()
         }
     }
     

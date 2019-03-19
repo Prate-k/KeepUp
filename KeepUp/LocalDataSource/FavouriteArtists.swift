@@ -15,7 +15,6 @@ class FavouriteArtists {
         return favouriteList
     }
     
-    
     static var size = 0
     static func getArtist(at: Int) -> Artist? {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {
@@ -44,6 +43,7 @@ class FavouriteArtists {
     static func removeArtist(at: Int) {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {
             size -= 1
+            print("removing: \(favouriteList[at].artistName)")
             favouriteList.remove(at: at)
         }
     }

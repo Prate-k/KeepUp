@@ -40,6 +40,10 @@
 		70C5150D223FB89100DBA9FE /* MainScreenViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C5150C223FB89100DBA9FE /* MainScreenViewModelExtensions.swift */; };
 		70C5150F223FB8A500DBA9FE /* MainScreenRepositoryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C5150E223FB8A500DBA9FE /* MainScreenRepositoryExtensions.swift */; };
 		70C51511223FB8B700DBA9FE /* MainScreenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C51510223FB8B700DBA9FE /* MainScreenRepository.swift */; };
+		70C9B5252240ECB700081216 /* FavouriteArtistViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9B5242240ECB700081216 /* FavouriteArtistViewModelExtensions.swift */; };
+		70C9B5272240ECCD00081216 /* FavouriteArtistRepositoryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9B5262240ECCD00081216 /* FavouriteArtistRepositoryExtensions.swift */; };
+		70C9B5292240ECDF00081216 /* FavouriteArtistRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9B5282240ECDF00081216 /* FavouriteArtistRepository.swift */; };
+		70C9B52B2240ECF400081216 /* FavouriteArtistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C9B52A2240ECF400081216 /* FavouriteArtistViewModel.swift */; };
 		70D6041C223D005F0089BCAE /* DiscographyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D6041B223D005F0089BCAE /* DiscographyViewModel.swift */; };
 		70D6041E223D08100089BCAE /* DiscographyViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D6041D223D08100089BCAE /* DiscographyViewControllerExtensions.swift */; };
 		70D74D34223ECEFA009909DA /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D74D33223ECEFA009909DA /* SongsViewModel.swift */; };
@@ -121,6 +125,10 @@
 		70C5150C223FB89100DBA9FE /* MainScreenViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModelExtensions.swift; sourceTree = "<group>"; };
 		70C5150E223FB8A500DBA9FE /* MainScreenRepositoryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRepositoryExtensions.swift; sourceTree = "<group>"; };
 		70C51510223FB8B700DBA9FE /* MainScreenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRepository.swift; sourceTree = "<group>"; };
+		70C9B5242240ECB700081216 /* FavouriteArtistViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistViewModelExtensions.swift; sourceTree = "<group>"; };
+		70C9B5262240ECCD00081216 /* FavouriteArtistRepositoryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistRepositoryExtensions.swift; sourceTree = "<group>"; };
+		70C9B5282240ECDF00081216 /* FavouriteArtistRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistRepository.swift; sourceTree = "<group>"; };
+		70C9B52A2240ECF400081216 /* FavouriteArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistViewModel.swift; sourceTree = "<group>"; };
 		70D506F8221D88FE00CD855D /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70D506FA221D88FE00CD855D /* KeepUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpTests.swift; sourceTree = "<group>"; };
 		70D506FC221D88FE00CD855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -507,6 +515,8 @@
 			isa = PBXGroup;
 			children = (
 				7060335022365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift */,
+				70C9B5242240ECB700081216 /* FavouriteArtistViewModelExtensions.swift */,
+				70C9B5262240ECCD00081216 /* FavouriteArtistRepositoryExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +524,7 @@
 		708056A3222FE05C003D98AE /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				70C9B52A2240ECF400081216 /* FavouriteArtistViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -521,6 +532,7 @@
 		708056A4222FE066003D98AE /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				70C9B5282240ECDF00081216 /* FavouriteArtistRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -965,8 +977,10 @@
 				70C5150B223FB87A00DBA9FE /* MainScreenViewModel.swift in Sources */,
 				70E1B1C4221406A700611BAD /* Artist.swift in Sources */,
 				70238BA4221C019F0024E6F5 /* ArtistInfoViewController.swift in Sources */,
+				70C9B52B2240ECF400081216 /* FavouriteArtistViewModel.swift in Sources */,
 				70ECD5C8222EA39A005045D8 /* ArtistInfo.swift in Sources */,
 				70ECD5C6222EA003005045D8 /* ArtistInfoViewModel.swift in Sources */,
+				70C9B5272240ECCD00081216 /* FavouriteArtistRepositoryExtensions.swift in Sources */,
 				70493D94223F8CDB00992C89 /* LyricsViewModelExtensions.swift in Sources */,
 				7091DA712235150900562150 /* FavouriteArtistsViewController.swift in Sources */,
 				7060335122365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift in Sources */,
@@ -991,6 +1005,7 @@
 				70ECD5CF222EAA9A005045D8 /* StringExtensions.swift in Sources */,
 				7060334F22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift in Sources */,
 				70D74D38223ED62A009909DA /* SongsViewModelExtensions.swift in Sources */,
+				70C9B5252240ECB700081216 /* FavouriteArtistViewModelExtensions.swift in Sources */,
 				70ECD5DA222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift in Sources */,
 				70D6041C223D005F0089BCAE /* DiscographyViewModel.swift in Sources */,
 				70C39A98223A745B0065BF9F /* Functions.swift in Sources */,
@@ -1006,6 +1021,7 @@
 				EF23CC3DFD7D483A4D3A5FAD /* DiscographyViewModelExtensions.swift in Sources */,
 				EF23C6EBDB5012E76D76D3D9 /* DiscographyRepository.swift in Sources */,
 				70C5150F223FB8A500DBA9FE /* MainScreenRepositoryExtensions.swift in Sources */,
+				70C9B5292240ECDF00081216 /* FavouriteArtistRepository.swift in Sources */,
 				EF23C8FDAD8CC3C735258E81 /* DiscographyRepositoryExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

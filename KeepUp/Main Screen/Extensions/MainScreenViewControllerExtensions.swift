@@ -18,18 +18,16 @@ protocol MainScreenPopulating: class {
 extension MainScreenViewController: MainScreenPopulating {
     func toggleArtistSearched(searchedArtistName: String) {
         let index = mainScreenViewModel?.getArtistIndex(name: searchedArtistName)
-        DispatchQueue.main.async {
-            if index == -1 {
-                self.favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
-                self.addToFavouritesList(searchedArtistName: searchedArtistName)
-            } else {
-                self.favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-                self.removeFromFavouritesList(searchedArtistName: searchedArtistName)
-            }
-            if let artists = self.mainScreenViewModel?.getFavouriteList() {
-                self.favouriteArtistList = artists
-                self.favCollectionView.reloadData()
-            }
+        if index == -1 {
+            favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
+            addToFavouritesList(searchedArtistName: searchedArtistName)
+        } else {
+            favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+            removeFromFavouritesList(searchedArtistName: searchedArtistName)
+        }
+        if let artists = self.mainScreenViewModel?.getFavouriteList() {
+            favouriteArtistList = artists
+            favCollectionView.reloadData()
         }
     }
     
