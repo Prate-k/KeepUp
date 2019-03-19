@@ -12,7 +12,8 @@ import UIKit
 extension FavouriteArtistsViewController {
     func removeMarkedArtists (_ positions: [Int]) {
         for i in 0..<positions.count {
-            favouriteArtistsViewModel?.removeArtist(at: positions[i])
+            var pos = positions[i] - i
+            favouriteArtistsViewModel?.removeArtist(at: pos)
         }
         if let artists = self.favouriteArtistsViewModel?.getFavouriteList() {
             favouriteArtistList = artists
