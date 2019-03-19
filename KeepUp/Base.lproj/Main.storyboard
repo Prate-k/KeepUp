@@ -151,6 +151,7 @@
                     <connections>
                         <outlet property="editNavButton" destination="gJo-iw-S0Y" id="k05-7d-lyz"/>
                         <outlet property="favCollectionView" destination="DMZ-9l-mEY" id="QeG-u2-Qlo"/>
+                        <outlet property="navBar" destination="kpy-Pp-eVJ" id="pFO-rJ-04C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfb-KN-9jt" userLabel="First Responder" sceneMemberID="firstResponder"/>

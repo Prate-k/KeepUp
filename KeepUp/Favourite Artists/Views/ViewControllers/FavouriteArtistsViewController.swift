@@ -9,7 +9,10 @@
 import UIKit
 
 class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+   
     @IBOutlet weak var editNavButton: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     let reusableId1 = "FavArtistCell"
     var inEditMode = false
     var numberMarkedForDelete = 0
@@ -21,14 +24,14 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBar.setHidesBackButton(false, animated: true)
 //        favCollectionView.reloadData()
-        
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.favouriteArtistsViewModel = FavouriteArtistsViewModel(view: self)
         if let artists = self.favouriteArtistsViewModel?.getFavouriteList() {
             self.favouriteArtistList = artists
@@ -38,7 +41,7 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {
-            return FavouriteArtists.getSize()
+            return favouriteArtistList.count
         }
         return 0
     }

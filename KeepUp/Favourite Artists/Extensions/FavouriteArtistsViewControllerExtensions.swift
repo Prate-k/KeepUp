@@ -12,7 +12,7 @@ import UIKit
 extension FavouriteArtistsViewController {
     func removeMarkedArtists (_ positions: [Int]) {
         for i in 0..<positions.count {
-            var pos = positions[i] - i
+            let pos = positions[i] - i
             favouriteArtistsViewModel?.removeArtist(at: pos)
         }
         if let artists = self.favouriteArtistsViewModel?.getFavouriteList() {
@@ -50,12 +50,14 @@ extension FavouriteArtistsViewController {
     
     func enterEditMode() {
         inEditMode = true //change to edit mode
+        navBar.setHidesBackButton(true, animated: true)
         editNavButton.title = "Done"
         favCollectionView.reloadData()
     }
     
     func exitEditMode() {
         inEditMode = false //change to view mode
+        navBar.setHidesBackButton(false, animated: true)
         editNavButton.title = "Edit"
         favCollectionView.reloadData()
     }
