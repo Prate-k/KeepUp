@@ -10,7 +10,6 @@ import Foundation
 
 class FavouriteArtistsViewModel {
     weak var favouriteArtistsViewController: FavouriteArtistsViewController?
-    
     init(view: FavouriteArtistsViewController) {
         self.favouriteArtistsViewController = view
     }

@@ -44,7 +44,9 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
                 if let self = self {
                     self.discographyViewModel?.getSelectedArtist(at: index)
                     if let selectedArtist = self.selectedArtist {
-                        self.discographyViewModel?.getAlbumList(with: (selectedArtist.artistName)!)
+                        if let discographyViewModel = self.discographyViewModel {
+                            discographyViewModel.getAlbumList(with: selectedArtist.artistName)
+                        }
                     }
                 }
             }

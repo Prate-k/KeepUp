@@ -14,7 +14,6 @@ protocol DiscographyViewModelFunctionable: class {
 }
 
 extension DiscographyViewModel: DiscographyViewModelFunctionable {
-    
     func getArtistIndex(name: String) -> Int {
         let albumsRepository: DiscographyRepositoryFunctionable = DiscographyRepository()
         var artistIndex = -1
@@ -23,14 +22,14 @@ extension DiscographyViewModel: DiscographyViewModelFunctionable {
         })
         return artistIndex
     }
-
+    
     func getAlbumList(with artistName: String) {
         let albumsRepository: DiscographyRepositoryFunctionable = DiscographyRepository()
         _ = albumsRepository.getAlbumsListFromSource(artistName: artistName, completing: { (albums) in
             self.discographyViewController?.albumsListShow(albums: albums)
         })
     }
-
+    
     func getSelectedArtist(at index: Int) {
         let albumsRepository: DiscographyRepositoryFunctionable = DiscographyRepository()
         _ = albumsRepository.getSelectedArtist(at: index, completing: { (artist) in

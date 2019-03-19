@@ -27,6 +27,7 @@ extension DiscographyRepository: DiscographyRepositoryFunctionable {
             completing(artist.artistAlbums)
         }
     }
+    
     func getSelectedArtist(at index: Int, completing: @escaping (Artist) -> Void) {
         if index >= 0 {
             if let artist = FavouriteArtists.getArtist(at: index) {
@@ -34,9 +35,11 @@ extension DiscographyRepository: DiscographyRepositoryFunctionable {
             }
         }
     }
+    
     func removeSelectedArtist(at index: Int) {
         FavouriteArtists.removeArtist(at: index)
     }
+    
     func addArtist(_ newArtist: Artist) {
         FavouriteArtists.addArtist(artist: newArtist)
     }

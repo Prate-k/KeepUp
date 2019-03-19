@@ -19,7 +19,6 @@ protocol DiscographyListFetching: class {
 }
 
 extension DiscographyViewController: DiscographyListFetching {
-
     func showSelectedArtist(artist: Artist) {
         selectedArtist = artist
         DispatchQueue.main.async {
@@ -35,7 +34,7 @@ extension DiscographyViewController: DiscographyListFetching {
             self.albumsListTable.reloadData()
         }
     }
-
+    
     func toggleArtistSearched(searchedArtist: Artist) {
         let index = discographyViewModel?.getArtistIndex(name: selectedArtist.artistName)
         DispatchQueue.main.async {
@@ -48,7 +47,7 @@ extension DiscographyViewController: DiscographyListFetching {
             }
         }
     }
-
+    
     func addToFavouritesList(selectedArtist: Artist) {
         let index = discographyViewModel?.getArtistIndex(name: selectedArtist.artistName)
         if index != -1 {
@@ -61,7 +60,7 @@ extension DiscographyViewController: DiscographyListFetching {
             discographyViewModel?.addArtist(x)
         }
     }
-
+    
     func removeFromFavouritesList(selectedArtist: Artist) {
         let index = discographyViewModel?.getArtistIndex(name: selectedArtist.artistName)
         if  index == -1 {
