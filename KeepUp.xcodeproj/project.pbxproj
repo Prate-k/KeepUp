@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		700AB7D5223698C400F4CB6C /* DeleteCheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */; };
+		7014A0E522412E4C008F3839 /* KeepUpUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7014A0E422412E4C008F3839 /* KeepUpUnitTests.swift */; };
 		70158AB2223BCF4200617FD4 /* KeepUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70158AB1223BCF4200617FD4 /* KeepUpUITests.swift */; };
 		70158ABA223BE24F00617FD4 /* LyricsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70158AB9223BE24F00617FD4 /* LyricsViewModel.swift */; };
 		70238BA4221C019F0024E6F5 /* ArtistInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70238BA3221C019F0024E6F5 /* ArtistInfoViewController.swift */; };
@@ -71,6 +72,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7014A0E722412E4C008F3839 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 70B616F22212E09200D95ED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 70B616F92212E09200D95ED9;
+			remoteInfo = KeepUp;
+		};
 		70158AB4223BCF4200617FD4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 70B616F22212E09200D95ED9 /* Project object */;
@@ -89,6 +97,9 @@
 
 /* Begin PBXFileReference section */
 		700AB7D4223698C400F4CB6C /* DeleteCheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteCheckBoxView.swift; sourceTree = "<group>"; };
+		7014A0E222412E4C008F3839 /* KeepUpUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7014A0E422412E4C008F3839 /* KeepUpUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpUnitTests.swift; sourceTree = "<group>"; };
+		7014A0E622412E4C008F3839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70158AAF223BCF4200617FD4 /* KeepUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		70158AB1223BCF4200617FD4 /* KeepUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpUITests.swift; sourceTree = "<group>"; };
 		70158AB3223BCF4200617FD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,6 +169,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7014A0DF22412E4C008F3839 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70158AAC223BCF4200617FD4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,6 +231,15 @@
 			children = (
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		7014A0E322412E4C008F3839 /* KeepUpUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7014A0E422412E4C008F3839 /* KeepUpUnitTests.swift */,
+				7014A0E622412E4C008F3839 /* Info.plist */,
+			);
+			path = KeepUpUnitTests;
 			sourceTree = "<group>";
 		};
 		70158AB0223BCF4200617FD4 /* KeepUpUITests */ = {
@@ -628,6 +655,7 @@
 				70B616FC2212E09200D95ED9 /* KeepUp */,
 				70D506F9221D88FE00CD855D /* KeepUpTests */,
 				70158AB0223BCF4200617FD4 /* KeepUpUITests */,
+				7014A0E322412E4C008F3839 /* KeepUpUnitTests */,
 				70B616FB2212E09200D95ED9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -638,6 +666,7 @@
 				70B616FA2212E09200D95ED9 /* KeepUp.app */,
 				70D506F8221D88FE00CD855D /* KeepUpTests.xctest */,
 				70158AAF223BCF4200617FD4 /* KeepUpUITests.xctest */,
+				7014A0E222412E4C008F3839 /* KeepUpUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -810,6 +839,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7014A0E122412E4C008F3839 /* KeepUpUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7014A0EB22412E4C008F3839 /* Build configuration list for PBXNativeTarget "KeepUpUnitTests" */;
+			buildPhases = (
+				7014A0DE22412E4C008F3839 /* Sources */,
+				7014A0DF22412E4C008F3839 /* Frameworks */,
+				7014A0E022412E4C008F3839 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7014A0E822412E4C008F3839 /* PBXTargetDependency */,
+			);
+			name = KeepUpUnitTests;
+			productName = KeepUpUnitTests;
+			productReference = 7014A0E222412E4C008F3839 /* KeepUpUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		70158AAE223BCF4200617FD4 /* KeepUpUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 70158AB8223BCF4200617FD4 /* Build configuration list for PBXNativeTarget "KeepUpUITests" */;
@@ -874,6 +921,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Prateek Kambadkone";
 				TargetAttributes = {
+					7014A0E122412E4C008F3839 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 70B616F92212E09200D95ED9;
+					};
 					70158AAE223BCF4200617FD4 = {
 						CreatedOnToolsVersion = 10.1;
 						TestTargetID = 70B616F92212E09200D95ED9;
@@ -903,11 +954,19 @@
 				70B616F92212E09200D95ED9 /* KeepUp */,
 				70D506F7221D88FE00CD855D /* KeepUpTests */,
 				70158AAE223BCF4200617FD4 /* KeepUpUITests */,
+				7014A0E122412E4C008F3839 /* KeepUpUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7014A0E022412E4C008F3839 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70158AAD223BCF4200617FD4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -957,6 +1016,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7014A0DE22412E4C008F3839 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7014A0E522412E4C008F3839 /* KeepUpUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		70158AAB223BCF4200617FD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1038,6 +1105,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7014A0E822412E4C008F3839 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 70B616F92212E09200D95ED9 /* KeepUp */;
+			targetProxy = 7014A0E722412E4C008F3839 /* PBXContainerItemProxy */;
+		};
 		70158AB5223BCF4200617FD4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 70B616F92212E09200D95ED9 /* KeepUp */;
@@ -1070,6 +1142,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7014A0E922412E4C008F3839 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37HF986HK8;
+				INFOPLIST_FILE = KeepUpUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUpUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeepUp.app/KeepUp";
+			};
+			name = Debug;
+		};
+		7014A0EA22412E4C008F3839 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 37HF986HK8;
+				INFOPLIST_FILE = KeepUpUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUpUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeepUp.app/KeepUp";
+			};
+			name = Release;
+		};
 		70158AB6223BCF4200617FD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1305,6 +1417,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7014A0EB22412E4C008F3839 /* Build configuration list for PBXNativeTarget "KeepUpUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7014A0E922412E4C008F3839 /* Debug */,
+				7014A0EA22412E4C008F3839 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		70158AB8223BCF4200617FD4 /* Build configuration list for PBXNativeTarget "KeepUpUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
