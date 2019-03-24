@@ -10,9 +10,29 @@ import Foundation
 
 class LyricsViewModel {
     
-    weak var lyricsViewController: SongLyricsFetching?
+    var viewControllerDelegate: LyricsViewControllerProtocol?
+    var repositoryDelegate: LyricsRepositoryProtocol?
     
-    init(view: SongLyricsFetching) {
-        self.lyricsViewController = view
+    init() {
+        repositoryDelegate = LyricsRepository()
+        repositoryDelegate?.viewModelDelegate = self
+    }
+    
+    func setRepositoryDelegate(repository: LyricsRepositoryProtocol?) {
+        if let repository = repository {
+            repositoryDelegate = repository
+        } else {
+            repositoryDelegate = LyricsRepository()
+        }
+        repositoryDelegate?.viewModelDelegate = self
+    }
+    
+    func setViewControllerDelegate(viewController: LyricsViewControllerProtocol?) {
+        if let viewController = viewController {
+            viewControllerDelegate = viewController
+        } else {
+            viewControllerDelegate = LyricsViewController()
+        }
+        viewControllerDelegate?.viewModelDelegate = self
     }
 }

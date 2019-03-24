@@ -24,18 +24,21 @@ class ArtistInfoViewController: UIViewController {
     @IBOutlet weak var membersStackView: UIStackView!
     
     var artistName: String = ""
-    lazy var artistInfoViewModel: ArtistInfoViewModel? = nil
-    
+    var viewModelDelegate: ArtistInfoViewModelProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        artistInfoViewModel = ArtistInfoViewModel(view: self)
+        
+        viewModelDelegate = ArtistInfoViewModel()
+        viewModelDelegate?.viewControllerDelegate = self
+        
         scrollView.isHidden = true
         waitForDataIndicator.isHidden = false
         waitForDataIndicator.startAnimating()
         DispatchQueue.global().async { [weak self] in
             if let self = self {
-                self.artistInfoViewModel?.getArtistInfo(artistName: self.artistName)
+                self.viewModelDelegate?.getArtistInfoFromRepository(artistName: self.artistName)
             }
         }
     }
