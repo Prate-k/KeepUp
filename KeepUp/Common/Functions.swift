@@ -38,6 +38,15 @@ func showCouldNotLoadSongError(viewController: UIViewController) {
     viewController.present(alert, animated: true, completion: nil)
 }
 
+func showCouldNotLoadAlbumError(viewController: UIViewController) {
+    let alert = UIAlertController(title: "No albums found",
+                                  message: "Could not load albums - Please retry again",
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+}
+
 func showCouldNotLoadLyricsError(viewController: UIViewController) {
     let alert = UIAlertController(title: "Empty song title or artist name",
                                   message: "Could not load lyrics - Please retry again",

@@ -9,23 +9,15 @@
 import Foundation
 
 protocol SongsViewModelFunctionable: class {
-    func getAlbum(of artistAt: Int, in albumAt: Int)
-    func getArtist(at: Int)
+    func getAlbum(of artistName: String, in albumName: String)
 }
 
 extension SongsViewModel: SongsViewModelFunctionable {
-    func getAlbum(of artistAt: Int, in albumAt: Int) {
+    func getAlbum(of artistName: String, in albumName: String) {
         let songsRepository: SongsRepositoryFunctionable = SongsRepository()
-        _ = songsRepository.getAlbumFromSource(artistAt: artistAt, albumAt: albumAt, completing: {(album) in
+        _ = songsRepository.getAlbumFromSource(artistName: artistName, albumName: albumName, completing: {(album) in
             self.songsViewController?.showSelectedAlbum(album: album)
             self.songsViewController?.songsListShow(songs: album.albumTracks)
-        })
-    }
-    
-    func getArtist(at: Int) {
-        let songsRepository: SongsRepositoryFunctionable = SongsRepository()
-        _ = songsRepository.getArtistFromSource(artistAt: at, completing: {(artist) in
-            self.songsViewController?.setSelectedArtist(artist: artist)
         })
     }
 }

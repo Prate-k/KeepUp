@@ -12,14 +12,13 @@ import UIKit
 protocol SongsListFetching: class {
     func songsListShow(songs: [Song])
     func showSelectedAlbum(album: Album)
-    func setSelectedArtist(artist: Artist)
 }
 
 extension SongsViewController: SongsListFetching {
     
     func loadLyricsScreen(lyricsViewController: LyricsViewController) {
-        if let selectedArtist = selectedArtist {
-            lyricsViewController.artistName = selectedArtist.artistName
+        if let selectedArtistName = selectedArtistName {
+            lyricsViewController.artistName = selectedArtistName
         }
         lyricsViewController.songTitle = selectedSongTitle
     }
@@ -41,9 +40,5 @@ extension SongsViewController: SongsListFetching {
         DispatchQueue.main.async {
             self.songsListTableView.reloadData()
         }
-    }
-    
-    func setSelectedArtist(artist: Artist) {
-        selectedArtist = artist
     }
 }

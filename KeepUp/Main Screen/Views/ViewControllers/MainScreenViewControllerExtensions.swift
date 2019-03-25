@@ -59,10 +59,10 @@ extension MainScreenViewController: MainScreenPopulating {
 extension MainScreenViewController {
     func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
         if isLoadingAllFavourites {
-            albumsViewController.selectedArtistPosition = selectedArtistPosition
+            albumsViewController.selectedArtistName = favouriteArtistList[selectedArtistPosition].artistName
         } else {
             if let index = favCollectionView.indexPathsForSelectedItems?[0].item {
-                albumsViewController.selectedArtistPosition = index
+                albumsViewController.selectedArtistName = favouriteArtistList[index].artistName
             }
         }
         isLoadingAllFavourites = false

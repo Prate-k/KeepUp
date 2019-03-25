@@ -42,17 +42,17 @@ class LyricsNetwork: Networker, LyricsNetworkProtocol {
         let exampleUrlLink = "none yet"
         let contents = [exampleWords, exampleCopyright, exampleSongTitle, exampleArtistName, exampleUrlLink]
         self.notifyRepository(result: Result.success(contents))
-        
-//        super.send(completion: { (data) in
-//            if let data = data {
-//                do {
-                    //data from network json object extracting data
-//                } catch let error {
-//                    print(error.localizedDescription)
-//                }
-//            } else {
-//                self.notifyRepository(result: Result.failure(Errors.NetworkError) )
-//            }
-//        })
+//        For network api: use ->
+            //        super.send(completion: { (data) in
+            //            if let data = data {
+            //                do {
+                                //data from network json object extracting data
+            //                } catch let error {
+            //                    print(error.localizedDescription)
+            //                }
+            //            } else {
+            //                self.notifyRepository(result: Result.failure(Errors.NetworkError) )
+            //            }
+            //        })
     }
 }

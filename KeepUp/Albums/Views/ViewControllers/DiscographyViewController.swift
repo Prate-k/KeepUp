@@ -11,21 +11,28 @@ import UIKit
 class DiscographyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let resusableId = "albumCell"
-    var selectedArtistPosition: Int?
-    var selectedArtist: Artist!
-    var albumList: [Album] = []
-    lazy var discographyViewModel: DiscographyViewModel? = nil
+    var selectedArtistName = ""  //used for passing data between prev screen and this
+    
+    var selectedArtist: Artist?  //stores selected artist details
+    var albumList: [Album] = []  //stores locally selected artist album
+    var isArtistFavourited = true  //shows if artist is still in favourite list
+    
+    var viewModelDelegate: DiscographyViewModelProtocol?   //used for mvvm comm
 
+    @IBOutlet weak var progressBar: UIActivityIndicatorView!
     @IBOutlet weak var albumsListTable: UITableView!
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var genre: UILabel!
     @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
+    @IBOutlet weak var myStackView: UIStackView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let discographyViewController = segue.destination as? SongsViewController {
-            discographyViewController.selectedAlbumPosition = albumsListTable.indexPathForSelectedRow?.item
-            discographyViewController.selectedArtistPosition = selectedArtistPosition
+        if let songViewController = segue.destination as? SongsViewController {
+            if let index = albumsListTable.indexPathForSelectedRow?.item {
+                songViewController.selectedAlbumName = albumList[index].albumName
+                songViewController.selectedArtistName = selectedArtist?.artistName
+            }
             return
         }
         if let artistInfoViewController = segue.destination as? ArtistInfoViewController {
@@ -38,25 +45,26 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let index = selectedArtistPosition, index != -1 {
-            discographyViewModel = DiscographyViewModel(view: self)
-            DispatchQueue.global().async { [weak self] in
-                if let self = self {
-                    self.discographyViewModel?.getSelectedArtist(at: index)
-                    if let selectedArtist = self.selectedArtist {
-                        if let discographyViewModel = self.discographyViewModel {
-                            discographyViewModel.getAlbumList(with: selectedArtist.artistName)
-                        }
-                    }
-                }
-            }
-        } else {
+        artistImageView.loadImageFromSource(source: "")
+        viewModelDelegate = DiscographyViewModel()
+        viewModelDelegate?.viewControllerDelegate = self
+        viewModelDelegate?.getSelectedArtist(artistName: selectedArtistName)
+        progressBar.hidesWhenStopped = true
+        myStackView.isHidden = true
+        if selectedArtistName.isEmpty {
             showEmptySearchAlertDialog(viewController: self)
+            return
+        } else {
+            progressBar.startAnimating()
         }
     }
 
     @IBAction func addRemoveFavourites() {
-        toggleArtistSearched(searchedArtist: selectedArtist)
+        if let artist = selectedArtist {
+            toggleArtistSearched(selectedArtist: artist)
+        } else {
+            showCouldNotLoadAlbumError(viewController: self)
+        }
     }
     
     func numberOfSections(in collectionView: UITableView) -> Int {
@@ -64,9 +72,6 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard selectedArtistPosition != nil else {
-            return 0
-        }
         return albumList.count
     }
     

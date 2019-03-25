@@ -58,6 +58,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
             if let artists = self.mainScreenViewModel?.getFavouriteList() {
                 self.favouriteArtistList = artists
             }
+            clearSearch()
             self.favCollectionView.reloadData()
         }
     }

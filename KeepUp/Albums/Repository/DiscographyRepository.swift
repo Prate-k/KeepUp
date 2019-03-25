@@ -6,4 +6,19 @@
 import Foundation
 
 class DiscographyRepository {
+    
+    var viewModelDelegate: DiscographyViewModelProtocol?
+    
+    init () {
+        viewModelDelegate?.repositoryDelegate = self
+    }
+    
+    func setViewModelDelegate(viewModel: DiscographyViewModelProtocol?) {
+        if let viewModel = viewModel {
+            viewModelDelegate = viewModel
+        } else {
+            viewModelDelegate = DiscographyViewModel()
+        }
+        viewModelDelegate?.repositoryDelegate = self
+    }
 }
