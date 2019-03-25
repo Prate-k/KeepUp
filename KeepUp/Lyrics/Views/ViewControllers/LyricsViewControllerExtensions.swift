@@ -8,13 +8,11 @@
 
 import Foundation
 
-
 protocol LyricsViewControllerProtocol: class {
     var viewModelDelegate: LyricsViewModelProtocol? { get set }
     func songLyricsShow(lyrics: Lyrics)
     func songLyricsFailure(error: Errors)
 }
-
 
 extension LyricsViewController: LyricsViewControllerProtocol {
     

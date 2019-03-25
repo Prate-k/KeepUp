@@ -20,7 +20,7 @@ class MockLyricsRepository: LyricsRepositoryProtocol {
         //from dataReady
     }
     
-    var viewModelDelegate: LyricsViewModelProtocol?
+    weak var viewModelDelegate: LyricsViewModelProtocol?
     
     var artistInfo: Lyrics?
     
@@ -123,4 +123,3 @@ class LyricsViewModelTests: XCTestCase {
     }
     
 }
-

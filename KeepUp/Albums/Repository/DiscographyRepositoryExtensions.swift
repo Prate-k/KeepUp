@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol DiscographyRepositoryProtocol {
+protocol DiscographyRepositoryProtocol: class {
     var viewModelDelegate: DiscographyViewModelProtocol? {get set}
     func dataReady(result: Result<Artist>)
     func removeSelectedArtist(artistName: String)

@@ -19,7 +19,7 @@ class MockArtistInfoRepository: ArtistInfoRepositoryProtocol {
         //from dataReady
     }
     
-    var viewModelDelegate: ArtistInfoViewModelProtocol?
+    weak var viewModelDelegate: ArtistInfoViewModelProtocol?
     
     var artistInfo: ArtistInfo?
     

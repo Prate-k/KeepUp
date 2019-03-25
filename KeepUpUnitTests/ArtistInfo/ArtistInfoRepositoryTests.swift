@@ -16,9 +16,9 @@ class MockArtistInfoViewModel: ArtistInfoViewModelProtocol {
     var members: String = " Rob Bourdon\n Brad Delson\n Mike Shinoda\n Dave Farrell\n Joe Hahn\n"
     var isSolo: Bool = false
     
-    var viewControllerDelegate: ArtistInfoViewControllerProtocol?
+    weak var viewControllerDelegate: ArtistInfoViewControllerProtocol?
     
-    var repositoryDelegate: ArtistInfoRepositoryProtocol?
+    weak var repositoryDelegate: ArtistInfoRepositoryProtocol?
     
     init() {
         repositoryDelegate?.viewModelDelegate = self
@@ -44,7 +44,7 @@ class MockArtistInfoViewModel: ArtistInfoViewModelProtocol {
 
 class MockArtistInfoNetwork: ArtistInfoNetworkProtocol {
     var testFailure = false
-    var repositoryDelegate: ArtistInfoRepositoryProtocol?
+    weak var repositoryDelegate: ArtistInfoRepositoryProtocol?
     
     func getDataFromNetwork() {
         var result: Result<[String]>

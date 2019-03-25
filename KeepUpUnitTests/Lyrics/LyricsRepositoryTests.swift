@@ -14,9 +14,9 @@ class MockLyricsViewModel: LyricsViewModelProtocol {
                             lyrics... lyrics, Lyrics \t lyrics, \n lyrics
                             \n\n Lyrics
                             """
-    var viewControllerDelegate: LyricsViewControllerProtocol?
+    weak var viewControllerDelegate: LyricsViewControllerProtocol?
     
-    var repositoryDelegate: LyricsRepositoryProtocol?
+    weak var repositoryDelegate: LyricsRepositoryProtocol?
     
     init() {
         repositoryDelegate?.viewModelDelegate = self
@@ -41,7 +41,7 @@ class MockLyricsViewModel: LyricsViewModelProtocol {
 
 class MockLyricsNetwork: LyricsNetworkProtocol {
     var testFailure = false
-    var repositoryDelegate: LyricsRepositoryProtocol?
+    weak var repositoryDelegate: LyricsRepositoryProtocol?
     
     func getDataFromNetwork() {
         var result: Result<[String]>
