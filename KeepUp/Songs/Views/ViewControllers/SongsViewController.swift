@@ -39,7 +39,7 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
             songsViewModel = SongsViewModel(view: self)
             DispatchQueue.global().async { [weak self] in
                 if let self = self {
-                    self.songsViewModel?.getAlbum(artistName,albumName)
+                    self.songsViewModel?.getAlbum(artistName, albumName)
                 }
             }
         } else {
