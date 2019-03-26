@@ -18,7 +18,9 @@ extension UIImageView {
                 .validate()
                 .responseData(completionHandler: { (responseData) in
                     DispatchQueue.main.async {
-                        self.image = UIImage(data: responseData.data!)
+                        if let respData = responseData.data {
+                            self.image = UIImage(data: respData)
+                        }
                     }
                 })
         }

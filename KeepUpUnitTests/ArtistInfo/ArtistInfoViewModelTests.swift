@@ -10,7 +10,7 @@ import XCTest
 @testable import KeepUp
 
 class MockArtistInfoRepository: ArtistInfoRepositoryProtocol {
-    var networkDelegate: ArtistInfoNetworkProtocol?
+    lazy var networkDelegate: ArtistInfoNetworkProtocol? = nil
     
     func dataReady(result: Result<[String]>) {
         //from network

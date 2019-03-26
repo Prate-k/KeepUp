@@ -10,8 +10,8 @@ import Foundation
 
 class ArtistInfoViewModel {
     
-    var viewControllerDelegate: ArtistInfoViewControllerProtocol?
-    var repositoryDelegate: ArtistInfoRepositoryProtocol?
+    lazy var viewControllerDelegate: ArtistInfoViewControllerProtocol? = nil
+    lazy var repositoryDelegate: ArtistInfoRepositoryProtocol? = nil
     
     init() {
         repositoryDelegate = ArtistInfoRepository()

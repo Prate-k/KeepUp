@@ -15,7 +15,7 @@ protocol ArtistInfoNetworkProtocol: class {
 
 class ArtistInfoNetwork: Networker, ArtistInfoNetworkProtocol {
     
-    weak var repositoryDelegate: ArtistInfoRepositoryProtocol?
+    var repositoryDelegate: ArtistInfoRepositoryProtocol?
     
     func notifyRepository(result: Result<[String]>) {
         switch result {
@@ -37,13 +37,14 @@ class ArtistInfoNetwork: Networker, ArtistInfoNetworkProtocol {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         if let query = json["query"] as? [String: Any] {
                             if let pages = query["pages"] as? [String: Any] {
-                                let a = pages.first!
-                                if let page = pages[a.key] as? [String: Any] {
-                                    if let revisions = page["revisions"] as? [[String: Any]] {
-                                        for counter in 0..<revisions.count {
-                                            if let artistData = revisions[counter]["*"] as? String {
-                                                let contents = HTMLParser.parseHTMLContent(content: artistData)
-                                                self.notifyRepository(result: Result.success(contents))
+                                if let a = pages.first {
+                                    if let page = pages[a.key] as? [String: Any] {
+                                        if let revisions = page["revisions"] as? [[String: Any]] {
+                                            for counter in 0..<revisions.count {
+                                                if let artistData = revisions[counter]["*"] as? String {
+                                                    let contents = HTMLParser.parseHTMLContent(content: artistData)
+                                                    self.notifyRepository(result: Result.success(contents))
+                                                }
                                             }
                                         }
                                     }

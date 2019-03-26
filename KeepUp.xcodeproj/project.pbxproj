@@ -1040,6 +1040,7 @@
 					};
 					70B616F92212E09200D95ED9 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					70D506F7221D88FE00CD855D = {
 						CreatedOnToolsVersion = 10.1;
@@ -1572,6 +1573,7 @@
 			baseConfigurationReference = D58179221BB04C43AA234F36 /* Pods-KeepUp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KeepUp/Info.plist;
@@ -1582,6 +1584,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1592,6 +1595,7 @@
 			baseConfigurationReference = BC71D7A4C75916E252F661B1 /* Pods-KeepUp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = KeepUp/Info.plist;

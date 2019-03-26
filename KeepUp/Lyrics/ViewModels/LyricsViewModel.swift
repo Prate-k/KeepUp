@@ -10,8 +10,8 @@ import Foundation
 
 class LyricsViewModel {
     
-    var viewControllerDelegate: LyricsViewControllerProtocol?
-    var repositoryDelegate: LyricsRepositoryProtocol?
+    lazy var viewControllerDelegate: LyricsViewControllerProtocol? = nil
+    lazy var repositoryDelegate: LyricsRepositoryProtocol? = nil
     
     init() {
         repositoryDelegate = LyricsRepository()

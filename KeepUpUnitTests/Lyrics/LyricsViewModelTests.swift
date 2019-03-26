@@ -11,7 +11,7 @@ import XCTest
 
 class MockLyricsRepository: LyricsRepositoryProtocol {
 
-    var networkDelegate: LyricsNetworkProtocol?
+    lazy var networkDelegate: LyricsNetworkProtocol? = nil
     
     func dataReady(result: Result<[String]>) {
         //from network
@@ -50,7 +50,7 @@ class MockLyricsRepository: LyricsRepositoryProtocol {
 
 class MockLyricsViewController: LyricsViewControllerProtocol {
     
-    var viewModelDelegate: LyricsViewModelProtocol?
+    lazy var viewModelDelegate: LyricsViewModelProtocol? = nil
     var isSolo: Bool = false
     
     let exampleWords = """
