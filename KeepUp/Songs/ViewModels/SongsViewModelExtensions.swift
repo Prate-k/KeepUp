@@ -12,8 +12,8 @@ protocol SongsViewModelFunctionable: class {
     func getAlbum(of artistName: String, in albumName: String)
 }
 
-extension SongsViewModel: SongsViewModelFunctionable {
-    func getAlbum(of artistName: String, in albumName: String) {
+extension SongsViewModel: SongsViewModelObjCFunctionable {
+    func getAlbum(_ artistName: String, _ albumName: String) {
         let songsRepository: SongsRepositoryFunctionable = SongsRepository()
         _ = songsRepository.getAlbumFromSource(artistName: artistName, albumName: albumName, completing: {(album) in
             self.songsViewController?.showSelectedAlbum(album: album)

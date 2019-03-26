@@ -153,6 +153,8 @@
 		70B617072212E09400D95ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70B617092212E09400D95ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70BF2AD1221AF9FC006BE113 /* TopTracksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTracksCollectionViewCell.swift; sourceTree = "<group>"; };
+		70C32194224A0B2C00F871B1 /* KeepUp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KeepUp-Bridging-Header.h"; sourceTree = "<group>"; };
+		70C32195224A0B2C00F871B1 /* SongsViewModelObjCFunctionable.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SongsViewModelObjCFunctionable.m; sourceTree = "<group>"; };
 		70C39A97223A745B0065BF9F /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		70C5150A223FB87A00DBA9FE /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		70C5150C223FB89100DBA9FE /* MainScreenViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModelExtensions.swift; sourceTree = "<group>"; };
@@ -575,6 +577,8 @@
 			children = (
 				70D74D33223ECEFA009909DA /* SongsViewModel.swift */,
 				70D74D37223ED62A009909DA /* SongsViewModelExtensions.swift */,
+				70C32195224A0B2C00F871B1 /* SongsViewModelObjCFunctionable.m */,
+				70C32194224A0B2C00F871B1 /* KeepUp-Bridging-Header.h */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1584,6 +1588,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeepUp/Songs/ViewModels/KeepUp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1606,6 +1611,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prateek.KeepUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "KeepUp/Songs/ViewModels/KeepUp-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
