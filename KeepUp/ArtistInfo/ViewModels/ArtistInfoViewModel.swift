@@ -10,9 +10,29 @@ import Foundation
 
 class ArtistInfoViewModel {
     
-    weak var artistInfoViewController: ArtistInfoFetching?
+    lazy var viewControllerDelegate: ArtistInfoViewControllerProtocol? = nil
+    lazy var repositoryDelegate: ArtistInfoRepositoryProtocol? = nil
     
-    init(view: ArtistInfoFetching) {
-        self.artistInfoViewController = view
+    init() {
+        repositoryDelegate = ArtistInfoRepository()
+        repositoryDelegate?.viewModelDelegate = self
+    }
+    
+    func setRepositoryDelegate(repository: ArtistInfoRepositoryProtocol?) {
+        if let repository = repository {
+            repositoryDelegate = repository
+        } else {
+            repositoryDelegate = ArtistInfoRepository()
+        }
+        repositoryDelegate?.viewModelDelegate = self
+    }
+    
+    func setViewControllerDelegate(viewController: ArtistInfoViewControllerProtocol?) {
+        if let viewController = viewController {
+            viewControllerDelegate = viewController
+        } else {
+            viewControllerDelegate = ArtistInfoViewController()
+        }
+        viewControllerDelegate?.viewModelDelegate = self
     }
 }

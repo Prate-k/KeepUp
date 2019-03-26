@@ -9,6 +9,31 @@
 import Foundation
 
 class ArtistInfoRepository {
+    
+    var viewModelDelegate: ArtistInfoViewModelProtocol?
+    var networkDelegate: ArtistInfoNetworkProtocol?
+    init () {
+        viewModelDelegate?.repositoryDelegate = self
+    }
+    
+    func setViewModelDelegate(viewModel: ArtistInfoViewModelProtocol?) {
+        if let viewModel = viewModel {
+            viewModelDelegate = viewModel
+        } else {
+            viewModelDelegate = ArtistInfoViewModel()
+        }
+        viewModelDelegate?.repositoryDelegate = self
+    }
+    
+    func setNetworkDelegate(network: ArtistInfoNetworkProtocol?) {
+        if let network = network {
+            networkDelegate = network
+            networkDelegate?.repositoryDelegate = self
+        } else {
+            networkDelegate = nil
+        }
+    }
+    
     func refineArtistInfo(values: [String]) -> ArtistInfo {
         var details = ArtistInfo (origin: "", genres: "", members: "", isSolo: false)
         let type = values[0]

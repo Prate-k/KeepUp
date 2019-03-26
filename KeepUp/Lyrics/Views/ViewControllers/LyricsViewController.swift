@@ -16,17 +16,21 @@ class LyricsViewController: UIViewController {
     
     var artistName: String = ""
     var songTitle: String = ""
-    lazy var lyricsViewModel: LyricsViewModel? = nil
+    
+    var viewModelDelegate: LyricsViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModelDelegate = LyricsViewModel()
+        viewModelDelegate?.viewControllerDelegate = self
+        
+        setSongTitle(songTitle: songTitle)
+        setArtist(artistName: artistName)
         // Do any additional setup after loading the view.
-        lyricsViewModel = LyricsViewModel(view: self)
         DispatchQueue.global().async { [weak self] in
             if let self = self {
-                self.setArtist(artistName: self.artistName)
-                self.setSongTitle(songTitle: self.songTitle)
-                self.lyricsViewModel?.getSongLyrics(artistName: self.artistName, songTitle: self.songTitle)
+                self.viewModelDelegate?.getSongLyricsFromRepository(artistName: self.artistName, songTitle: self.songTitle)
             }
         }
     }

@@ -58,6 +58,7 @@ class KeepUpUITests: XCTestCase {
     func testIfViewAllEditButtonShowsAllFavouriteArtists() {
         let app = XCUIApplication()
         app.buttons["Login"].tap()
-        app.buttons["View All \\ Edit"].tap()
+        app.collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        app.tables.cells.allElementsBoundByIndex[1].tap()
     }
 }

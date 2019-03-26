@@ -805,6 +805,11 @@
                                     <constraint firstItem="uQC-y1-tZD" firstAttribute="top" secondItem="gCU-or-7Jy" secondAttribute="bottom" constant="32" id="eBh-sl-Hpn"/>
                                 </constraints>
                             </stackView>
+                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tUV-kq-mbh">
+                                <rect key="frame" x="188" y="349" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -826,6 +831,8 @@
                         <outlet property="artistName" destination="9iU-Ya-pVe" id="1GZ-Ax-W0E"/>
                         <outlet property="favouriteUnfavouriteButton" destination="nt5-d9-k3Z" id="vhB-xg-DyF"/>
                         <outlet property="genre" destination="zuZ-vG-kC3" id="gT6-X6-YLB"/>
+                        <outlet property="myStackView" destination="5Hn-Gy-ySw" id="Nih-cP-kUX"/>
+                        <outlet property="progressBar" destination="tUV-kq-mbh" id="Qjz-bZ-dXc"/>
                         <segue destination="kxy-QL-uXn" kind="show" identifier="AlbumsToTracksSegue" id="hWQ-dR-YAO"/>
                     </connections>
                 </viewController>
@@ -982,6 +989,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="aFP-Y4-p4Y">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
+                            <activityIndicatorView contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="hws-LU-QKi">
+                                <rect key="frame" x="188" y="349" width="37" height="36.666666666666686"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="i2m-KP-IP1">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
@@ -1479,6 +1491,6 @@
         <image name="shiftRight" width="22.5" height="22.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8B3-Mb-aTn"/>
+        <segue reference="wL9-zg-Mx2"/>
     </inferredMetricsTieBreakers>
 </document>

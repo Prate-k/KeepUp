@@ -28,3 +28,41 @@ func showEmptySearchAlertDialog(viewController: UIViewController) {
     alert.addAction(action)
     viewController.present(alert, animated: true, completion: nil)
 }
+
+func showCouldNotLoadSongError(viewController: UIViewController) {
+    let alert = UIAlertController(title: "Empty song details",
+                                  message: "Could not load Song details - Please retry again",
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+}
+
+func showCouldNotLoadAlbumError(viewController: UIViewController) {
+    let alert = UIAlertController(title: "No albums found",
+                                  message: "Could not load albums - Please retry again",
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+}
+
+func showCouldNotLoadLyricsError(viewController: UIViewController) {
+    let alert = UIAlertController(title: "Empty song title or artist name",
+                                  message: "Could not load lyrics - Please retry again",
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+}
+
+func showLyricsLoadFailedAlertDialog(viewController: UIViewController) {
+    let alert = UIAlertController(title: "Load Failed!",
+                                  message: "Could not load lyrics for the song",
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+        viewController.navigationController?.popViewController(animated: true)
+    })
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+}

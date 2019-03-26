@@ -11,13 +11,14 @@ import UIKit
 class SongsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let resusableId = "songCell"
-    var selectedAlbumPosition: Int?
-    var selectedArtistPosition: Int?
-    var selectedArtist: Artist?
-    var selectedAlbum: Album!
-    var songsList: [Song] = []
-    var lastSelectedTrack: IndexPath = IndexPath.init(row: -1, section: -1)
-    var selectedSongTitle = ""
+    var selectedAlbumName: String?  //segue
+    var selectedArtistName: String? //segue
+
+    var selectedAlbum: Album?   //store details locally
+    var songsList: [Song] = []  //song list local
+    
+    var lastSelectedTrack: IndexPath = IndexPath.init(row: -1, section: -1) //tableView animation
+    var selectedSongTitle = ""  //lyrics title
     
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
@@ -34,12 +35,11 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let indexAlbum = selectedAlbumPosition, let indexArtist = selectedArtistPosition {
+        if let albumName = selectedAlbumName, let artistName = selectedArtistName {
             songsViewModel = SongsViewModel(view: self)
             DispatchQueue.global().async { [weak self] in
                 if let self = self {
-                    self.songsViewModel?.getArtist(at: indexArtist)
-                    self.songsViewModel?.getAlbum(of: indexArtist, in: indexAlbum)
+                    self.songsViewModel?.getAlbum(artistName, albumName)
                 }
             }
         } else {
@@ -53,10 +53,7 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard selectedAlbumPosition != nil else {
-            return 0
-        }
-        return selectedAlbum.albumTracks.count
+        return songsList.count 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

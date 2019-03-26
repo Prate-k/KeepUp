@@ -62,10 +62,10 @@ class HTMLParser {
         }
         
 //        print("name:\(artistName)")
-        print("origin:\(origin)")
-        print("born:\(birthPlace)")
-        print("genre:\(genre)")
-        print("members:\(members)")
+//        print("origin:\(origin)")
+//        print("born:\(birthPlace)")
+//        print("genre:\(genre)")
+//        print("members:\(members)")
         return [type, origin, birthPlace, genre, members]
     }
     
