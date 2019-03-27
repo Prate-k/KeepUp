@@ -40,7 +40,7 @@ class KeepUpUITests: XCTestCase {
         let infoButton = app.buttons["info"]
         infoButton.tap()
         let expect = XCTestExpectation(description: "Linkin Park")
-        XCTWaiter.wait(for: [expect], timeout: 15)
+        _ = XCTWaiter.wait(for: [expect], timeout: 15)
         XCTAssert(app.staticTexts["Linkin Park"].exists)
         app.buttons["Close"].tap()
     }

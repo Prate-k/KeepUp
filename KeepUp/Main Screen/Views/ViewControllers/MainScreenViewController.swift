@@ -32,6 +32,7 @@ class MainScreenViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var detailsExpandCollapseImage: UIImageView!
     @IBOutlet weak var detailsDropDownLable: UILabel!
     @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
+    
     @IBOutlet weak var favCollectionView: UICollectionView!
     @IBOutlet weak var dropDownView: UIView! 
     @IBOutlet weak var topTracksCollectionView: UICollectionView!
