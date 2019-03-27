@@ -7,6 +7,9 @@
 [![codecov](https://codecov.io/gh/Prate-k/KeepUp/branch/develop/graph/badge.svg)](https://codecov.io/gh/Prate-k/KeepUp)
 
 
+[![Build Status](https://app.bitrise.io/app/a9f7e32cc21cd5ad/status.svg?token=23-yARCRzJLw1Ul5_lzLxg)](https://app.bitrise.io/app/a9f7e32cc21cd5ad)
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/Prate-k/KeepUp/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
