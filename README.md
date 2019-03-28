@@ -9,9 +9,12 @@
 
 [![Build Status](https://app.bitrise.io/app/a9f7e32cc21cd5ad/status.svg?token=23-yARCRzJLw1Ul5_lzLxg)](https://app.bitrise.io/app/a9f7e32cc21cd5ad)
 
+<<<<<<< .merge_file_llQDRP
 
 [![Build status](https://build.appcenter.ms/v0.1/apps/91978e84-d2a2-45e4-a54d-44d93161f07e/branches/develop/badge)](https://appcenter.ms)
 
+=======
+>>>>>>> .merge_file_A0ZAWO
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/Prate-k/KeepUp/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
