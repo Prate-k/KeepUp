@@ -8,7 +8,6 @@
 
 import Foundation
 
-
-enum ValueTypes{
+enum ValueTypes {
     case String(String), Int(Int), Boolean(Bool)
 }
