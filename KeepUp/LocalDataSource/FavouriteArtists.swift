@@ -74,7 +74,7 @@ class FavouriteArtists {
     }
     
     static func insertTestArtists () {
-        for i in 0..<10 {
+        for i in 1..<10 {
             favouriteList.append(Artist(name: "Artist \(i)", genre: "Rock", imageUrl: "dummyArtist"))
             for artist in favouriteList where artist.artistAlbums.isEmpty {
                 var num = 1
@@ -94,5 +94,9 @@ class FavouriteArtists {
                 }
             }
         }
+        
+        favouriteList[0].artistName = "Linkin Park"
+        favouriteList[1].artistName = "Taylor Swift"
+        favouriteList[2].artistName = "12 Stones"
     }
 }

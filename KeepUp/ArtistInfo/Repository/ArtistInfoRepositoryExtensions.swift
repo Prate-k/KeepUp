@@ -28,9 +28,9 @@ extension ArtistInfoRepository: ArtistInfoRepositoryProtocol {
     }
     
     func getArtistDataFromSource(artistName: String) {
-        let searchArtistName = artistName.replacingOccurrences(of: " ", with: "_")
+//        let searchArtistName = artistName.replacingOccurrences(of: " ", with: "_")
         let site = "https://en.wikipedia.org/w/api.php?"
-        let query = "action=query&prop=revisions&rvprop=content&format=json&rvsection=0&titles=\(searchArtistName)"
+        let query = ["action=query","prop=revisions", "rvprop=content", "format=json", "rvsection=0", "titles=\(artistName)"]
         if networkDelegate == nil {
             networkDelegate = ArtistInfoNetwork(site: site, query: query, requestType: .GET)
             networkDelegate?.repositoryDelegate = self

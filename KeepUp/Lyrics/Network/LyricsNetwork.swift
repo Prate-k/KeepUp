@@ -15,7 +15,7 @@ protocol LyricsNetworkProtocol: class {
 
 class LyricsNetwork: Networker, LyricsNetworkProtocol {
     
-    weak var repositoryDelegate: LyricsRepositoryProtocol?
+    var repositoryDelegate: LyricsRepositoryProtocol?
     
     func notifyRepository(result: Result<[String]>) {
         switch result {
@@ -26,7 +26,7 @@ class LyricsNetwork: Networker, LyricsNetworkProtocol {
         }
     }
     
-    required init(site: String, query: String, requestType: RequestType) {
+    override init(site: String, query: String, requestType: RequestType) {
         super.init(site: site, query: query, requestType: requestType)
         //make network call to musicxmatch api to get lyrics
     }

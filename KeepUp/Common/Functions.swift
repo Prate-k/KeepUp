@@ -11,7 +11,7 @@ import UIKit
 
 func showArtistInfoLoadFailedAlertDialog(viewController: UIViewController) {
     let alert = UIAlertController(title: "Load Failed!",
-                                  message: "Could not load albums for artist",
+                                  message: "Could not load information for artist",
                                   preferredStyle: .alert)
     let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
         viewController.navigationController?.popViewController(animated: true)
