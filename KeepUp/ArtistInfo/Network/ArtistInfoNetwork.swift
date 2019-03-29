@@ -29,13 +29,16 @@ class ArtistInfoNetwork: Networker, ArtistInfoNetworkProtocol {
     var artistName: String? = ""
     init(site: String, query: [String], requestType: RequestType) {
         var tempArtistName = String((query.last?.split(separator: "=").last)!)
-        let q = query.reduce("", {
+        var q = query.reduce("", {
             var a = $1
             if $1.contains(tempArtistName) {
                 a = $1.replacingOccurrences(of: " ", with: "_")
             }
             return "\($0)&\(a)"
         })
+        if q.hasPrefix("&") {
+            q.remove(at: q.startIndex)
+        }
         super.init(site: site, query: q, requestType: requestType)
         artistName = tempArtistName
     }
@@ -46,17 +49,14 @@ class ArtistInfoNetwork: Networker, ArtistInfoNetworkProtocol {
             do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                         if let query = json["query"] as? [String: Any] {
-                            print(query)
-                            let contents = searchStringsJSON(json: query, searchString: self.artistName!)
-                            print(contents)
-                            for string in contents {
-                                let check = string.contains(self.artistName!) && string.contains("genre")
-                                if check {
-                                    self.notifyRepository(result: Result.success(HTMLParser.parseHTMLContent(content: string)))
-                                    return
-                                } else {
-                                    self.notifyRepository(result: Result.failure(Errors.NetworkError))
-                                    return
+                            if let pages = query["pages"] as? [String: Any] {
+                                let contents = searchStringsJSON(json: pages, searchString: self.artistName!)
+                                for string in contents {
+                                    if string.contains(self.artistName!) && string.contains("genre"){
+                                        let content = HTMLParser.parseHTMLContent(content: string)
+                                        self.notifyRepository(result: Result.success(content))
+                                        break
+                                    }
                                 }
                             }
                         }
