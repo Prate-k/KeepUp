@@ -20,20 +20,6 @@
                ReferencedContainer = "container:KeepUp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "NO"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70B616F92212E09200D95ED9"
-               BuildableName = "KeepUp.app"
-               BlueprintName = "KeepUp"
-               ReferencedContainer = "container:KeepUp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -94,15 +80,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7014A0E122412E4C008F3839"
-            BuildableName = "KeepUpUnitTests.xctest"
-            BlueprintName = "KeepUpUnitTests"
-            ReferencedContainer = "container:KeepUp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

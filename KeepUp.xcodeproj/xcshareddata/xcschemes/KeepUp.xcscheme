@@ -28,20 +28,6 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70D506F7221D88FE00CD855D"
-               BuildableName = "KeepUpTests.xctest"
-               BlueprintName = "KeepUpTests"
-               ReferencedContainer = "container:KeepUp.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "70158AAE223BCF4200617FD4"
                BuildableName = "KeepUpUITests.xctest"
                BlueprintName = "KeepUpUITests"
@@ -71,16 +57,6 @@
       codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70D506F7221D88FE00CD855D"
-               BuildableName = "KeepUpTests.xctest"
-               BlueprintName = "KeepUpTests"
-               ReferencedContainer = "container:KeepUp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference

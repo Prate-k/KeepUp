@@ -65,7 +65,6 @@
 		70E083F0223AFB40007A6580 /* MainScreenViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E083EF223AFB40007A6580 /* MainScreenViewControllerExtensions.swift */; };
 		70E1B1C4221406A700611BAD /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C3221406A700611BAD /* Artist.swift */; };
 		70E1B1C62214605600611BAD /* FavouriteArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1B1C52214605600611BAD /* FavouriteArtistCollectionViewCell.swift */; };
-		70E7215F22312368006B7AF3 /* KeepUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D506FA221D88FE00CD855D /* KeepUpTests.swift */; };
 		70ECD5BD222E9A5E005045D8 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5BC222E9A5E005045D8 /* Song.swift */; };
 		70ECD5BF222E9B07005045D8 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5BE222E9B07005045D8 /* Album.swift */; };
 		70ECD5C1222E9B3A005045D8 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5C0222E9B3A005045D8 /* Date.swift */; };
@@ -171,8 +170,6 @@
 		70CAF329224238C4006E32E6 /* LyricsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsViewModelTests.swift; sourceTree = "<group>"; };
 		70CAF32B22424AE7006E32E6 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		70D506F8221D88FE00CD855D /* KeepUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeepUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		70D506FA221D88FE00CD855D /* KeepUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepUpTests.swift; sourceTree = "<group>"; };
-		70D506FC221D88FE00CD855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		70D6041B223D005F0089BCAE /* DiscographyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscographyViewModel.swift; sourceTree = "<group>"; };
 		70D6041D223D08100089BCAE /* DiscographyViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscographyViewControllerExtensions.swift; sourceTree = "<group>"; };
 		70D74D33223ECEFA009909DA /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -750,7 +747,6 @@
 			isa = PBXGroup;
 			children = (
 				70B616FC2212E09200D95ED9 /* KeepUp */,
-				70D506F9221D88FE00CD855D /* KeepUpTests */,
 				70158AB0223BCF4200617FD4 /* KeepUpUITests */,
 				7014A0E322412E4C008F3839 /* KeepUpUnitTests */,
 				70B616FB2212E09200D95ED9 /* Products */,
@@ -788,15 +784,6 @@
 				EF23CADC9F6DF67935137A50 /* LocalDataSource */,
 			);
 			path = KeepUp;
-			sourceTree = "<group>";
-		};
-		70D506F9221D88FE00CD855D /* KeepUpTests */ = {
-			isa = PBXGroup;
-			children = (
-				70D506FA221D88FE00CD855D /* KeepUpTests.swift */,
-				70D506FC221D88FE00CD855D /* Info.plist */,
-			);
-			path = KeepUpTests;
 			sourceTree = "<group>";
 		};
 		70ECD5B0222E9590005045D8 /* Supporting Files */ = {
@@ -1338,7 +1325,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E7215F22312368006B7AF3 /* KeepUpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

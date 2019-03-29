@@ -40,6 +40,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "70158AAE223BCF4200617FD4"
+            BuildableName = "KeepUpUITests.xctest"
+            BlueprintName = "KeepUpUITests"
+            ReferencedContainer = "container:KeepUp.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
