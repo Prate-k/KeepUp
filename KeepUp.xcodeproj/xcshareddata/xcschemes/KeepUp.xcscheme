@@ -91,6 +91,16 @@
                ReferencedContainer = "container:KeepUp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "70158AAE223BCF4200617FD4"
+               BuildableName = "KeepUpUITests.xctest"
+               BlueprintName = "KeepUpUITests"
+               ReferencedContainer = "container:KeepUp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
