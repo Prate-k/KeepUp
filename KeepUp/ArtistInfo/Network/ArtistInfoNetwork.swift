@@ -55,9 +55,10 @@ class ArtistInfoNetwork: Networker, ArtistInfoNetworkProtocol {
                                     if string.contains(self.artistName!) && string.contains("genre"){
                                         let content = HTMLParser.parseHTMLContent(content: string)
                                         self.notifyRepository(result: Result.success(content))
-                                        break
+                                        return
                                     }
                                 }
+                                self.notifyRepository(result: Result.failure(Errors.NetworkError) )
                             }
                         }
                     }
@@ -65,7 +66,7 @@ class ArtistInfoNetwork: Networker, ArtistInfoNetworkProtocol {
                     print(error.localizedDescription)
                 }
             } else {
-                self.notifyRepository(result: Result.failure(Errors.NetworkError) )
+                self.notifyRepository(result: Result.failure(Errors.NetworkError))
             }
         })
     }
