@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Alamofire
 
 class KeepUpUITests: XCTestCase {
 
