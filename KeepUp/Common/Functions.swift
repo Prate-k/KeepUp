@@ -66,3 +66,10 @@ func showLyricsLoadFailedAlertDialog(viewController: UIViewController) {
     alert.addAction(action)
     viewController.present(alert, animated: true, completion: nil)
 }
+
+func extractValue(query: String) -> String {
+    if let value = (query.split(separator: "=")).last {
+        return String(value)
+    }
+    return ""
+}
