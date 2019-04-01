@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Nr-5V-B19">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Nr-5V-B19">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -345,7 +345,7 @@
                                                         <rect key="frame" x="0.0" y="96" width="414" height="50"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expand" translatesAutoresizingMaskIntoConstraints="NO" id="tmZ-fx-9LJ">
-                                                                <rect key="frame" x="369" y="0.0" width="37" height="50"/>
+                                                                <rect key="frame" x="390" y="0.0" width="16" height="50"/>
                                                                 <gestureRecognizers/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Bo-jn-0XY">
@@ -1475,20 +1475,20 @@
         </scene>
     </scenes>
     <resources>
-        <image name="HideTrack50px" width="37.5" height="37.5"/>
-        <image name="PlayTrack50px" width="37.5" height="37.5"/>
-        <image name="ShowLyrics" width="37.5" height="37.5"/>
-        <image name="UnselectedDelete50px" width="156.52174377441406" height="156.52174377441406"/>
+        <image name="HideTrack50px" width="50" height="50"/>
+        <image name="PlayTrack50px" width="50" height="50"/>
+        <image name="ShowLyrics" width="50" height="50"/>
+        <image name="UnselectedDelete50px" width="25" height="25"/>
         <image name="background" width="998" height="1001"/>
-        <image name="close" width="37.5" height="37.5"/>
-        <image name="dummyAlbum" width="800" height="600"/>
+        <image name="close" width="50" height="50"/>
+        <image name="dummyAlbum" width="400" height="300"/>
         <image name="dummyArtist" width="900" height="900"/>
-        <image name="dummySong" width="355" height="356"/>
-        <image name="expand" width="37.5" height="37.5"/>
-        <image name="fav" width="36" height="36"/>
-        <image name="info" width="180" height="180"/>
+        <image name="dummySong" width="177.5" height="178"/>
+        <image name="expand" width="50" height="50"/>
+        <image name="fav" width="24" height="24"/>
+        <image name="info" width="25" height="25"/>
         <image name="search" width="19" height="19"/>
-        <image name="shiftRight" width="22.5" height="22.5"/>
+        <image name="shiftRight" width="15" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="wL9-zg-Mx2"/>

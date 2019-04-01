@@ -19,7 +19,7 @@ class Networker {
     var query: String = ""
     var requestType: RequestType
     
-    required init(site: String, query: String, requestType: RequestType) {
+    init(site: String, query: String, requestType: RequestType) {
         self.site = site
         self.query = query
         self.requestType = requestType
