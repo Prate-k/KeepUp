@@ -67,6 +67,18 @@ func showLyricsLoadFailedAlertDialog(viewController: UIViewController) {
     viewController.present(alert, animated: true, completion: nil)
 }
 
+func showLoginCancelledAlertDialog(viewController: UIViewController) {
+    let alert = UIAlertController(title: "Login Cancelled or Failed!",
+                                  message: "Login was cancelled or failed, Please try again to continue",
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+        viewController.navigationController?.popViewController(animated: true)
+    })
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+}
+
+
 func extractValue(query: String) -> String {
     if let value = (query.split(separator: "=")).last {
         return String(value)

@@ -21,6 +21,11 @@
 		70493D96223F8CED00992C89 /* LyricsViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70493D95223F8CED00992C89 /* LyricsViewControllerExtensions.swift */; };
 		70493D98223F8CFE00992C89 /* LyricsRepositoryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70493D97223F8CFE00992C89 /* LyricsRepositoryExtensions.swift */; };
 		70493D9A223F8D1300992C89 /* LyricsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70493D99223F8D1300992C89 /* LyricsRepository.swift */; };
+		704AA4C022649A6B00C40557 /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704AA4BF22649A6B00C40557 /* TabController.swift */; };
+		704AA4C22264A99100C40557 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 704AA4C12264A99100C40557 /* GoogleService-Info.plist */; };
+		704AA4C32264A99100C40557 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 704AA4C12264A99100C40557 /* GoogleService-Info.plist */; };
+		704AA4C42264A99100C40557 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 704AA4C12264A99100C40557 /* GoogleService-Info.plist */; };
+		704AA4C52264A99100C40557 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 704AA4C12264A99100C40557 /* GoogleService-Info.plist */; };
 		7060334F22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060334E22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift */; };
 		7060335122365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060335022365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift */; };
 		70673670223EE087004E767F /* SongsRepositoryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7067366F223EE087004E767F /* SongsRepositoryExtensions.swift */; };
@@ -129,6 +134,8 @@
 		70493D95223F8CED00992C89 /* LyricsViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsViewControllerExtensions.swift; sourceTree = "<group>"; };
 		70493D97223F8CFE00992C89 /* LyricsRepositoryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsRepositoryExtensions.swift; sourceTree = "<group>"; };
 		70493D99223F8D1300992C89 /* LyricsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LyricsRepository.swift; sourceTree = "<group>"; };
+		704AA4BF22649A6B00C40557 /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
+		704AA4C12264A99100C40557 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7060334E22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistsCollectionViewHeader.swift; sourceTree = "<group>"; };
 		7060335022365D7700FF8360 /* FavouriteArtistsViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArtistsViewControllerExtensions.swift; sourceTree = "<group>"; };
 		7067366F223EE087004E767F /* SongsRepositoryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsRepositoryExtensions.swift; sourceTree = "<group>"; };
@@ -276,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				700AB7D32236864200F4CB6C /* CustomViews */,
+				704AA4BF22649A6B00C40557 /* TabController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -781,6 +789,7 @@
 				70ECD5B1222E95AD005045D8 /* Resources */,
 				70ECD5B0222E9590005045D8 /* Supporting Files */,
 				70B617092212E09400D95ED9 /* Info.plist */,
+				704AA4C12264A99100C40557 /* GoogleService-Info.plist */,
 				EF23CADC9F6DF67935137A50 /* LocalDataSource */,
 			);
 			path = KeepUp;
@@ -988,6 +997,7 @@
 				70E41EC6222544A2009024B8 /* Run Script */,
 				70B616F82212E09200D95ED9 /* Resources */,
 				1608ADABAD2B259A47EB2830 /* [CP] Embed Pods Frameworks */,
+				3514C9D460EDD6F1E781B7D9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1071,6 +1081,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704AA4C52264A99100C40557 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1089,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704AA4C42264A99100C40557 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,6 +1099,7 @@
 			files = (
 				70B617082212E09400D95ED9 /* LaunchScreen.storyboard in Resources */,
 				702FE1C1223B814100A540EB /* StartUp.storyboard in Resources */,
+				704AA4C22264A99100C40557 /* GoogleService-Info.plist in Resources */,
 				70B617052212E09400D95ED9 /* Assets.xcassets in Resources */,
 				70B617032212E09200D95ED9 /* Main.storyboard in Resources */,
 			);
@@ -1096,6 +1109,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704AA4C32264A99100C40557 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1134,16 +1148,50 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-KeepUp/Pods-KeepUp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeepUp/Pods-KeepUp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3514C9D460EDD6F1E781B7D9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KeepUp/Pods-KeepUp-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeepUp/Pods-KeepUp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3F898250071D178A82DA04A4 /* [CP] Check Pods Manifest.lock */ = {
@@ -1296,6 +1344,7 @@
 				70ECD5D5222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift in Sources */,
 				70ECD5CF222EAA9A005045D8 /* StringExtensions.swift in Sources */,
 				7060334F22363C8A00FF8360 /* FavouriteArtistsCollectionViewHeader.swift in Sources */,
+				704AA4C022649A6B00C40557 /* TabController.swift in Sources */,
 				70D74D38223ED62A009909DA /* SongsViewModelExtensions.swift in Sources */,
 				70C9B5252240ECB700081216 /* FavouriteArtistViewModelExtensions.swift in Sources */,
 				70ECD5DA222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift in Sources */,
