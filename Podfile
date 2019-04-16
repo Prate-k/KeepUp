@@ -10,6 +10,7 @@ target 'KeepUp' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Facebook'
 
   target 'KeepUpTests' do
     inherit! :search_paths

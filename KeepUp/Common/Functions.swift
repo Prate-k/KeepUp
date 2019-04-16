@@ -72,7 +72,7 @@ func showLoginCancelledAlertDialog(viewController: UIViewController) {
                                   message: "Login was cancelled or failed, Please try again to continue",
                                   preferredStyle: .alert)
     let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-        viewController.navigationController?.popViewController(animated: true)
+//        viewController.navigationController?.popViewController(animated: true)
     })
     alert.addAction(action)
     viewController.present(alert, animated: true, completion: nil)

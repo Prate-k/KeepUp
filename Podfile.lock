@@ -1,5 +1,15 @@
 PODS:
   - Alamofire (4.8.2)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - FBSDKCoreKit (4.44.1):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.44.1):
+    - FBSDKCoreKit
   - Firebase/Auth (5.20.2):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.4.2)
@@ -33,6 +43,9 @@ PODS:
   - FirebaseUI/Auth (6.2.1):
     - Firebase/Auth (~> 5.0)
     - GoogleUtilities/UserDefaults
+  - FirebaseUI/Facebook (6.2.1):
+    - FBSDKLoginKit (~> 4.35)
+    - FirebaseUI/Auth
   - FirebaseUI/Google (6.2.1):
     - FirebaseUI/Auth
     - GoogleSignIn (~> 4.0)
@@ -83,11 +96,15 @@ DEPENDENCIES:
   - Alamofire
   - Firebase/Auth
   - Firebase/Core
+  - FirebaseUI/Facebook
   - FirebaseUI/Google
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Bolts
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -104,6 +121,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
+  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
   Firebase: 0c8cf33f266410c61ab3e2265cfa412200351d9c
   FirebaseAnalytics: ece1aa57a4f43c64d53a648b5a5e05151aae947b
   FirebaseAuth: dd7bbf03a5aee0eafb3a1aee4d2812bd74bac890
@@ -118,6 +138,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: 21023ee74a28c69f567b7a9b0249fa4563df0287
+PODFILE CHECKSUM: 26755bea83358c43672dd2d77a441494c0de53b0
 
 COCOAPODS: 1.5.3

@@ -7,65 +7,18 @@
 //
 
 import UIKit
-import Firebase
-import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    var storyBoard: UIStoryboard?
+    var viewController: UIViewController?
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        
-        FirebaseApp.configure()
-        
-        GIDSignIn.sharedInstance()?.clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
         FavouriteArtists.insertTestArtists()
         return true
     }
-    
-    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
-        -> Bool {
-            return GIDSignIn.sharedInstance().handle(url,
-                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                     annotation: [:]) }
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        // ...
-        if let error = error {
-            // ...
-            print("cannot sign in due to: \(error), loading LoginScreen")
-            let loginStoryBoard = UIStoryboard(name: "StartUp", bundle: nil)
-            let initialViewController = loginStoryBoard.instantiateViewController(withIdentifier: "LoginScreen")
-            initialViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = initialViewController
-            window?.makeKeyAndVisible()
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        // ...
-        print("Log in sucessful, Loading MainScreen")
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "TabController")
-        initialViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = initialViewController
-        window?.makeKeyAndVisible()
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
-    
-    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state.
