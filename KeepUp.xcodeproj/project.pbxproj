@@ -592,6 +592,64 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		703D514E22660C74006C40F2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		703D514F22660C79006C40F2 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		703D515022660C80006C40F2 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		703D515122660C88006C40F2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				703D515522660DA2006C40F2 /* ViewControllers */,
+				703D515422660D99006C40F2 /* CustomViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		703D515222660C8F006C40F2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		703D515322660C9B006C40F2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		703D515422660D99006C40F2 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		703D515522660DA2006C40F2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		70507900224265AD002F0C54 /* Lyrics */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +657,19 @@
 				707CF1AF2248036000E0473A /* LyricsRepositoryTests.swift */,
 			);
 			path = Lyrics;
+			sourceTree = "<group>";
+		};
+		705587212266003300DB401D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				703D515322660C9B006C40F2 /* Extensions */,
+				703D515222660C8F006C40F2 /* Models */,
+				703D515122660C88006C40F2 /* Views */,
+				703D515022660C80006C40F2 /* Repository */,
+				703D514F22660C79006C40F2 /* ViewModels */,
+				703D514E22660C74006C40F2 /* Network */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		70765FB02244D3FC00F99DEC /* Network */ = {
@@ -777,6 +848,7 @@
 		70B616FC2212E09200D95ED9 /* KeepUp */ = {
 			isa = PBXGroup;
 			children = (
+				705587212266003300DB401D /* Search */,
 				70B617012212E09200D95ED9 /* Main.storyboard */,
 				70ECD5B2222E95B9005045D8 /* ArtistInfo */,
 				70B2DEF02237EBAF0087DF4B /* Lyrics */,
