@@ -165,23 +165,51 @@
                     <view key="view" contentMode="scaleToFill" id="IDD-M5-YbI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-WE-Hfm">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="623" id="eiT-Yn-vJH"/>
+                                </constraints>
+                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter Artist Name" id="Nrz-at-mWu">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="44f-rS-0He" id="jVq-6n-Xh8"/>
+                                    </connections>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchResultCell" id="po8-sa-jyj">
+                                        <rect key="frame" x="0.0" y="84" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="po8-sa-jyj" id="T7I-dP-AW8">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="44f-rS-0He" id="w4a-pF-5Gg"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rxd-WE-Hfm" firstAttribute="top" secondItem="pL9-6a-znQ" secondAttribute="top" id="bmv-Lk-QY5"/>
+                            <constraint firstAttribute="trailing" secondItem="Rxd-WE-Hfm" secondAttribute="trailing" id="dxv-14-jU4"/>
+                            <constraint firstItem="Rxd-WE-Hfm" firstAttribute="leading" secondItem="IDD-M5-YbI" secondAttribute="leading" id="m4O-L8-BdO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pL9-6a-znQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="u8o-v1-moc"/>
                     <connections>
-                        <outlet property="searchBarController" destination="7Ha-wz-2IP" id="OZb-af-rFN"/>
+                        <outlet property="resultsTableView" destination="Rxd-WE-Hfm" id="kSa-pO-58X"/>
+                        <outlet property="searchBar" destination="Nrz-at-mWu" id="FJG-dB-7su"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sQ-hm-E5l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="7Ha-wz-2IP">
-                    <connections>
-                        <outlet property="delegate" destination="44f-rS-0He" id="3Ut-C8-FpC"/>
-                        <outlet property="searchContentsController" destination="44f-rS-0He" id="w1C-j8-jEf"/>
-                        <outlet property="searchResultsDataSource" destination="44f-rS-0He" id="u29-rm-Tra"/>
-                        <outlet property="searchResultsDelegate" destination="44f-rS-0He" id="yG4-SG-7Pc"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="618.84057971014499" y="741.84782608695662"/>
         </scene>
@@ -1608,6 +1636,6 @@
         <image name="shiftRight" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8B3-Mb-aTn"/>
+        <segue reference="wL9-zg-Mx2"/>
     </inferredMetricsTieBreakers>
 </document>

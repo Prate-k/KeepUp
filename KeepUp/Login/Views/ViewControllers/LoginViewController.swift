@@ -76,6 +76,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         // ...
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // Change `2.0` to the desired number of seconds.
             // Code you want to be delayed
+            print(authentication)
             print("Log in sucessful, Loading MainScreen")
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "TabController")
