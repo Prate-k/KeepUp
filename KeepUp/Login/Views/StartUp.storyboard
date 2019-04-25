@@ -21,39 +21,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pK-jJ-G9Y">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6fi-dV-ccd">
-                                        <rect key="frame" x="67" y="258" width="240" height="30"/>
-                                        <attributedString key="attributedText"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nLQ-n2-6wh">
-                                        <rect key="frame" x="67" y="307" width="240" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="z6l-fa-4sh"/>
-                                        </constraints>
-                                        <attributedString key="attributedText"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go" textContentType="password"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to KeepUp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CY-bV-UMr">
-                                        <rect key="frame" x="109" y="191" width="156" height="20.5"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="j1Y-pD-qme">
-                                        <rect key="frame" x="133.5" y="361" width="108.5" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="iea-J8-vq3"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CY-bV-UMr">
+                                        <rect key="frame" x="99.5" y="191" width="175.5" height="22.5"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="______ or ______">
+                                            <fragment content="Welcome to KeepUp">
                                                 <attributes>
-                                                    <font key="NSFont" size="14" name="Helvetica-Light"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <font key="NSFont" size="19" name="SFCompactText-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appicon" translatesAutoresizingMaskIntoConstraints="NO" id="N4N-PC-kgR">
                                         <rect key="frame" x="67" y="55" width="240" height="128"/>
                                         <constraints>
@@ -61,21 +40,27 @@
                                             <constraint firstAttribute="width" constant="240" id="KdX-VP-K7x"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="71" translatesAutoresizingMaskIntoConstraints="NO" id="81I-ju-6Vs">
-                                        <rect key="frame" x="136" y="433" width="103" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rQ-mT-8Uf">
+                                        <rect key="frame" x="126.5" y="245.5" width="122.5" height="21"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="Sign-in options">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="SFCompactText-Light"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="81I-ju-6Vs">
+                                        <rect key="frame" x="163" y="309" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxa-TU-Ny2">
-                                                <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                 <state key="normal" image="icons8-google_logo"/>
                                                 <connections>
                                                     <action selector="LoginAction:" destination="SDF-iv-JBU" eventType="touchUpInside" id="qRw-zc-Rge"/>
                                                 </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LK7-Fa-iVj">
-                                                <rect key="frame" x="87" y="0.0" width="16" height="22"/>
-                                                <state key="normal" image="icons8-facebook">
-                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -84,27 +69,22 @@
                                 <constraints>
                                     <constraint firstItem="0CY-bV-UMr" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" constant="-0.5" id="65A-oR-CHJ"/>
                                     <constraint firstItem="N4N-PC-kgR" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" constant="-0.5" id="AxV-BN-06N"/>
-                                    <constraint firstItem="j1Y-pD-qme" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" id="BYF-rK-dAB"/>
-                                    <constraint firstItem="nLQ-n2-6wh" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" constant="-0.5" id="Bo1-BQ-ZWk"/>
-                                    <constraint firstItem="N4N-PC-kgR" firstAttribute="leading" secondItem="nLQ-n2-6wh" secondAttribute="leading" id="IOM-L0-r6X"/>
-                                    <constraint firstItem="6fi-dV-ccd" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" constant="-0.5" id="Kwu-1c-GPx"/>
                                     <constraint firstItem="0CY-bV-UMr" firstAttribute="top" secondItem="N4N-PC-kgR" secondAttribute="bottom" constant="8" id="MkE-9A-XmB"/>
-                                    <constraint firstItem="nLQ-n2-6wh" firstAttribute="top" secondItem="8pK-jJ-G9Y" secondAttribute="top" constant="307" id="Oxr-VP-LIZ"/>
-                                    <constraint firstItem="81I-ju-6Vs" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" id="PnJ-sx-4bI"/>
-                                    <constraint firstItem="81I-ju-6Vs" firstAttribute="top" secondItem="j1Y-pD-qme" secondAttribute="bottom" constant="42" id="SmT-Au-tUo"/>
-                                    <constraint firstItem="nLQ-n2-6wh" firstAttribute="top" secondItem="6fi-dV-ccd" secondAttribute="bottom" constant="19" id="Y6C-sD-xhx"/>
+                                    <constraint firstItem="8rQ-mT-8Uf" firstAttribute="top" secondItem="0CY-bV-UMr" secondAttribute="bottom" constant="32" id="YZs-S5-5g2"/>
                                     <constraint firstItem="N4N-PC-kgR" firstAttribute="leading" secondItem="8pK-jJ-G9Y" secondAttribute="leading" constant="67" id="Z5g-tl-uXQ"/>
+                                    <constraint firstItem="8rQ-mT-8Uf" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" id="jZm-hP-f86"/>
                                     <constraint firstItem="N4N-PC-kgR" firstAttribute="top" secondItem="8pK-jJ-G9Y" secondAttribute="top" constant="55" id="obz-xz-W1N"/>
-                                    <constraint firstItem="N4N-PC-kgR" firstAttribute="leading" secondItem="6fi-dV-ccd" secondAttribute="leading" id="qWf-An-BfA"/>
-                                    <constraint firstItem="j1Y-pD-qme" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" id="wzu-HZ-iGL"/>
-                                    <constraint firstItem="j1Y-pD-qme" firstAttribute="top" secondItem="nLQ-n2-6wh" secondAttribute="bottom" constant="24" id="xGU-e4-UWm"/>
-                                    <constraint firstItem="j1Y-pD-qme" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" id="yO2-kA-EP3"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome Back!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-Ub-szA">
-                                <rect key="frame" x="128.5" y="323.5" width="118" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-Ub-szA">
+                                <rect key="frame" x="128.5" y="323.5" width="118" height="20"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Welcome Back!">
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="Helvetica"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -119,7 +99,6 @@
                         <viewLayoutGuide key="safeArea" id="5hO-ta-KmQ"/>
                     </view>
                     <connections>
-                        <outlet property="facebookButton" destination="LK7-Fa-iVj" id="NPg-hj-ht5"/>
                         <outlet property="googleButton" destination="oxa-TU-Ny2" id="a1p-3V-myT"/>
                         <outlet property="myView" destination="8pK-jJ-G9Y" id="6gu-Ru-RIZ"/>
                         <outlet property="welcomeBackLabel" destination="tUG-Ub-szA" id="ZmX-sp-VND"/>
@@ -132,7 +111,6 @@
     </scenes>
     <resources>
         <image name="appicon" width="1536" height="1536"/>
-        <image name="icons8-facebook" width="48" height="48"/>
         <image name="icons8-google_logo" width="48" height="48"/>
     </resources>
 </document>

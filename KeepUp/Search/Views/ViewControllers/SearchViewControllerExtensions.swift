@@ -70,13 +70,13 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as? SearchResultCell
         if let searchResults = self.searchResults {
             if let result = searchResults.get(i: indexPath.row) {
-                cell.textLabel?.text = result.artistName
-                cell.imageView?.loadImageFromSource(source: result.artistThumbnail!)
+                cell?.artistNameLabel.text = result.artistName
+                cell?.artistThumbnailImageView.loadImageFromSource(source: result.artistThumbnail!)
             }
         }
-        return cell
+        return cell!
     }
 }

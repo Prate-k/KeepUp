@@ -11,7 +11,7 @@ import UIKit
 class SearchViewController: UIViewController {
 
     var viewModelDelegate: SearchViewModelProtocol?
-    var searchResults: SearchResults? = nil
+    var searchResults: SearchResults?
     var isWaitingResult: Bool = false
     @IBOutlet weak var resultsTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!

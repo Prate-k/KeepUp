@@ -89,6 +89,7 @@
 		70ECD5D1222EAAAA005045D8 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5D0222EAAAA005045D8 /* UIImageExtensions.swift */; };
 		70ECD5D5222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5D4222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift */; };
 		70ECD5DA222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70ECD5D9222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift */; };
+		70EDA6E5226BAE000075FC77 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EDA6E4226BAE000075FC77 /* SearchResultCell.swift */; };
 		A56B9499CB3AB7F648DCEE7F /* Pods_KeepUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7061D1DECEDBDE8CFC351A7 /* Pods_KeepUp.framework */; };
 		C8ECB5B52D42DD372F7A3B99 /* Pods_KeepUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99B710827CDDEB5EF6836A5 /* Pods_KeepUpUITests.framework */; };
 		EF23C6EBDB5012E76D76D3D9 /* DiscographyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF23CE56DBBAF3EEA9F6C964 /* DiscographyRepository.swift */; };
@@ -212,6 +213,7 @@
 		70ECD5D0222EAAAA005045D8 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		70ECD5D4222EAEF1005045D8 /* ArtistInfoViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewControllerExtensions.swift; sourceTree = "<group>"; };
 		70ECD5D9222EB0BA005045D8 /* ArtistInfoViewModelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInfoViewModelExtensions.swift; sourceTree = "<group>"; };
+		70EDA6E4226BAE000075FC77 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		812DA8FA1CAD5D7384EA42EE /* Pods_KeepUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ECF7F5C633300221AF2D337 /* Pods-KeepUpUnitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeepUpUnitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeepUpUnitTests/Pods-KeepUpUnitTests.release.xcconfig"; sourceTree = "<group>"; };
 		B7061D1DECEDBDE8CFC351A7 /* Pods_KeepUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeepUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -683,6 +685,7 @@
 		706CFE73226A12810093A53A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				70EDA6E4226BAE000075FC77 /* SearchResultCell.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1413,6 +1416,7 @@
 				70BF2AD2221AF9FC006BE113 /* TopTracksCollectionViewCell.swift in Sources */,
 				70D6041E223D08100089BCAE /* DiscographyViewControllerExtensions.swift in Sources */,
 				70493D98223F8CFE00992C89 /* LyricsRepositoryExtensions.swift in Sources */,
+				70EDA6E5226BAE000075FC77 /* SearchResultCell.swift in Sources */,
 				707CF1AC2247CCDB00E0473A /* LyricsNetwork.swift in Sources */,
 				70673670223EE087004E767F /* SongsRepositoryExtensions.swift in Sources */,
 				70ECD5C1222E9B3A005045D8 /* Date.swift in Sources */,
