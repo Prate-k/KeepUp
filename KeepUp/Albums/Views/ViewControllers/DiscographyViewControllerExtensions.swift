@@ -12,7 +12,7 @@ import UIKit
 protocol DiscographyViewControllerProtocol: class {
     var viewModelDelegate: DiscographyViewModelProtocol? { get set }
     func albumLoadFailure(error: Errors)
-    func updateView(artist: Artist)
+    func updateView(albums: Albums)
 }
 
 extension DiscographyViewController: DiscographyViewControllerProtocol {
@@ -33,13 +33,14 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
         }
     }
     
-    func updateView(artist: Artist) {
-        self.selectedArtist = artist
-        self.albumList = artist.artistAlbums
+    func updateView(albums: Albums) {
+//        self.selectedArtist = artist
+//        self.albumList = artist.artistAlbums request albums from api here
+        self.albums = albums
         DispatchQueue.main.async {
-            if let artist = self.selectedArtist {
-                self.artistName.text = artist.artistName
-                self.genre.text = artist.artistGenre
+            if let albums = self.albums {
+//                self.artistName.text = artist.artistName
+                self.genre.text = ""//artist.artistGenre
                 
                 self.myStackView.isHidden = false
                 self.albumsListTable.reloadData()
@@ -50,7 +51,7 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
         }
     }
 
-    func toggleArtistSearched(selectedArtist: Artist) {
+    func toggleArtistSearched(selectedArtist: SelectedArtist) {
         isArtistFavourited = !isArtistFavourited
         DispatchQueue.main.async {
             if self.isArtistFavourited {
@@ -63,7 +64,7 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
         }
     }
     
-    func addToFavouritesList(selectedArtist: Artist) {
+    func addToFavouritesList(selectedArtist: SelectedArtist) {
         if selectedArtist.artistName.isEmpty {
             DispatchQueue.main.async {
                 self.progressBar.stopAnimating()
@@ -71,8 +72,8 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
             showCouldNotLoadAlbumError(viewController: self)
         }
         let newArtist = Artist(name: selectedArtist.artistName,
-                genre: selectedArtist.artistGenre,
-                imageUrl: selectedArtist.artistImageUrl)
+                genre: "",
+                imageUrl: selectedArtist.artistImage)
         if let x = newArtist {
             viewModelDelegate?.addArtist(newArtist: x)
         }

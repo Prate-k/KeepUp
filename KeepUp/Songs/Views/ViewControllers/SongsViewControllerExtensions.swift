@@ -27,10 +27,10 @@ extension SongsViewController: SongsListFetching {
         selectedAlbum = album
         DispatchQueue.main.async {
             self.albumName.text = album.albumName
-            self.releaseDate.text = """
-                    \(album.albumReleaseDate.releasedMonth)
-                    \(album.albumReleaseDate.releasedYear)
-                    """
+//            self.releaseDate.text = """
+//                    \(album.albumReleaseDate.releasedMonth)
+//                    \(album.albumReleaseDate.releasedYear)
+//                    """
             self.albumImageView.image = UIImage(named: "dummyAlbum")
         }
     }

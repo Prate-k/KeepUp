@@ -16,6 +16,28 @@ protocol SearchViewControllerProtocol: class {
     func searchResultsFailure(error: Errors)
 }
 
+extension SearchViewController {
+    func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
+//        if isLoadingAllFavourites {
+//            albumsViewController.selectedArtistName = favouriteArtistList[selectedArtistPosition].artistName
+//        } else {
+//            if let index = favCollectionView.indexPathsForSelectedItems?[0].item {
+//                albumsViewController.selectedArtistName = favouriteArtistList[index].artistName
+//            }
+//        }
+//        isLoadingAllFavourites = false
+    }
+
+    func loadArtistInfoScreen (artistInfoViewController: ArtistInfoViewController) {
+//        if let name = resultArtistLabel.text {
+//            artistInfoViewController.artistName.append("\(name)")
+//            return
+//        }
+    }
+}
+
+
+
 extension SearchViewController: SearchViewControllerProtocol {
     
     func updateSearchResults(searchResults: SearchResults) {
@@ -60,7 +82,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-extension SearchViewController: UITableViewDataSource {
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let results = searchResults {
@@ -78,5 +100,11 @@ extension SearchViewController: UITableViewDataSource {
             }
         }
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        selectedResult = indexPath.item
+//        print(selectedResult)
+        self.performSegue(withIdentifier: "SearchToDiscographySegue", sender: nil)
     }
 }

@@ -11,12 +11,10 @@ import UIKit
 class DiscographyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let resusableId = "albumCell"
-    var selectedArtistName = ""  //used for passing data between prev screen and this
-    
-    var selectedArtist: Artist?  //stores selected artist details
-    var albumList: [Album] = []  //stores locally selected artist album
     var isArtistFavourited = true  //shows if artist is still in favourite list
     
+    var selectedArtist: SelectedArtist?
+    var albums: Albums?
     var viewModelDelegate: DiscographyViewModelProtocol?   //used for mvvm comm
 
     @IBOutlet weak var progressBar: UIActivityIndicatorView!
@@ -28,13 +26,17 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var myStackView: UIStackView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let songViewController = segue.destination as? SongsViewController {
-            if let index = albumsListTable.indexPathForSelectedRow?.item {
-                songViewController.selectedAlbumName = albumList[index].albumName
-                songViewController.selectedArtistName = selectedArtist?.artistName
-            }
-            return
-        }
+//        if let songsViewController = segue.destination as? SongsViewController {
+//            if let index = albumsListTable.indexPathForSelectedRow?.item {
+//                if let searchResults = searchResults {
+//                    if let selected = searchResults.get(i: index) {
+//                        albumsViewController.selectedArtist = SelectedArtist(artistID: selected.artistID, artistName: selected.artistName, artistImage: selected.artistThumbnail)
+//                        return
+//                    }
+//                }
+//            }
+//            return
+//        }
         if let artistInfoViewController = segue.destination as? ArtistInfoViewController {
             if let name = artistName.text {
                 artistInfoViewController.artistName.append("\(name)")
@@ -45,18 +47,18 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        artistImageView.loadImageFromSource(source: "")
-        viewModelDelegate = DiscographyViewModel()
-        viewModelDelegate?.viewControllerDelegate = self
-        viewModelDelegate?.getSelectedArtist(artistName: selectedArtistName)
-        progressBar.hidesWhenStopped = true
-        myStackView.isHidden = true
-        if selectedArtistName.isEmpty {
+        guard let selectedArtist = self.selectedArtist else {
             showEmptySearchAlertDialog(viewController: self)
             return
-        } else {
-            progressBar.startAnimating()
         }
+        artistImageView.loadImageFromSource(source: selectedArtist.artistImage)
+        viewModelDelegate = DiscographyViewModel()
+        viewModelDelegate?.viewControllerDelegate = self
+        viewModelDelegate?.getSelectedArtist(artistID: selectedArtist.artistID)
+        progressBar.hidesWhenStopped = true
+        myStackView.isHidden = true
+    
+        progressBar.startAnimating()
     }
 
     @IBAction func addRemoveFavourites() {
@@ -72,18 +74,22 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumList.count
+        if let albums = self.albums {
+            return albums.count()
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? AlbumTableViewCell else {
             fatalError("The dequeued cell is not an instance of AlbumTableViewCell.")
         }
-        if !albumList.isEmpty {
-            let album = albumList[indexPath.row]
-            cell.albumImageView.image = UIImage(named: "dummyAlbum")
-            cell.albumName.text = album.albumName
-            cell.releasedDate.text = "\(album.albumReleaseDate.releasedMonth) \(album.albumReleaseDate.releasedYear)"
+        if let albums = self.albums {
+            if let album = albums.get(i: indexPath.row) {
+                cell.albumImageView.loadImageFromSource(source: album.albumCover!)
+                cell.albumName.text = album.albumName
+                cell.releasedDate.text = "\(album.releaseDate!)"
+            }
         }
         return cell
     }

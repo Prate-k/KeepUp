@@ -75,7 +75,7 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         // handle tap events
         if collectionView == self.favCollectionView {
             if !inEditMode {
-                if let home = self.navigationController?.viewControllers[0] as? MainScreenViewController {
+                if let home = self.navigationController?.viewControllers[0] as? HomeViewController {
                     home.selectedArtistPosition = indexPath.item
                     home.isLoadingAllFavourites = true
                     self.navigationController?.popToRootViewController(animated: false)

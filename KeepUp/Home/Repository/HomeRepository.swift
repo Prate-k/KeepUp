@@ -1,28 +1,31 @@
 //
-// Created by Prateek Kambadkone on 2019-03-17.
-// Copyright (c) 2019 Prateek Kambadkone. All rights reserved.
+//  MainScreenRepository.swift
+//  KeepUp
+//
+//  Created by Prateek Kambadkone on 2019/03/18.
+//  Copyright © 2019 Prateek Kambadkone. All rights reserved.
 //
 
 import Foundation
 
-class DiscographyRepository {
+class HomeRepository {
     
-    var viewModelDelegate: DiscographyViewModelProtocol?
-    var networkDelegate: DiscographyNetworkProtocol?
+    var viewModelDelegate: HomeViewModelProtocol?
+    var networkDelegate: HomeNetworkProtocol?
     init () {
         viewModelDelegate?.repositoryDelegate = self
     }
     
-    func setViewModelDelegate(viewModel: DiscographyViewModelProtocol?) {
+    func setViewModelDelegate(viewModel: HomeViewModelProtocol?) {
         if let viewModel = viewModel {
             viewModelDelegate = viewModel
         } else {
-            viewModelDelegate = DiscographyViewModel()
+            viewModelDelegate = HomeViewModel()
         }
         viewModelDelegate?.repositoryDelegate = self
     }
     
-    func setNetworkDelegate(network: DiscographyNetworkProtocol?) {
+    func setNetworkDelegate(network: HomeNetworkProtocol?) {
         if let network = network {
             networkDelegate = network
             networkDelegate?.repositoryDelegate = self

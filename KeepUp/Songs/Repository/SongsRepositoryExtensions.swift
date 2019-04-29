@@ -20,7 +20,7 @@ extension SongsRepository: SongsRepositoryFunctionable {
                 var index = -1
                 for album in artist.artistAlbums {
                     index += 1
-                    if album.albumName.elementsEqual(albumName) {
+                    if album.albumName!.elementsEqual(albumName) {
                         break
                     }
                 }

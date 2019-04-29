@@ -17,7 +17,7 @@ extension SongsViewModel: SongsViewModelObjCFunctionable {
         let songsRepository: SongsRepositoryFunctionable = SongsRepository()
         _ = songsRepository.getAlbumFromSource(artistName: artistName, albumName: albumName, completing: {(album) in
             self.songsViewController?.showSelectedAlbum(album: album)
-            self.songsViewController?.songsListShow(songs: album.albumTracks)
+//            self.songsViewController?.songsListShow(songs: album.albumTracks)
         })
     }
 }
