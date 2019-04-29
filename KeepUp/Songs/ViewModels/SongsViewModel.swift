@@ -9,9 +9,30 @@
 import Foundation
 
 class SongsViewModel {
-    weak var songsViewController: SongsListFetching?
     
-    init(view: SongsListFetching) {
-        self.songsViewController = view
+    var viewControllerDelegate: SongsViewControllerProtocol?
+    var repositoryDelegate: SongsRepositoryProtocol?
+    
+    init() {
+        repositoryDelegate = SongsRepository()
+        repositoryDelegate?.viewModelDelegate = self
+    }
+    
+    func setRepositoryDelegate(repository: SongsRepositoryProtocol?) {
+        if let repository = repository {
+            repositoryDelegate = repository
+        } else {
+            repositoryDelegate = SongsRepository()
+        }
+        repositoryDelegate?.viewModelDelegate = self
+    }
+    
+    func setViewControllerDelegate(viewController: SongsViewControllerProtocol?) {
+        if let viewController = viewController {
+            viewControllerDelegate = viewController
+        } else {
+            viewControllerDelegate = SongsViewController()
+        }
+        viewControllerDelegate?.viewModelDelegate = self
     }
 }

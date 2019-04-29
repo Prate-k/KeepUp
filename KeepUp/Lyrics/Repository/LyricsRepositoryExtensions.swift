@@ -11,33 +11,43 @@ import Foundation
 protocol LyricsRepositoryProtocol: class {
     var viewModelDelegate: LyricsViewModelProtocol? {get set}
     var networkDelegate: LyricsNetworkProtocol? { get set }
-    func getSongLyricsFromDataSource(artistName: String, songTitle: String)
-    func dataReady(result: Result<[String]>)
+    func getSongLyricsFromDataSource(artistName: String, albumName: String, songTitle: String)
+    func dataReady(result: Result<String>)
 }
 
 extension LyricsRepository: LyricsRepositoryProtocol {
     
-    func dataReady(result: Result<[String]>) {
+    func dataReady(result: Result<String>) {
         switch result {
         case .success(let data):
-            let lyrics = Lyrics(words: data[0], copyright: data[1], songTitle: data[2], artistName: data[3], urlLink: data[4])
-            viewModelDelegate?.setLyricsOnView(result: Result.success(lyrics))
+            viewModelDelegate?.setLyricsOnView(result: Result.success(data))
         case .failure(let error):
             viewModelDelegate?.setLyricsOnView(result: Result.failure(error))
         }
     }
     
-    func getSongLyricsFromDataSource(artistName: String, songTitle: String) {
+    func getSongLyricsFromDataSource(artistName: String, albumName: String, songTitle: String) {
         if artistName.isEmpty || songTitle.isEmpty {
             dataReady(result: Result.failure(Errors.InvalidInput))
         } else {
-            let site = "www.dummyurl.com/"
-            let query = "useParametersBasedOnParameters"
+            let site = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?"
+            let query = ["q_track=\(songTitle.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)", "q_artist=\(artistName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)", "apikey=\(getAPIKey())"]
+    
             if networkDelegate == nil {
                 networkDelegate = LyricsNetwork(site: site, query: query, requestType: .GET)
                 networkDelegate?.repositoryDelegate = self
             }
             networkDelegate?.getDataFromNetwork()
         }
+    }
+    
+    func getAPIKey() -> String {
+        if  let path = Bundle.main.path(forResource: "APIKeys", ofType: "plist"),
+            let xml = FileManager.default.contents(atPath: path),
+            let key = try? PropertyListDecoder().decode(API.self, from: xml)
+        {
+            return key.MusixMatchAPIKey
+        }
+        return ""
     }
 }

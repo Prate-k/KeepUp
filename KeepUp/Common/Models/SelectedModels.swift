@@ -23,5 +23,8 @@ struct SelectedAlbum {
 }
 
 struct SelectedSong {
-    
+    var artistName: String!
+    var albumName: String!
+    var albumImage: String!
+    var songName: String!
 }

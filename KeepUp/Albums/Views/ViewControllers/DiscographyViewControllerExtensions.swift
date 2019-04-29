@@ -34,14 +34,9 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
     }
     
     func updateView(albums: Albums) {
-//        self.selectedArtist = artist
-//        self.albumList = artist.artistAlbums request albums from api here
         self.albums = albums
         DispatchQueue.main.async {
             if let albums = self.albums {
-//                self.artistName.text = artist.artistName
-                self.genre.text = ""//artist.artistGenre
-                
                 self.myStackView.isHidden = false
                 self.albumsListTable.reloadData()
                 self.progressBar.stopAnimating()
@@ -71,12 +66,8 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
             }
             showCouldNotLoadAlbumError(viewController: self)
         }
-        let newArtist = Artist(name: selectedArtist.artistName,
-                genre: "",
-                imageUrl: selectedArtist.artistImage)
-        if let x = newArtist {
-            viewModelDelegate?.addArtist(newArtist: x)
-        }
+        let newArtist = SelectedArtist(artistID: selectedArtist.artistID, artistName: selectedArtist.artistName, artistImage: selectedArtist.artistImage)
+        viewModelDelegate?.addArtist(newArtist: newArtist)
     }
     
     func removeFromFavouritesList(selectedArtistName: String) {

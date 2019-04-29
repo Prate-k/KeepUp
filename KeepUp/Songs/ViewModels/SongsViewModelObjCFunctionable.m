@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol SongsViewModelObjCFunctionable
 
--(void) getAlbum: (NSString* ) artistName : (NSString*)albumName;
+-(void) getSongs: (NSNumber* ) albumID;
 
 @end
 

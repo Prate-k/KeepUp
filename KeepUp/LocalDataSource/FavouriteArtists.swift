@@ -9,21 +9,21 @@
 import Foundation
 
 class FavouriteArtists {
-    private static var favouriteList = [Artist]()
+    private static var favouriteList = [SelectedArtist]()
 
-    static func getList() -> [Artist] {
+    static func getList() -> [SelectedArtist] {
         return favouriteList
     }
     
     static var size = 0
-    static func getArtist(at: Int) -> Artist? {
+    static func getArtist(at: Int) -> SelectedArtist? {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {
             return favouriteList[at]
         }
         return nil
     }
 
-    static func getArtist(by name: String) -> Artist? {
+    static func getArtist(by name: String) -> SelectedArtist? {
         if !favouriteList.isEmpty && !name.isEmpty {
             for artist in favouriteList {
                 if artist.artistName.elementsEqual(name) {
@@ -34,7 +34,7 @@ class FavouriteArtists {
         return nil
     }
 
-    static func addArtist(artist: Artist?) {
+    static func addArtist(artist: SelectedArtist?) {
         if let artist = artist {
             size += 1
             favouriteList.append(artist)

@@ -17,7 +17,7 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     var inEditMode = false
     var numberMarkedForDelete = 0
     
-    var favouriteArtistList: [Artist] = []
+    var favouriteArtists: [SelectedArtist]?
     lazy var favouriteArtistsViewModel: FavouriteArtistsViewModel? = nil
     
     @IBOutlet weak var favCollectionView: UICollectionView!
@@ -30,18 +30,34 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let albumsViewController = segue.destination as? DiscographyViewController {
+            if let index = favCollectionView.indexPathsForSelectedItems?.index(0, offsetBy: 0) {
+                if let artists = favouriteArtists {
+                    let artist = artists[index]
+                    albumsViewController.selectedArtist = SelectedArtist(artistID: artist.artistID, artistName: artist.artistName, artistImage: artist.artistImage)
+                    return
+                }
+            }
+            return
+        }
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.favouriteArtistsViewModel = FavouriteArtistsViewModel(view: self)
         if let artists = self.favouriteArtistsViewModel?.getFavouriteList() {
-            self.favouriteArtistList = artists
+            self.favouriteArtists = artists
         }
         favCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.favCollectionView {
-            return favouriteArtistList.count
+            if let favouriteArtists = favouriteArtists {
+                 return favouriteArtists.count
+            }
         }
         return 0
     }
@@ -54,36 +70,31 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId1, for: indexPath as IndexPath)
         let favCell = cell as? FavouriteArtistCollectionViewCell
-        let artist = favouriteArtistList[indexPath.item]
-        favCell?.artistName.text = artist.artistName
-        favCell?.genre.text = artist.artistGenre
-        favCell?.imageView.image = UIImage(named: "dummyArtist")
-        if inEditMode {
-            favCell?.deleteCheckBoxView.isHidden = false
-//            if favCell?.deleteCheckBoxView.isChecked? {
-//                favCell?.deleteCheckBoxView.toggleCheck()
-//            }
-        } else {
-            favCell?.deleteCheckBoxView.isHidden = true
+        if let favouriteArtists = favouriteArtists {
+            let artist = favouriteArtists[indexPath.item]
+            favCell?.artistName.text = artist.artistName
+            favCell?.genre.text = ""//artist.artistGenre
+            favCell?.imageView.loadImageFromSource(source: artist.artistImage)
+            if inEditMode {
+                favCell?.deleteCheckBoxView.isHidden = false
+                //            if favCell?.deleteCheckBoxView.isChecked? {
+                //                favCell?.deleteCheckBoxView.toggleCheck()
+                //            }
+            } else {
+                favCell?.deleteCheckBoxView.isHidden = true
+            }
+            favCell?.deleteCheckBoxView.isChecked = false
+            favCell?.deleteCheckBoxView.toggleButton.setImage(UIImage(named: "UnselectedDelete50px"), for: .normal)
         }
-        favCell?.deleteCheckBoxView.isChecked = false
-        favCell?.deleteCheckBoxView.toggleButton.setImage(UIImage(named: "UnselectedDelete50px"), for: .normal)
         return favCell!
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        if collectionView == self.favCollectionView {
-            if !inEditMode {
-                if let home = self.navigationController?.viewControllers[0] as? HomeViewController {
-                    home.selectedArtistPosition = indexPath.item
-                    home.isLoadingAllFavourites = true
-                    self.navigationController?.popToRootViewController(animated: false)
-                }
-            } else {
-                if let cell = favCollectionView.cellForItem(at: indexPath) as? FavouriteArtistCollectionViewCell {
-                    cell.deleteCheckBoxView.toggleCheck()
-                }
+        if !inEditMode {
+            self.performSegue(withIdentifier: "FavouriteArtistToAlbumsSegue", sender: nil)
+        } else {
+            if let cell = favCollectionView.cellForItem(at: indexPath) as? FavouriteArtistCollectionViewCell {
+                cell.deleteCheckBoxView.toggleCheck()
             }
         }
     }

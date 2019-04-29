@@ -26,17 +26,17 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var myStackView: UIStackView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let songsViewController = segue.destination as? SongsViewController {
-//            if let index = albumsListTable.indexPathForSelectedRow?.item {
-//                if let searchResults = searchResults {
-//                    if let selected = searchResults.get(i: index) {
-//                        albumsViewController.selectedArtist = SelectedArtist(artistID: selected.artistID, artistName: selected.artistName, artistImage: selected.artistThumbnail)
-//                        return
-//                    }
-//                }
-//            }
-//            return
-//        }
+        if let songsViewController = segue.destination as? SongsViewController {
+            if let index = albumsListTable.indexPathForSelectedRow?.item {
+                if let albums = self.albums {
+                    if let album = albums.get(i: index) {
+                        songsViewController.selectedAlbum = SelectedAlbum(albumID: album.albumID, albumName: album.albumName, albumImage: album.albumCover, artistName: selectedArtist?.artistName!)
+                        return
+                    }
+                }
+            }
+            return
+        }
         if let artistInfoViewController = segue.destination as? ArtistInfoViewController {
             if let name = artistName.text {
                 artistInfoViewController.artistName.append("\(name)")
@@ -51,10 +51,13 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
             showEmptySearchAlertDialog(viewController: self)
             return
         }
+        self.artistName.text = selectedArtist.artistName
+        self.artistImageView.loadImageFromSource(source: selectedArtist.artistImage)
+        self.genre.text = ""//artist.artistGenre
         artistImageView.loadImageFromSource(source: selectedArtist.artistImage)
         viewModelDelegate = DiscographyViewModel()
         viewModelDelegate?.viewControllerDelegate = self
-        viewModelDelegate?.getSelectedArtist(artistID: selectedArtist.artistID)
+        viewModelDelegate?.getAlbums(of: selectedArtist.artistID)
         progressBar.hidesWhenStopped = true
         myStackView.isHidden = true
     

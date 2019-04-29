@@ -9,12 +9,12 @@
 import Foundation
 
 protocol FavouriteArtistsRepositoryFunctionable {
-    func favouriteArtistList(completing: @escaping ([Artist]) -> Void)
+    func favouriteArtistList(completing: @escaping ([SelectedArtist]) -> Void)
     func removeSelectedArtist(at index: Int)
 }
 
 extension FavouriteArtistsRepository: FavouriteArtistsRepositoryFunctionable {
-    func favouriteArtistList(completing: @escaping ([Artist]) -> Void) {
+    func favouriteArtistList(completing: @escaping ([SelectedArtist]) -> Void) {
         if !FavouriteArtists.isEmpty() {
             completing(FavouriteArtists.getList())
         }

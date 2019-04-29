@@ -9,8 +9,8 @@ protocol DiscographyRepositoryProtocol: class {
     var viewModelDelegate: DiscographyViewModelProtocol? {get set}
     func dataReady(result: Result<Albums>)
     func removeSelectedArtist(artistName: String)
-    func addArtist(newArtist: Artist)
-    func getSelectedArtist(artistID: Int)
+    func addArtist(newArtist: SelectedArtist)
+    func getAlbums(of artistID: Int)
 }
 
 extension DiscographyRepository: DiscographyRepositoryProtocol {
@@ -18,9 +18,9 @@ extension DiscographyRepository: DiscographyRepositoryProtocol {
     func dataReady(result: Result<Albums>) {
         switch result {
         case .success(let album):
-            viewModelDelegate?.updateSelectedArtist(result: Result.success(album))
+            viewModelDelegate?.updateAlbumsForArtist(result: Result.success(album))
         case .failure(let error):
-            viewModelDelegate?.updateSelectedArtist(result: Result.failure(error))
+            viewModelDelegate?.updateAlbumsForArtist(result: Result.failure(error))
         }
     }
 
@@ -34,11 +34,11 @@ extension DiscographyRepository: DiscographyRepositoryProtocol {
         }
     }
     
-    func addArtist(newArtist: Artist) {
+    func addArtist(newArtist: SelectedArtist) {
         FavouriteArtists.addArtist(artist: newArtist)
     }
     
-    func getSelectedArtist(artistID: Int) {
+    func getAlbums(of artistID: Int) {
 //        if let artist = FavouriteArtists.getArtist(by: artistName) {
 //            dataReady(result: Result.success(artist))
 //        } else {

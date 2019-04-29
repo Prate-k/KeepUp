@@ -9,14 +9,15 @@
 import Foundation
 
 protocol FavouriteArtistsViewModelFunctionable {
-    func getFavouriteList() -> [Artist]
+    func getFavouriteList() -> [SelectedArtist]
     func removeArtist(at index: Int)
 }
 
 extension FavouriteArtistsViewModel: FavouriteArtistsViewModelFunctionable {
-    func getFavouriteList() -> [Artist] {
+    
+    func getFavouriteList() -> [SelectedArtist] {
         let favouriteArtistsRepository: FavouriteArtistsRepositoryFunctionable = FavouriteArtistsRepository()
-        var favArtists: [Artist] = []
+        var favArtists: [SelectedArtist] = []
         favouriteArtistsRepository.favouriteArtistList(completing: {(artists) in
             favArtists = artists
         })

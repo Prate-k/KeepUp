@@ -22,8 +22,10 @@ extension SettingsViewController: SettingsViewControllerProtocol {
     }
     
     func displayAbout(about: About) {
-        self.aboutView.isHidden = false
-        self.aboutTextView.text = about.about
+        DispatchQueue.main.async {
+            self.aboutView.isHidden = false
+            self.aboutTextView.text = about.about
+        }
     }
     
 }

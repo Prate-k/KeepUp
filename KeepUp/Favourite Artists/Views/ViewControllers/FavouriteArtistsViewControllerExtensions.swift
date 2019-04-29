@@ -16,7 +16,7 @@ extension FavouriteArtistsViewController {
             favouriteArtistsViewModel?.removeArtist(at: pos)
         }
         if let artists = self.favouriteArtistsViewModel?.getFavouriteList() {
-            favouriteArtistList = artists
+            favouriteArtists = artists
             favCollectionView.reloadData()
         }
     }

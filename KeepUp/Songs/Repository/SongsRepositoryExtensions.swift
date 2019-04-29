@@ -8,30 +8,30 @@
 
 import Foundation
 
-protocol SongsRepositoryFunctionable {
-    func getAlbumFromSource(artistName: String, albumName: String, completing: @escaping (Album) -> Void)
-    func getArtistFromSource(artistAt: Int, completing: @escaping (Artist) -> Void)
+protocol SongsRepositoryProtocol: class {
+    var viewModelDelegate: SongsViewModelProtocol? {get set}
+    func dataReady(result: Result<Songs>)
+    func getSongs(from albumID: Int)
 }
 
-extension SongsRepository: SongsRepositoryFunctionable {
-    func getAlbumFromSource(artistName: String, albumName: String, completing: @escaping (Album) -> Void) {
-        if let artist = FavouriteArtists.getArtist(by: artistName) {
-            if !artist.artistAlbums.isEmpty && !albumName.isEmpty {
-                var index = -1
-                for album in artist.artistAlbums {
-                    index += 1
-                    if album.albumName!.elementsEqual(albumName) {
-                        break
-                    }
-                }
-                completing(artist.artistAlbums[index])
-            }
+extension SongsRepository: SongsRepositoryProtocol {
+    
+    func dataReady(result: Result<Songs>) {
+        switch result {
+        case .success(let album):
+            viewModelDelegate?.updateSelectedAlbum(result: Result.success(album))
+        case .failure(let error):
+            viewModelDelegate?.updateSelectedAlbum(result: Result.failure(error))
         }
     }
     
-    func getArtistFromSource(artistAt: Int, completing: @escaping (Artist) -> Void) {
-        if let artist = FavouriteArtists.getArtist(at: artistAt) {
-            completing(artist)
-        }
+    func getSongs(from albumID: Int) {
+        let filter = "\(albumID)/tracks"
+        let site = "https://api.deezer.com/album/\(filter)"
+        let query = [""]
+        
+        self.networkDelegate = SongsNetwork(site: site, query: query, requestType: .GET)
+        self.networkDelegate?.repositoryDelegate = self
+        self.networkDelegate?.getDataFromNetwork()
     }
 }

@@ -9,36 +9,51 @@
 import Foundation
 import UIKit
 
-protocol SongsListFetching: class {
-    func songsListShow(songs: [Song])
-    func showSelectedAlbum(album: Album)
+protocol SongsViewControllerProtocol: class {
+    var viewModelDelegate: SongsViewModelProtocol? { get set }
+    func songsLoadFailure(error: Errors)
+    func updateView(songs: Songs)
 }
 
-extension SongsViewController: SongsListFetching {
+extension SongsViewController: SongsViewControllerProtocol {
     
-    func loadLyricsScreen(lyricsViewController: LyricsViewController) {
-        if let selectedArtistName = selectedArtistName {
-            lyricsViewController.artistName = selectedArtistName
-        }
-        lyricsViewController.songTitle = selectedSongTitle
-    }
     
-    func showSelectedAlbum(album: Album) {
-        selectedAlbum = album
+    func songsLoadFailure(error: Errors) {
         DispatchQueue.main.async {
-            self.albumName.text = album.albumName
-//            self.releaseDate.text = """
-//                    \(album.albumReleaseDate.releasedMonth)
-//                    \(album.albumReleaseDate.releasedYear)
-//                    """
-            self.albumImageView.image = UIImage(named: "dummyAlbum")
+            self.progressBar.stopAnimating()
+            switch error {
+            case .NetworkError:
+                showCouldNotLoadSongsError(viewController: self)
+            case .InvalidInput:
+                showEmptySearchAlertDialog(viewController: self)
+            case .EmptySearch:
+                print("Empty search")
+            case .Unknown:
+                print("Unknown")
+            }
         }
     }
     
-    func songsListShow(songs: [Song]) {
-        songsList = songs
+    func updateView(songs: Songs) {
+        self.songs = songs
         DispatchQueue.main.async {
+            self.progressBar.stopAnimating()
             self.songsListTableView.reloadData()
         }
     }
+    
+    func loadLyricsScreen(lyricsViewController: LyricsViewController) {
+        if let album = self.selectedAlbum {
+            lyricsViewController.selectedSong = SelectedSong(artistName: album.artistName, albumName: album.albumName, albumImage: album.albumImage, songName: selectedSongTitle)
+        }
+    }
+    
+    func showSelectedAlbum(album: SelectedAlbum) {
+        selectedAlbum = album
+        DispatchQueue.main.async {
+            self.albumName.text = album.albumName
+            self.albumImageView.loadImageFromSource(source: album.albumImage)
+        }
+    }
 }
+

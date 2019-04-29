@@ -7,12 +7,12 @@ import Foundation
 
 protocol DiscographyViewModelProtocol: class {
     var viewControllerDelegate: DiscographyViewControllerProtocol? { get set }
-    func updateSelectedArtist(result: Result<Albums>)
+    func updateAlbumsForArtist(result: Result<Albums>)
     
     var repositoryDelegate: DiscographyRepositoryProtocol? { get set }
     func removeArtist(artistName: String)
-    func addArtist(newArtist: Artist)
-    func getSelectedArtist(artistID: Int)
+    func addArtist(newArtist: SelectedArtist)
+    func getAlbums(of artistID: Int)
 }
 
 extension DiscographyViewModel {
@@ -46,7 +46,7 @@ extension DiscographyViewModel {
 
 
 extension DiscographyViewModel: DiscographyViewModelProtocol {
-    func updateSelectedArtist(result: Result<Albums>) {
+    func updateAlbumsForArtist(result: Result<Albums>) {
         switch result {
         case .success(let albums):
             var album: Album!
@@ -64,11 +64,11 @@ extension DiscographyViewModel: DiscographyViewModelProtocol {
         repositoryDelegate?.removeSelectedArtist(artistName: artistName)
     }
     
-    func addArtist(newArtist: Artist) {
+    func addArtist(newArtist: SelectedArtist) {
         repositoryDelegate?.addArtist(newArtist: newArtist)
     }
     
-    func getSelectedArtist(artistID: Int) {
-        repositoryDelegate?.getSelectedArtist(artistID: artistID)
+    func getAlbums(of artistID: Int) {
+        repositoryDelegate?.getAlbums(of: artistID)
     }
 }

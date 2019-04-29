@@ -31,7 +31,7 @@ func showEmptySearchAlertDialog(viewController: UIViewController) {
 
 func showCouldNotLoadSongError(viewController: UIViewController) {
     let alert = UIAlertController(title: "Empty song details",
-                                  message: "Could not load Song details - Please retry again",
+                                  message: "Could not load Song details - Please retry",
                                   preferredStyle: .alert)
     let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
     alert.addAction(action)
@@ -40,7 +40,16 @@ func showCouldNotLoadSongError(viewController: UIViewController) {
 
 func showCouldNotLoadAlbumError(viewController: UIViewController) {
     let alert = UIAlertController(title: "No albums found",
-                                  message: "Could not load albums - Please retry again",
+                                  message: "Could not load albums - Please retry",
+                                  preferredStyle: .alert)
+    let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+}
+
+func showCouldNotLoadSongsError(viewController: UIViewController) {
+    let alert = UIAlertController(title: "No songs found",
+                                  message: "Could not load album tracks - Please retry",
                                   preferredStyle: .alert)
     let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
     alert.addAction(action)
@@ -49,7 +58,7 @@ func showCouldNotLoadAlbumError(viewController: UIViewController) {
 
 func showCouldNotLoadLyricsError(viewController: UIViewController) {
     let alert = UIAlertController(title: "Empty song title or artist name",
-                                  message: "Could not load lyrics - Please retry again",
+                                  message: "Could not load lyrics - Please retry",
                                   preferredStyle: .alert)
     let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
     alert.addAction(action)

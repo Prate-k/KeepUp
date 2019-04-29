@@ -28,7 +28,7 @@ extension SettingsRepository: SettingsRepositoryProtocol {
     
     func getAbout() {
         let filter = "about"
-        let site = "https://api.deezer.com/search/\(filter)?"
+        let site = "https://keep-up-services.vapor.cloud/about"
         let query = [""]
         
         self.networkDelegate = SettingsNetwork(site: site, query: query, requestType: .GET)
