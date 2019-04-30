@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     let reusableIdPopularSong = "PopularSongCell"
     var selectedArtistPosition = -1
     var isLoadingAllFavourites = false
+    var hasRequestedSongs = false
     
     var topArtistList: TopArtists?
     var similarArtistList: SimilarArtists?
@@ -34,6 +35,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         popularSongsLoaded = 0
+        hasRequestedSongs = false
         viewModelDelegate = HomeViewModel()
         viewModelDelegate?.viewControllerDelegate = self
         requestTopArtists()

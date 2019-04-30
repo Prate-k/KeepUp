@@ -29,7 +29,7 @@ extension HomeViewController {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.8
+            shadowLayer.shadowOpacity = 0.5
             shadowLayer.shadowRadius = 1
 
             topArtistsLabelView.layer.insertSublayer(shadowLayer, at: 0)
@@ -49,7 +49,7 @@ extension HomeViewController {
             shadowLayer.shadowColor = UIColor.black.cgColor
             shadowLayer.shadowPath = shadowLayer.path
             shadowLayer.shadowOffset = CGSize(width: 0, height: 1.0)
-            shadowLayer.shadowOpacity = 0.8
+            shadowLayer.shadowOpacity = 0.5
             shadowLayer.shadowRadius = 1
             
             popularSongsLabelView.layer.insertSublayer(shadowLayer, at: 0)
@@ -80,7 +80,10 @@ extension HomeViewController {
         DispatchQueue.main.async {
             self.topArtistsCollectionView.reloadData()
         }
-        requestPopularSongs()
+        if !hasRequestedSongs {
+            requestPopularSongs()
+            hasRequestedSongs = true
+        }
     }
     
     func updatePopularSongsCollectionView() {
@@ -111,9 +114,9 @@ extension HomeViewController {
                 shadowLayer.fillColor = fillColour.cgColor
                 shadowLayer.shadowColor = UIColor.black.cgColor
                 shadowLayer.shadowPath = shadowLayer.path
-                shadowLayer.shadowOffset = CGSize(width: 0, height: 1.5)
-                shadowLayer.shadowOpacity = 0.8
-                shadowLayer.shadowRadius = 8
+                shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
+                shadowLayer.shadowOpacity = 0.5
+                shadowLayer.shadowRadius = 4
 
                 topArtistCell.layer.insertSublayer(shadowLayer, at: 0)
                 topArtistCell.layer.masksToBounds = false
@@ -151,8 +154,8 @@ extension HomeViewController {
                 shadowLayer.fillColor = fillColour.cgColor
                 shadowLayer.shadowColor = UIColor.black.cgColor
                 shadowLayer.shadowPath = shadowLayer.path
-                shadowLayer.shadowOffset = CGSize(width: 0, height: 1.5)
-                shadowLayer.shadowOpacity = 0.8
+                shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
+                shadowLayer.shadowOpacity = 0.5
                 shadowLayer.shadowRadius = 8
                 
                 popularSongCell.layer.insertSublayer(shadowLayer, at: 0)
@@ -212,6 +215,8 @@ extension HomeViewController: HomeViewControllerProtocol {
             } else {
                 self.updatePopularSongsCollectionView()
             }
+            self.updateTopArtistsCollectionView()
+            self.updatePopularSongsCollectionView()
         }
         
     }
