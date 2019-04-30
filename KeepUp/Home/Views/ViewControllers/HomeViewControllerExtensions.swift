@@ -166,6 +166,33 @@ extension HomeViewController {
         }
         return cell
     }
+    
+    func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
+        if let index = topArtistsCollectionView.indexPathsForSelectedItems?[0].item {
+            if let topArtists = self.topArtistList {
+                if let artist = topArtists.get(i: index) {
+                    albumsViewController.selectedArtist = SelectedArtist(artistID: artist.artistID,
+                                                                         artistName: artist.artistName,
+                                                                         artistImage: artist.artistThumbnail)
+                }
+            }
+        }
+    }
+    
+    func loadSongsScreen (songsViewController: SongsViewController) {
+        if let index = popularSongsCollectionView.indexPathsForSelectedItems?[0].item {
+            if let topSongs = self.popularSongList {
+                if let song = topSongs.get(i: index) {
+                    if let album = song.album, let artist = song.artist {
+                        songsViewController.selectedAlbum = SelectedAlbum(albumID: album.albumID,
+                                                                          albumName: album.albumName,
+                                                                          albumImage: album.albumCover,
+                                                                          artistName: artist.artistName)
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension HomeViewController: HomeViewControllerProtocol {
@@ -254,10 +281,13 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        //        if collectionView == self.favCollectionView {
-        //            self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
-        //        }
+        if collectionView == self.popularSongsCollectionView {
+            self.performSegue(withIdentifier: "HomeToSongsSegue", sender: nil)
+        } else {
+            if collectionView == self.topArtistsCollectionView {
+                self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
+            }
+        }
     }
 }
 
@@ -320,23 +350,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
 //}
 //
 //extension MainScreenViewController {
-//    func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
-////        if isLoadingAllFavourites {
-////            albumsViewController.selectedArtistName = favouriteArtistList[selectedArtistPosition].artistName
-////        } else {
-////            if let index = favCollectionView.indexPathsForSelectedItems?[0].item {
-////                albumsViewController.selectedArtistName = favouriteArtistList[index].artistName
-////            }
-////        }
-////        isLoadingAllFavourites = false
-//    }
-//
-//    func loadArtistInfoScreen (artistInfoViewController: ArtistInfoViewController) {
-////        if let name = resultArtistLabel.text {
-////            artistInfoViewController.artistName.append("\(name)")
-////            return
-////        }
-//    }
+
 //
 //    func requestTopArtists() {
 //

@@ -18,7 +18,7 @@ protocol LyricsViewModelProtocol: class {
 extension LyricsViewModel: LyricsViewModelProtocol {
     
     func getSongLyrics(of song: SelectedSong) {
-        repositoryDelegate?.getSongLyricsFromDataSource(artistName: song.artistName, albumName: song.albumName, songTitle: song.songName)
+        repositoryDelegate?.getSongLyricsFromDataSource(artistName: song.album.artistName, albumName: song.album.albumName, songTitle: song.songName)
     }
     
     func setLyricsOnView(result: Result<String>) {

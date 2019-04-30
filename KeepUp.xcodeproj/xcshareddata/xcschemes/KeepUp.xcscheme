@@ -21,8 +21,8 @@
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
+            buildForTesting = "NO"
+            buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "NO">
@@ -64,16 +64,6 @@
                BlueprintIdentifier = "7014A0E122412E4C008F3839"
                BuildableName = "KeepUpUnitTests.xctest"
                BlueprintName = "KeepUpUnitTests"
-               ReferencedContainer = "container:KeepUp.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "70158AAE223BCF4200617FD4"
-               BuildableName = "KeepUpUITests.xctest"
-               BlueprintName = "KeepUpUITests"
                ReferencedContainer = "container:KeepUp.xcodeproj">
             </BuildableReference>
          </TestableReference>

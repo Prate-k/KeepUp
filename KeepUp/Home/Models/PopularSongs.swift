@@ -23,9 +23,13 @@ struct PopularSong: Codable {
     
     struct Album: Codable {
         var albumCover: String?
+        var albumID: Int?
+        var albumName: String?
         
         enum CodingKeys: String, CodingKey {
             case albumCover = "cover_medium"
+            case albumID = "id"
+            case albumName = "title"
         }
     }
     

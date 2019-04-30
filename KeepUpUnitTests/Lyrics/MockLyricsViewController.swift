@@ -32,7 +32,7 @@ class MockLyricsViewController: LyricsViewControllerProtocol {
     }
 
     func getSongLyrics(artistName: String, songTitle: String) {
-        var selectedSong = SelectedSong(artistName: artistName, albumName: "", albumImage: "", songName: songTitle)
+        var selectedSong = SelectedSong(album: SelectedAlbum(albumID: 1, albumName: "", albumImage: "", artistName: artistName), songName: songTitle)
         viewModelDelegate?.getSongLyrics(of: selectedSong)
     }
 

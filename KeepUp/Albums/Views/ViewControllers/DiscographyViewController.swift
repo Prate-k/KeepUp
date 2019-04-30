@@ -38,7 +38,7 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
             return
         }
         if let artistInfoViewController = segue.destination as? ArtistInfoViewController {
-            if let name = artistName.text {
+            if let name = selectedArtist?.artistName {
                 artistInfoViewController.artistName.append("\(name)")
                 return
             }

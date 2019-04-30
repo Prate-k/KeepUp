@@ -32,7 +32,7 @@ class LyricsViewController: UIViewController {
             return
         }
         setSongTitle(songTitle: song.songName)
-        setArtist(artistName: song.artistName)
+        setArtist(artistName: song.album.artistName)
         progressBar.startAnimating()
         lyricsTextView.isHidden = true
         // Do any additional setup after loading the view.

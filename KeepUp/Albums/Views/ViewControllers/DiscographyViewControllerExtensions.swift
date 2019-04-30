@@ -36,13 +36,9 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
     func updateView(albums: Albums) {
         self.albums = albums
         DispatchQueue.main.async {
-            if let albums = self.albums {
-                self.myStackView.isHidden = false
-                self.albumsListTable.reloadData()
-                self.progressBar.stopAnimating()
-            } else {
-                self.albumLoadFailure(error: Errors.InvalidInput)
-            }
+            self.myStackView.isHidden = false
+            self.albumsListTable.reloadData()
+            self.progressBar.stopAnimating()
         }
     }
 
@@ -63,8 +59,8 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
         if selectedArtist.artistName.isEmpty {
             DispatchQueue.main.async {
                 self.progressBar.stopAnimating()
+                showCouldNotLoadAlbumError(viewController: self)
             }
-            showCouldNotLoadAlbumError(viewController: self)
         }
         let newArtist = SelectedArtist(artistID: selectedArtist.artistID, artistName: selectedArtist.artistName, artistImage: selectedArtist.artistImage)
         viewModelDelegate?.addArtist(newArtist: newArtist)
@@ -74,8 +70,9 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
         if selectedArtistName.isEmpty {
             DispatchQueue.main.async {
                 self.progressBar.stopAnimating()
+                showCouldNotLoadAlbumError(viewController: self)
             }
-            showCouldNotLoadAlbumError(viewController: self)
+            
         } else {
             viewModelDelegate?.removeArtist(artistName: selectedArtistName)
         }

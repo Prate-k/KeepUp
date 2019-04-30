@@ -44,7 +44,7 @@ extension SongsViewController: SongsViewControllerProtocol {
     
     func loadLyricsScreen(lyricsViewController: LyricsViewController) {
         if let album = self.selectedAlbum {
-            lyricsViewController.selectedSong = SelectedSong(artistName: album.artistName, albumName: album.albumName, albumImage: album.albumImage, songName: selectedSongTitle)
+            lyricsViewController.selectedSong = SelectedSong(album: SelectedAlbum(albumID: album.albumID, albumName: album.albumName, albumImage: album.albumImage, artistName: album.artistName), songName: selectedSongTitle)
         }
     }
     

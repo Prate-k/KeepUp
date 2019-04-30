@@ -60,12 +60,14 @@ class HomeViewController: UIViewController {
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let viewController = segue.destination as? DiscographyViewController {
-//            loadAlbumsScreen(albumsViewController: viewController)
-//        }
-//        if let viewController = segue.destination as? ArtistInfoViewController {
-//            loadArtistInfoScreen(artistInfoViewController: viewController)
-//        }
+        if let viewController = segue.destination as? DiscographyViewController {
+            loadAlbumsScreen(albumsViewController: viewController)
+            return
+        }
+        if let viewController = segue.destination as? SongsViewController {
+            loadSongsScreen(songsViewController: viewController)
+            return
+        }
     }
     
 //    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -14,8 +14,6 @@ class SearchResultCell: UITableViewCell {
     
     @IBOutlet weak var artistThumbnailImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var favUnfavButton: UIButton!
-    @IBOutlet weak var artistInfoButton: UIButton!
     
     
     override func setSelected(_ selected: Bool, animated: Bool) {
