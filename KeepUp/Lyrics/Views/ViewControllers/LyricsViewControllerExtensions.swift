@@ -10,7 +10,7 @@ import Foundation
 
 protocol LyricsViewControllerProtocol: class {
     var viewModelDelegate: LyricsViewModelProtocol? { get set }
-    func songLyricsShow(lyrics: Lyrics)
+    func songLyricsShow(lyrics: String)
     func songLyricsFailure(error: Errors)
 }
 
@@ -28,9 +28,11 @@ extension LyricsViewController: LyricsViewControllerProtocol {
         }
     }
     
-    func songLyricsShow(lyrics: Lyrics) {
+    func songLyricsShow(lyrics: String) {
         DispatchQueue.main.async {
-            self.lyricsTextView.text = lyrics.words
+            self.progressBar.stopAnimating()
+            self.lyricsTextView.text = lyrics
+            self.lyricsTextView.isHidden = false
         }
     }
     

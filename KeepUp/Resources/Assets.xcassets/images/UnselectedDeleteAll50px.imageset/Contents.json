@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "UnselectedDeleteAll50px.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "UnselectedDeleteAll50px.png",
       "scale" : "2x"
     },
     {

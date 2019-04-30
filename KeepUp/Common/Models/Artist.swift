@@ -13,6 +13,7 @@ class Artist {
     var artistGenre: String!
     var artistImageUrl: String!
     var artistAlbums: [Album] = []
+    var isInFavourites: Bool?
     
     required init!(name: String!, genre: String!, imageUrl: String) {
         guard name != nil || genre != nil else {

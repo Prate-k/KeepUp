@@ -8,7 +8,7 @@ import Foundation
 class DiscographyRepository {
     
     var viewModelDelegate: DiscographyViewModelProtocol?
-    
+    var networkDelegate: DiscographyNetworkProtocol?
     init () {
         viewModelDelegate?.repositoryDelegate = self
     }
@@ -20,5 +20,14 @@ class DiscographyRepository {
             viewModelDelegate = DiscographyViewModel()
         }
         viewModelDelegate?.repositoryDelegate = self
+    }
+    
+    func setNetworkDelegate(network: DiscographyNetworkProtocol?) {
+        if let network = network {
+            networkDelegate = network
+            networkDelegate?.repositoryDelegate = self
+        } else {
+            networkDelegate = nil
+        }
     }
 }

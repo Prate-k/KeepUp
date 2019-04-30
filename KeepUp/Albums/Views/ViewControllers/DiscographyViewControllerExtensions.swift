@@ -12,7 +12,7 @@ import UIKit
 protocol DiscographyViewControllerProtocol: class {
     var viewModelDelegate: DiscographyViewModelProtocol? { get set }
     func albumLoadFailure(error: Errors)
-    func updateView(artist: Artist)
+    func updateView(albums: Albums)
 }
 
 extension DiscographyViewController: DiscographyViewControllerProtocol {
@@ -24,7 +24,7 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
             case .NetworkError:
                 showCouldNotLoadAlbumError(viewController: self)
             case .InvalidInput:
-                showEmptySearchAlertDialog(viewController: self)
+                print("Empty Search")
             case .EmptySearch:
                 print("Empty search")
             case .Unknown:
@@ -33,24 +33,16 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
         }
     }
     
-    func updateView(artist: Artist) {
-        self.selectedArtist = artist
-        self.albumList = artist.artistAlbums
+    func updateView(albums: Albums) {
+        self.albums = albums
         DispatchQueue.main.async {
-            if let artist = self.selectedArtist {
-                self.artistName.text = artist.artistName
-                self.genre.text = artist.artistGenre
-                
-                self.myStackView.isHidden = false
-                self.albumsListTable.reloadData()
-                self.progressBar.stopAnimating()
-            } else {
-                self.albumLoadFailure(error: Errors.InvalidInput)
-            }
+            self.myStackView.isHidden = false
+            self.albumsListTable.reloadData()
+            self.progressBar.stopAnimating()
         }
     }
 
-    func toggleArtistSearched(selectedArtist: Artist) {
+    func toggleArtistSearched(selectedArtist: SelectedArtist) {
         isArtistFavourited = !isArtistFavourited
         DispatchQueue.main.async {
             if self.isArtistFavourited {
@@ -58,34 +50,31 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
                 self.addToFavouritesList(selectedArtist: selectedArtist)
             } else {
                 self.favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-                self.removeFromFavouritesList(selectedArtistName: selectedArtist.artistName)
+                self.removeFromFavouritesList(selectedArtist: selectedArtist)
             }
         }
     }
     
-    func addToFavouritesList(selectedArtist: Artist) {
+    func addToFavouritesList(selectedArtist: SelectedArtist) {
         if selectedArtist.artistName.isEmpty {
             DispatchQueue.main.async {
                 self.progressBar.stopAnimating()
+                showCouldNotLoadAlbumError(viewController: self)
             }
-            showCouldNotLoadAlbumError(viewController: self)
         }
-        let newArtist = Artist(name: selectedArtist.artistName,
-                genre: selectedArtist.artistGenre,
-                imageUrl: selectedArtist.artistImageUrl)
-        if let x = newArtist {
-            viewModelDelegate?.addArtist(newArtist: x)
-        }
+        let newArtist = SelectedArtist(artistID: selectedArtist.artistID, artistName: selectedArtist.artistName, artistImage: selectedArtist.artistImage)
+        viewModelDelegate?.addArtist(newArtist: newArtist)
     }
     
-    func removeFromFavouritesList(selectedArtistName: String) {
-        if selectedArtistName.isEmpty {
+    func removeFromFavouritesList(selectedArtist: SelectedArtist) {
+        if selectedArtist.artistName.isEmpty {
             DispatchQueue.main.async {
                 self.progressBar.stopAnimating()
+                showCouldNotLoadAlbumError(viewController: self)
             }
-            showCouldNotLoadAlbumError(viewController: self)
+            
         } else {
-            viewModelDelegate?.removeArtist(artistName: selectedArtistName)
+            viewModelDelegate?.removeArtist(artistName: selectedArtist.artistName)
         }
     }
 }

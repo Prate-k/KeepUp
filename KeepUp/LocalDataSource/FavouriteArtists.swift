@@ -9,21 +9,21 @@
 import Foundation
 
 class FavouriteArtists {
-    private static var favouriteList = [Artist]()
+    private static var favouriteList = [SelectedArtist]()
 
-    static func getList() -> [Artist] {
+    static func getList() -> [SelectedArtist] {
         return favouriteList
     }
     
     static var size = 0
-    static func getArtist(at: Int) -> Artist? {
+    static func getArtist(at: Int) -> SelectedArtist? {
         if !favouriteList.isEmpty, at >= 0, at < getSize() {
             return favouriteList[at]
         }
         return nil
     }
 
-    static func getArtist(by name: String) -> Artist? {
+    static func getArtist(by name: String) -> SelectedArtist? {
         if !favouriteList.isEmpty && !name.isEmpty {
             for artist in favouriteList {
                 if artist.artistName.elementsEqual(name) {
@@ -34,7 +34,7 @@ class FavouriteArtists {
         return nil
     }
 
-    static func addArtist(artist: Artist?) {
+    static func addArtist(artist: SelectedArtist?) {
         if let artist = artist {
             size += 1
             favouriteList.append(artist)
@@ -74,29 +74,29 @@ class FavouriteArtists {
     }
     
     static func insertTestArtists () {
-        for i in 1..<10 {
-            favouriteList.append(Artist(name: "Artist \(i)", genre: "Rock", imageUrl: "dummyArtist"))
-            for artist in favouriteList where artist.artistAlbums.isEmpty {
-                var num = 1
-                for i in 0..<3 {
-                    var songs: [Song] = []
-                    for j in 0..<3 {
-                        songs.append(Song(songTitle: "song \(num)",
-                            songLyrics: "",
-                            songLength: "3:4\(j+1)",
-                            isHidden: false))
-                        num += 1
-                    }
-                    artist.artistAlbums.append(Album(albumName: "album \(i+1)",
-                        albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
-                        albumArtUrl: "dummyAlbum",
-                        albumTracks: songs))
-                }
-            }
-        }
+//        for i in 1..<10 {
+//            favouriteList.append(Artist(name: "Artist \(i)", genre: "Rock", imageUrl: "dummyArtist"))
+//            for artist in favouriteList where artist.artistAlbums.isEmpty {
+//                var num = 1
+//                for i in 0..<3 {
+//                    var songs: Songs = []
+//                    for j in 0..<3 {
+//                        songs.append(Song(songID: num,
+//                            songName: "",
+//                            songLength: j+1,
+//                            songLengthText: false))
+//                        num += 1
+//                    }
+////                    artist.artistAlbums.append(Album(albumName: "album \(i+1)",
+////                        albumReleaseDate: ReleasedDate(releasedMonth: "Oct", releasedYear: 2000),
+////                        albumArtUrl: "dummyAlbum",
+////                        albumTracks: songs))
+//                }
+//            }
+//        }
         
-        favouriteList[0].artistName = "Linkin Park"
-        favouriteList[1].artistName = "Taylor Swift"
-        favouriteList[2].artistName = "12 Stones"
+//        favouriteList[0].artistName = "Linkin Park"
+//        favouriteList[1].artistName = "Taylor Swift"
+//        favouriteList[2].artistName = "12 Stones"
     }
 }

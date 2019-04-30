@@ -22,11 +22,10 @@ class Networker {
     init(site: String, query: String, requestType: RequestType) {
         self.site = site
         self.query = query
-        self.requestType = requestType
-    }
+        self.requestType = requestType    }
     
     func send(completion: @escaping (Data?) -> Void) {
-        if query.isEmpty {
+        if site.isEmpty {
             completion(nil)
         } else {
             let urlString = "\(site)\(query)"

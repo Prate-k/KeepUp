@@ -11,17 +11,17 @@ import Foundation
 protocol LyricsViewModelProtocol: class {
     var viewControllerDelegate: LyricsViewControllerProtocol? { get set }
     var repositoryDelegate: LyricsRepositoryProtocol? { get set }
-    func getSongLyricsFromRepository(artistName: String, songTitle: String)
-    func setLyricsOnView(result: Result<Lyrics>)
+    func getSongLyrics(of song: SelectedSong)
+    func setLyricsOnView(result: Result<String>)
 }
 
 extension LyricsViewModel: LyricsViewModelProtocol {
     
-    func getSongLyricsFromRepository(artistName: String, songTitle: String) {
-        repositoryDelegate?.getSongLyricsFromDataSource(artistName: artistName, songTitle: songTitle)
+    func getSongLyrics(of song: SelectedSong) {
+        repositoryDelegate?.getSongLyricsFromDataSource(artistName: song.album.artistName, albumName: song.album.albumName, songTitle: song.songName)
     }
     
-    func setLyricsOnView(result: Result<Lyrics>) {
+    func setLyricsOnView(result: Result<String>) {
         switch result {
         case .success(let data):
             self.viewControllerDelegate?.songLyricsShow(lyrics: data)

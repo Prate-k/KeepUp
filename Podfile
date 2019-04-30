@@ -6,7 +6,11 @@ target 'KeepUp' do
   use_frameworks!
 
   # Pods for KeepUp
-  pod 'Alamofire' 
+  pod 'Alamofire'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Facebook'
 
   target 'KeepUpTests' do
     inherit! :search_paths

@@ -7,20 +7,20 @@ import Foundation
 
 protocol DiscographyRepositoryProtocol: class {
     var viewModelDelegate: DiscographyViewModelProtocol? {get set}
-    func dataReady(result: Result<Artist>)
+    func dataReady(result: Result<Albums>)
     func removeSelectedArtist(artistName: String)
-    func addArtist(newArtist: Artist)
-    func getSelectedArtist(artistName: String)
+    func addArtist(newArtist: SelectedArtist)
+    func getAlbums(of artistID: Int)
 }
 
 extension DiscographyRepository: DiscographyRepositoryProtocol {
 
-    func dataReady(result: Result<Artist>) {
+    func dataReady(result: Result<Albums>) {
         switch result {
-        case .success(let artist):
-            viewModelDelegate?.updateSelectedArtist(result: Result.success(artist))
+        case .success(let album):
+            viewModelDelegate?.updateAlbumsForArtist(result: Result.success(album))
         case .failure(let error):
-            viewModelDelegate?.updateSelectedArtist(result: Result.failure(error))
+            viewModelDelegate?.updateAlbumsForArtist(result: Result.failure(error))
         }
     }
 
@@ -34,15 +34,22 @@ extension DiscographyRepository: DiscographyRepositoryProtocol {
         }
     }
     
-    func addArtist(newArtist: Artist) {
+    func addArtist(newArtist: SelectedArtist) {
         FavouriteArtists.addArtist(artist: newArtist)
     }
     
-    func getSelectedArtist(artistName: String) {
-        if let artist = FavouriteArtists.getArtist(by: artistName) {
-            dataReady(result: Result.success(artist))
-        } else {
-            dataReady(result: Result.failure(Errors.InvalidInput))
-        }
+    func getAlbums(of artistID: Int) {
+//        if let artist = FavouriteArtists.getArtist(by: artistName) {
+//            dataReady(result: Result.success(artist))
+//        } else {
+//            dataReady(result: Result.failure(Errors.InvalidInput))
+//        }
+        let filter = "\(artistID)/albums"
+        let site = "https://api.deezer.com/artist/\(filter)/"
+        let query = [""]
+        
+        self.networkDelegate = DiscographyNetwork(site: site, query: query, requestType: .GET)
+        self.networkDelegate?.repositoryDelegate = self
+        self.networkDelegate?.getDataFromNetwork()
     }
 }

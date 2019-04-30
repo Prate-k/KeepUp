@@ -11,12 +11,8 @@ import UIKit
 class SongsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let resusableId = "songCell"
-    var selectedAlbumName: String?  //segue
-    var selectedArtistName: String? //segue
-
-    var selectedAlbum: Album?   //store details locally
-    var songsList: [Song] = []  //song list local
-    
+    var selectedAlbum: SelectedAlbum?   //store details locally
+    var songs: Songs?
     var lastSelectedTrack: IndexPath = IndexPath.init(row: -1, section: -1) //tableView animation
     var selectedSongTitle = ""  //lyrics title
     
@@ -24,8 +20,9 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var songsListTableView: UITableView!
+    @IBOutlet weak var progressBar: UIActivityIndicatorView!
     
-    lazy var songsViewModel: SongsViewModel? = nil
+    var viewModelDelegate: SongsViewModelProtocol?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? LyricsViewController {
@@ -35,17 +32,18 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let albumName = selectedAlbumName, let artistName = selectedArtistName {
-            songsViewModel = SongsViewModel(view: self)
+        if let selectedAlbum = self.selectedAlbum {
+            showSelectedAlbum(album: selectedAlbum)
+            viewModelDelegate = SongsViewModel()
+            viewModelDelegate?.viewControllerDelegate = self
             DispatchQueue.global().async { [weak self] in
                 if let self = self {
-                    self.songsViewModel?.getAlbum(artistName, albumName)
+                    self.viewModelDelegate?.getSongs(of: selectedAlbum.albumID)
                 }
             }
         } else {
             showEmptySearchAlertDialog(viewController: self)
         }
-        // Do any additional setup after loading the view.
     }
     
     func numberOfSections(in collectionView: UITableView) -> Int {
@@ -53,17 +51,21 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songsList.count 
+        if let songs = self.songs {
+            return songs.count()
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? SongTableViewCell else {
             fatalError("The dequeued cell is not an instance of SongTableViewCell.")
         }
-        if  !songsList.isEmpty {
-            let song = songsList[indexPath.row]
-            cell.songTitle.text = song.songTitle
-            cell.songLength.text = song.songLength
+        if let songs = self.songs {
+            if let song = songs.get(i: indexPath.item) {
+                cell.songTitle.text = song.songName
+                cell.songLength.text = song.songLengthText
+            }
         }
         cell.trackOptionsView.isHidden = true
         cell.displayOptionsButton.setImage(UIImage(named: "shiftLeft"), for: .normal)
@@ -109,5 +111,4 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
-    
 }
