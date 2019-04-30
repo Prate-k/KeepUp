@@ -13,40 +13,40 @@
 [![Build status](https://build.appcenter.ms/v0.1/apps/91978e84-d2a2-45e4-a54d-44d93161f07e/branches/develop/badge)](https://appcenter.ms)
 
 
-## Welcome to GitHub Pages
+# KeepUp
+An iOS Application to favourite your artists and follow their releases and lyrics.
 
-You can use the [editor on GitHub](https://github.com/Prate-k/KeepUp/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+This application allows users to “KeepUp”-to-date with the latest music releases from their favourite artists -  as well as read the lyrics, save the lyrics or print the lyrics.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The user can hide the songs from the artists which they are not interested in and therefore have quick access to the lyrics of their favourite songs instantly.
 
-### Markdown
+The users can also view simple information  about the  artists and also get notified if and when the artists have new music released, whenever the application is started.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The application also attempts to suggest popular artists and other suggesstions based on the user’s favourites list
 
-```markdown
-Syntax highlighted code block
+## Features
 
-# Header 1
-## Header 2
-### Header 3
+- [x] Top Artists and Popular Songs
+The application uses Deezer API to retrieve the latest top 10 charts of artist and also shows the most popular song by each of those artists. This updates every time the application is transitioned to the home screen
 
-- Bulleted
-- List
+<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
-1. Numbered
-2. List
+- [x] Favourite Artists
+This feature allows the user to search for and favourite artists they would like to follow and keep up to date with their latest releases etc... The feature is based on the search feature, where the user will be giveb the option to favourite the artist via a favourites button which updates accordingly.
 
-**Bold** and _Italic_ and `Code` text
+- [x] Search Feature
+This feature makes use of the Deezer API to allow the user to search for any artist and view more details on it.
 
-[Link](url) and ![Image](src)
-```
+- [x] View albums
+This feature loads all the albums of the artists in reverse chronological order (latest first) and allows the user to view more information about the artist (orgin/birth place, members, genres) while being able to add/remove them from their personal favourites list. The user is also able to click on a specific album to view all the tracks within the album.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- [x] View Songs
+Similar to the view albums, the user can click on the songs and read the lyrics of that specific song (The lyrics were obtained used the MusixMatch API)
 
-### Jekyll Themes
+- [x] Settings
+This feature allows the user to view more details on the application and details on the services used etc...
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Prate-k/KeepUp/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Requirements
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- iOS 11.0+
+- Xcode 10.2+
