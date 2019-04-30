@@ -29,19 +29,27 @@ The application also attempts to suggest popular artists and other suggesstions 
 - [x] Top Artists and Popular Songs
 The application uses Deezer API to retrieve the latest top 10 charts of artist and also shows the most popular song by each of those artists. This updates every time the application is transitioned to the home screen
 
-<img src = "./Screenshots/Empty Search Screen Portrait.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<img src = "./app screenshots/Simulator Screen Shot - iPhone 8 - 2019-04-28 at 16.46.25.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
 - [x] Favourite Artists
 This feature allows the user to search for and favourite artists they would like to follow and keep up to date with their latest releases etc... The feature is based on the search feature, where the user will be giveb the option to favourite the artist via a favourites button which updates accordingly.
 
+<img src = "./app screenshots/Simulator Screen Shot - iPhone Xʀ - 2019-04-30 at 11.20.51.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
 - [x] Search Feature
 This feature makes use of the Deezer API to allow the user to search for any artist and view more details on it.
+
+<img src = "./app screenshots/Simulator Screen Shot - iPhone Xʀ - 2019-04-30 at 11.20.27.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
 - [x] View albums
 This feature loads all the albums of the artists in reverse chronological order (latest first) and allows the user to view more information about the artist (orgin/birth place, members, genres) while being able to add/remove them from their personal favourites list. The user is also able to click on a specific album to view all the tracks within the album.
 
+<img src = "./app screenshots/Simulator Screen Shot - iPhone Xʀ - 2019-04-30 at 11.20.43.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+
 - [x] View Songs
 Similar to the view albums, the user can click on the songs and read the lyrics of that specific song (The lyrics were obtained used the MusixMatch API)
+
+<img src = "./app screenshots/Simulator Screen Shot - iPhone Xʀ - 2019-04-30 at 11.20.43.png"  width = "300"  height = "550">   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
 - [x] Settings
 This feature allows the user to view more details on the application and details on the services used etc...
