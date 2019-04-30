@@ -87,27 +87,6 @@
                                             </mask>
                                         </variation>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-Ub-szA">
-                                        <rect key="frame" x="145" y="337" width="125" height="42"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Welcome Back!">
-                                                <attributes>
-                                                    <font key="NSFont" size="18" name="SFCompactText-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <attributedString key="attributedText">
-                                                <fragment content="Welcome Back!">
-                                                    <attributes>
-                                                        <font key="NSFont" size="36" name="SFCompactText-Medium"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </variation>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxa-TU-Ny2">
                                         <rect key="frame" x="176.66666666666666" y="317" width="62" height="58"/>
                                         <constraints>
@@ -125,8 +104,6 @@
                                     <constraint firstItem="oxa-TU-Ny2" firstAttribute="centerX" secondItem="N4N-PC-kgR" secondAttribute="centerX" id="2yS-8p-b7g"/>
                                     <constraint firstItem="0CY-bV-UMr" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" constant="-2.5" id="65A-oR-CHJ"/>
                                     <constraint firstItem="8rQ-mT-8Uf" firstAttribute="top" secondItem="0CY-bV-UMr" secondAttribute="bottom" constant="29" id="6iN-Rv-4DN"/>
-                                    <constraint firstItem="tUG-Ub-szA" firstAttribute="top" secondItem="8rQ-mT-8Uf" secondAttribute="bottom" constant="28" id="7jj-AY-ux4"/>
-                                    <constraint firstItem="tUG-Ub-szA" firstAttribute="centerY" secondItem="8pK-jJ-G9Y" secondAttribute="centerY" id="A2V-49-lEr"/>
                                     <constraint firstItem="N4N-PC-kgR" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" constant="-0.5" id="AxV-BN-06N"/>
                                     <constraint firstItem="0CY-bV-UMr" firstAttribute="top" secondItem="N4N-PC-kgR" secondAttribute="bottom" constant="14" id="E6A-uT-nI1"/>
                                     <constraint firstItem="8rQ-mT-8Uf" firstAttribute="centerX" secondItem="0CY-bV-UMr" secondAttribute="centerX" constant="-8.5" id="MFd-BG-qdu"/>
@@ -139,42 +116,65 @@
                                     <constraint firstItem="8rQ-mT-8Uf" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" constant="-3" id="jZm-hP-f86"/>
                                     <constraint firstItem="oxa-TU-Ny2" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" id="kFY-25-Qz6"/>
                                     <constraint firstItem="N4N-PC-kgR" firstAttribute="top" secondItem="8pK-jJ-G9Y" secondAttribute="top" constant="55" id="obz-xz-W1N"/>
-                                    <constraint firstItem="oxa-TU-Ny2" firstAttribute="centerX" secondItem="tUG-Ub-szA" secondAttribute="centerX" id="pE4-J2-HG2"/>
-                                    <constraint firstItem="tUG-Ub-szA" firstAttribute="centerX" secondItem="8pK-jJ-G9Y" secondAttribute="centerX" id="uZg-cV-U86"/>
                                     <constraint firstItem="oxa-TU-Ny2" firstAttribute="centerX" secondItem="8rQ-mT-8Uf" secondAttribute="centerX" id="xtn-Qn-Ooc"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="AxV-BN-06N"/>
+                                        <exclude reference="Z5g-tl-uXQ"/>
+                                        <exclude reference="obz-xz-W1N"/>
                                         <exclude reference="65A-oR-CHJ"/>
                                         <exclude reference="MkE-9A-XmB"/>
                                         <exclude reference="YZs-S5-5g2"/>
                                         <exclude reference="jZm-hP-f86"/>
-                                        <exclude reference="AxV-BN-06N"/>
-                                        <exclude reference="Z5g-tl-uXQ"/>
-                                        <exclude reference="obz-xz-W1N"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
+                                        <include reference="AxV-BN-06N"/>
+                                        <include reference="Z5g-tl-uXQ"/>
+                                        <include reference="obz-xz-W1N"/>
                                         <include reference="65A-oR-CHJ"/>
                                         <include reference="MkE-9A-XmB"/>
                                         <include reference="YZs-S5-5g2"/>
                                         <include reference="jZm-hP-f86"/>
-                                        <include reference="AxV-BN-06N"/>
-                                        <include reference="Z5g-tl-uXQ"/>
-                                        <include reference="obz-xz-W1N"/>
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUG-Ub-szA">
+                                <rect key="frame" x="144.66666666666666" y="357.66666666666669" width="124.99999999999997" height="21"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Welcome Back!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="SFCompactText-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <attributedString key="attributedText">
+                                        <fragment content="Welcome Back!">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="36" name="SFCompactText-Medium"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8pK-jJ-G9Y" firstAttribute="centerX" secondItem="wVK-dE-Yre" secondAttribute="centerX" id="BJK-Ix-Ueh"/>
                             <constraint firstItem="8pK-jJ-G9Y" firstAttribute="leading" secondItem="wVK-dE-Yre" secondAttribute="leading" id="cX5-PF-C0X"/>
+                            <constraint firstItem="tUG-Ub-szA" firstAttribute="centerX" secondItem="wVK-dE-Yre" secondAttribute="centerX" id="d4L-5X-JQH"/>
                             <constraint firstItem="8pK-jJ-G9Y" firstAttribute="centerY" secondItem="wVK-dE-Yre" secondAttribute="centerY" id="nSg-6g-1EV"/>
                             <constraint firstItem="8pK-jJ-G9Y" firstAttribute="top" secondItem="5hO-ta-KmQ" secondAttribute="top" constant="-20" id="ozO-wI-6Vm"/>
                             <constraint firstItem="8pK-jJ-G9Y" firstAttribute="top" secondItem="wVK-dE-Yre" secondAttribute="top" id="p2B-2l-ixI"/>
                             <constraint firstAttribute="bottom" secondItem="8pK-jJ-G9Y" secondAttribute="bottom" constant="20" symbolic="YES" id="rKQ-AO-Snm"/>
+                            <constraint firstItem="tUG-Ub-szA" firstAttribute="centerY" secondItem="wVK-dE-Yre" secondAttribute="centerY" id="z0Q-aw-Rdu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5hO-ta-KmQ"/>
                         <variation key="default">

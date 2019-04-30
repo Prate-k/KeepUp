@@ -12,7 +12,6 @@ import Alamofire
 
 extension UIImageView {
     func loadImageFromSource(source: String, tableView: UITableView) {
-//        let imgSource = "https://e-cdns-images.dzcdn.net/images/artist/f2bc007e9133c946ac3c3907ddc5d2ea/56x56-000000-80-0-0.jpg"
         Alamofire.download(source).responseData { _ in
             Alamofire.request(source, method: .get)
                 .validate()
@@ -28,7 +27,6 @@ extension UIImageView {
     }
     
     func loadImageFromSource(source: String) {
-        //        let imgSource = "https://e-cdns-images.dzcdn.net/images/artist/f2bc007e9133c946ac3c3907ddc5d2ea/56x56-000000-80-0-0.jpg"
         Alamofire.download(source).responseData { _ in
             Alamofire.request(source, method: .get)
                 .validate()

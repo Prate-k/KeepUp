@@ -30,6 +30,7 @@ extension SongsViewModel {
            seconds = String(seconds.substring(to: String.Index(encodedOffset: 2)))
         }
         let clockSeconds = Float((Int(seconds)!/100)*60)
+        print("\(minutes):\(clockSeconds)")
         return "\(minutes):\(clockSeconds)"
     }
 }

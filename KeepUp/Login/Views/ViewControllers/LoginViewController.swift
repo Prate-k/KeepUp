@@ -16,7 +16,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     
     @IBOutlet weak var welcomeBackLabel: UILabel!
     @IBOutlet weak var googleButton: UIButton!
-    @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var myView: UIView!
     
     override func viewDidLoad() {
@@ -52,7 +51,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
                                                       message: "Login was cancelled or failed, Please try again to continue",
                                                       preferredStyle: .alert)
                         let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-                            //        viewController.navigationController?.popViewController(animated: true)
                         })
                         alert.addAction(action)
                         self.present(alert, animated: true, completion: nil)
@@ -73,13 +71,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        // ...
         welcomeBackLabel.isHidden = false
         myView.isHidden = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { // Change `2.0` to the desired number of seconds.
-            // Code you want to be delayed
-            print(authentication)
-            print("Log in sucessful, Loading MainScreen")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "TabController")
             initialViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
@@ -88,12 +82,9 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
     }
 
     @IBAction func LoginAction(_ sender: Any) {
-        //start progress bar on press and stop animation on viewWillDisappear
         GIDSignIn.sharedInstance().signIn()
     }
     

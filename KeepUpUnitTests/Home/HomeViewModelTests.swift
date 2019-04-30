@@ -1,14 +1,14 @@
 //
-//  KeepUpUnitTests.swift
+//  HomeViewModelTests.swift
 //  KeepUpUnitTests
 //
-//  Created by Prateek Kambadkone on 2019/03/19.
+//  Created by Prateek Kambadkone on 2019/04/30.
 //  Copyright © 2019 Prateek Kambadkone. All rights reserved.
 //
 
 import XCTest
 
-class KeepUpUnitTests: XCTestCase {
+class HomeViewModelTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
