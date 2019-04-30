@@ -24,7 +24,7 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
             case .NetworkError:
                 showCouldNotLoadAlbumError(viewController: self)
             case .InvalidInput:
-                showEmptySearchAlertDialog(viewController: self)
+                print("Empty Search")
             case .EmptySearch:
                 print("Empty search")
             case .Unknown:
@@ -50,7 +50,7 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
                 self.addToFavouritesList(selectedArtist: selectedArtist)
             } else {
                 self.favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
-                self.removeFromFavouritesList(selectedArtistName: selectedArtist.artistName)
+                self.removeFromFavouritesList(selectedArtist: selectedArtist)
             }
         }
     }
@@ -66,15 +66,15 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
         viewModelDelegate?.addArtist(newArtist: newArtist)
     }
     
-    func removeFromFavouritesList(selectedArtistName: String) {
-        if selectedArtistName.isEmpty {
+    func removeFromFavouritesList(selectedArtist: SelectedArtist) {
+        if selectedArtist.artistName.isEmpty {
             DispatchQueue.main.async {
                 self.progressBar.stopAnimating()
                 showCouldNotLoadAlbumError(viewController: self)
             }
             
         } else {
-            viewModelDelegate?.removeArtist(artistName: selectedArtistName)
+            viewModelDelegate?.removeArtist(artistName: selectedArtist.artistName)
         }
     }
 }
