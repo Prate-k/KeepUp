@@ -29,5 +29,4 @@ class SettingsViewController: UIViewController {
     @IBAction func closeAbout(_ sender: Any) {
         aboutView.isHidden = true
     }
-    
 }

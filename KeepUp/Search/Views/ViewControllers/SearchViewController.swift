@@ -36,5 +36,4 @@ class SearchViewController: UIViewController {
             return
         }
     }
-
 }

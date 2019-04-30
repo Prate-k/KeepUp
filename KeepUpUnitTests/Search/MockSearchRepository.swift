@@ -13,7 +13,6 @@ class MockSearchRepository: SearchRepositoryProtocol {
     var viewModelDelegate: SearchViewModelProtocol?
     var networkDelegate: SearchNetworkProtocol?
     
-    
     func dataReady(result: Result<SearchResults>) {
         switch result {
         case .success(let data):

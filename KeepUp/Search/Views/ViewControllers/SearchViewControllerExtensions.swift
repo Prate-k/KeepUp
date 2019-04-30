@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 protocol SearchViewControllerProtocol: class {
     var viewModelDelegate: SearchViewModelProtocol? { get set }
     func updateSearchResults(searchResults: SearchResults)
@@ -18,25 +17,13 @@ protocol SearchViewControllerProtocol: class {
 
 extension SearchViewController {
     func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
-//        if isLoadingAllFavourites {
-//            albumsViewController.selectedArtistName = favouriteArtistList[selectedArtistPosition].artistName
-//        } else {
-//            if let index = favCollectionView.indexPathsForSelectedItems?[0].item {
-//                albumsViewController.selectedArtistName = favouriteArtistList[index].artistName
-//            }
-//        }
-//        isLoadingAllFavourites = false
+
     }
 
     func loadArtistInfoScreen (artistInfoViewController: ArtistInfoViewController) {
-//        if let name = resultArtistLabel.text {
-//            artistInfoViewController.artistName.append("\(name)")
-//            return
-//        }
+
     }
 }
-
-
 
 extension SearchViewController: SearchViewControllerProtocol {
     
@@ -95,16 +82,16 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as? SearchResultCell
         if let searchResults = self.searchResults {
             if let result = searchResults.get(i: indexPath.row) {
-                cell?.artistNameLabel.text = result.artistName
-                cell?.artistThumbnailImageView.loadImageFromSource(source: result.artistThumbnail!)
+                if let cell = cell {
+                    cell.artistNameLabel.text = result.artistName
+                    cell.artistThumbnailImageView.loadImageFromSource(source: result.artistThumbnail!)
+                }
             }
         }
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedResult = indexPath.item
-//        print(selectedResult)
         self.performSegue(withIdentifier: "SearchToDiscographySegue", sender: nil)
     }
 }

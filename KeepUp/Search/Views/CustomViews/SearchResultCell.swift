@@ -9,17 +9,11 @@
 import UIKit
 
 class SearchResultCell: UITableViewCell {
-
-    
     
     @IBOutlet weak var artistThumbnailImageView: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
     
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }

@@ -13,8 +13,7 @@ class MockLyricsRepository: LyricsRepositoryProtocol {
     var viewModelDelegate: LyricsViewModelProtocol?
     
     var networkDelegate: LyricsNetworkProtocol?
-    
-    
+
     func dataReady(result: Result<String>) {
         switch result {
         case .success(let data):

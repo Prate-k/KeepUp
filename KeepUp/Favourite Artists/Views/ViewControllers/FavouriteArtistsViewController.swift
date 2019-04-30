@@ -25,9 +25,6 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.setHidesBackButton(false, animated: true)
-//        favCollectionView.reloadData()
-        // Do any additional setup after loading the view.
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -42,7 +39,6 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
             return
         }
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -73,13 +69,10 @@ class FavouriteArtistsViewController: UIViewController, UICollectionViewDataSour
         if let favouriteArtists = favouriteArtists {
             let artist = favouriteArtists[indexPath.item]
             favCell?.artistName.text = artist.artistName
-            favCell?.genre.text = ""//artist.artistGenre
+            favCell?.genre.text = ""
             favCell?.imageView.loadImageFromSource(source: artist.artistImage)
             if inEditMode {
                 favCell?.deleteCheckBoxView.isHidden = false
-                //            if favCell?.deleteCheckBoxView.isChecked? {
-                //                favCell?.deleteCheckBoxView.toggleCheck()
-                //            }
             } else {
                 favCell?.deleteCheckBoxView.isHidden = true
             }

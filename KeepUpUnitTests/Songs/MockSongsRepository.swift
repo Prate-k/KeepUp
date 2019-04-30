@@ -12,7 +12,6 @@ import Foundation
 class MockSongsRepository: SongsRepositoryProtocol {
     var viewModelDelegate: SongsViewModelProtocol?
     
-    
     func dataReady(result: Result<Songs>) {
         switch result {
         case .success(let album):

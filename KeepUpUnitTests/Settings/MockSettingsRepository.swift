@@ -25,7 +25,7 @@ class MockSettingsRepositorySuccess: SettingsRepositoryProtocol {
     }
     
     func getAbout() {
-        var mockAbout = About(about: "This is a mock about to test settings view model")
+        let mockAbout = About(about: "This is a mock about to test settings view model")
         dataReady(result: Result.success(mockAbout))
     }
     

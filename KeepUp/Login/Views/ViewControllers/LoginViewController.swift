@@ -12,7 +12,7 @@ import GoogleSignIn
 
 class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDelegate {
     
-    var isAutoSignin: Bool? = nil
+    var isAutoSignin: Bool?
     
     @IBOutlet weak var welcomeBackLabel: UILabel!
     @IBOutlet weak var googleButton: UIButton!
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController, GIDSignInDelegate, GIDSignInUIDeleg
             }
         }
         guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+        _ = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         welcomeBackLabel.isHidden = false
         myView.isHidden = true

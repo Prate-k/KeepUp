@@ -61,10 +61,8 @@ struct PopularSongs: Codable {
     }
     
     mutating func removeAll() {
-        for i in 0..<results.count {
-            if i < results.count {
-                results.remove(at: i)
-            }
+        for i in 0..<results.count where i < results.count {
+            results.remove(at: i)
         }
     }
     

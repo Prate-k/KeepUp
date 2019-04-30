@@ -8,12 +8,6 @@
 
 import Foundation
 
-
 struct About: Codable {
     var about: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case about = "about"
-    }
-    
 }

@@ -22,8 +22,7 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var songsListTableView: UITableView!
     @IBOutlet weak var progressBar: UIActivityIndicatorView!
     
-    var viewModelDelegate: SongsViewModelProtocol?   //used for mvvm comm
-//    var viewModelFunctionable: SongsViewModelFunctionable?
+    var viewModelDelegate: SongsViewModelProtocol?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? LyricsViewController {
@@ -36,7 +35,6 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
         if let selectedAlbum = self.selectedAlbum {
             showSelectedAlbum(album: selectedAlbum)
             viewModelDelegate = SongsViewModel()
-//            viewModelFunctionable = SongsViewModel(objC: true)
             viewModelDelegate?.viewControllerDelegate = self
             DispatchQueue.global().async { [weak self] in
                 if let self = self {
@@ -46,7 +44,6 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
         } else {
             showEmptySearchAlertDialog(viewController: self)
         }
-        // Do any additional setup after loading the view.
     }
     
     func numberOfSections(in collectionView: UITableView) -> Int {
@@ -114,5 +111,4 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
-    
 }

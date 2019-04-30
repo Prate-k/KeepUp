@@ -10,6 +10,5 @@ import Foundation
 
 enum HomeDataType {
     case TopArtists
-//    case SimilarArtists
     case PopularSongs
 }

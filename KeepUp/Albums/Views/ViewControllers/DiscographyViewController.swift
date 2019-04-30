@@ -30,7 +30,9 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
             if let index = albumsListTable.indexPathForSelectedRow?.item {
                 if let albums = self.albums {
                     if let album = albums.get(i: index) {
-                        songsViewController.selectedAlbum = SelectedAlbum(albumID: album.albumID, albumName: album.albumName, albumImage: album.albumCover, artistName: selectedArtist?.artistName!)
+                        if let artistName = selectedArtist?.artistName {
+                        songsViewController.selectedAlbum = SelectedAlbum(albumID: album.albumID, albumName: album.albumName, albumImage: album.albumCover, artistName: artistName)
+                        }
                         return
                     }
                 }
@@ -89,9 +91,13 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
         }
         if let albums = self.albums {
             if let album = albums.get(i: indexPath.row) {
-                cell.albumImageView.loadImageFromSource(source: album.albumCover!)
+                if let image = album.albumCover {
+                    cell.albumImageView.loadImageFromSource(source: image)
+                }
                 cell.albumName.text = album.albumName
-                cell.releasedDate.text = "\(album.releaseDate!)"
+                if let date = album.releaseDate {
+                    cell.releasedDate.text = "\(date)"
+                }
             }
         }
         return cell

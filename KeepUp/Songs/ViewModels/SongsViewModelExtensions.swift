@@ -12,7 +12,7 @@ protocol SongsViewModelFunctionable: class {
     func getSongs(of albumID: Int)
 }
 
-protocol SongsViewModelProtocol: class, SongsViewModelFunctionable {
+protocol SongsViewModelProtocol: SongsViewModelFunctionable {
     var viewControllerDelegate: SongsViewControllerProtocol? { get set }
     var repositoryDelegate: SongsRepositoryProtocol? { get set }
     func updateSelectedAlbum(result: Result<Songs>)
@@ -55,4 +55,3 @@ extension SongsViewModel: SongsViewModelProtocol {
         repositoryDelegate?.getSongs(from: albumID)
     }
 }
-

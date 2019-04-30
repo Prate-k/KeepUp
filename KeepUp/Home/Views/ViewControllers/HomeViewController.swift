@@ -25,39 +25,19 @@ class HomeViewController: UIViewController {
     var selectedArtistPosition = -1
     var isLoadingAllFavourites = false
     
-    var topArtistList: TopArtists? = nil
-    var similarArtistList: SimilarArtists? = nil
-    var popularSongList: PopularSongs? = nil
+    var topArtistList: TopArtists?
+    var similarArtistList: SimilarArtists?
+    var popularSongList: PopularSongs?
     var popularSongsLoaded: Int = 0
     var viewModelDelegate: HomeViewModelProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setUpView1()
-//        setUpView2()
         popularSongsLoaded = 0
         viewModelDelegate = HomeViewModel()
         viewModelDelegate?.viewControllerDelegate = self
         requestTopArtists()
     }
-    
-    
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        if isLoadingAllFavourites {
-//            if selectedArtistPosition != -1 {
-//                print("Selected artist is: \(selectedArtistPosition)")
-//                self.performSegue(withIdentifier: "HomeToDiscographySegue", sender: nil)
-//            }
-//        } else {
-//            self.mainScreenViewModel = MainScreenViewModel(view: self)
-//            if let artists = self.mainScreenViewModel?.getFavouriteList() {
-//                self.favouriteArtistList = artists
-//            }
-////            self.favCollectionView.reloadData()
-//        }
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? DiscographyViewController {
@@ -70,13 +50,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-//    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-//        popularSongsCollectionView.layoutIfNeeded()
-//        topArtistsCollectionView.layoutIfNeeded()
-//    }
     @IBAction func addRemoveFavourites() {
-//        toggleArtistSearched(searchedArtistName: searchedArtistName)
     }
-    
-    
 }

@@ -32,7 +32,6 @@ extension LyricsRepository: LyricsRepositoryProtocol {
         } else {
             let site = "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?"
             let query = ["q_track=\(songTitle.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)", "q_artist=\(artistName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!)", "apikey=\(getAPIKey())"]
-    
             if networkDelegate == nil {
                 networkDelegate = LyricsNetwork(site: site, query: query, requestType: .GET)
                 networkDelegate?.repositoryDelegate = self
@@ -44,8 +43,7 @@ extension LyricsRepository: LyricsRepositoryProtocol {
     func getAPIKey() -> String {
         if  let path = Bundle.main.path(forResource: "APIKeys", ofType: "plist"),
             let xml = FileManager.default.contents(atPath: path),
-            let key = try? PropertyListDecoder().decode(API.self, from: xml)
-        {
+            let key = try? PropertyListDecoder().decode(API.self, from: xml) {
             return key.MusixMatchAPIKey
         }
         return ""

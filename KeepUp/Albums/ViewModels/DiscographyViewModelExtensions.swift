@@ -8,7 +8,6 @@ import Foundation
 protocol DiscographyViewModelProtocol: class {
     var viewControllerDelegate: DiscographyViewControllerProtocol? { get set }
     func updateAlbumsForArtist(result: Result<Albums>)
-    
     var repositoryDelegate: DiscographyRepositoryProtocol? { get set }
     func removeArtist(artistName: String)
     func addArtist(newArtist: SelectedArtist)
@@ -18,10 +17,9 @@ protocol DiscographyViewModelProtocol: class {
 extension DiscographyViewModel {
     func textifyDate(date: String) -> String {
         var partsStr = date.split(separator: "-")
-        
-        var date = String(partsStr[2])
-        var month = getMonth(monthNum: String(partsStr[1]))
-        var year = String(partsStr[0])
+        let date = String(partsStr[2])
+        let month = getMonth(monthNum: String(partsStr[1]))
+        let year = String(partsStr[0])
         return "\(date) \(month) \(year)"
     }
     
@@ -44,7 +42,6 @@ extension DiscographyViewModel {
     }
 }
 
-
 extension DiscographyViewModel: DiscographyViewModelProtocol {
     func updateAlbumsForArtist(result: Result<Albums>) {
         switch result {
@@ -52,14 +49,15 @@ extension DiscographyViewModel: DiscographyViewModelProtocol {
             var album: Album!
             for a in albums.results {
                 album = a
-                album.setDate(date: textifyDate(date: album.releaseDate!))
+                if let date = album.releaseDate {
+                    album.setDate(date: textifyDate(date: date))
+                }
             }
             viewControllerDelegate?.updateView(albums: albums)
         case .failure(let error):
             viewControllerDelegate?.albumLoadFailure(error: error)
         }
     }
-    
     func removeArtist(artistName: String) {
         repositoryDelegate?.removeSelectedArtist(artistName: artistName)
     }

@@ -15,7 +15,6 @@ protocol SettingsViewControllerProtocol: class {
 }
 
 extension SettingsViewController: SettingsViewControllerProtocol {
-
     
     func networkFailure(error: Errors) {
         print("error")
@@ -27,5 +26,4 @@ extension SettingsViewController: SettingsViewControllerProtocol {
             self.aboutTextView.text = about.about
         }
     }
-    
 }

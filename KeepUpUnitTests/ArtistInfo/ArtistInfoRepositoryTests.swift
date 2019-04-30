@@ -9,9 +9,6 @@
 import XCTest
 @testable import KeepUp
 
-
-
-
 class ArtistInfoRepositoryTests: XCTestCase {
 
     var mockViewModel = MockArtistInfoViewModel()

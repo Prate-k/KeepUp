@@ -36,4 +36,3 @@ class HomeViewModel {
         viewControllerDelegate?.viewModelDelegate = self
     }
 }
-

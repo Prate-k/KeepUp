@@ -41,7 +41,6 @@ class HomeNetwork: Networker, HomeNetworkProtocol {
             super.send(completion: { (data) in
                 if let data = data {
                     do {
-//                        let content = try JSONDecoder().decode(SearchResults.self, from: data)
                         self.notifyRepository(result: Result.success(data), type: type, rank: rank)
                     } catch let error {
                         print(error.localizedDescription)
@@ -54,4 +53,3 @@ class HomeNetwork: Networker, HomeNetworkProtocol {
         }
     }
 }
-

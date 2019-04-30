@@ -13,7 +13,6 @@ import XCTest
 class MockSongsViewController: SongsViewControllerProtocol {
     var viewModelDelegate: SongsViewModelProtocol?
     
-    
     func songsLoadFailure(error: Errors) {
         XCTAssert(error == .InvalidInput)
     }
@@ -24,7 +23,7 @@ class MockSongsViewController: SongsViewControllerProtocol {
         for index in 0..<3 {
             let result = songs.get(i: index)
             if result?.songID != index || result?.songName != "Song\(index)" ||
-                (result?.songLengthText.contains(lengths[index]))!{
+                (result?.songLengthText.contains(lengths[index]))! {
                 bool = false
                 break
             }
@@ -40,4 +39,3 @@ class MockSongsViewController: SongsViewControllerProtocol {
       
     }
 }
-
