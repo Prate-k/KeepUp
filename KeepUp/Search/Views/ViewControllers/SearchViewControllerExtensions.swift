@@ -79,16 +79,16 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as? SearchResultCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath) as? SearchResultCell else {
+            fatalError("The dequeued cell is not an instance of SearchResultCell.")
+        }
         if let searchResults = self.searchResults {
             if let result = searchResults.get(i: indexPath.row) {
-                if let cell = cell {
-                    cell.artistNameLabel.text = result.artistName
-                    cell.artistThumbnailImageView.loadImageFromSource(source: result.artistThumbnail!)
-                }
+                cell.artistNameLabel.text = result.artistName
+                cell.artistThumbnailImageView.loadImageFromSource(source: result.artistThumbnail!)
             }
         }
-        return cell!
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

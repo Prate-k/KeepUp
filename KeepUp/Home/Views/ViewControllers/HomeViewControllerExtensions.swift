@@ -57,7 +57,6 @@ extension HomeViewController {
         }
     }
 
-    
     func requestTopArtists() {
         self.viewModelDelegate?.getTopArtistsFromRepository()
     }
@@ -96,7 +95,9 @@ extension HomeViewController {
         if let topArtistCell = cell as? HomeCollectionViewCell {
             topArtistCell.label1.text = topArtist.artistName
 
-            topArtistCell.imageView.loadImageFromSource(source: topArtist.artistThumbnail!)
+            if let image = topArtist.artistThumbnail {
+                topArtistCell.imageView.loadImageFromSource(source: image)
+            }
             topArtistCell.imageView.layer.cornerRadius = 16.0
             topArtistCell.imageView.clipsToBounds = true
             topArtistCell.textLabels.layer.cornerRadius = 16.0

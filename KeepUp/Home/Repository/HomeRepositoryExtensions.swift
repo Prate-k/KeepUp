@@ -18,7 +18,6 @@ protocol HomeRepositoryProtocol: class {
 
 extension HomeRepository: HomeRepositoryProtocol {
     
-    
     func dataReady(result: Result<Data>, type: HomeDataType, artistRank: Int) {
         switch result {
         case .success(let data):

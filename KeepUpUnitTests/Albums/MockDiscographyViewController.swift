@@ -13,7 +13,6 @@ import XCTest
 class MockDiscographyViewController: DiscographyViewControllerProtocol {
     var viewModelDelegate: DiscographyViewModelProtocol?
     
-    
     func albumLoadFailure(error: Errors) {
         XCTAssert(error == .InvalidInput)
     }

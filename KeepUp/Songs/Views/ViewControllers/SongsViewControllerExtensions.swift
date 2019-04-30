@@ -17,7 +17,6 @@ protocol SongsViewControllerProtocol: class {
 
 extension SongsViewController: SongsViewControllerProtocol {
     
-    
     func songsLoadFailure(error: Errors) {
         DispatchQueue.main.async {
             self.progressBar.stopAnimating()
@@ -56,4 +55,3 @@ extension SongsViewController: SongsViewControllerProtocol {
         }
     }
 }
-

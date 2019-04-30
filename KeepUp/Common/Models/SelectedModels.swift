@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct SelectedArtist {
     var artistID: Int!
     var artistName: String!

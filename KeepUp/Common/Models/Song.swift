@@ -8,14 +8,6 @@
 
 import Foundation
 
-//struct Song {
-//    var songTitle: String
-//    var songLyrics: String
-//    var songLength: String
-//    var isHidden: Bool = false
-//}
-
-
 struct Song: Codable {
     var songID: Int?
     var songName: String?
@@ -52,7 +44,7 @@ struct Songs: Codable {
     }
     
     mutating func removeAll() {
-        for i in 0..<results.count where i < results.count{
+        for i in 0..<results.count where i < results.count {
            results.remove(at: i)
         }
     }
