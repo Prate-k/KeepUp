@@ -17,6 +17,7 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
     var albums: Albums?
     var viewModelDelegate: DiscographyViewModelProtocol?   //used for mvvm comm
 
+    @IBOutlet weak var artistInfoButton: UIButton!
     @IBOutlet weak var progressBar: UIActivityIndicatorView!
     @IBOutlet weak var albumsListTable: UITableView!
     @IBOutlet weak var artistImageView: UIImageView!

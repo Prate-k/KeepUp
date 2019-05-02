@@ -12,6 +12,7 @@ class AlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var releasedDate: UILabel!
+    @IBOutlet weak var cellView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

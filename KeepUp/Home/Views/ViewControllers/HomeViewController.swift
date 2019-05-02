@@ -25,17 +25,20 @@ class HomeViewController: UIViewController {
     var selectedArtistPosition = -1
     var isLoadingAllFavourites = false
     var hasRequestedSongs = false
+    var hasReceivedAllSongs = false
     
     var topArtistList: TopArtists?
     var similarArtistList: SimilarArtists?
     var popularSongList: PopularSongs?
     var popularSongsLoaded: Int = 0
     var viewModelDelegate: HomeViewModelProtocol?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         popularSongsLoaded = 0
         hasRequestedSongs = false
+        hasReceivedAllSongs = false
         viewModelDelegate = HomeViewModel()
         viewModelDelegate?.viewControllerDelegate = self
         requestTopArtists()
@@ -52,6 +55,8 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func addRemoveFavourites() {
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        self.topArtistsCollectionView.reloadData()
+        self.popularSongsCollectionView.reloadData()
     }
 }

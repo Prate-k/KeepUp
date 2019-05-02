@@ -17,7 +17,8 @@ protocol HomeViewControllerProtocol: class {
 }
 
 extension HomeViewController {
-    func setUpView1() {
+    
+    func setupView1() {
         var shadowLayer: CAShapeLayer!
         let fillColour: UIColor = .white
         let bounds = topArtistsLabelView.layer.bounds
@@ -37,7 +38,7 @@ extension HomeViewController {
         }
     }
     
-    func setUpView2() {
+    func setupView2() {
         var shadowLayer: CAShapeLayer!
         let fillColour: UIColor = .white
         let bounds = popularSongsLabelView.layer.bounds
@@ -83,6 +84,10 @@ extension HomeViewController {
             requestPopularSongs()
             hasRequestedSongs = true
         }
+        
+        if self.hasReceivedAllSongs {
+            self.updatePopularSongsCollectionView()
+        }
     }
     
     func updatePopularSongsCollectionView() {
@@ -93,11 +98,13 @@ extension HomeViewController {
     
     func setTopArtistCellProperties(cell: UICollectionViewCell, topArtist: TopArtist) -> UICollectionViewCell {
         if let topArtistCell = cell as? HomeCollectionViewCell {
+
             topArtistCell.label1.text = topArtist.artistName
 
             if let image = topArtist.artistThumbnail {
                 topArtistCell.imageView.loadImageFromSource(source: image)
             }
+            
             topArtistCell.imageView.layer.cornerRadius = 16.0
             topArtistCell.imageView.clipsToBounds = true
             topArtistCell.textLabels.layer.cornerRadius = 16.0
@@ -115,12 +122,16 @@ extension HomeViewController {
                 shadowLayer.fillColor = fillColour.cgColor
                 shadowLayer.shadowColor = UIColor.black.cgColor
                 shadowLayer.shadowPath = shadowLayer.path
-                shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
-                shadowLayer.shadowOpacity = 0.5
-                shadowLayer.shadowRadius = 4
+                shadowLayer.shadowOffset = CGSize(width: 0, height: 1.2)
+                shadowLayer.shadowOpacity = 0.8
+                shadowLayer.shadowRadius = 8
 
-                topArtistCell.layer.insertSublayer(shadowLayer, at: 0)
-                topArtistCell.layer.masksToBounds = false
+                if let shadow = topArtistCell.layer.sublayers?[0] as? CAShapeLayer {
+                } else {
+                    topArtistCell.layer.insertSublayer(shadowLayer, at: 0)
+                    topArtistCell.layer.masksToBounds = false
+                }
+                
             }
             return topArtistCell
         }
@@ -129,6 +140,11 @@ extension HomeViewController {
     
     func setPopularSongCellProperties(cell: UICollectionViewCell, popularSong: PopularSong) -> UICollectionViewCell {
         if let popularSongCell = cell as? HomeCollectionViewCell {
+            
+            guard let _ = popularSongCell.layer.sublayers?.isEmpty else {
+                return popularSongCell
+            }
+            
             popularSongCell.label1.text = popularSong.songTitle
             popularSongCell.label2.text =  popularSong.artist?.artistName
             
@@ -155,12 +171,15 @@ extension HomeViewController {
                 shadowLayer.fillColor = fillColour.cgColor
                 shadowLayer.shadowColor = UIColor.black.cgColor
                 shadowLayer.shadowPath = shadowLayer.path
-                shadowLayer.shadowOffset = CGSize(width: 0, height: 1)
-                shadowLayer.shadowOpacity = 0.5
+                shadowLayer.shadowOffset = CGSize(width: 0, height: 1.2)
+                shadowLayer.shadowOpacity = 0.8
                 shadowLayer.shadowRadius = 8
                 
-                popularSongCell.layer.insertSublayer(shadowLayer, at: 0)
-                popularSongCell.layer.masksToBounds = false
+                if let shadow = popularSongCell.layer.sublayers?[0] as? CAShapeLayer {
+                } else {
+                    popularSongCell.layer.insertSublayer(shadowLayer, at: 0)
+                    popularSongCell.layer.masksToBounds = false
+                }
             }
             return popularSongCell
         }
@@ -196,6 +215,7 @@ extension HomeViewController {
 }
 
 extension HomeViewController: HomeViewControllerProtocol {
+    
     func updateTopArtists(results: TopArtists) {
         self.topArtistList = results
         updateTopArtistsCollectionView()
@@ -211,15 +231,17 @@ extension HomeViewController: HomeViewControllerProtocol {
                 }
             }
             self.popularSongList?.set(result, at: rank)
+            if let cell = self.popularSongsCollectionView.cellForItem(at: IndexPath.init(row: rank, section: 0)) {
+                self.popularSongsCollectionView.reloadItems(at: [IndexPath.init(item: rank, section: 0)])
+            }
             if self.popularSongsLoaded < 9 {
                 self.popularSongsLoaded += 1
             } else {
                 self.updatePopularSongsCollectionView()
+                self.hasReceivedAllSongs = true
+                self.updateTopArtistsCollectionView()
             }
-            self.updateTopArtistsCollectionView()
-            self.updatePopularSongsCollectionView()
         }
-        
     }
     
     func resultsFailure(error: Errors) {
