@@ -1014,29 +1014,12 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuZ-vG-kC3">
-                                                        <rect key="frame" x="-13" y="50" width="197" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="197" id="Wqw-XP-IBZ"/>
-                                                            <constraint firstAttribute="height" constant="35" id="aEt-ty-8Wd"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="9iU-Ya-pVe" firstAttribute="centerX" secondItem="s4g-gj-RPy" secondAttribute="centerX" id="70i-Mz-PX4"/>
-                                                    <constraint firstItem="zuZ-vG-kC3" firstAttribute="centerY" secondItem="s4g-gj-RPy" secondAttribute="centerY" constant="19.5" id="CjV-Wu-ueD"/>
-                                                    <constraint firstItem="zuZ-vG-kC3" firstAttribute="centerX" secondItem="s4g-gj-RPy" secondAttribute="centerX" id="Kx5-jv-gZi"/>
-                                                    <constraint firstItem="zuZ-vG-kC3" firstAttribute="trailing" secondItem="9iU-Ya-pVe" secondAttribute="trailing" id="NnX-Le-244"/>
-                                                    <constraint firstItem="zuZ-vG-kC3" firstAttribute="centerX" secondItem="9iU-Ya-pVe" secondAttribute="centerX" id="RWT-jW-p5c"/>
                                                     <constraint firstItem="9iU-Ya-pVe" firstAttribute="centerY" secondItem="s4g-gj-RPy" secondAttribute="centerY" constant="-19" id="TyY-h7-AV0"/>
                                                     <constraint firstItem="9iU-Ya-pVe" firstAttribute="top" secondItem="s4g-gj-RPy" secondAttribute="top" constant="9" id="XP7-M2-UMH"/>
-                                                    <constraint firstItem="zuZ-vG-kC3" firstAttribute="centerX" secondItem="9iU-Ya-pVe" secondAttribute="centerX" id="a6g-fZ-qME"/>
-                                                    <constraint firstItem="zuZ-vG-kC3" firstAttribute="leading" secondItem="9iU-Ya-pVe" secondAttribute="leading" id="gYT-LG-ljV"/>
-                                                    <constraint firstItem="zuZ-vG-kC3" firstAttribute="top" secondItem="s4g-gj-RPy" secondAttribute="top" constant="50" id="vT0-UC-hKl"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9Q-pD-Hfp">
@@ -1234,7 +1217,6 @@
                         <outlet property="artistInfoButton" destination="Vbf-1X-YAz" id="BN9-Mf-elt"/>
                         <outlet property="artistName" destination="9iU-Ya-pVe" id="1GZ-Ax-W0E"/>
                         <outlet property="favouriteUnfavouriteButton" destination="nt5-d9-k3Z" id="vhB-xg-DyF"/>
-                        <outlet property="genre" destination="zuZ-vG-kC3" id="gT6-X6-YLB"/>
                         <outlet property="myStackView" destination="5Hn-Gy-ySw" id="Nih-cP-kUX"/>
                         <outlet property="progressBar" destination="tUV-kq-mbh" id="Qjz-bZ-dXc"/>
                         <segue destination="kxy-QL-uXn" kind="show" identifier="AlbumsToTracksSegue" id="hWQ-dR-YAO"/>

@@ -23,7 +23,6 @@ class DiscographyViewController: UIViewController {
     @IBOutlet weak var albumsListTable: UITableView!
     @IBOutlet weak var artistImageView: UIImageView!
     @IBOutlet weak var artistName: UILabel!
-    @IBOutlet weak var genre: UILabel!
     @IBOutlet weak var favouriteUnfavouriteButton: UIButton!
     @IBOutlet weak var myStackView: UIStackView!
     

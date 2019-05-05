@@ -13,8 +13,10 @@ func showArtistInfoLoadFailedAlertDialog(viewController: UIViewController) {
     let alert = UIAlertController(title: "Load Failed!",
                                   message: "Could not load information for artist",
                                   preferredStyle: .alert)
-    let action = UIAlertAction(title: "Ok", style: .default, handler: { _ in
-        viewController.navigationController?.popViewController(animated: true)
+    let action = UIAlertAction(title: "Close", style: .default, handler: { _ in
+        if let vc = viewController as? ArtistInfoViewController {
+            vc.closeArtistInfo()
+        }
     })
     alert.addAction(action)
     viewController.present(alert, animated: true, completion: nil)
