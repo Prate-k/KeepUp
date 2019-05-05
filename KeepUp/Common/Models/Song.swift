@@ -44,8 +44,11 @@ struct Songs: Codable {
     }
     
     mutating func removeAll() {
-        for i in 0..<results.count where i < results.count {
-           results.remove(at: i)
-        }
+        results.removeAll()
+        print("count:\(results.count)")
+    }
+    
+    mutating func append(song: Song) {
+        results.append(song)
     }
 }
