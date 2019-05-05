@@ -16,7 +16,7 @@ struct Song: Codable {
     
     enum CodingKeys: String, CodingKey {
         case songID = "id"
-        case songName = "title_short"
+        case songName = "title"
         case songLength = "duration"
     }
     

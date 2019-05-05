@@ -22,26 +22,19 @@ class HomeViewController: UIViewController {
     let reusableId = "HomeCell"
     let reusableIdTopArtist = "TopArtistCell"
     let reusableIdPopularSong = "PopularSongCell"
-    var selectedArtistPosition = -1
-    var isLoadingAllFavourites = false
-    var hasRequestedSongs = false
-    var hasReceivedAllSongs = false
     
     var topArtistList: TopArtists?
     var similarArtistList: SimilarArtists?
     var popularSongList: PopularSongs?
-    var popularSongsLoaded: Int = 0
     var viewModelDelegate: HomeViewModelProtocol?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        popularSongsLoaded = 0
-        hasRequestedSongs = false
-        hasReceivedAllSongs = false
         viewModelDelegate = HomeViewModel()
         viewModelDelegate?.viewControllerDelegate = self
-        requestTopArtists()
+        self.requestTopArtists()
+        self.requestPopularSongs()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -58,5 +51,9 @@ class HomeViewController: UIViewController {
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         self.topArtistsCollectionView.reloadData()
         self.popularSongsCollectionView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            self.topArtistsCollectionView.reloadData()
+            self.popularSongsCollectionView.reloadData()
+        })
     }
 }

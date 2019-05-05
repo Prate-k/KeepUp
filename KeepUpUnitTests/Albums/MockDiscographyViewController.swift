@@ -11,6 +11,10 @@ import Foundation
 import XCTest
 
 class MockDiscographyViewController: DiscographyViewControllerProtocol {
+    
+    func isArtistInList(_ check: Bool) {
+        
+    }
     var viewModelDelegate: DiscographyViewModelProtocol?
     
     func albumLoadFailure(error: Errors) {

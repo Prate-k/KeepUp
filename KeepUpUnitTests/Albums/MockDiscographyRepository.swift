@@ -10,6 +10,10 @@ import Foundation
 @testable import KeepUp
 
 class MockDiscographyRepository: DiscographyRepositoryProtocol {
+    func checkIfInFavourites(_ artistName: String) {
+        
+    }
+    
     func removeSelectedArtist(artistName: String) {
         print("")
     }

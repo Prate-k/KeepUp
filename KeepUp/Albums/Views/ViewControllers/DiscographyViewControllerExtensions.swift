@@ -13,10 +13,13 @@ protocol DiscographyViewControllerProtocol: class {
     var viewModelDelegate: DiscographyViewModelProtocol? { get set }
     func albumLoadFailure(error: Errors)
     func updateView(albums: Albums)
+    func isArtistInList(_ check: Bool)
+}
+
+extension DiscographyViewController {
 }
 
 extension DiscographyViewController: DiscographyViewControllerProtocol {
-    
     func albumLoadFailure(error: Errors) {
         DispatchQueue.main.async {
             self.progressBar.stopAnimating()
@@ -77,4 +80,60 @@ extension DiscographyViewController: DiscographyViewControllerProtocol {
             viewModelDelegate?.removeArtist(artistName: selectedArtist.artistName)
         }
     }
+    
+    func isArtistInList(_ check: Bool) {
+        guard let selectedArtist = self.selectedArtist else {
+            return
+        }
+        isArtistFavourited = check
+        DispatchQueue.main.async {
+            self.artistName.text = selectedArtist.artistName
+            if let artistImage = selectedArtist.artistImage {
+                self.artistImageView.loadImageFromSource(source: artistImage)
+            } else {
+                self.artistImageView.image = UIImage(named: "dummyArtist")
+            }
+            if check {
+                self.favouriteUnfavouriteButton.setImage(UIImage(named: "fav"), for: .normal)
+            } else {
+                self.favouriteUnfavouriteButton.setImage(UIImage(named: "unfav"), for: .normal)
+            }
+        }
+    }
+}
+
+extension DiscographyViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in collectionView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let albums = self.albums {
+            return albums.count()
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? AlbumTableViewCell else {
+            fatalError("The dequeued cell is not an instance of AlbumTableViewCell.")
+        }
+        if let albums = self.albums {
+            if let album = albums.get(i: indexPath.row) {
+                if let image = album.albumCover {
+                    cell.albumImageView.loadImageFromSource(source: image)
+                }
+                cell.albumName.text = album.albumName
+                if let date = album.releaseDate {
+                    cell.releasedDate.text = "\(date)"
+                }
+            }
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "AlbumsToTracksSegue", sender: nil)
+    }
+
 }

@@ -10,19 +10,19 @@ import Foundation
 
 protocol HomeNetworkProtocol: class {
     var repositoryDelegate: HomeRepositoryProtocol? { get set}
-    func getDataFromNetwork(type: HomeDataType, rank: Int)
+    func getDataFromNetwork(type: HomeDataType)
 }
 
 class HomeNetwork: Networker, HomeNetworkProtocol {
     
     var repositoryDelegate: HomeRepositoryProtocol?
     
-    func notifyRepository(result: Result<Data>, type: HomeDataType, rank: Int) {
+    func notifyRepository(result: Result<Data>, type: HomeDataType) {
         switch result {
         case .success(let data):
-            repositoryDelegate?.dataReady(result: Result.success(data), type: type, artistRank: rank)
+            repositoryDelegate?.dataReady(result: Result.success(data), type: type)
         case .failure(let error):
-            repositoryDelegate?.dataReady(result: Result.failure(error), type: type, artistRank: -1)
+            repositoryDelegate?.dataReady(result: Result.failure(error), type: type)
         }
     }
     
@@ -36,20 +36,20 @@ class HomeNetwork: Networker, HomeNetworkProtocol {
         super.init(site: site, query: q, requestType: requestType)
     }
     
-    func getDataFromNetwork(type: HomeDataType, rank: Int) {
-        DispatchQueue.global().async {
+    func getDataFromNetwork(type: HomeDataType) {
+//        DispatchQueue.global().async {
             super.send(completion: { (data) in
                 if let data = data {
                     do {
-                        self.notifyRepository(result: Result.success(data), type: type, rank: rank)
+                        self.notifyRepository(result: Result.success(data), type: type)
                     } catch let error {
                         print(error.localizedDescription)
-                        self.notifyRepository(result: Result.failure(Errors.NetworkError), type: type, rank: -1)
+                        self.notifyRepository(result: Result.failure(Errors.NetworkError), type: type)
                     }
                 } else {
-                    self.notifyRepository(result: Result.failure(Errors.NetworkError), type: type, rank: -1)
+                    self.notifyRepository(result: Result.failure(Errors.NetworkError), type: type)
                 }
             })
-        }
+//        }
     }
 }

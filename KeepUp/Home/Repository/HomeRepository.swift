@@ -12,6 +12,8 @@ class HomeRepository {
     
     var viewModelDelegate: HomeViewModelProtocol?
     var networkDelegate: HomeNetworkProtocol?
+    
+    
     init () {
         viewModelDelegate?.repositoryDelegate = self
     }

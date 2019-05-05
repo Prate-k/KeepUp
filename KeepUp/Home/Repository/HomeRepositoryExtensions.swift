@@ -12,13 +12,13 @@ protocol HomeRepositoryProtocol: class {
     var viewModelDelegate: HomeViewModelProtocol? {get set}
     var networkDelegate: HomeNetworkProtocol? { get set }
     func getTopArtistsFromSource()
-    func getPopularSongsFromSource(artistID: Int, artistRank: Int)
-    func dataReady(result: Result<Data>, type: HomeDataType, artistRank: Int)
+    func getPopularSongsFromSource()
+    func dataReady(result: Result<Data>, type: HomeDataType)
 }
 
 extension HomeRepository: HomeRepositoryProtocol {
     
-    func dataReady(result: Result<Data>, type: HomeDataType, artistRank: Int) {
+    func dataReady(result: Result<Data>, type: HomeDataType) {
         switch result {
         case .success(let data):
             do {
@@ -28,9 +28,7 @@ extension HomeRepository: HomeRepositoryProtocol {
                     notifyViewModel(result: Result.success(content))
                 case .PopularSongs:
                     let content = try JSONDecoder().decode(PopularSongs.self, from: data)
-                    if let popularSong = content.get(i: 0) {
-                         notifyViewModel(result: Result.success(popularSong), artistRank: artistRank)
-                    }
+                    notifyViewModel(result: Result.success(content))
                 }
             } catch _ {
                 let err: Errors = .NetworkError
@@ -42,29 +40,31 @@ extension HomeRepository: HomeRepositoryProtocol {
     }
     
     func getTopArtistsFromSource() {
+
         let filter = "artists"
         let site = "https://api.deezer.com/chart/0/\(filter)"
         let query = [""]
         self.networkDelegate = HomeNetwork(site: site, query: query, requestType: .GET)
         self.networkDelegate?.repositoryDelegate = self
-        self.networkDelegate?.getDataFromNetwork(type: HomeDataType.TopArtists, rank: -1)
+        self.networkDelegate?.getDataFromNetwork(type: HomeDataType.TopArtists)
     }
     
-    func getPopularSongsFromSource(artistID: Int, artistRank: Int) {
-        let filter = "artist/\(artistID)/top"
-        let site = "https://api.deezer.com/\(filter)?"
-        let query = ["limit=1"]
+    func getPopularSongsFromSource() {
+
+        let filter = "tracks/"
+        let site = "https://api.deezer.com/chart/0/\(filter)"
+        let query = [""]
         self.networkDelegate = HomeNetwork(site: site, query: query, requestType: .GET)
         self.networkDelegate?.repositoryDelegate = self
-        self.networkDelegate?.getDataFromNetwork(type: HomeDataType.PopularSongs, rank: artistRank)
+        self.networkDelegate?.getDataFromNetwork(type: HomeDataType.PopularSongs)
     }
     
     func notifyViewModel(result: Result<TopArtists>) {
         viewModelDelegate?.updateTopArtistsOnView(result: result)
     }
     
-    func notifyViewModel(result: Result<PopularSong>, artistRank: Int) {
-        viewModelDelegate?.updatePopularSongsOnView(result: result, artistRank: artistRank)
+    func notifyViewModel(result: Result<PopularSongs>) {
+        viewModelDelegate?.updatePopularSongsOnView(result: result)
     }
     
     func notifyErrorToViewModel(error: Errors) {

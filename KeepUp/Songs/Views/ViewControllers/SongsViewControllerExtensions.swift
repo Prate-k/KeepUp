@@ -13,9 +13,16 @@ protocol SongsViewControllerProtocol: class {
     var viewModelDelegate: SongsViewModelProtocol? { get set }
     func songsLoadFailure(error: Errors)
     func updateView(songs: Songs)
+    func setSelectedSong(_ songName: String)
 }
 
 extension SongsViewController: SongsViewControllerProtocol {
+    
+    func setSelectedSong(_ songName: String) {
+        selectedSongTitle = songName
+        print("lyrics of \(selectedSongTitle)")
+        self.performSegue(withIdentifier: "TracksToLyricsSegue", sender: nil)
+    }
     
     func songsLoadFailure(error: Errors) {
         DispatchQueue.main.async {

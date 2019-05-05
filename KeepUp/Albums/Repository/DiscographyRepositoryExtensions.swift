@@ -11,10 +11,11 @@ protocol DiscographyRepositoryProtocol: class {
     func removeSelectedArtist(artistName: String)
     func addArtist(newArtist: SelectedArtist)
     func getAlbums(of artistID: Int)
+    func checkIfInFavourites(_ artistName: String)
 }
 
 extension DiscographyRepository: DiscographyRepositoryProtocol {
-
+    
     func dataReady(result: Result<Albums>) {
         switch result {
         case .success(let album):
@@ -26,11 +27,9 @@ extension DiscographyRepository: DiscographyRepositoryProtocol {
 
     func removeSelectedArtist(artistName: String) {
         let index = FavouriteArtists.isArtistInFavouriteList(name: artistName)
-        if index < 0 {
-            dataReady(result: Result.failure(Errors.InvalidInput))
-            return
-        } else {
+        if index >= 0 {
             FavouriteArtists.removeArtist(at: index)
+            return
         }
     }
     
@@ -52,4 +51,14 @@ extension DiscographyRepository: DiscographyRepositoryProtocol {
         self.networkDelegate?.repositoryDelegate = self
         self.networkDelegate?.getDataFromNetwork()
     }
+    
+    func checkIfInFavourites(_ artistName: String) {
+        let index = FavouriteArtists.isArtistInFavouriteList(name: artistName)
+        if index < 0 {
+            viewModelDelegate?.isArtistFound(false)
+        } else {
+            viewModelDelegate?.isArtistFound(true)
+        }
+    }
+    
 }

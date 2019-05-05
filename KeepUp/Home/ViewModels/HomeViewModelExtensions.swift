@@ -12,17 +12,17 @@ protocol HomeViewModelProtocol: class {
     var viewControllerDelegate: HomeViewControllerProtocol? { get set }
     var repositoryDelegate: HomeRepositoryProtocol? { get set }
     func getTopArtistsFromRepository()
-    func getPopularSongsFromRepository(artistID: Int, artistRank: Int)
+    func getPopularSongsFromRepository()
     func updateTopArtistsOnView(result: Result<TopArtists>)
-    func updatePopularSongsOnView(result: Result<PopularSong>, artistRank: Int)
+    func updatePopularSongsOnView(result: Result<PopularSongs>)
 }
 
 extension HomeViewModel: HomeViewModelProtocol {
     
-    func updatePopularSongsOnView(result: Result<PopularSong>, artistRank: Int) {
+    func updatePopularSongsOnView(result: Result<PopularSongs>) {
         switch result {
         case .success(let data):
-            self.viewControllerDelegate?.updatePopularSong(result: data, rank: artistRank)
+            self.viewControllerDelegate?.updatePopularSongs(results: data)
         case .failure(let error):
             self.viewControllerDelegate?.resultsFailure(error: error)
         }
@@ -41,7 +41,7 @@ extension HomeViewModel: HomeViewModelProtocol {
         repositoryDelegate?.getTopArtistsFromSource()
     }
     
-    func getPopularSongsFromRepository(artistID: Int, artistRank: Int) {
-        repositoryDelegate?.getPopularSongsFromSource(artistID: artistID, artistRank: artistRank)
+    func getPopularSongsFromRepository() {
+        repositoryDelegate?.getPopularSongsFromSource()
     }
 }

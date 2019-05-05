@@ -11,6 +11,10 @@ import Foundation
 import XCTest
 
 class MockSongsViewController: SongsViewControllerProtocol {
+    func setSelectedSong(_ songName: String) {
+        
+    }
+    
     var viewModelDelegate: SongsViewModelProtocol?
     
     func songsLoadFailure(error: Errors) {

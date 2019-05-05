@@ -12,7 +12,7 @@ import UIKit
 protocol HomeViewControllerProtocol: class {
     var viewModelDelegate: HomeViewModelProtocol? { get set }
     func updateTopArtists(results: TopArtists)
-    func updatePopularSong(result: PopularSong, rank: Int)
+    func updatePopularSongs(results: PopularSongs)
     func resultsFailure(error: Errors)
 }
 
@@ -63,127 +63,7 @@ extension HomeViewController {
     }
     
     func requestPopularSongs() {
-        popularSongsLoaded = 0
-        if let topArtistlist = self.topArtistList {
-            for i in 0..<topArtistlist.count() {
-                if let topArtist = topArtistlist.get(i: i) {
-                    if let artistID = topArtist.artistID {
-                        self.viewModelDelegate?.getPopularSongsFromRepository(artistID: artistID, artistRank: i)
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    func updateTopArtistsCollectionView() {
-        DispatchQueue.main.async {
-            self.topArtistsCollectionView.reloadData()
-        }
-        if !hasRequestedSongs {
-            requestPopularSongs()
-            hasRequestedSongs = true
-        }
-        
-        if self.hasReceivedAllSongs {
-            self.updatePopularSongsCollectionView()
-        }
-    }
-    
-    func updatePopularSongsCollectionView() {
-        DispatchQueue.main.async {
-            self.popularSongsCollectionView.reloadData()
-        }
-    }
-    
-    func setTopArtistCellProperties(cell: UICollectionViewCell, topArtist: TopArtist) -> UICollectionViewCell {
-        if let topArtistCell = cell as? HomeCollectionViewCell {
-
-            topArtistCell.label1.text = topArtist.artistName
-
-            if let image = topArtist.artistThumbnail {
-                topArtistCell.imageView.loadImageFromSource(source: image)
-            }
-            
-            topArtistCell.imageView.layer.cornerRadius = 16.0
-            topArtistCell.imageView.clipsToBounds = true
-            topArtistCell.textLabels.layer.cornerRadius = 16.0
-
-            topArtistCell.layer.cornerRadius = 16.0
-
-            var shadowLayer: CAShapeLayer!
-            let cornerRadius: CGFloat = 16.0
-            let fillColour: UIColor = .white
-            let bounds = topArtistCell.layer.bounds
-
-            if shadowLayer == nil {
-                shadowLayer = CAShapeLayer()
-                shadowLayer.path = UIBezierPath(roundedRect: bounds,  cornerRadius: cornerRadius).cgPath
-                shadowLayer.fillColor = fillColour.cgColor
-                shadowLayer.shadowColor = UIColor.black.cgColor
-                shadowLayer.shadowPath = shadowLayer.path
-                shadowLayer.shadowOffset = CGSize(width: 0, height: 1.2)
-                shadowLayer.shadowOpacity = 0.8
-                shadowLayer.shadowRadius = 8
-
-                if let shadow = topArtistCell.layer.sublayers?[0] as? CAShapeLayer {
-                } else {
-                    topArtistCell.layer.insertSublayer(shadowLayer, at: 0)
-                    topArtistCell.layer.masksToBounds = false
-                }
-                
-            }
-            return topArtistCell
-        }
-        return cell
-    }
-    
-    func setPopularSongCellProperties(cell: UICollectionViewCell, popularSong: PopularSong) -> UICollectionViewCell {
-        if let popularSongCell = cell as? HomeCollectionViewCell {
-            
-            guard let _ = popularSongCell.layer.sublayers?.isEmpty else {
-                return popularSongCell
-            }
-            
-            popularSongCell.label1.text = popularSong.songTitle
-            popularSongCell.label2.text =  popularSong.artist?.artistName
-            
-            if let imageLink = popularSong.album?.albumCover {
-                popularSongCell.imageView.loadImageFromSource(source: imageLink)
-            } else {
-                popularSongCell.imageView.image = UIImage(named: "dummySong")
-            }
-            
-            popularSongCell.imageView.layer.cornerRadius = 16.0
-            popularSongCell.imageView.clipsToBounds = true
-            popularSongCell.textLabels.layer.cornerRadius = 16.0
-            
-            popularSongCell.layer.cornerRadius = 16.0
-            
-            var shadowLayer: CAShapeLayer!
-            let cornerRadius: CGFloat = 16.0
-            let fillColour: UIColor = .white
-            let bounds = popularSongCell.layer.bounds
-            
-            if shadowLayer == nil {
-                shadowLayer = CAShapeLayer()
-                shadowLayer.path = UIBezierPath(roundedRect: bounds,  cornerRadius: cornerRadius).cgPath
-                shadowLayer.fillColor = fillColour.cgColor
-                shadowLayer.shadowColor = UIColor.black.cgColor
-                shadowLayer.shadowPath = shadowLayer.path
-                shadowLayer.shadowOffset = CGSize(width: 0, height: 1.2)
-                shadowLayer.shadowOpacity = 0.8
-                shadowLayer.shadowRadius = 8
-                
-                if let shadow = popularSongCell.layer.sublayers?[0] as? CAShapeLayer {
-                } else {
-                    popularSongCell.layer.insertSublayer(shadowLayer, at: 0)
-                    popularSongCell.layer.masksToBounds = false
-                }
-            }
-            return popularSongCell
-        }
-        return cell
+        self.viewModelDelegate?.getPopularSongsFromRepository()
     }
     
     func loadAlbumsScreen(albumsViewController: DiscographyViewController) {
@@ -218,29 +98,23 @@ extension HomeViewController: HomeViewControllerProtocol {
     
     func updateTopArtists(results: TopArtists) {
         self.topArtistList = results
-        updateTopArtistsCollectionView()
+        DispatchQueue.main.async {
+            self.topArtistsCollectionView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.topArtistsCollectionView.reloadData()
+                self.topArtistsCollectionView.layoutIfNeeded()
+            })
+        }
     }
     
-    func updatePopularSong(result: PopularSong, rank: Int) {
-        
+    func updatePopularSongs(results: PopularSongs) {
+        self.popularSongList = results
         DispatchQueue.main.async {
-            if self.popularSongList == nil {
-                self.popularSongList = PopularSongs()
-                for _ in 0..<10 {
-                    self.popularSongList?.results.append(PopularSong())
-                }
-            }
-            self.popularSongList?.set(result, at: rank)
-            if let cell = self.popularSongsCollectionView.cellForItem(at: IndexPath.init(row: rank, section: 0)) {
-                self.popularSongsCollectionView.reloadItems(at: [IndexPath.init(item: rank, section: 0)])
-            }
-            if self.popularSongsLoaded < 9 {
-                self.popularSongsLoaded += 1
-            } else {
-                self.updatePopularSongsCollectionView()
-                self.hasReceivedAllSongs = true
-                self.updateTopArtistsCollectionView()
-            }
+            self.popularSongsCollectionView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                self.popularSongsCollectionView.reloadData()
+                self.popularSongsCollectionView.layoutIfNeeded()
+            })
         }
     }
     
@@ -257,7 +131,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
         } else {
             if collectionView == self.popularSongsCollectionView {
-                if let popularSongList = topArtistList {
+                if let popularSongList = popularSongList {
                     return popularSongList.count()
                 }
             }
@@ -271,26 +145,103 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId, for: indexPath as IndexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reusableId, for: indexPath as IndexPath) as? HomeCollectionViewCell else {
+            fatalError("Invalid cell type, cell must be HomeCollectionViewCell type")
+        }
         if collectionView == self.topArtistsCollectionView {
-            if let cell = cell as? HomeCollectionViewCell {
-                if let topArtistList = self.topArtistList {
-                    if let topArtist = topArtistList.get(i: indexPath.item) {
-                        return setTopArtistCellProperties(cell: cell, topArtist: topArtist)
-                    }
+            if let topArtistList = self.topArtistList {
+                if let topArtist = topArtistList.get(i: indexPath.item) {
+                        if let imageLink = topArtist.artistThumbnail {
+                            cell.imageView.loadImageFromSource(source: imageLink)
+                        }
+                    
+                        cell.imageView.layer.cornerRadius = 16.0
+                        cell.imageView.clipsToBounds = true
+                        cell.textLabels.layer.cornerRadius = 16.0
+                    
+                        cell.layer.cornerRadius = 16.0
+                    
+                        var shadowLayer: CAShapeLayer!
+                        let cornerRadius: CGFloat = 16.0
+                        let fillColour: UIColor = .white
+                        let bounds = cell.layer.bounds
+                    
+                        if shadowLayer == nil {
+                            shadowLayer = CAShapeLayer()
+                            shadowLayer.path = UIBezierPath(roundedRect: bounds,  cornerRadius: cornerRadius).cgPath
+                            shadowLayer.fillColor = fillColour.cgColor
+                            shadowLayer.shadowColor = UIColor.black.cgColor
+                            shadowLayer.shadowPath = shadowLayer.path
+                            shadowLayer.shadowOffset = CGSize(width: 0, height: 1.2)
+                            shadowLayer.shadowOpacity = 0.8
+                            shadowLayer.shadowRadius = 8
+                            
+                            if let shadow = cell.layer.sublayers?[0] as? CAShapeLayer {
+                            } else {
+                                cell.layer.insertSublayer(shadowLayer, at: 0)
+                                cell.layer.masksToBounds = false
+                            }
+                        }
+                    
+                        if let artistName = topArtist.artistName {
+                            cell.label1.attributedText = NSAttributedString(string: artistName)
+                        }
+                        return cell
                 }
             }
         } else {
             if collectionView == self.popularSongsCollectionView {
-                if let cell = cell as? HomeCollectionViewCell {
-                    if let popularSongList = self.popularSongList {
-                        if let popularSong = popularSongList.get(i: indexPath.item) {
-                            return setPopularSongCellProperties(cell: cell, popularSong: popularSong)
+                if let popularSongList = self.popularSongList {
+                    if let popularSong = popularSongList.get(i: indexPath.item) {
+                        
+                        if let imageLink = popularSong.album?.albumCover {
+                            cell.imageView.loadImageFromSource(source: imageLink)
+                        } else {
+                            cell.imageView.image = UIImage(named: "dummySong")
                         }
+                        
+                        cell.imageView.layer.cornerRadius = 16.0
+                        cell.imageView.clipsToBounds = true
+                        cell.textLabels.layer.cornerRadius = 16.0
+                        
+                        cell.layer.cornerRadius = 16.0
+                        
+                        var shadowLayer: CAShapeLayer!
+                        let cornerRadius: CGFloat = 16.0
+                        let fillColour: UIColor = .white
+                        let bounds = cell.layer.bounds
+                        
+                        if shadowLayer == nil {
+                            shadowLayer = CAShapeLayer()
+                            shadowLayer.path = UIBezierPath(roundedRect: bounds,  cornerRadius: cornerRadius).cgPath
+                            shadowLayer.fillColor = fillColour.cgColor
+                            shadowLayer.shadowColor = UIColor.black.cgColor
+                            shadowLayer.shadowPath = shadowLayer.path
+                            shadowLayer.shadowOffset = CGSize(width: 0, height: 1.2)
+                            shadowLayer.shadowOpacity = 0.8
+                            shadowLayer.shadowRadius = 8
+                            
+                            if let shadow = cell.layer.sublayers?[0] as? CAShapeLayer {
+                            } else {
+                                cell.layer.insertSublayer(shadowLayer, at: 0)
+                                cell.layer.masksToBounds = false
+                            }
+                        }
+                        
+                        if let songTitle = popularSong.songTitle {
+                            cell.label1.attributedText = NSAttributedString(string: songTitle)
+                        }
+                        
+                        if let artistName = popularSong.artist?.artistName {
+                            cell.label2.attributedText =  NSAttributedString(string: artistName)
+                        }
+                        cell.layoutIfNeeded()
+                        return cell
                     }
                 }
             }
         }
+        cell.layoutIfNeeded()
         return cell
     }
     

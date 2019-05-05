@@ -12,6 +12,8 @@ protocol DiscographyViewModelProtocol: class {
     func removeArtist(artistName: String)
     func addArtist(newArtist: SelectedArtist)
     func getAlbums(of artistID: Int)
+    func isArtistFavourited(_ artistName: String)
+    func isArtistFound(_ check: Bool)
 }
 
 extension DiscographyViewModel {
@@ -43,6 +45,8 @@ extension DiscographyViewModel {
 }
 
 extension DiscographyViewModel: DiscographyViewModelProtocol {
+    
+    
     func updateAlbumsForArtist(result: Result<Albums>) {
         switch result {
         case .success(let albums):
@@ -68,5 +72,13 @@ extension DiscographyViewModel: DiscographyViewModelProtocol {
     
     func getAlbums(of artistID: Int) {
         repositoryDelegate?.getAlbums(of: artistID)
+    }
+    
+    func isArtistFavourited(_ artistName: String) {
+        repositoryDelegate?.checkIfInFavourites(artistName)
+    }
+    
+    func isArtistFound(_ check: Bool) {
+       viewControllerDelegate?.isArtistInList(check)
     }
 }

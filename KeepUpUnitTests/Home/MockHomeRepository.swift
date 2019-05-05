@@ -14,7 +14,7 @@ class MockHomeRepository: HomeRepositoryProtocol {
     
     var networkDelegate: HomeNetworkProtocol?
 
-    func dataReady(result: Result<Data>, type: HomeDataType, artistRank: Int) {
+    func dataReady(result: Result<Data>, type: HomeDataType) {
         switch result {
         case .success(let data):
             do {
@@ -24,11 +24,9 @@ class MockHomeRepository: HomeRepositoryProtocol {
                     notifyViewModel(result: Result.success(content))
                 case .PopularSongs:
                     let content = try JSONDecoder().decode(PopularSongs.self, from: data)
-                    if let popularSong = content.get(i: 0) {
-                        notifyViewModel(result: Result.success(popularSong), artistRank: artistRank)
-                    }
+                        notifyViewModel(result: Result.success(content))
                 }
-            } catch let error {
+            } catch _ {
                 let err: Errors = .NetworkError
                 notifyErrorToViewModel(error: err)
             }
@@ -45,7 +43,7 @@ class MockHomeRepository: HomeRepositoryProtocol {
 //        dataReady(result: Result.success(Songs(results: songs)))
     }
     
-    func getPopularSongsFromSource(artistID: Int, artistRank: Int) {
+    func getPopularSongsFromSource() {
 //        let filter = "artist/\(artistID)/top"
 //        let site = "https://api.deezer.com/\(filter)?"
 //        let query = ["limit=1"]
@@ -58,8 +56,8 @@ class MockHomeRepository: HomeRepositoryProtocol {
         viewModelDelegate?.updateTopArtistsOnView(result: result)
     }
     
-    func notifyViewModel(result: Result<PopularSong>, artistRank: Int) {
-        viewModelDelegate?.updatePopularSongsOnView(result: result, artistRank: artistRank)
+    func notifyViewModel(result: Result<PopularSongs>) {
+        viewModelDelegate?.updatePopularSongsOnView(result: result)
     }
     
     func notifyErrorToViewModel(error: Errors) {

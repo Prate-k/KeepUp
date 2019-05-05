@@ -14,7 +14,7 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var selectedAlbum: SelectedAlbum?   //store details locally
     var songs: Songs?
     var lastSelectedTrack: IndexPath = IndexPath.init(row: -1, section: -1) //tableView animation
-    var selectedSongTitle = ""  //lyrics title
+    var selectedSongTitle = ""  //for playing and lyrics screen
     
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var albumImageView: UIImageView!
@@ -25,6 +25,9 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
     var viewModelDelegate: SongsViewModelProtocol?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if selectedSongTitle.isEmpty {
+            return
+        }
         if let viewController = segue.destination as? LyricsViewController {
             loadLyricsScreen(lyricsViewController: viewController)
         }
@@ -65,50 +68,9 @@ class SongsViewController: UIViewController, UITableViewDataSource, UITableViewD
             if let song = songs.get(i: indexPath.item) {
                 cell.songTitle.text = song.songName
                 cell.songLength.text = song.songLengthText
+                cell.viewControllerDelegate = self
             }
         }
-        cell.trackOptionsView.isHidden = true
-        cell.displayOptionsButton.setImage(UIImage(named: "shiftLeft"), for: .normal)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Prev: \(lastSelectedTrack), curr: \(indexPath)")
-        if lastSelectedTrack.row == -1 && lastSelectedTrack.section == -1 {
-            lastSelectedTrack = indexPath
-            guard let newCell = tableView.cellForRow(at: lastSelectedTrack) as? SongTableViewCell else {
-                fatalError("The dequeued cell is not an instance of SongTableViewCell.")
-            }
-            newCell.displayOptions(newCell.displayOptionsButton)
-            newCell.isSelected = true
-            lastSelectedTrack = indexPath
-            if let songTitle = newCell.songTitle.text {
-                selectedSongTitle = songTitle
-            }
-        } else {
-            if lastSelectedTrack != indexPath {
-                guard let oldCell = tableView.cellForRow(at: lastSelectedTrack) as? SongTableViewCell else {
-                    fatalError("The dequeued cell is not an instance of SongTableViewCell.")
-                }
-                oldCell.isSelected = false
-                oldCell.displayOptions(oldCell.displayOptionsButton)
-                guard let newCell = tableView.cellForRow(at: indexPath) as? SongTableViewCell else {
-                    fatalError("The dequeued cell is not an instance of SongTableViewCell.")
-                }
-                newCell.displayOptions(newCell.displayOptionsButton)
-                lastSelectedTrack = indexPath
-                if let songTitle = newCell.songTitle.text {
-                    selectedSongTitle = songTitle
-                }
-            } else {
-                guard let oldCell = tableView.cellForRow(at: lastSelectedTrack) as? SongTableViewCell else {
-                    fatalError("The dequeued cell is not an instance of SongTableViewCell.")
-                }
-                oldCell.displayOptions(oldCell.displayOptionsButton)
-                if let songTitle = oldCell.songTitle.text {
-                    selectedSongTitle = songTitle
-                }
-            }
-        }
     }
 }

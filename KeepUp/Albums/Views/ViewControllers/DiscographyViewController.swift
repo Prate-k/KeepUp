@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscographyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DiscographyViewController: UIViewController {
 
     let resusableId = "albumCell"
     var isArtistFavourited = true  //shows if artist is still in favourite list
@@ -16,6 +16,7 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
     var selectedArtist: SelectedArtist?
     var albums: Albums?
     var viewModelDelegate: DiscographyViewModelProtocol?   //used for mvvm comm
+    let queue = DispatchQueue(label: "AlbumsTaskQueue", qos: .userInteractive, attributes: .concurrent)
 
     @IBOutlet weak var artistInfoButton: UIButton!
     @IBOutlet weak var progressBar: UIActivityIndicatorView!
@@ -54,13 +55,17 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
             showEmptySearchAlertDialog(viewController: self)
             return
         }
-        self.artistName.text = selectedArtist.artistName
-        self.artistImageView.loadImageFromSource(source: selectedArtist.artistImage)
-        self.genre.text = ""//artist.artistGenre
-        artistImageView.loadImageFromSource(source: selectedArtist.artistImage)
+        
+        
         viewModelDelegate = DiscographyViewModel()
         viewModelDelegate?.viewControllerDelegate = self
-        viewModelDelegate?.getAlbums(of: selectedArtist.artistID)
+        
+        queue.async {
+            self.viewModelDelegate?.isArtistFavourited(selectedArtist.artistName)
+        }
+        queue.async {
+            self.viewModelDelegate?.getAlbums(of: selectedArtist.artistID)
+        }
         progressBar.hidesWhenStopped = true
         myStackView.isHidden = true
     
@@ -75,36 +80,4 @@ class DiscographyViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    func numberOfSections(in collectionView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let albums = self.albums {
-            return albums.count()
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: resusableId) as? AlbumTableViewCell else {
-            fatalError("The dequeued cell is not an instance of AlbumTableViewCell.")
-        }
-        if let albums = self.albums {
-            if let album = albums.get(i: indexPath.row) {
-                if let image = album.albumCover {
-                    cell.albumImageView.loadImageFromSource(source: image)
-                }
-                cell.albumName.text = album.albumName
-                if let date = album.releaseDate {
-                    cell.releasedDate.text = "\(date)"
-                }
-            }
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "AlbumsToTracksSegue", sender: nil)
-    }
 }
