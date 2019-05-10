@@ -48,10 +48,10 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="65" height="88"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyArtist" translatesAutoresizingMaskIntoConstraints="NO" id="mIi-Hk-jPx">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="52"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="65" height="16"/>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Czo-dN-SJ7">
-                                                                            <rect key="frame" x="0.0" y="52" width="65" height="20.333333333333329"/>
+                                                                            <rect key="frame" x="0.0" y="34" width="65" height="20.333333333333329"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -161,7 +161,7 @@
         <!--Search-->
         <scene sceneID="92e-2a-3Ds">
             <objects>
-                <viewController id="44f-rS-0He" customClass="SearchViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Search" id="44f-rS-0He" customClass="SearchViewController" customModule="KeepUp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IDD-M5-YbI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -189,10 +189,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="oIt-p4-NG6">
-                                                    <rect key="frame" x="0.0" y="11" width="698" height="66"/>
+                                                    <rect key="frame" x="0.0" y="11" width="376" height="66"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="su7-G9-yJb">
-                                                            <rect key="frame" x="102" y="0.0" width="494" height="58"/>
+                                                            <rect key="frame" x="102" y="0.0" width="172" height="58"/>
                                                             <attributedString key="attributedText">
                                                                 <fragment content="Artist Name">
                                                                     <attributes>
@@ -267,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sQ-hm-E5l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618.84057971014499" y="741.84782608695662"/>
+            <point key="canvasLocation" x="619" y="797"/>
         </scene>
         <!--Settings-->
         <scene sceneID="dcf-N1-cC0">
@@ -1004,8 +1004,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4g-gj-RPy">
                                                 <rect key="frame" x="145" y="0.0" width="171" height="96"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iU-Ya-pVe">
-                                                        <rect key="frame" x="-13" y="9" width="197" height="40"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9iU-Ya-pVe">
+                                                        <rect key="frame" x="-13" y="28" width="197" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="95X-uQ-vtP"/>
                                                             <constraint firstAttribute="width" constant="197" id="zB5-mk-BS5"/>
@@ -1016,11 +1016,6 @@
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="9iU-Ya-pVe" firstAttribute="centerX" secondItem="s4g-gj-RPy" secondAttribute="centerX" id="70i-Mz-PX4"/>
-                                                    <constraint firstItem="9iU-Ya-pVe" firstAttribute="centerY" secondItem="s4g-gj-RPy" secondAttribute="centerY" constant="-19" id="TyY-h7-AV0"/>
-                                                    <constraint firstItem="9iU-Ya-pVe" firstAttribute="top" secondItem="s4g-gj-RPy" secondAttribute="top" constant="9" id="XP7-M2-UMH"/>
-                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9Q-pD-Hfp">
                                                 <rect key="frame" x="346" y="0.0" width="68" height="96"/>
@@ -1078,6 +1073,7 @@
                                             <constraint firstAttribute="height" constant="96" id="KSC-Xm-cGh"/>
                                             <constraint firstItem="ZLf-uF-vpo" firstAttribute="leading" secondItem="gCU-or-7Jy" secondAttribute="leading" id="Yzj-I3-h19"/>
                                             <constraint firstItem="ZLf-uF-vpo" firstAttribute="top" secondItem="s4g-gj-RPy" secondAttribute="top" id="b02-oO-bYV"/>
+                                            <constraint firstItem="s4g-gj-RPy" firstAttribute="centerY" secondItem="gCU-or-7Jy" secondAttribute="centerY" id="ewQ-Y3-Edp"/>
                                             <constraint firstItem="ZLf-uF-vpo" firstAttribute="top" secondItem="gCU-or-7Jy" secondAttribute="top" id="lht-AZ-ejv"/>
                                             <constraint firstItem="s4g-gj-RPy" firstAttribute="top" secondItem="a9Q-pD-Hfp" secondAttribute="top" id="uDC-gK-Kha"/>
                                             <constraint firstAttribute="trailing" secondItem="a9Q-pD-Hfp" secondAttribute="trailing" id="vVY-07-6VE"/>
@@ -1488,7 +1484,7 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68g-Y2-qqG">
-                                                                            <rect key="frame" x="79" y="0.0" width="166" height="29"/>
+                                                                            <rect key="frame" x="79" y="0.0" width="166" height="29.333333333333332"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="29" id="66V-S2-gV2"/>
                                                                             </constraints>
@@ -1497,7 +1493,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song length" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMG-6J-nHI">
-                                                                            <rect key="frame" x="79" y="58" width="166" height="18"/>
+                                                                            <rect key="frame" x="79" y="58.333333333333343" width="166" height="18"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="18" id="JNz-UF-lqe"/>
                                                                             </constraints>
@@ -1824,10 +1820,10 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="-690.48913043478262"/>
         </scene>
-        <!--Home-->
+        <!--HomeNavController-->
         <scene sceneID="3ot-tk-DVs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w4i-2m-aUA" sceneMemberID="viewController">
+                <navigationController title="HomeNavController" automaticallyAdjustsScrollViewInsets="NO" id="w4i-2m-aUA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="icons8-home-filled-24" selectedImage="icons8-home-filled-24" id="tmd-i7-t4s"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NjT-ro-8Yh">
@@ -1843,10 +1839,10 @@
             </objects>
             <point key="canvasLocation" x="-1175.3623188405797" y="63.586956521739133"/>
         </scene>
-        <!--Settings-->
+        <!--SettingsNavController-->
         <scene sceneID="xk0-GY-629">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="okH-IV-CDt" sceneMemberID="viewController">
+                <navigationController title="SettingsNavController" automaticallyAdjustsScrollViewInsets="NO" id="okH-IV-CDt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="icons8-services-filled-24" selectedImage="icons8-services-filled-24" id="Ot4-uu-fk4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5RI-5U-3MW">
@@ -1862,10 +1858,10 @@
             </objects>
             <point key="canvasLocation" x="1504" y="64"/>
         </scene>
-        <!--Favourite Artists-->
+        <!--FavouritesNavController-->
         <scene sceneID="wuM-TO-AA4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="khz-dN-1yR" sceneMemberID="viewController">
+                <navigationController title="FavouritesNavController" automaticallyAdjustsScrollViewInsets="NO" id="khz-dN-1yR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favourite Artists" image="icons8-heart-outline-filled-24" selectedImage="icons8-heart-outline-filled-24" id="BjK-Jg-5TW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hKB-ht-raa">
@@ -1881,10 +1877,10 @@
             </objects>
             <point key="canvasLocation" x="-304.34782608695656" y="63.586956521739133"/>
         </scene>
-        <!--Search-->
+        <!--SearchNavController-->
         <scene sceneID="9zW-p9-NMJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dyr-kU-4vZ" sceneMemberID="viewController">
+                <navigationController title="SearchNavController" automaticallyAdjustsScrollViewInsets="NO" id="dyr-kU-4vZ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" image="icons8-search-24" selectedImage="icons8-search-24" id="Jcd-y5-tbD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="R00-Yc-7tX">
